@@ -36,7 +36,33 @@ POST   /logout                      - User logout
 
 ## Getting started
 
-There's nothing here, we leave it to you to choose the build tool, code structure, framework, testing approach...
+#### Server Development Environment
+
+* Python 2.7.10
+* Flask 0.10.1
+* Sqlite 3.8.5
+
+#### iOS Development Environment
+
+* Xcode 6.4
+
+#### Project Structure
+
+```
+ios/                    iOS project file
+app.py                  main server file
+models.py               model and sqlite operation
+models_test.py          unit test for models.py
+schema.sql              sql for create tables
+```
+
+*One user divide into a user info table and a user auth table, this can make the extension of third authoristion login easily.*
+
+#### Build & Run
+
+1. create the database and tables: `$ sqlite3 test.db < schema.sql`
+2. start the server: `$ python app.py`
+3. open the simulator with Xcode and run the app
 
 ## Requirements
 
