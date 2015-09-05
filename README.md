@@ -49,10 +49,11 @@ POST   /logout                      - User logout
 #### Project Structure
 
 ```
-ios/            iOS project file
-app.py          main server file
-models.py       model and sqlite operation
-schema.sql      sql for create tables
+ios/                    iOS project file
+app.py                  main server file
+models.py               model and sqlite operation
+models_test.py          unit test for models.py
+schema.sql              sql for create tables
 ```
 
 *One user divide into a user info table and a user auth table, this can make the extension of third authoristion login easily.*
