@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3326517171E0FAEAE5D9B74C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D89A57CEF010E1529E702A9 /* libPods.a */; };
+		E13445F71B9B395C00139036 /* NSString+ValidateAndSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = E13445F61B9B395C00139036 /* NSString+ValidateAndSecurity.m */; };
 		E17EAC921B9AE57C007745B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E17EAC901B9AE57C007745B4 /* Main.storyboard */; };
 		E17EAC941B9AE57C007745B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E17EAC931B9AE57C007745B4 /* Images.xcassets */; };
 		E17EAC971B9AE57C007745B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17EAC951B9AE57C007745B4 /* LaunchScreen.xib */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		7D89A57CEF010E1529E702A9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A61975A90A825EF6EC6A04F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E13445F51B9B395C00139036 /* NSString+ValidateAndSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ValidateAndSecurity.h"; sourceTree = "<group>"; };
+		E13445F61B9B395C00139036 /* NSString+ValidateAndSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ValidateAndSecurity.m"; sourceTree = "<group>"; };
 		E17EAC831B9AE57C007745B4 /* LoginDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17EAC871B9AE57C007745B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E17EAC911B9AE57C007745B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -182,6 +185,8 @@
 				E1EA73ED1B9B0303001EDFB0 /* AppDelegate.h */,
 				E1EA73EE1B9B0303001EDFB0 /* AppDelegate.m */,
 				E1EA73EF1B9B0303001EDFB0 /* main.m */,
+				E13445F51B9B395C00139036 /* NSString+ValidateAndSecurity.h */,
+				E13445F61B9B395C00139036 /* NSString+ValidateAndSecurity.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				E1EA73F51B9B0303001EDFB0 /* main.m in Sources */,
 				E1EA73F41B9B0303001EDFB0 /* AppDelegate.m in Sources */,
 				E1EA73F11B9B0303001EDFB0 /* WXGLoginViewController.m in Sources */,
+				E13445F71B9B395C00139036 /* NSString+ValidateAndSecurity.m in Sources */,
 				E1EA73F31B9B0303001EDFB0 /* WXGUserInfoViewController.m in Sources */,
 				E1EA73F21B9B0303001EDFB0 /* WXGSignUpViewController.m in Sources */,
 			);

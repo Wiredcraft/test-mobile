@@ -9,6 +9,7 @@
 #import "WXGSignUpViewController.h"
 #import <AFNetworking.h>
 #import <SVProgressHUD.h>
+#import "NSString+ValidateAndSecurity.h"
 
 @interface WXGSignUpViewController ()
 
@@ -48,14 +49,18 @@
         return;
     }
     
-    if (![self validateEmail:email]) {
+    // validate the email format
+    if (![NSString validateEmail:email]) {
         [SVProgressHUD showErrorWithStatus:@"email format is incorrect!" maskType:SVProgressHUDMaskTypeGradient];
         return;
     }
     
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     
-    NSDictionary *parameters = @{@"username" : username, @"password" : password, @"name" : name, @"email" : email};
+    // encrypt the password
+    NSString *securityPassword = [NSString securityWithPassword:password];
+    
+    NSDictionary *parameters = @{@"username" : username, @"password" : securityPassword, @"name" : name, @"email" : email};
     
     [self.manager POST:@"http://localhost:5000/user/" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -87,12 +92,6 @@
         [self signUp];
     }
     return YES;
-}
-
-- (BOOL)validateEmail:(NSString *)email {
-    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:email];
 }
 
 - (void)dealloc {

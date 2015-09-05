@@ -52,10 +52,10 @@ POST   /logout                      - User logout
 ios/            iOS project file
 app.py          main server file
 models.py       model and sqlite operation
-schema.sql      create the table
+schema.sql      sql for create tables
 ```
 
-*one user divide into a user info table and a user auth table*
+*One user divide into a user info table and a user auth table, this can make the extension of third authoristion login easily.*
 
 #### test & run
 

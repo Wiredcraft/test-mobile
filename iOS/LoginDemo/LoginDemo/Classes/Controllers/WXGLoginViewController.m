@@ -10,6 +10,7 @@
 #import "WXGUserInfoViewController.h"
 #import <AFNetworking.h>
 #import <SVProgressHUD.h>
+#import "NSString+ValidateAndSecurity.h"
 
 @interface WXGLoginViewController ()
 
@@ -49,7 +50,10 @@
     
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     
-    NSDictionary *parameters = @{@"username" : username, @"password" : password};
+    // encrypt the password
+    NSString *securityPassword = [NSString securityWithPassword:password];
+    
+    NSDictionary *parameters = @{@"username" : username, @"password" : securityPassword};
     
     [self.manager POST:@"http://localhost:5000/login" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         
