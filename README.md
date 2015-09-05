@@ -36,7 +36,28 @@ POST   /logout                      - User logout
 
 ## Getting started
 
-There's nothing here, we leave it to you to choose the build tool, code structure, framework, testing approach...
+服务器端开发环境：
+
+* Python 2.7.10
+* Flask 0.10.1
+* Sqlite 3.8.5
+
+iOS移动端开发环境：
+
+* Xcode 6.4
+
+项目结构：
+
+ios/ | iOS项目文件  
+app.py | 服务器主运行文件  
+models.py | 模型及数据库相关  
+schema.sql | 数据库建表文件
+
+编译运行：
+
+1. 创建数据库`$ sqlite3 test.db < schema.sql`
+2. 启动服务器`$ python app.py`
+3. 使用Xcode模拟器运行iOS客户端程序
 
 ## Requirements
 
