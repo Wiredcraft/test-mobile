@@ -36,13 +36,13 @@ POST   /logout                      - User logout
 
 ## Getting started
 
-#### Development Environment of Server
+#### Server Development Environment
 
 * Python 2.7.10
 * Flask 0.10.1
 * Sqlite 3.8.5
 
-#### Development Environment of iOS
+#### iOS Development Environment
 
 * Xcode 6.4
 
@@ -57,7 +57,7 @@ schema.sql      sql for create tables
 
 *One user divide into a user info table and a user auth table, this can make the extension of third authoristion login easily.*
 
-#### test & run
+#### Build & Run
 
 1. create the database and tables: `$ sqlite3 test.db < schema.sql`
 2. start the server: `$ python app.py`
