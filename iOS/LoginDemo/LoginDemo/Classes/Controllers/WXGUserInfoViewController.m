@@ -40,6 +40,7 @@
         
         [SVProgressHUD dismiss];
         
+        // update the user info
         self.nameLabel.text = [NSString stringWithFormat:@"Name: %@", responseObject[@"user"][@"name"]];
         self.emailLabel.text = [NSString stringWithFormat:@"Email: %@", responseObject[@"user"][@"email"]];
         self.dateLabel.text = [NSString stringWithFormat:@"Created at: %@", responseObject[@"user"][@"created_at"]];
@@ -50,7 +51,14 @@
 }
 
 - (IBAction)logout {
+    // remove user_id
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userId"];
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)dealloc {
+    [self.manager.operationQueue cancelAllOperations];
 }
 
 @end

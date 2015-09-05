@@ -31,13 +31,14 @@
     return _manager;
 }
 
+// resign the keyboard
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
 
 - (IBAction)login {
     [self.view endEditing:YES];
-    
+
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
     
@@ -64,6 +65,11 @@
             [SVProgressHUD showErrorWithStatus:@"your username or password is wrong!" maskType:SVProgressHUDMaskTypeGradient];
         } else {
             self.userId = userId;
+            
+            // save user_id
+            [[NSUserDefaults standardUserDefaults] setObject:@(userId) forKey:@"userId"];
+            
+            // push to show user info
             [self performSegueWithIdentifier:@"userInfo" sender:nil];
         }
         
@@ -72,6 +78,7 @@
     }];
 }
 
+// deal with the return key
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.usernameField) {
         [self.passwordField becomeFirstResponder];
@@ -81,11 +88,16 @@
     return YES;
 }
 
+// pass the user_id
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"userInfo"]) {
         WXGUserInfoViewController *userInfoVC = segue.destinationViewController;
         userInfoVC.userId = self.userId;
     }
+}
+
+- (void)dealloc {
+    [self.manager.operationQueue cancelAllOperations];
 }
 
 @end

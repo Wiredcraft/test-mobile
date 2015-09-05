@@ -55,19 +55,24 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNI-SI-AO0">
-                                <rect key="frame" x="150" y="284" width="300" height="30"/>
+                                <rect key="frame" x="281" y="284" width="38" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="hpV-tJ-bEo"/>
                                 </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hpV-tJ-bEo"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="login" destination="O7K-4N-5yJ" eventType="touchUpInside" id="4Gx-jJ-XFR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8O-3F-343">
-                                <rect key="frame" x="274.5" y="520" width="51" height="30"/>
+                                <rect key="frame" x="274" y="520" width="51" height="30"/>
                                 <state key="normal" title="SignUp">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -145,7 +150,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fTs-is-k7m">
-                                <rect key="frame" x="150.5" y="344" width="300" height="30"/>
+                                <rect key="frame" x="150" y="344" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="6ET-0K-d6n"/>
                                 </constraints>
@@ -156,13 +161,18 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j15-5l-uPh">
-                                <rect key="frame" x="150" y="404" width="300" height="30"/>
+                                <rect key="frame" x="274.5" y="404" width="51" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="n8m-Ly-C2S"/>
                                 </constraints>
                                 <state key="normal" title="SignUp">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="n8m-Ly-C2S"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="signUp" destination="WLa-n0-ajz" eventType="touchUpInside" id="PLv-zy-UwC"/>
                                 </connections>
@@ -212,7 +222,7 @@
                                     <constraint firstAttribute="width" constant="300" id="O0v-Ds-k0Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brh-C3-AQP">
@@ -221,7 +231,7 @@
                                     <constraint firstAttribute="width" constant="300" id="scZ-tt-hUX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created_at: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lf7-8d-svS">
@@ -230,7 +240,7 @@
                                     <constraint firstAttribute="width" constant="300" id="SQ6-Yr-bz4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U7-wa-gOs">

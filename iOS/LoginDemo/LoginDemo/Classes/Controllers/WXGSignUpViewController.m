@@ -30,6 +30,7 @@
     return _manager;
 }
 
+// resign the keyboard
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
@@ -74,6 +75,7 @@
     }];
 }
 
+// deal with the return key
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.usernameField) {
         [self.passwordField becomeFirstResponder];
@@ -91,6 +93,10 @@
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
+}
+
+- (void)dealloc {
+    [self.manager.operationQueue cancelAllOperations];
 }
 
 @end

@@ -12,6 +12,7 @@ class User(object):
 		self.email = email
 		self.created_at = created_at
 
+	# create a user, both user_info and user_auth
 	@staticmethod
 	def signup(name, email, username, password):
 		conn = get_conn()
@@ -24,6 +25,7 @@ class User(object):
 		conn.commit()
 		conn.close()
 
+	# check whether login success, return user_id
 	@staticmethod
 	def login(username, password):
 		conn = get_conn()
@@ -37,6 +39,7 @@ class User(object):
 		conn.close()
 		return user_id
 
+	# get user by id
 	@staticmethod
 	def get_user(user_id):
 		conn = get_conn()
@@ -50,6 +53,7 @@ class User(object):
 		conn.close()
 		return user
 
+	# check whether username already exists
 	@staticmethod
 	def querybyusername(username):
 		conn = get_conn()
@@ -63,6 +67,7 @@ class User(object):
 		conn.close()
 		return id
 
+	# check whether email already exists
 	@staticmethod
 	def querybyemail(email):
 		conn = get_conn()

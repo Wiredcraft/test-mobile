@@ -36,28 +36,32 @@ POST   /logout                      - User logout
 
 ## Getting started
 
-服务器端开发环境：
+#### Development Environment of Server
 
 * Python 2.7.10
 * Flask 0.10.1
 * Sqlite 3.8.5
 
-iOS移动端开发环境：
+#### Development Environment of iOS
 
 * Xcode 6.4
 
-项目结构：
+#### Project Structure
 
-ios/ | iOS项目文件  
-app.py | 服务器主运行文件  
-models.py | 模型及数据库相关  
-schema.sql | 数据库建表文件
+```
+ios/            iOS project file
+app.py          main server file
+models.py       model and sqlite operation
+schema.sql      create the table
+```
 
-编译运行：
+*one user divide into a user info table and a user auth table*
 
-1. 创建数据库`$ sqlite3 test.db < schema.sql`
-2. 启动服务器`$ python app.py`
-3. 使用Xcode模拟器运行iOS客户端程序
+#### test & run
+
+1. create the database and tables: `$ sqlite3 test.db < schema.sql`
+2. start the server: `$ python app.py`
+3. open the simulator with Xcode and run the app
 
 ## Requirements
 
