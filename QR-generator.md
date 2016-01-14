@@ -1,18 +1,19 @@
 # QR-generator
 
-Please make sure you have read the [README.md](https://github.com/Wiredcraft/mobile-test/blob/master/README.md) first.
+Make sure you have read the [README.md](https://github.com/Wiredcraft/mobile-test/blob/master/README.md) first.
 
 ## Background
 
-Build a simple api server that provider an API could generate a random seed.
+There are 2 tasks:
 
-Build a simple mobile application with simple user interface, that could call the seed API and generate a QR-code reply on this seed.
+1. Build a simple api server that can provide an API which generate a random seed.
+2. Build a simple mobile application (very simple UI), that would call the seed API and generate a QR-code based on this seed.
 
 ### Seed Model
 
 ```
 {
-  data: '37790a1b728096b4141864f49159ad47'    // The random seed, length must equal 32
+  data: '37790a1b728096b4141864f49159ad47'    // Random seed, length must be equal to 32
   expiredAt: 1452762065183                    // Unix format timestamp
 }
 ```
@@ -25,14 +26,14 @@ GET    /seed                   - Get the seed
 ```
 
 ### User Interface
-![user interface](https://cloud.githubusercontent.com/assets/914595/12320458/cdca6356-bae3-11e5-8fd4-cff6ff647a12.jpg)
+
+Here is a quick mockup of how it could look like (think Material Design!):![user interface](https://cloud.githubusercontent.com/assets/914595/12320458/cdca6356-bae3-11e5-8fd4-cff6ff647a12.jpg)
 
 ### Addtional Requirement
 
-* QR-code could automaticlly refresh by the expired date comes from the seed API.
-
-* Mobile devices should keep the seed data in somewhere and the seed can be restore after user force close the app.
+* QR-code could automaticlly refresh based on an expired date provide by the seed API.
+* Mobile devices should cachekd the seed data and the seed can be restore after the user force close the app.
 
 ## Getting started
 
-There's nothing here, we leave it to you to choose the build tool, code structure, framework, testing approach...
+There's nothing here. We leave it blank (at least after this sentence) to write down your choice of build tool, code structure, framework, testing approach, etc.
