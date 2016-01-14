@@ -1,55 +1,18 @@
-# Wiredcraft iOS Developer Coding Test
+# Wiredcraft Mobile Developer Coding Test
 
 Make sure you read **all** of this document carefully, and follow the guidelines in it.
-
-## Background
-
-Build a simple api server that could allow user create an account and login.
-
-Build a simple iOS application with simple user interface, that allow user login with the app through the API you build.
-
-### User Model
-
-```
-{
-  "id": "xxx",                  // user id(you can use uuid or the id provided by database, but need to be unique)
-  "name": "test",               // user name
-  "dob": "",                    // date of birth
-  "address": "",                // user address
-  "description": "",            // user description
-  "created_at": ""              // user created date
-}
-```
-*This user model is just an example, feel free to modify it.*
-
-### API
-
-```
-GET    /user/{id}                   - Get user by ID
-POST   /user/                       - To create a new user
-POST   /login                       - User login
-POST   /logout                      - User logout
-```
-
-### User Interface
-![user interface](https://cloud.githubusercontent.com/assets/914595/9623682/f22d8f4c-5176-11e5-88fb-133828455702.jpg)
-
-## Getting started
-
-There's nothing here, we leave it to you to choose the build tool, code structure, framework, testing approach...
 
 ## Requirements
 
 - With clear documentation on how to run the code and api usage;
 
-- iOS application should follow apple design pattern;
+- Mobile application should follow apple/google design pattern;
 
 - Provide proper unit test;
 
 - Choose either sql or no-sql database to make the data persistence;
 
 - Use git to manage code;
-
 
 ## What We Care About
 
