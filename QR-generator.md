@@ -13,7 +13,7 @@ Build a simple mobile application with simple user interface, that could call th
 ```
 {
   data: '37790a1b728096b4141864f49159ad47'    // The random seed, length must equal 32
-  expired_date: 1452762065183                 // Unix format timestamp
+  expiredAt: 1452762065183                    // Unix format timestamp
 }
 ```
 *This user model is just an example, feel free to modify it.*
