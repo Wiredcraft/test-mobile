@@ -41,14 +41,14 @@ Create a new issue in the repo and we will get back to you very quickly.
 ## PreView
 ####Material Design Home：
 
-![](photo/0.jpg)
+![](photo/0.png)
 
 ####Generate the QRCode：
 
-![](photo/1.jpg)
+![](photo/1.png)
 
 ####Scaner and the result：
 
-![](photo/2.jpg) ![](photo/3.jpg)
+![](photo/2.png) ![](photo/3.png)
 
 
