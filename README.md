@@ -38,4 +38,17 @@ Fork this repo and send us a pull request when you think you are done. We don't 
 
 Create a new issue in the repo and we will get back to you very quickly.
 
+## PreView
+####Material Design Home：
+
+![](photo/0.jpg)
+
+####Generate the QRCode：
+
+![](photo/1.jpg)
+
+####Scaner and the result：
+
+![](photo/2.jpg) ![](photo/3.jpg)
+
 
