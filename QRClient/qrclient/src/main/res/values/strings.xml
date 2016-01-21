@@ -32,7 +32,7 @@
     <!-- Strings to QR-->
     <string name="qr_action_scan">scan</string>
     <string name="qr_action_generate">generate</string>
-    <string name="qr_prompt_msg">QR Code change per minite.</string>
+    <string name="qr_prompt_msg">QR Code change while expired.</string>
 
     <!-- menu-->
     <string name="menu_save">save</string>

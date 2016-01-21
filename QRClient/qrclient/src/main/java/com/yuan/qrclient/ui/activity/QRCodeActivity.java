@@ -120,6 +120,13 @@ public class QRCodeActivity extends BaseTitleActivity {
      * init the new seed data from server
      */
     private void initNewBitmap() {
+        String expiretime = setting.getString(SpSetting.KEY_EXPIREAT);
+        if(!TextUtils.isEmpty(expiretime)){
+            long expiretime_int = Long.parseLong(expiretime);
+            if(expiretime_int > System.currentTimeMillis()){
+                return;
+            }
+        }
         try {
             Call<Seed> call = API.seed_get().seed();
             call.enqueue(new Callback<Seed>() {
