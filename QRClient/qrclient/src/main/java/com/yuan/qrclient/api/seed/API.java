@@ -22,20 +22,13 @@ public class API {
      * @return Seed
      * @throws IOException
      */
-    public static Seed seed_get() throws IOException {
+    public static SeedService seed_get() throws IOException {
         String baseurl = SERVERURL;
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(baseurl)
                 .build();
 
-        SeedService service = retrofit.create(SeedService.class);
-        Call<Seed> call = service.seed();
-        Response<Seed> response = call.execute();
-        Seed seed = null;
-        if(response.isSuccess()) {
-            seed = response.body();
-        }
-        return seed;
+        return retrofit.create(SeedService.class);
     }
 }

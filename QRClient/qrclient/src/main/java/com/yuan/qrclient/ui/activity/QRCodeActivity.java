@@ -26,6 +26,11 @@ import com.yuan.qrclient.utils.QLog;
 
 import java.io.IOException;
 
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
 /**
  * The Activity To Show The QR Code
  */
@@ -115,12 +120,14 @@ public class QRCodeActivity extends BaseTitleActivity {
      * init the new seed data from server
      */
     private void initNewBitmap() {
-        new Thread(() -> {
-            try {
-                final Seed seed = API.seed_get();
-                runOnUiThread(() -> {
+        try {
+            Call<Seed> call = API.seed_get().seed();
+            call.enqueue(new Callback<Seed>() {
+                @Override
+                public void onResponse(Response<Seed> response, Retrofit retrofit) {
+                    Seed seed = response.body();
                     QLog.i("seed new = " + seed.toString());
-                    if (seed != null) {
+                    if (response.isSuccess() && seed != null) {
                         try {
                             setting.save(SpSetting.KEY_SEED_DATA, seed.data);
                             setting.save(SpSetting.KEY_EXPIREAT, seed.expiredAt);
@@ -131,17 +138,17 @@ public class QRCodeActivity extends BaseTitleActivity {
                         } catch (WriterException e) {
                             e.printStackTrace();
                         }
-                    } else {
-                        Snackbar.make(img, "The network is error!", Snackbar.LENGTH_LONG).show();
                     }
-                });
-                if (TIME == seconds) {
-                    hanlder.sendEmptyMessage(TIME);
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
+
+                @Override
+                public void onFailure(Throwable t) {
+                    Snackbar.make(img, "The network is error!", Snackbar.LENGTH_LONG).show();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
