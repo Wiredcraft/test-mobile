@@ -38,4 +38,31 @@ Fork this repo and send us a pull request when you think you are done. We don't 
 
 Create a new issue in the repo and we will get back to you very quickly.
 
+## Libs used
+####Support lib, Material Design
+Design,[Floatingactionbutton](https://github.com/futuresimple/android-floating-action-button)
+####Network
+[Retrofit](https://github.com/dm77/barcodescanner)
+####QRCode
+[zxing](https://github.com/zxing/zxing),[scanner](https://github.com/dm77/barcodescanner)
+####Others
+[leakcanary](https://github.com/square/leakcanary)
+
+## Structure
+  The QRServer is the api server project by Nodejs,need npm install express.
+  The QRClient is the android project.
+
+## PreView
+####Material Design Home：
+
+![](photo/0.png)
+
+####Generate the QRCode：
+
+![](photo/1.png)
+
+####Scaner and the result：
+
+![](photo/2.png) ![](photo/3.png)
+
 
