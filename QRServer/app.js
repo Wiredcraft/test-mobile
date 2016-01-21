@@ -2,11 +2,14 @@ var express = require('express');
 var app = express();
 var fs = require("fs");
 
+var day = 1;//one day the data will expire
+var expiretime = day * 24 * 60 * 60;
+
 app.get('/seed', function (req, res) {
     var seed = JSON.stringify({  
         "data": str = randomString() , 
         "len":str.length,
-        "expiredAt": new Date().getTime() +''
+        "expiredAt": (new Date().getTime() + expiretime) +''
     })
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end( seed );
