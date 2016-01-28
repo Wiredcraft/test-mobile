@@ -1,0 +1,20 @@
+{
+  "name": "QRGenerator",
+  "description": "A Task from Wiredcraft",
+  "license": "MIT",
+  "version": "0.0.1",
+  "author": "Ryan Chu <ryaneof@gmail.com>",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryaneof/test-mobile"
+  },
+  "dependencies": {
+    "react-native": "^0.18.1"
+  },
+  "engines": {
+    "node": "5.4.0"
+  }
+}
