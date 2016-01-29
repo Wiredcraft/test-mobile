@@ -22,7 +22,8 @@
     "loopback-component-explorer": "^2.2.0",
     "loopback-connector-postgresql": "^2.4.0",
     "loopback-datasource-juggler": "^2.44.0",
-    "react-native": "^0.18.1"
+    "react-native": "^0.18.1",
+    "react-native-camera": "^0.3.8"
   },
   "betterScripts": {
     "start-dev-api": {
