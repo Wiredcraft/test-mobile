@@ -1,3 +1,5 @@
+var crypto = require('crypto');
+
 module.exports = function (Seed) {
   Seed.disableRemoteMethod('create', true);
   Seed.disableRemoteMethod('upsert', true);
@@ -13,7 +15,7 @@ module.exports = function (Seed) {
 
   Seed.getNewSeed = function (cb) {
     Seed.create({
-      data: 'fucc', // todo: random string, length 32
+      data: crypto.randomBytes(16).toString('hex'),
       expiredAt: new Date().getTime()
     }, function (err, createdSeed) {
       if (err) {

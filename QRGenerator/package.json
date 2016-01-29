@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "author": "Ryan Chu <ryaneof@gmail.com>",
   "scripts": {
-  	"start-dev-api": "better-npm-run start-dev-api",
+    "start-dev-api": "better-npm-run start-dev-api",
     "start-react-native": "node node_modules/react-native/local-cli/cli.js start"
   },
   "repository": {
@@ -15,6 +15,7 @@
   "dependencies": {
     "compression": "^1.6.1",
     "cors": "^2.7.1",
+    "crypto": "0.0.3",
     "loopback": "^2.26.2",
     "loopback-boot": "^2.16.0",
     "loopback-component-explorer": "^2.2.0",
