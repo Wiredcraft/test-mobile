@@ -12,6 +12,13 @@
     "url": "https://github.com/ryaneof/test-mobile"
   },
   "dependencies": {
+    "compression": "^1.6.1",
+    "cors": "^2.7.1",
+    "loopback": "^2.26.2",
+    "loopback-boot": "^2.16.0",
+    "loopback-component-explorer": "^2.2.0",
+    "loopback-connector-postgresql": "^2.4.0",
+    "loopback-datasource-juggler": "^2.44.0",
     "react-native": "^0.18.1"
   },
   "engines": {
