@@ -4,6 +4,8 @@ var path = require('path');
 
 var app = module.exports = loopback();
 
+console.log('yo', process.env.POSTGRES_CONNECT_URL);
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
