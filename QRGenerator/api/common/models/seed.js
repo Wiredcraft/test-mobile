@@ -16,7 +16,7 @@ module.exports = function (Seed) {
   Seed.getNewSeed = function (cb) {
     Seed.create({
       data: crypto.randomBytes(16).toString('hex'),
-      expiredAt: new Date().getTime()
+      expiredAt: new Date(new Date().getTime() + 60 * 1000).getTime()
     }, function (err, createdSeed) {
       if (err) {
         console.log(err);
