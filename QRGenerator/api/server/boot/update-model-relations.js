@@ -1,5 +1,5 @@
 module.exports = function (app) {
-  app.dataSources.psql.automigrate(['seed'], function (err) {
+  app.dataSources.psql.autoupdate(['seed'], function (err) {
     if (err) throw err;
     console.log('All Models Auto Updated.');
   });
