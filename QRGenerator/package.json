@@ -24,6 +24,7 @@
     "loopback-datasource-juggler": "^2.44.0",
     "react-native": "^0.18.1",
     "react-native-camera": "^0.3.8",
+    "react-native-material-kit": "^0.2.5",
     "react-native-qrcode": "0.0.13"
   },
   "betterScripts": {
