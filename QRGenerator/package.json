@@ -5,8 +5,8 @@
   "version": "0.0.1",
   "author": "Ryan Chu <ryaneof@gmail.com>",
   "scripts": {
-    "lint": "eslint -c .eslintrc index.ios.js",
-    "start": "concurrent --kill-others \"npm run watch-app\" \"npm run start-dev-api\" \"npm run start-react-native\"",
+    "lint": "gulp lint",
+    "start": "concurrent --kill-others \"npm run lint\" \"npm run watch-app\" \"npm run start-dev-api\" \"npm run start-react-native\"",
     "start-dev-api": "better-npm-run start-dev-api",
     "start-react-native": "node node_modules/react-native/local-cli/cli.js start",
     "test-dev-api": "better-npm-run test-dev-api",
