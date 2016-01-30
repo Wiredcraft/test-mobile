@@ -5,9 +5,12 @@
   "version": "0.0.1",
   "author": "Ryan Chu <ryaneof@gmail.com>",
   "scripts": {
+    "lint": "eslint -c .eslintrc index.ios.js",
+    "start": "concurrent --kill-others \"npm run watch-app\" \"npm run start-dev-api\" \"npm run start-react-native\"",
     "start-dev-api": "better-npm-run start-dev-api",
     "start-react-native": "node node_modules/react-native/local-cli/cli.js start",
-    "test-dev-api": "better-npm-run test-dev-api"
+    "test-dev-api": "better-npm-run test-dev-api",
+    "watch-app": "gulp watch-app"
   },
   "repository": {
     "type": "git",
@@ -41,6 +44,13 @@
   "devDependencies": {
     "better-npm-run": "0.0.5",
     "chai": "^3.5.0",
+    "concurrently": "^1.0.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^4.0.0",
+    "eslint-plugin-import": "^0.12.1",
+    "eslint-plugin-react": "^3.16.1",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.1",
     "mocha": "^2.4.5",
     "supertest": "^1.1.0"
   }
