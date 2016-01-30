@@ -1,14 +1,12 @@
 import React, {
   StyleSheet,
-  View,
+  AlertIOS,
   Text,
-  // Image,
   Component,
   PropTypes
 } from 'react-native';
 
-// import MK from 'react-native-material-kit';
-// import { getHomeRoute } from './router.js';
+import Camera from 'react-native-camera';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,23 +14,61 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
+  },
+  scanTip: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
   }
 });
-
-// const {
-//   MKButton
-// } = MK;
 
 class ScanQRCodeScene extends Component {
   constructor() {
     super();
+
+    this.state = {
+      scanning: true
+    };
+
+    this.onBarCodeRead = (result) => {
+      if (!this.state.scanning) {
+        return;
+      }
+
+      // console.log(result.type, result.data, /qr/.test(result.type));
+
+      if (result.type && result.data && /qr/i.test(result.type)) {
+        this.setState({
+          scanning: false
+        });
+
+        AlertIOS.alert(
+          'Scan Result',
+          result.data,
+          [{
+            text: 'ok',
+            onPress: () => {
+              this.setState({
+                scanning: true
+              });
+            }
+          }]
+        );
+      }
+    };
   }
 
   render() {
     return (
-      <View style={ styles.container }>
-        <Text>Scan QR Code Placeholder</Text>
-      </View>
+      <Camera
+        ref="cam"
+        style={ styles.container }
+        onBarCodeRead={ this.onBarCodeRead }
+      >
+        <Text style={ styles.scanTip }>
+          Scanning!
+        </Text>
+      </Camera>
     );
   }
 }
