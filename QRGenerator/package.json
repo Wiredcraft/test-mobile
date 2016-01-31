@@ -17,7 +17,7 @@
     "url": "https://github.com/ryaneof/test-mobile"
   },
   "dependencies": {
-    "@exponent/react-native-navigator": "^0.4.1",
+    "@exponent/react-native-navigator": "git+https://github.com/ryaneof/ex-navigator",
     "babel": "^6.3.26",
     "babel-core": "^6.4.5",
     "babel-preset-es2015": "^6.3.13",
