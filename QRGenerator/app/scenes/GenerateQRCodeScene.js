@@ -7,12 +7,17 @@ import React, {
   PropTypes
 } from 'react-native';
 
+import QRCode from 'react-native-qrcode';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
+  },
+  qrCodeContainer: {
+    marginBottom: 40
   }
 });
 
@@ -74,6 +79,23 @@ class GenerateQRCodeScene extends Component {
         }
       });
     });
+
+    this.getQRCodeView = (seedData) => {
+      if (!seedData) {
+        return null;
+      }
+
+      return (
+        <View style={ styles.qrCodeContainer }>
+          <QRCode
+            value={ seedData }
+            size={ 200 }
+            bgColor="black"
+            fgColor="white"
+          />
+        </View>
+      );
+    };
   }
 
   componentDidMount() {
@@ -104,8 +126,11 @@ class GenerateQRCodeScene extends Component {
 
   render() {
     const { data, expiredAt } = this.state.seed;
+    const QRCodeView = this.getQRCodeView(data);
+
     return (
       <View style={ styles.container }>
+        { QRCodeView }
         <Text>data: { data }</Text>
         <Text>expiredAt: { expiredAt }</Text>
       </View>
