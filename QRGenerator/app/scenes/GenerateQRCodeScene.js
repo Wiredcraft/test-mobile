@@ -31,40 +31,27 @@ class GenerateQRCodeScene extends Component {
       seed: {
         data: '',
         expiredAt: 0
+      },
+      remainingSeconds: 0
+    };
+
+    this.fetchNewSeed = () => fetch('http://localhost:3000/seed', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       }
-    };
-
-    this.fetchNewSeed = () => {
-      fetch('http://localhost:3000/seed', {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+    })
+    .then((response) => response.json())
+    .then((responseJson) => new Promise((resolve, reject) => {
+      AsyncStorage.setItem(seedStorageKey, JSON.stringify(responseJson), (error) => {
+        if (error) {
+          reject(error);
         }
-      })
-      .then((response) => response.json())
-      .then((responseJson) => new Promise((resolve, reject) => {
-        AsyncStorage.setItem(seedStorageKey, JSON.stringify(responseJson), (error) => {
-          if (error) {
-            reject(error);
-          }
 
-          resolve(responseJson);
-        });
-      }))
-      .then((responseJson) => {
-        const { data, expiredAt } = responseJson;
-        this.setState({
-          seed: {
-            data,
-            expiredAt
-          }
-        });
-      })
-      .catch((error) => {
-        console.warn(error);
+        resolve(responseJson);
       });
-    };
+    }));
 
     this.getSeedFromStorage = () => new Promise((resolve, reject) => {
       AsyncStorage.getItem(seedStorageKey, (error, result) => {
@@ -96,6 +83,65 @@ class GenerateQRCodeScene extends Component {
         </View>
       );
     };
+
+    this.getRemainingSecondsView = (remainingSeconds) => {
+      let wording = '';
+
+      // console.log(remainingSeconds);
+
+      if (remainingSeconds <= 0) {
+        wording = 'Updating...';
+      } else {
+        wording = `Will update within: ${ remainingSeconds }s`;
+      }
+
+      return (
+        <Text>{ wording }</Text>
+      );
+    };
+
+    this.startTimer = () => {
+      this.stopTimer();
+      this.timer = setInterval(() => {
+        const { expiredAt } = this.state.seed;
+        const now = new Date().getTime();
+        const remainingSeconds = Math.ceil((expiredAt - now) / 1000);
+
+        if (remainingSeconds <= 0) {
+          this.stopTimer();
+          this.fetchNewSeed()
+          .then((result) => {
+            this.handleSeedResult(result);
+          })
+          .catch((error) => {
+            console.warn('Auto update seed failed, ', error);
+          });
+        }
+
+        this.setState({
+          remainingSeconds
+        });
+      }, 1000);
+    };
+
+    this.stopTimer = () => {
+      if (this.timer) {
+        clearInterval(this.timer);
+      }
+    };
+
+    this.handleSeedResult = (result) => {
+      const { data, expiredAt } = result;
+      console.log('Set new seed: ', result.data, 'Will expire at: ', new Date(expiredAt));
+      this.setState({
+        seed: {
+          data,
+          expiredAt
+        }
+      });
+
+      this.startTimer();
+    };
   }
 
   componentDidMount() {
@@ -105,34 +151,37 @@ class GenerateQRCodeScene extends Component {
 
       if (!result || !result.data || !result.expiredAt || (result.expiredAt < now)) {
         console.log('seed result from storage invalid or expired, fetching new seed', result);
-        this.fetchNewSeed();
-        return;
+        return this.fetchNewSeed();
       }
 
       console.log('stored seed: ', result.data, 'Will expire at: ', new Date(result.expiredAt));
-      const { data, expiredAt } = result;
-      this.setState({
-        seed: {
-          data,
-          expiredAt
-        }
-      });
+      return Promise.resolve(result);
+    })
+    .then((result) => {
+      this.handleSeedResult(result);
     })
     .catch((error) => {
       console.warn(error);
-      this.fetchNewSeed();
     });
   }
 
+  componentWillUnmount() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+  }
+
   render() {
-    const { data, expiredAt } = this.state.seed;
-    const QRCodeView = this.getQRCodeView(data);
+    const { remainingSeconds, seed } = this.state;
+    const seedData = seed.data;
+    const QRCodeView = this.getQRCodeView(seedData);
+    const RemainingSecondsView = this.getRemainingSecondsView(remainingSeconds);
 
     return (
       <View style={ styles.container }>
         { QRCodeView }
-        <Text>data: { data }</Text>
-        <Text>expiredAt: { expiredAt }</Text>
+        <Text>data: { seedData }</Text>
+        { RemainingSecondsView }
       </View>
     );
   }
