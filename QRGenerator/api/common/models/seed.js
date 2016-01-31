@@ -23,6 +23,8 @@ module.exports = function (Seed) {
         return;
       }
 
+      console.log('New seed generated: ', createdSeed.data, 'Will expire at: ', new Date(createdSeed.expiredAt));
+
       cb(null, {
         data: createdSeed.data,
         expiredAt: new Date(createdSeed.expiredAt).getTime()
