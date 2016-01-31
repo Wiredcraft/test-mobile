@@ -3,7 +3,7 @@ import React, {
   Component
 } from 'react-native';
 
-import IndexView from './app/index.js';
+import IndexView from './index.js';
 
 class QRGenerator extends Component {
   render() {

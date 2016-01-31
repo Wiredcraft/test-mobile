@@ -39,7 +39,7 @@ export function getGenerateQRCodeRoute() {
     },
 
     getTitle() {
-      return 'Generate';
+      return 'QR Code';
     }
   };
 }

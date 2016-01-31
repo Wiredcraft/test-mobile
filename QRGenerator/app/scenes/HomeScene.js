@@ -28,6 +28,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 7,
     marginRight: 7
+  },
+  iconPlus: {
+    height: 14,
+    width: 14
   }
 });
 
@@ -89,7 +93,10 @@ class HomeScene extends Component {
   }
 
   render() {
-    const imgPlusDark = require('../../static/plus-dark.png');
+    const iconPlus = {
+      uri: 'IconPlus',
+      isStatic: true
+    };
     const PlainFab = MKButton.plainFab()
       .withOnPress(this.onPlainFabButtonPress)
       .build();
@@ -98,7 +105,7 @@ class HomeScene extends Component {
       <View style={ styles.container }>
         <View style={ styles.plainFabContainer }>
           <PlainFab>
-            <Image pointerEvents="none" source={ imgPlusDark } />
+            <Image style={ styles.iconPlus } pointerEvents="none" source={ iconPlus } />
           </PlainFab>
         </View>
         { this.getButtonsNode() }

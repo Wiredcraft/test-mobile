@@ -6,7 +6,7 @@ import React, {
   PropTypes
 } from 'react-native';
 
-import Camera from 'react-native-camera';
+import Camera from 'react-native-camera/index.ios';
 
 const styles = StyleSheet.create({
   container: {
