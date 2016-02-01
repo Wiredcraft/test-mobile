@@ -34,4 +34,4 @@ node_modules/
 npm-debug.log
 .env
 app/manifests/env.js
-
+main.jsbundle

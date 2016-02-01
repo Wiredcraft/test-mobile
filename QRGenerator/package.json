@@ -5,13 +5,13 @@
   "version": "0.0.1",
   "author": "Ryan Chu <ryaneof@gmail.com>",
   "scripts": {
-    "bundle": "rnws bundle",
+    "bundle": "curl 'http://localhost:8080/index.ios.bundle?dev=true&minify=true&platform=ios' -o ios/main.jsbundle",
+    "build-ios": "npm run bundle && open ios/QRGenerator.xcodeproj/",
     "set-env-preprocess": "better-npm-run set-env-preprocess",
     "start": "concurrent --kill-others \"npm run show-my-ip\" \"npm run set-env-preprocess\" \"npm run start-dev-api\" \"npm run start-rnws\"",
     "start-dev-api": "better-npm-run start-dev-api",
     "start-rnws": "rnws start --resetCache",
     "test-dev-api": "better-npm-run test-dev-api",
-    "watch-app": "gulp watch-app",
     "show-my-ip": "node ./bin/list-ip-addresses"
   },
   "repository": {
@@ -45,7 +45,7 @@
     }
   },
   "engines": {
-    "node": "5.4.0"
+    "node": "5.5.0"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
