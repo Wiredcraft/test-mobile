@@ -37,3 +37,64 @@ Here is a quick mockup of how it could look like (think Material Design!):![user
 ## Getting started
 
 There's nothing here. We leave it blank (at least after this sentence) to write down your choice of build tool, code structure, framework, testing approach, etc.
+
+### Requirements
+
+Stable wireless network connection, a Mac, an iPhone (requires [Apple Developer account](https://developer.apple.com/register) and provisioning), and the following softwares are required:
+
+```
+Xcode Version 7.2 (7C68) (latest stable version on MAS) (with command line tools installed)
+node v5.5.0
+npm v3.7.0
+psql (PostgreSQL) 9.5.0
+```
+
+### Up & Running for iOS
+
+After [setting up PostgreSQL](http://www.postgresql.org/download/), you should create a simple database for the API. A quick example:
+
+```
+createuser <user> --password
+createdb -O <user> <dbname>
+
+psql -U <user> -d <dbname>
+
+<dbname>=# \l
+<dbname>=# grant all privileges on database <dbname> to <user>;
+<dbname>=# grant all privileges on all tables in schema public to <user>;
+<dbname>=# grant all privileges on all sequences in schema public to <user>;
+<dbname>=# \q
+```
+
+Change directory to `QRGenerator`, which contains the source code of the app, install the dependencies.
+
+```js
+cd QRGenerator && npm i
+```
+
+Make sure there's no other process running on port `8080`, `8081`, `8082`, `8090`. we might use these ports later.
+
+Set a few environment variables for the app, (relax, just two of them). You can choose your prefered way to manage them, or simply copy `.env.example` to `.env`. We only need `POSTGRES_CONNECTION_URI` and `API_HOST` here.
+
+- `POSTGRES_CONNECTION_URI` [follows this pattern](http://www.postgresql.org/docs/9.5/static/libpq-connect.html#AEN42494).
+- `API_HOST` is what you can get to the API Server, it's just something like `http://YOUR_IPHONE_CAN_ACCESS_THIS_IP_AND_THIS_IS_ON_YOUR_MAC:8090`. Because you have to run this app on a real device (iOS Simulator cannot access the camera, but we have a feature). You may have to set one IP address manauly: you can press `⌥` and click the Wireless Icon on the top menu bar on your screen to remember it, or just execute `npm run show-my-ip` in current directory, then set the `API_HOST` with your prefered IP address.
+
+```
+POSTGRES_CONNECTION_URI=postgres://user:pass@localhost:5432/qrgenerator
+API_HOST=http://localhost:8090
+```
+
+Start the app server, wait for the server inited and React packager ready.
+
+```js
+npm start
+```
+
+Until you see the last line: `<END> Building Dependency Graph`. Then open another terminal tab, change directory to `QRGenerator`, run the bundle & build script, wait for Xcode opens the project.
+
+```
+cd QRGenerator
+npm run build-ios
+```
+
+At last, connect your iPhone to your Mac. Switch to Xcode, press `⌘R`. Hopefully the app will be running on your iPhone.
