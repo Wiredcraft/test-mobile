@@ -12,31 +12,45 @@ import { getScanQRCodeRoute, getGenerateQRCodeRoute } from '../router.js';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingBottom: 20,
+    paddingRight: 20,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
     backgroundColor: 'transparent',
-  },
-  plainFabContainer: {
-    marginBottom: 20
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  col: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginLeft: 7,
-    marginRight: 7
   },
   iconPlus: {
     height: 14,
     width: 14
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 20
+  },
+  buttonIcon: {
+    width: 20,
+    height: 20,
+    marginLeft: 20,
+    marginRight: 20
+  },
+  buttonIconStyle: {
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 0,
+      height: .5
+    },
+    shadowOpacity: .4,
+    shadowColor: 'black',
+    width: 32,
+    height: 32,
+    borderRadius: 16
   }
 });
 
 const {
-  MKButton
+  MKButton,
+  MKColor,
+  getTheme
 } = MK;
 
 
@@ -63,52 +77,81 @@ class HomeScene extends Component {
       const route = getGenerateQRCodeRoute();
       this.props.navigator.push(route);
     };
-
-    this.getButtonsNode = () => {
-      if (this.state.plainFabCollapsed) {
-        return null;
-      }
-
-      const ScanQRCodeButton = MKButton.flatButton()
-        .withText('Scan')
-        .withOnPress(this.onScanQRCodeButtonPress)
-        .build();
-
-      const GenerateQRCodeButton = MKButton.flatButton()
-        .withText('Generate')
-        .withOnPress(this.onGenerateQRCodeButtonPress)
-        .build();
-
-      return (
-        <View style={ styles.row }>
-          <View style={ styles.col }>
-            <ScanQRCodeButton />
-          </View>
-          <View style={ styles.col }>
-            <GenerateQRCodeButton />
-          </View>
-        </View>
-      );
-    };
   }
 
   render() {
+    const { plainFabCollapsed } = this.state;
     const iconPlus = {
       uri: 'IconPlus',
+      isStatic: true
+    };
+    const iconPlusRotated = {
+      uri: 'IconPlusRotated',
       isStatic: true
     };
     const PlainFab = MKButton.plainFab()
       .withOnPress(this.onPlainFabButtonPress)
       .build();
+    const ScanQRCodeButton = MKButton.button()
+      .withText('Scan')
+      .withOnPress(this.onScanQRCodeButtonPress)
+      .build();
+
+    const GenerateQRCodeButton = MKButton.button()
+      .withText('Generate')
+      .withOnPress(this.onGenerateQRCodeButtonPress)
+      .build();
+
+    const ScanQRCodeButtonIcon = new MKButton.Builder()
+      .withStyle(styles.buttonIconStyle)
+      .withRippleLocation('center')
+      .withMaskColor(getTheme().bgPlain)
+      .withRippleColor(getTheme().bgPlain)
+      .withBackgroundColor(MKColor.Silver)
+      .withOnPress(this.onScanQRCodeButtonPress)
+      .build();
+
+    const GenerateQRCodeButtonIcon = new MKButton.Builder()
+      .withStyle(styles.buttonIconStyle)
+      .withRippleLocation('center')
+      .withMaskColor(getTheme().bgPlain)
+      .withRippleColor(getTheme().bgPlain)
+      .withBackgroundColor(MKColor.Silver)
+      .withOnPress(this.onGenerateQRCodeButtonPress)
+      .build();
+
+    const iconPlusImg = plainFabCollapsed ?
+      iconPlus : iconPlusRotated;
 
     return (
       <View style={ styles.container }>
-        <View style={ styles.plainFabContainer }>
-          <PlainFab>
-            <Image style={ styles.iconPlus } pointerEvents="none" source={ iconPlus } />
-          </PlainFab>
+        { !plainFabCollapsed &&
+        <View style={ styles.buttonContainer }>
+          <View style={ styles.buttonText }>
+            <ScanQRCodeButton />
+          </View>
+          <View style={ styles.buttonIcon }>
+            <ScanQRCodeButtonIcon />
+          </View>
         </View>
-        { this.getButtonsNode() }
+        }
+        { !plainFabCollapsed &&
+        <View style={ styles.buttonContainer }>
+          <View style={ styles.buttonText }>
+            <GenerateQRCodeButton />
+          </View>
+          <View style={ styles.buttonIcon }>
+            <GenerateQRCodeButtonIcon />
+          </View>
+        </View>
+        }
+        <PlainFab>
+          <Image
+            style={ styles.iconPlus }
+            pointerEvents="none"
+            source={ iconPlusImg }
+          />
+        </PlainFab>
       </View>
     );
   }
