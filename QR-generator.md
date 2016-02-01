@@ -38,6 +38,8 @@ Here is a quick mockup of how it could look like (think Material Design!):![user
 
 There's nothing here. We leave it blank (at least after this sentence) to write down your choice of build tool, code structure, framework, testing approach, etc.
 
+![Home Scene Screenshot](static/screenshot.png)
+
 ### Requirements
 
 Stable wireless network connection, a Mac, an iPhone (requires [Apple Developer account](https://developer.apple.com/register) and provisioning), and the following softwares are required:
@@ -98,3 +100,18 @@ npm run build-ios
 ```
 
 At last, connect your iPhone to your Mac. Switch to Xcode, press `⌘R`. Hopefully the app will be running on your iPhone.
+
+### Debugging
+
+This repo set default build configuration as `Release` mode, and the steps above will load from pre-bundled file on the device. If you want to enable debugging, please check out the following steps:
+
+- Edit `ios/QRGenerator/AppDelegate.m`, uncomment Line 34, comment Line 42 as to load bundle from development server.
+- Open `Xcode > Product > Scheme > Edit Scheme`, set `Build Configuration` to `Debug`
+- If you want to debug on device, Edit `node_modules/react-native/Libraries/WebSocket/RCTWebSocketExecutor.m` Line 54, change `localhost` to your own IP addresss, that'll be all right.
+
+### Testing
+
+For now, this repo only contains basic test case for API `GET /seed`, you can run `npm run test-dev-api` to check it out.
+
+The unit testing on React Native is a bit messy, Jest from Facebook is full of bug and surprises. I'll try out more test framework later.
+
