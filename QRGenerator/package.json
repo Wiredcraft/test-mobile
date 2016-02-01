@@ -6,7 +6,8 @@
   "author": "Ryan Chu <ryaneof@gmail.com>",
   "scripts": {
     "bundle": "rnws bundle",
-    "start": "concurrent --kill-others \"npm run start-dev-api\" \"npm run start-rnws\"",
+    "set-env-preprocess": "better-npm-run set-env-preprocess",
+    "start": "concurrent --kill-others \"npm run set-env-preprocess\" \"npm run start-dev-api\" \"npm run start-rnws\"",
     "start-dev-api": "better-npm-run start-dev-api",
     "start-rnws": "rnws start --resetCache",
     "test-dev-api": "better-npm-run test-dev-api",
@@ -37,6 +38,9 @@
     },
     "test-dev-api": {
       "command": "./node_modules/mocha/bin/mocha ./test/api/"
+    },
+    "set-env-preprocess": {
+      "command": "node ./bin/preprocess"
     }
   },
   "engines": {
@@ -58,6 +62,7 @@
     "eslint-loader": "^1.1.1",
     "eslint-plugin-react": "^3.16.1",
     "mocha": "^2.4.5",
+    "preprocess": "^3.0.2",
     "react-native-webpack-server": "^0.8.4",
     "supertest": "^1.1.0",
     "webpack": "^1.12.9",

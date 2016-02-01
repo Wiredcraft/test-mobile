@@ -1,8 +1,11 @@
+import React from 'react-native';
 import {
   HomeScene,
   ScanQRCodeScene,
   GenerateQRCodeScene
 } from './scenes';
+
+import env from './manifests/env';
 
 export function getHomeRoute() {
   return {
@@ -34,8 +37,10 @@ export function getScanQRCodeRoute() {
 
 export function getGenerateQRCodeRoute() {
   return {
-    getSceneClass() {
-      return GenerateQRCodeScene;
+    renderScene(navigator) {
+      return (
+        <GenerateQRCodeScene navigator={ navigator } env={ env } />
+      );
     },
 
     getTitle() {

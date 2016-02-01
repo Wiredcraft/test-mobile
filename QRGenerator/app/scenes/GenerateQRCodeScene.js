@@ -35,7 +35,7 @@ class GenerateQRCodeScene extends Component {
       remainingSeconds: 0
     };
 
-    this.fetchNewSeed = () => fetch('http://localhost:3000/seed', {
+    this.fetchNewSeed = () => fetch(`${ this.props.env.apiHost }/seed`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -184,7 +184,8 @@ class GenerateQRCodeScene extends Component {
 }
 
 GenerateQRCodeScene.propTypes = {
-  navigator: PropTypes.object
+  navigator: PropTypes.object,
+  env: PropTypes.object
 };
 
 export default GenerateQRCodeScene;
