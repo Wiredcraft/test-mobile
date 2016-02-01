@@ -38,7 +38,7 @@ Here is a quick mockup of how it could look like (think Material Design!):![user
 
 There's nothing here. We leave it blank (at least after this sentence) to write down your choice of build tool, code structure, framework, testing approach, etc.
 
-![Home Scene Screenshot](static/screenshot.png)
+![Home Scene Screenshot](QRGenerator/static/screenshot.png)
 
 ### Requirements
 
