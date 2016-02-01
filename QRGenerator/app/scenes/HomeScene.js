@@ -1,6 +1,7 @@
 import React, {
   StyleSheet,
   View,
+  Text,
   Image,
   Component,
   PropTypes
@@ -11,6 +12,9 @@ import { getScanQRCodeRoute, getGenerateQRCodeRoute } from '../router.js';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  cornerButtonContainer: {
     flex: 1,
     paddingBottom: 20,
     paddingRight: 20,
@@ -18,9 +22,29 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     backgroundColor: 'transparent',
   },
+  homeWordingContainer: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  welcome: {
+    fontWeight: '200',
+    fontSize: 42,
+    textAlign: 'center',
+    marginTop: 100,
+    marginBottom: 10,
+  },
+  instructions: {
+    fontSize: 12,
+    textAlign: 'center',
+    color: '#333333'
+  },
   iconPlus: {
     height: 14,
     width: 14
+  },
+  iconSmallerFab: {
+    height: 12,
+    width: 12
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -89,6 +113,14 @@ class HomeScene extends Component {
       uri: 'IconPlusRotated',
       isStatic: true
     };
+    const iconQRCode = {
+      uri: 'IconQRCode',
+      isStatic: true
+    };
+    const iconScan = {
+      uri: 'IconScan',
+      isStatic: true
+    };
     const PlainFab = MKButton.plainFab()
       .withOnPress(this.onPlainFabButtonPress)
       .build();
@@ -125,33 +157,53 @@ class HomeScene extends Component {
 
     return (
       <View style={ styles.container }>
-        { !plainFabCollapsed &&
-        <View style={ styles.buttonContainer }>
-          <View style={ styles.buttonText }>
-            <ScanQRCodeButton />
-          </View>
-          <View style={ styles.buttonIcon }>
-            <ScanQRCodeButtonIcon />
-          </View>
+        <View style={ styles.homeWordingContainer }>
+          <Text style={ styles.welcome }>
+            Welcome.
+          </Text>
+          <Text style={ styles.instructions }>
+            To get started, hit the big fat button.
+          </Text>
         </View>
-        }
-        { !plainFabCollapsed &&
-        <View style={ styles.buttonContainer }>
-          <View style={ styles.buttonText }>
-            <GenerateQRCodeButton />
+        <View style={ styles.cornerButtonContainer }>
+          { !plainFabCollapsed &&
+          <View style={ styles.buttonContainer }>
+            <View style={ styles.buttonText }>
+              <ScanQRCodeButton />
+            </View>
+            <View style={ styles.buttonIcon }>
+              <ScanQRCodeButtonIcon>
+                <Image
+                  style={ styles.iconSmallerFab }
+                  source={ iconScan }
+                />
+              </ScanQRCodeButtonIcon>
+            </View>
           </View>
-          <View style={ styles.buttonIcon }>
-            <GenerateQRCodeButtonIcon />
+          }
+          { !plainFabCollapsed &&
+          <View style={ styles.buttonContainer }>
+            <View style={ styles.buttonText }>
+              <GenerateQRCodeButton />
+            </View>
+            <View style={ styles.buttonIcon }>
+              <GenerateQRCodeButtonIcon>
+                <Image
+                  style={ styles.iconSmallerFab }
+                  source={ iconQRCode }
+                />
+              </GenerateQRCodeButtonIcon>
+            </View>
           </View>
+          }
+          <PlainFab>
+            <Image
+              style={ styles.iconPlus }
+              pointerEvents="none"
+              source={ iconPlusImg }
+            />
+          </PlainFab>
         </View>
-        }
-        <PlainFab>
-          <Image
-            style={ styles.iconPlus }
-            pointerEvents="none"
-            source={ iconPlusImg }
-          />
-        </PlainFab>
       </View>
     );
   }
