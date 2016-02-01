@@ -87,12 +87,10 @@ class GenerateQRCodeScene extends Component {
     this.getRemainingSecondsView = (remainingSeconds) => {
       let wording = '';
 
-      // console.log(remainingSeconds);
-
       if (remainingSeconds <= 0) {
         wording = 'Updating...';
       } else {
-        wording = `Will update within: ${ remainingSeconds }s`;
+        wording = `Update within: ${ remainingSeconds }s`;
       }
 
       return (
@@ -173,14 +171,12 @@ class GenerateQRCodeScene extends Component {
 
   render() {
     const { remainingSeconds, seed } = this.state;
-    const seedData = seed.data;
-    const QRCodeView = this.getQRCodeView(seedData);
+    const QRCodeView = this.getQRCodeView(seed.data);
     const RemainingSecondsView = this.getRemainingSecondsView(remainingSeconds);
 
     return (
       <View style={ styles.container }>
         { QRCodeView }
-        <Text>data: { seedData }</Text>
         { RemainingSecondsView }
       </View>
     );
