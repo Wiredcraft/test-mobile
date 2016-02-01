@@ -7,11 +7,12 @@
   "scripts": {
     "bundle": "rnws bundle",
     "set-env-preprocess": "better-npm-run set-env-preprocess",
-    "start": "concurrent --kill-others \"npm run set-env-preprocess\" \"npm run start-dev-api\" \"npm run start-rnws\"",
+    "start": "concurrent --kill-others \"npm run show-my-ip\" \"npm run set-env-preprocess\" \"npm run start-dev-api\" \"npm run start-rnws\"",
     "start-dev-api": "better-npm-run start-dev-api",
     "start-rnws": "rnws start --resetCache",
     "test-dev-api": "better-npm-run test-dev-api",
-    "watch-app": "gulp watch-app"
+    "watch-app": "gulp watch-app",
+    "show-my-ip": "node ./bin/list-ip-addresses"
   },
   "repository": {
     "type": "git",
@@ -33,14 +34,14 @@
     "react-native-qrcode": "git+https://github.com/ryaneof/react-native-qrcode"
   },
   "betterScripts": {
+    "set-env-preprocess": {
+      "command": "node ./bin/preprocess"
+    },
     "start-dev-api": {
       "command": "node ./api/index.js"
     },
     "test-dev-api": {
       "command": "./node_modules/mocha/bin/mocha ./test/api/"
-    },
-    "set-env-preprocess": {
-      "command": "node ./bin/preprocess"
     }
   },
   "engines": {
