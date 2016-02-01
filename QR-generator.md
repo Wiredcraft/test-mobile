@@ -38,6 +38,8 @@ Here is a quick mockup of how it could look like (think Material Design!):![user
 
 There's nothing here. We leave it blank (at least after this sentence) to write down your choice of build tool, code structure, framework, testing approach, etc.
 
+## The App
+
 ![Home Scene Screenshot](QRGenerator/static/screenshot.png)
 
 ### Requirements
@@ -101,6 +103,19 @@ npm run build-ios
 
 At last, connect your iPhone to your Mac. Switch to Xcode, press `⌘R`. Hopefully the app will be running on your iPhone.
 
+### API Server
+
+While the app is running (`npm start`), a deadly simple server based on loopback will listen on port 8090. It only has one endpoint (as described).
+
+```
+GET /seed
+```
+```
+curl http://localhost:8090/seed
+
+{"data":"21449b1069bdfbb409edb6bda74a81a2","expiredAt":1454333535385}
+```
+
 ### Debugging
 
 This repo set default build configuration as `Release` mode, and the steps above will load from pre-bundled file on the device. If you want to enable debugging, please check out the following steps:
@@ -114,4 +129,3 @@ This repo set default build configuration as `Release` mode, and the steps above
 For now, this repo only contains basic test case for API `GET /seed`, you can run `npm run test-dev-api` to check it out.
 
 The unit testing on React Native is a bit messy, Jest from Facebook is full of bug and surprises. I'll try out more test framework later.
-
