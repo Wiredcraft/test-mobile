@@ -32,7 +32,8 @@ class GenerateQRCodeScene extends Component {
         data: '',
         expiredAt: 0
       },
-      remainingSeconds: 0
+      remainingSeconds: 0,
+      updateFailed: false
     };
 
     this.fetchNewSeed = () => fetch(`${ this.props.env.apiHost }/seed`, {
@@ -86,11 +87,16 @@ class GenerateQRCodeScene extends Component {
 
     this.getRemainingSecondsView = (remainingSeconds) => {
       let wording = '';
+      const { updateFailed } = this.state;
 
       if (remainingSeconds <= 0) {
         wording = 'Updating...';
       } else {
         wording = `Update within: ${ remainingSeconds }s`;
+      }
+
+      if (updateFailed) {
+        wording = 'Failed to get seed. Sorry.';
       }
 
       return (
@@ -112,7 +118,7 @@ class GenerateQRCodeScene extends Component {
             this.handleSeedResult(result);
           })
           .catch((error) => {
-            console.warn('Auto update seed failed, ', error);
+            this.handleUpdateFailed(error);
           });
         }
 
@@ -140,6 +146,13 @@ class GenerateQRCodeScene extends Component {
 
       this.startTimer();
     };
+
+    this.handleUpdateFailed = (reason) => {
+      console.log(reason);
+      this.setState({
+        updateFailed: true
+      });
+    };
   }
 
   componentDidMount() {
@@ -159,7 +172,7 @@ class GenerateQRCodeScene extends Component {
       this.handleSeedResult(result);
     })
     .catch((error) => {
-      console.warn(error);
+      this.handleUpdateFailed(error);
     });
   }
 
