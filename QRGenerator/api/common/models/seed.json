@@ -1,0 +1,25 @@
+{
+  "name": "seed",
+  "plural": "seed",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "idInjection": false,
+    "validateUpsert": true
+  },
+  "properties": {
+    "data": {
+      "type": "string",
+      "length": 32,
+      "required": true
+    },
+    "expiredAt": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
