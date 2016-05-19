@@ -5,7 +5,6 @@ var later = require("later");
 
 var timeoutInterval = 60 * 1000;
 
-
 var SeedSchema = new Schema({
 	'data': {type: String, length: 32, default: randomstring.generate(32)},
 	'expiredDate': {type: Date, default: new Date(Date.now() + timeoutInterval)}
@@ -26,7 +25,7 @@ SeedSchema.statics = {
 	generate: function () {
 		return new this({
 			data: randomstring.generate(32),
-			expiredDate: new Date(Date.now() + timeoutInterval)
+			expiredDate: new Date(Date.now() + timeoutInterval )
 		});
 	}
 };
