@@ -56,12 +56,17 @@
                                     <segue destination="zVg-lQ-Ted" kind="show" id="o6x-Aa-wOo"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="animation.gif" translatesAutoresizingMaskIntoConstraints="NO" id="66N-Pk-XzM">
+                                <rect key="frame" x="113" y="259" width="150" height="150"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="66N-Pk-XzM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9w6-48-eD7"/>
                             <constraint firstItem="Q2z-wr-Lhx" firstAttribute="centerX" secondItem="36O-BX-F3P" secondAttribute="centerX" id="LOQ-jN-vC3"/>
                             <constraint firstItem="Q2z-wr-Lhx" firstAttribute="centerX" secondItem="SmI-E0-aUM" secondAttribute="centerX" id="NF1-fu-pXE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Q2z-wr-Lhx" secondAttribute="bottom" constant="23" id="fZB-S1-YK1"/>
+                            <constraint firstItem="66N-Pk-XzM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fkf-kc-Ris"/>
                             <constraint firstItem="Q2z-wr-Lhx" firstAttribute="top" secondItem="SmI-E0-aUM" secondAttribute="bottom" constant="10" id="gqq-Lq-9ky"/>
                             <constraint firstItem="Q2z-wr-Lhx" firstAttribute="top" secondItem="36O-BX-F3P" secondAttribute="bottom" constant="70" id="mYP-98-Oo7"/>
                             <constraint firstAttribute="trailing" secondItem="Q2z-wr-Lhx" secondAttribute="trailing" constant="20" id="yI6-xR-Hsq"/>
@@ -70,6 +75,7 @@
                     <navigationItem key="navigationItem" title="QRApp" id="ucS-YV-5p6"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="animationView" destination="66N-Pk-XzM" id="Nkc-Jz-0Ig"/>
                         <outlet property="cameraBtn" destination="SmI-E0-aUM" id="Lc7-DO-lIG"/>
                         <outlet property="cameraBtnPosition" destination="gqq-Lq-9ky" id="yrg-cV-xle"/>
                         <outlet property="cloudBtn" destination="36O-BX-F3P" id="T6S-uf-za0"/>
@@ -178,6 +184,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="animation.gif" width="150" height="150"/>
         <image name="camera" width="51" height="51"/>
         <image name="generate" width="51" height="51"/>
         <image name="menuOut" width="54" height="54"/>

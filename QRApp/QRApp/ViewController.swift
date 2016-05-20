@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var animationView: UIImageView!
     
     @IBOutlet weak var cloudBtn: UIButton!
     @IBOutlet weak var cameraBtn: UIButton!
@@ -17,8 +18,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var cloudBtnPosition: NSLayoutConstraint!
     @IBOutlet weak var cameraBtnPosition: NSLayoutConstraint!
     
+    // animation controll
+    var animationProcessing = false
+    
+    
     private struct MenuAnimationKeys{
-        static var CameraBtnOutTimeInterval:NSTimeInterval = 0.5
+        static var CameraBtnOutTimeInterval:NSTimeInterval = 0.4
         static var CloudBtnOutTimeInterval:NSTimeInterval = 0.3
         static var CameraBtnOutPosition:CGFloat = 10
         static var CloudBtnOutPosition:CGFloat = 70
@@ -32,7 +37,10 @@ class ViewController: UIViewController {
         
         self.edgesForExtendedLayout = UIRectEdge.None
         self.navigationController?.navigationBar.translucent = false
-
+        
+        // load animation
+        let image = UIImage.gifWithName("animation")
+        animationView.image = image
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +50,14 @@ class ViewController: UIViewController {
     
 
     @IBAction func menuBtn_Pressed(sender: UIButton) {
+        
+        if self.animationProcessing {
+            return
+        }
+        self.animationProcessing = true
+        // first here, in animation will execute
         if sender.selected {
+            // out animation
             self.cameraBtn.hidden = false
             UIView.animateWithDuration(MenuAnimationKeys.CameraBtnOutTimeInterval, animations: {
                 self.cameraBtnPosition.constant = MenuAnimationKeys.CameraBtnOutPosition
@@ -54,9 +69,11 @@ class ViewController: UIViewController {
                     self.view.layoutIfNeeded()
                     }, completion: { (success) in
                         self.menuBtn.setImage(UIImage.init(named: "menuOut"), forState: UIControlState.Normal)
+                        self.animationProcessing = false
                 })
             }
         }else{
+            // in animation
             UIView.animateWithDuration(MenuAnimationKeys.CloudBtnOutTimeInterval, animations: {
                 self.cloudBtnPosition.constant = MenuAnimationKeys.CloudBtnInPosition
                 self.view.layoutIfNeeded()
@@ -68,16 +85,12 @@ class ViewController: UIViewController {
                     }, completion: { (success) in
                         self.cameraBtn.hidden = true
                         self.menuBtn.setImage(UIImage.init(named: "menuIn"), forState: UIControlState.Normal)
+                        self.animationProcessing = false
                 })
             }
         }
         sender.selected = !sender.selected
     }
-
-    func menuSwitch(open:Bool){
-        print("sss")
-    }
-    
 
 }
 

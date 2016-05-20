@@ -1,5 +1,5 @@
 //
-//  QRCountdownLabel.swift
+//  UILabel+Countdown.swift
 //  QRApp
 //
 //  Created by 顾强 on 16/5/19.

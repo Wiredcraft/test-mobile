@@ -17,6 +17,8 @@ class QRGeneratorViewController: UIViewController {
         /// count down label
     @IBOutlet weak var countdownLb: UILabel!
     
+    private var SeedAPI = "http://10.0.2.9:3000/seed"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,7 +54,7 @@ class QRGeneratorViewController: UIViewController {
         PKHUD.sharedHUD.show()
         
         // start the request
-        Alamofire.request(.GET, "http://10.0.2.9:3000/seed").responseJSON { (response) in
+        Alamofire.request(.GET, SeedAPI).responseJSON { (response) in
             // get data string
             
             var resultJson: NSDictionary?
@@ -98,7 +100,6 @@ class QRGeneratorViewController: UIViewController {
         PKHUD.sharedHUD.contentView = PKHUDTextView.init(text: msg)
         PKHUD.sharedHUD.show()
         PKHUD.sharedHUD.hide(afterDelay: 2, completion: nil)
-        
     }
     
     func renderQRStratCounting(dataString:String!, expiredDate:NSDate!) -> Void {
