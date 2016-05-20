@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="-375.5" y="311.5"/>
         </scene>
-        <!--View Controller-->
+        <!--QRApp-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QRApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="QRApp" id="BYZ-38-t0r" customClass="ViewController" customModule="QRApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -35,56 +35,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dUR-Mu-WJX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="h2d-JT-UOk"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="hcm-H6-4xS"/>
-                                </connections>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SmI-E0-aUM">
-                                <rect key="frame" x="305" y="577" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.90588235289999997" green="0.1764705882" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="e6d-cS-BCW"/>
-                                    <constraint firstAttribute="height" constant="50" id="xef-0r-Ku8"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="zVg-lQ-Ted" kind="show" id="o6x-Aa-wOo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36O-BX-F3P">
-                                <rect key="frame" x="295" y="513" width="44" height="44"/>
-                                <color key="backgroundColor" red="0.99607843139999996" green="0.70980392160000005" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="BaH-m3-5P3"/>
-                                    <constraint firstAttribute="height" constant="44" id="Q7y-3c-hKA"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36O-BX-F3P">
+                                <rect key="frame" x="303" y="469" width="51" height="51"/>
+                                <state key="normal" image="generate"/>
                                 <connections>
                                     <segue destination="cTg-NT-W1J" kind="show" id="tTe-GH-FrZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2z-wr-Lhx">
+                                <rect key="frame" x="301" y="590" width="54" height="54"/>
+                                <state key="normal" image="menuOut"/>
+                                <connections>
+                                    <action selector="menuBtn_Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="osh-ya-U5R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SmI-E0-aUM">
+                                <rect key="frame" x="303" y="529" width="51" height="51"/>
+                                <state key="normal" image="camera"/>
+                                <connections>
+                                    <segue destination="zVg-lQ-Ted" kind="show" id="o6x-Aa-wOo"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dUR-Mu-WJX" secondAttribute="trailing" id="99W-WZ-NQS"/>
-                            <constraint firstAttribute="trailing" secondItem="SmI-E0-aUM" secondAttribute="trailing" constant="20" id="DHC-Hr-eFT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="36O-BX-F3P" secondAttribute="trailing" constant="20" id="Dia-Rh-3w2"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SmI-E0-aUM" secondAttribute="bottom" constant="40" id="NUc-fX-bHF"/>
-                            <constraint firstItem="SmI-E0-aUM" firstAttribute="top" secondItem="36O-BX-F3P" secondAttribute="bottom" constant="20" id="SPL-u2-NzR"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dUR-Mu-WJX" secondAttribute="bottom" id="T4n-8a-AT4"/>
-                            <constraint firstItem="dUR-Mu-WJX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="n0l-hM-xwH"/>
-                            <constraint firstItem="dUR-Mu-WJX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rAC-3A-YAX"/>
+                            <constraint firstItem="Q2z-wr-Lhx" firstAttribute="centerX" secondItem="36O-BX-F3P" secondAttribute="centerX" id="LOQ-jN-vC3"/>
+                            <constraint firstItem="Q2z-wr-Lhx" firstAttribute="centerX" secondItem="SmI-E0-aUM" secondAttribute="centerX" id="NF1-fu-pXE"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Q2z-wr-Lhx" secondAttribute="bottom" constant="23" id="fZB-S1-YK1"/>
+                            <constraint firstItem="Q2z-wr-Lhx" firstAttribute="top" secondItem="SmI-E0-aUM" secondAttribute="bottom" constant="10" id="gqq-Lq-9ky"/>
+                            <constraint firstItem="Q2z-wr-Lhx" firstAttribute="top" secondItem="36O-BX-F3P" secondAttribute="bottom" constant="70" id="mYP-98-Oo7"/>
+                            <constraint firstAttribute="trailing" secondItem="Q2z-wr-Lhx" secondAttribute="trailing" constant="20" id="yI6-xR-Hsq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ucS-YV-5p6"/>
+                    <navigationItem key="navigationItem" title="QRApp" id="ucS-YV-5p6"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="menuBtn" destination="SmI-E0-aUM" id="W8b-sI-nVo"/>
-                        <outlet property="tableView" destination="dUR-Mu-WJX" id="9Iv-LK-9HF"/>
+                        <outlet property="cameraBtn" destination="SmI-E0-aUM" id="Lc7-DO-lIG"/>
+                        <outlet property="cameraBtnPosition" destination="gqq-Lq-9ky" id="yrg-cV-xle"/>
+                        <outlet property="cloudBtn" destination="36O-BX-F3P" id="T6S-uf-za0"/>
+                        <outlet property="cloudBtnPosition" destination="mYP-98-Oo7" id="4nd-sZ-tM5"/>
+                        <outlet property="menuBtn" destination="Q2z-wr-Lhx" id="wTJ-wu-rvM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -187,4 +177,9 @@
             <point key="canvasLocation" x="644.5" y="311.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" width="51" height="51"/>
+        <image name="generate" width="51" height="51"/>
+        <image name="menuOut" width="54" height="54"/>
+    </resources>
 </document>
