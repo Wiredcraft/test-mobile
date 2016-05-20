@@ -28,11 +28,11 @@ class QRGeneratorViewController: UIViewController {
         
         if let qrSaver = QRLocalSaver.readFromLocal() {
             if qrSaver.ExpiredDate.timeIntervalSinceNow > 0 {
-                PKHUD.sharedHUD.contentView = PKHUDProgressView.init(title: "QRApp", subtitle: "loading...")
-                PKHUD.sharedHUD.show()
+//                PKHUD.sharedHUD.contentView = PKHUDProgressView.init(title: "QRApp", subtitle: "loading...")
+//                PKHUD.sharedHUD.show()
                 self.renderQRStratCounting(qrSaver.dataString, expiredDate: qrSaver.ExpiredDate)
                 // hide HUD
-                PKHUD.sharedHUD.hide(animated: true, completion: nil)
+//                PKHUD.sharedHUD.hide(animated: true, completion: nil)
                 return
             }
         }

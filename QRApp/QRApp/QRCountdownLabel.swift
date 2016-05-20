@@ -73,6 +73,9 @@ extension UILabel{
     }
     // start counting
     func startCounting() {
+        // show the label
+        self.text = "\(Int(self.remainTime + 1)) s"
+        // init the timer
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(UILabel.countdown), userInfo: nil, repeats: true)
     }
     // cancel counting

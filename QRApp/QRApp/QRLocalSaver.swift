@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ *  used for data localize
+ */
 struct QRLocalSaver {
     private struct AssociatedKeys{
         static var DataStringKey = "dataStringKey"
