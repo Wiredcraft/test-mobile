@@ -19,6 +19,8 @@
 		B74BFE311CEB1EBD000C5162 /* QRAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74BFE301CEB1EBD000C5162 /* QRAppTests.swift */; };
 		B74BFE3C1CEC5655000C5162 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74BFE3B1CEC5655000C5162 /* QRScannerViewController.swift */; };
 		B75813561CED7F5200210490 /* UILabel+Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75813551CED7F5200210490 /* UILabel+Countdown.swift */; };
+		B7873D661CEF138200B6F6CF /* QRLocalSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7873D651CEF138200B6F6CF /* QRLocalSaverTests.swift */; };
+		B7873D681CEF1C1C00B6F6CF /* UILabelCountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7873D671CEF1C1C00B6F6CF /* UILabelCountdownTests.swift */; };
 		B7B8DC171CED557400CAA734 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B8DC161CED557400CAA734 /* QRGeneratorViewController.swift */; };
 		D2CC8F81C770D515F4136837 /* Pods_QRAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E3CEA9544AE43CE3AD00DA /* Pods_QRAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +55,8 @@
 		B74BFE321CEB1EBD000C5162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B74BFE3B1CEC5655000C5162 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		B75813551CED7F5200210490 /* UILabel+Countdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Countdown.swift"; sourceTree = "<group>"; };
+		B7873D651CEF138200B6F6CF /* QRLocalSaverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRLocalSaverTests.swift; sourceTree = "<group>"; };
+		B7873D671CEF1C1C00B6F6CF /* UILabelCountdownTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelCountdownTests.swift; sourceTree = "<group>"; };
 		B7B8DC161CED557400CAA734 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
 		C2F5FF27825B277537712C19 /* Pods_QRApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2632A6C6AF25F0740CC5F21 /* Pods-QRApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRApp/Pods-QRApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				B74BFE301CEB1EBD000C5162 /* QRAppTests.swift */,
+				B7873D651CEF138200B6F6CF /* QRLocalSaverTests.swift */,
+				B7873D671CEF1C1C00B6F6CF /* UILabelCountdownTests.swift */,
 				B74BFE321CEB1EBD000C5162 /* Info.plist */,
 			);
 			path = QRAppTests;
@@ -364,7 +370,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7873D681CEF1C1C00B6F6CF /* UILabelCountdownTests.swift in Sources */,
 				B74BFE311CEB1EBD000C5162 /* QRAppTests.swift in Sources */,
+				B7873D661CEF138200B6F6CF /* QRLocalSaverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

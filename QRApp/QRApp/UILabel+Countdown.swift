@@ -86,7 +86,7 @@ extension UILabel{
     }
     // private count down,
     // this should be a privete function, but when i do that,the selector will force me to changed this to oc function,i dont know why ?_?
-    func countdown() {
+    @objc private func countdown() {
         
         let seconds = Int(self.remainTime)
         if self.countingClosure != nil {

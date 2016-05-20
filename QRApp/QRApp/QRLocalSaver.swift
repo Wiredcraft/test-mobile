@@ -20,10 +20,10 @@ struct QRLocalSaver {
     var ExpiredDate:NSDate!
     
     static func saveToLocal(aString:String!, date:NSDate!) -> Void {
-        dispatch_async(dispatch_get_global_queue(0, 0)) { 
+//        dispatch_async(dispatch_get_global_queue(0, 0)) { 
             NSUserDefaults.standardUserDefaults().setObject(aString, forKey: AssociatedKeys.DataStringKey)
             NSUserDefaults.standardUserDefaults().setObject(date, forKey: AssociatedKeys.ExpiredDateKey)
-        }
+//        }
     }
     
     func saveToLocal() -> Void {
