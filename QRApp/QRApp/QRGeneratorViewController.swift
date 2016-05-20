@@ -12,8 +12,9 @@ import QRCode
 import PKHUD
 
 class QRGeneratorViewController: UIViewController {
-
+        /// generated qr view
     @IBOutlet weak var qrView: UIImageView!
+        /// count down label
     @IBOutlet weak var countdownLb: UILabel!
     
     override func viewDidLoad() {
@@ -25,23 +26,18 @@ class QRGeneratorViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        PKHUD.sharedHUD.contentView = PKHUDProgressView.init(title: "QRApp", subtitle: "loading...")
-        PKHUD.sharedHUD.show()
-        Alamofire.request(.GET, "http://localhost:3000/seed").responseJSON { (response) in
-            print(response)
-            print(response.result)   // result of response serialization
-            
-            let resultJson: NSDictionary = response.result.value as! NSDictionary
-            let dataString: String = resultJson["data"]!["data"] as! String
-            let endingDate = resultJson["data"]!["expiredDate"]
-            print(endingDate)
-            
-            self.qrView.image = QRCode(dataString)?.image
-            
-            PKHUD.sharedHUD.hide(animated: true, completion: nil)
-            
-            self.countdownLb.startCountingWithTimeInterval(60)
+        if let qrSaver = QRLocalSaver.readFromLocal() {
+            if qrSaver.ExpiredDate.timeIntervalSinceNow > 0 {
+                PKHUD.sharedHUD.contentView = PKHUDProgressView.init(title: "QRApp", subtitle: "loading...")
+                PKHUD.sharedHUD.show()
+                self.renderQRStratCounting(qrSaver.dataString, expiredDate: qrSaver.ExpiredDate)
+                // hide HUD
+                PKHUD.sharedHUD.hide(animated: true, completion: nil)
+                return
+            }
         }
+        
+        self.requestForQRData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +45,71 @@ class QRGeneratorViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func requestForQRData() -> Void {
+        // show waiting HUD
+        PKHUD.sharedHUD.contentView = PKHUDProgressView.init(title: "QRApp", subtitle: "loading...")
+        PKHUD.sharedHUD.show()
+        
+        // start the request
+        Alamofire.request(.GET, "http://10.0.2.9:3000/seed").responseJSON { (response) in
+            // get data string
+            
+            var resultJson: NSDictionary?
+            var dataString: String?
+            if let resultValue = response.result.value {
+                resultJson = resultValue as? NSDictionary
+            }else{
+                return self.handleBadResponse(nil)
+            }
+            
+            if let dataInJson = resultJson!["data"]!["data"] {
+                dataString = dataInJson as? String
+            }else{
+                return self.handleBadResponse(nil)
+            }
+            
+            // get expired date
+            var endingDateString: NSString = resultJson!["data"]!["expiredDate"] as! String
+            endingDateString = endingDateString.substringToIndex(19)
+            let dateFormate = NSDateFormatter()
+            dateFormate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            dateFormate.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+            let expiredDate = dateFormate.dateFromString(endingDateString as String)
+            // if the request is too early that server has not refreshed
+            if expiredDate!.timeIntervalSinceNow < 1 {
+                return self.requestForQRData()
+            }
+            
+            //save data to local
+            QRLocalSaver.saveToLocal(dataString!, date: expiredDate!)
+            // render and count
+            self.renderQRStratCounting(dataString, expiredDate: expiredDate)
+            // hide HUD
+            PKHUD.sharedHUD.hide(animated: true, completion: nil)
+        }
+    }
+    
+    func handleBadResponse(hint:String?) -> Void {
+        if PKHUD.sharedHUD.isVisible {
+            PKHUD.sharedHUD.hide(animated: false, completion: nil)
+        }
+        let msg = (hint != nil) ? hint : "bad response"
+        PKHUD.sharedHUD.contentView = PKHUDTextView.init(text: msg)
+        PKHUD.sharedHUD.show()
+        PKHUD.sharedHUD.hide(afterDelay: 2, completion: nil)
+        
+    }
+    
+    func renderQRStratCounting(dataString:String!, expiredDate:NSDate!) -> Void {
+        // generate qr-code the show it
+        self.qrView.image = QRCode(dataString)?.image
+        // label start count down
+        self.countdownLb.startCountingWithEndingDate(expiredDate, countClosure: { (remainTime) in
+            if remainTime < 1 {
+                self.requestForQRData()
+            }
+        })
+    }
 
     /*
     // MARK: - Navigation
