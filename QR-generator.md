@@ -37,3 +37,12 @@ Here is a quick mockup of how it could look like (think Material Design!):![user
 ## Getting started
 
 There's nothing here. We leave it blank (at least after this sentence) to write down your choice of build tool, code structure, framework, testing approach, etc.
+
+#### backend
+* nodejs
+* express
+* mongodb
+#### native
+* swift
+
+all native relays can be found at Podfile
