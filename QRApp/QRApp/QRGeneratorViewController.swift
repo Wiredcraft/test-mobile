@@ -33,6 +33,8 @@ class QRGeneratorViewController: UIViewController {
             
             let resultJson: NSDictionary = response.result.value as! NSDictionary
             let dataString: String = resultJson["data"]!["data"] as! String
+            let endingDate = resultJson["data"]!["expiredDate"]
+            print(endingDate)
             
             self.qrView.image = QRCode(dataString)?.image
             
