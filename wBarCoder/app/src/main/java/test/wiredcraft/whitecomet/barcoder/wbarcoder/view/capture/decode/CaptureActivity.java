@@ -10,8 +10,6 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
@@ -21,35 +19,34 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.R;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.PreferencesConstants;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.CameraManager;
 
 /**
  * Created by 文戎 on 2016/7/11.
  */
-public class CaptureActivity extends Activity implements SurfaceHolder.Callback{
+public abstract class CaptureActivity extends Activity implements SurfaceHolder.Callback{
     private static final String TAG = CaptureActivity.class.getSimpleName();
 
     private ViewfinderView viewfinderView;
     private boolean hasSurface;
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
-    private BeepManager beepManager;
-    private AmbientLightManager ambientLightManager;
-    private InactivityTimer inactivityTimer;
+    protected BeepManager beepManager;
+    protected AmbientLightManager ambientLightManager;
+    protected InactivityTimer inactivityTimer;
     private Set<BarcodeFormat> decodeFormats;
-    private boolean copyToClipboard;
-    private Map<DecodeHintType,?> decodeHints;
+    private Map<DecodeHintType,?> decodeHints = null;
     private String characterSet;
+
+    protected abstract ViewfinderView getViewFinderView();
+    protected abstract SurfaceView getSurfaceView();
+
+    public abstract void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        setContentView(R.layout.layout_capture);
 
         hasSurface =false;
         inactivityTimer = new InactivityTimer(this);
@@ -63,7 +60,7 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback{
 
         cameraManager =  new CameraManager(getApplication());
 
-        viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
+        viewfinderView = getViewFinderView();
         viewfinderView.setCameraManager(cameraManager);
 
         handler = null;
@@ -80,17 +77,12 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback{
 
         inactivityTimer.onResume();
 
-        copyToClipboard = PreferencesConstants.KEY_COPY_TO_CLIPBOARD;
 
+        decodeFormats = null;
 //        decodeFormats = DecodeFormatManager.PRODUCT_FORMATS;
-
-//        source = IntentSource.NONE;
-//        sourceUrl = null;
-//        scanFromWebPageManager = null;
-//        decodeFormats = null;
         characterSet = null;
 
-        SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+        SurfaceView surfaceView = getSurfaceView();
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
 
         if (hasSurface) {
@@ -131,7 +123,7 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback{
         beepManager.close();
         cameraManager.closeDriver();
         if (!hasSurface) {
-            SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+            SurfaceView surfaceView = getSurfaceView();
             SurfaceHolder surfaceHolder = surfaceView.getHolder();
             surfaceHolder.removeCallback(this);
         }
@@ -159,16 +151,9 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback{
             }
         } catch (IOException ioe) {
             Log.w(TAG, ioe);
-//            displayFrameworkBugMessageAndExit();
         } catch (RuntimeException e) {
-            // Barcode Scanner has seen crashes in the wild of this variety:
-            // java.?lang.?RuntimeException: Fail to connect to camera service
             Log.w(TAG, "Unexpected error initializing camera", e);
-//            displayFrameworkBugMessageAndExit();
         }
-//        if (handler ==null) {
-//            handler =new CaptureActivityHandler(this, decodeFormats, characterSet);
-//        }
     }
 
     @Override
@@ -197,12 +182,6 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback{
 
     public CameraManager getCameraManager() {
         return cameraManager;
-    }
-
-    public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
-        inactivityTimer.onActivity();
-        beepManager.playBeepSoundAndVibrate();
-        Log.d(TAG, rawResult.getText());
     }
 
     public void drawViewfinder() {

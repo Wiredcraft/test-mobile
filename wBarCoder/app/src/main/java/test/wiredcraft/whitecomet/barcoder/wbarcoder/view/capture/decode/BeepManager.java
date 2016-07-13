@@ -33,7 +33,7 @@ import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.PreferencesCon
 /**
  * Manages beeps and vibrations for {@link CaptureActivity}.
  */
-final class BeepManager implements MediaPlayer.OnErrorListener, Closeable {
+public final class BeepManager implements MediaPlayer.OnErrorListener, Closeable {
 
   private static final String TAG = BeepManager.class.getSimpleName();
 
@@ -62,7 +62,7 @@ final class BeepManager implements MediaPlayer.OnErrorListener, Closeable {
     }
   }
 
-  synchronized void playBeepSoundAndVibrate() {
+  public synchronized void playBeepSoundAndVibrate() {
     if (playBeep && mediaPlayer != null) {
       mediaPlayer.start();
     }
