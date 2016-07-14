@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 ZXing authors
+ * Copyright (C) 2009 ZXing authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,22 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.open;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode;
 
-public enum CameraFacing {
+import com.google.zxing.ResultPoint;
+import com.google.zxing.ResultPointCallback;
 
-  BACK,  // must be value 0!
-  FRONT, // must be value 1!
+final class ViewfinderResultPointCallback implements ResultPointCallback {
+
+  private final ViewfinderView viewfinderView;
+
+  ViewfinderResultPointCallback(ViewfinderView viewfinderView) {
+    this.viewfinderView = viewfinderView;
+  }
+
+  @Override
+  public void foundPossibleResultPoint(ResultPoint point) {
+    viewfinderView.addPossibleResultPoint(point);
+  }
 
 }

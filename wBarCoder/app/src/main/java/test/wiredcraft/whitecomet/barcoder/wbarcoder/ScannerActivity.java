@@ -9,8 +9,8 @@ import android.view.WindowManager;
 
 import com.google.zxing.Result;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode.CaptureActivity;
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode.ViewfinderView;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode.CaptureActivity;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode.ViewfinderView;
 
 /**
  * Created by 文戎 on 2016/7/12.

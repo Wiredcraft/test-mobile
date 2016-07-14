@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.FrontLightMode;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.FrontLightMode;
 
 /**
  * The main settings activity.

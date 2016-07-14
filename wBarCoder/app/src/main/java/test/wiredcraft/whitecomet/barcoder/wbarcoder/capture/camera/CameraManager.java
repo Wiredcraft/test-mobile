@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -27,8 +27,8 @@ import com.google.zxing.PlanarYUVLuminanceSource;
 
 import java.io.IOException;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.open.OpenCamera;
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.open.OpenCameraInterface;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.open.OpenCamera;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.open.OpenCameraInterface;
 
 /**
  * This object wraps the Camera service object and expects to be the only one talking to it. The

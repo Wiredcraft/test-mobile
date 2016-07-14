@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera;
 
 import android.annotation.TargetApi;
 import android.graphics.Point;

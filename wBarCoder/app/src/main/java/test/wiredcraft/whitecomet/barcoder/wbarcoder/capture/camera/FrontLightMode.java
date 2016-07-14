@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.PreferencesConstants;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.PreferencesConstants;
 
 /**
  * Enumerates settings of the preference controlling the front light.

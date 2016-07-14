@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode;
 
 import android.app.Activity;
 import android.content.DialogInterface;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -22,8 +22,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.CameraManager;
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.FrontLightMode;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.CameraManager;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.FrontLightMode;
 
 /**
  * Detects ambient light and switches on the front light when very dark, and off again when sufficiently light.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -24,9 +24,9 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.PreferencesConstants;
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.open.CameraFacing;
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.open.OpenCamera;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.PreferencesConstants;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.open.CameraFacing;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.open.OpenCamera;
 
 /**
  * A class which deals with reading, parsing, and setting the camera parameters which are used to

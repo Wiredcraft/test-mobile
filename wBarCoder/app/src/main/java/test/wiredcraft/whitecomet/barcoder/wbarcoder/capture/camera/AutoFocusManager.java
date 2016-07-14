@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera;
 
 import android.content.Context;
 import android.hardware.Camera;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.RejectedExecutionException;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.PreferencesConstants;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.PreferencesConstants;
 
 final class AutoFocusManager implements Camera.AutoFocusCallback {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
@@ -30,7 +30,7 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.PreferencesConstants;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.PreferencesConstants;
 
 /**
  * This thread does all the heavy lifting of decoding the images.

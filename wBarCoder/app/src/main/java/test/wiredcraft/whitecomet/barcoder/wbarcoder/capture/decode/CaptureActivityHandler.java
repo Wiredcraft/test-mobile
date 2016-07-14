@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode;
 
 import android.content.ActivityNotFoundException;
 import android.content.pm.PackageManager;
@@ -38,7 +38,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.R;
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.CameraManager;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.CameraManager;
 
 /**
  * This class handles all the messaging which comprises the state machine for capture.

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.open;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.open;
 
 import android.hardware.Camera;
 

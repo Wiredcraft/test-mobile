@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode;
 
 import android.app.Activity;
 import android.content.Context;
@@ -28,7 +28,7 @@ import java.io.Closeable;
 import java.io.IOException;
 
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.R;
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.PreferencesConstants;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.PreferencesConstants;
 
 /**
  * Manages beeps and vibrations for {@link CaptureActivity}.

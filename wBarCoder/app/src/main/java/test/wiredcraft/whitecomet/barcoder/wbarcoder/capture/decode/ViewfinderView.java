@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode;
 
 import com.google.zxing.ResultPoint;
 
@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.R;
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.CameraManager;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.CameraManager;
 
 /**
  * This view is overlaid on top of the camera preview. It adds the viewfinder rectangle and partial

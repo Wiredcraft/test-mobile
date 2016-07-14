@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"/>
 
-    <test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode.ViewfinderView
+    <test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode.ViewfinderView
         android:id="@+id/viewfinder_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

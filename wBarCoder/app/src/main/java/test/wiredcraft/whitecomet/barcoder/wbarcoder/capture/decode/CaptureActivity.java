@@ -1,4 +1,4 @@
-package test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.decode;
+package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -19,8 +19,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.PreferencesConstants;
-import test.wiredcraft.whitecomet.barcoder.wbarcoder.view.capture.camera.CameraManager;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.PreferencesConstants;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.CameraManager;
 
 /**
  * Created by 文戎 on 2016/7/11.
