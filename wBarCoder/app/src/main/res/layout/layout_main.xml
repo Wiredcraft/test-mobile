@@ -30,21 +30,49 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="test.wiredcraft.whitecomet.barcoder.wbarcoder.MainActivity"
         tools:showIn="@layout/layout_main">
 
-        <TextView
+        <ImageView
+            android:id="@+id/view_barcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!" />
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="100dp"
+            android:src="@drawable/ic_qrcode"/>
     </RelativeLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_menu_camera" />
+        android:layout_margin="@dimen/fab_margin">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_switcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_plus"
+            android:visibility="visible" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/fab_switcher"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_camera"
+            android:visibility="invisible" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/fab_camera"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_repeat"
+            android:visibility="invisible" />
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -54,7 +54,7 @@ public class SeedManager {
     public void refreshSeed(){
         try {
             network.getAsync(SEED_URL, networkCallback);
-        } catch (IOException e) {
+        } catch (Exception e) {
             WcLog.e(TAG,"refreshSeed request failed", e);
             Toast.makeText(context,"Refresh seed failed",Toast.LENGTH_LONG).show();
         }

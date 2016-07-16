@@ -13,6 +13,11 @@ public class Seed {
         return seed;
     }
 
+    @Override
+    public String toString() {
+        return String.format("{seed:%1$s,expiredTime:%2$d}", seed, expiredTime);
+    }
+
     public long getExpiredTime() {
         return expiredTime;
     }
