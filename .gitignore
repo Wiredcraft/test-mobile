@@ -55,4 +55,7 @@ docs/_build/
 
 # PyBuilder
 target/
-server/node_modules/
+
+node_modules
+.DS_Store
+xcuserdata
