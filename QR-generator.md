@@ -17,7 +17,7 @@ There are 2 tasks:
   expiredAt: 1452762065183                    // Unix format timestamp
 }
 ```
-*This user model is just an example, feel free to modify it.*
+*This seed model is just an example, feel free to modify it.*
 
 ### API
 
@@ -32,7 +32,7 @@ Here is a quick mockup of how it could look like (think Material Design!):![user
 ### Addtional Requirement
 
 * QR-code could automaticlly refresh based on an expired date provide by the seed API.
-* Mobile devices should cachekd the seed data and the seed can be restore after the user force close the app.
+* Mobile devices should cached the seed data and the seed can be restore after the user force close the app.
 
 ## Getting started
 
