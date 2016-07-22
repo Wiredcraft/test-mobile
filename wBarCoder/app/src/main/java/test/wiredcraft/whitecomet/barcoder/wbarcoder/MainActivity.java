@@ -4,27 +4,21 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.menu.MenuWrapperFactory;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnticipateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-
-import com.google.zxing.WriterException;
+import android.widget.Toast;
 
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.encode.BarcodeFactory;
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.seed.DefaultSeedParser;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.seed.Seed;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.seed.SeedManager;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.utils.WcLog;
@@ -41,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView viewBarcode;
     private SeedManager seedManager;
 
+    private ObjectAnimator refreshAnimator;
+
+    private static final long RETRY_TIME = 5 * 1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +53,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fabCamera.setOnClickListener(this);
         fabRefresh.setOnClickListener(this);
 
-        seedManager = SeedManager.getInstantce(this.getApplicationContext());
+        refreshAnimator = ObjectAnimator.ofFloat(fabRefresh, "rotation", 0, 360f);
+        refreshAnimator.setDuration(1000);
+        refreshAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+        seedManager = SeedManager.getInstance(this.getApplicationContext());
         seedManager.registerRefreshCallback(this);
+//        seedManager.setSeedParser(new DefaultSeedParser());
+//        seedManager.setSeedUrl();
         barcodeFactory = new BarcodeFactory(this.getApplicationContext());
         viewBarcode = (ImageView) findViewById(R.id.view_barcode);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         initBarcode();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        timerHandler.removeCallbacks(timerRunnable);
     }
 
     @Override
@@ -133,25 +145,62 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initBarcode(){
         Seed seed = seedManager.loadSeed();
-        try {
-            viewBarcode.setImageBitmap(barcodeFactory.encodeBarcode(seed.getSeed()));
-        } catch (Exception e) {
-            WcLog.e(TAG,"encodeBarcode error",e);
-            viewBarcode.setImageResource(R.drawable.ic_qrcode);
-        }
+        setBarcode(seed);
     }
 
     private void refreshBarcode(){
         seedManager.refreshSeed();
+        refreshAnimator.start();
     }
 
     @Override
     public void onRefresh(Seed seed) {
-        try {
-            viewBarcode.setImageBitmap(barcodeFactory.encodeBarcode(seed.getSeed()));
-        } catch (Exception e) {
-            WcLog.e(TAG,"encodeBarcode error",e);
-            viewBarcode.setImageResource(R.drawable.ic_qrcode);
+        Message msg = viewHandler.obtainMessage();
+        msg.what = 0;
+        msg.obj = seed;
+        msg.sendToTarget();
+    }
+    Handler viewHandler = new Handler(Looper.getMainLooper()){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case 0:
+                    refreshAnimator.end();
+                    Seed seed = (Seed) msg.obj;
+
+                    if(seed == null){
+                        Toast.makeText(MainActivity.this,"Refresh seed failed",Toast.LENGTH_LONG).show();
+                        seed = seedManager.loadSeed();
+                    }
+                    setBarcode(seed);
+                    break;
+                default:
+            }
         }
+    };
+    private void setBarcode(Seed seed){
+        try {
+            if(seed.getExpiredTime() <= System.currentTimeMillis()) throw new Exception("seed is expired");
+            viewBarcode.setImageBitmap(barcodeFactory.encodeBarcode(seed.getSeed()));
+            refreshDelay(seed.getExpiredTime() - System.currentTimeMillis());
+        } catch (Exception e) {
+            WcLog.e(TAG,"set Barcode error",e);
+            viewBarcode.setImageResource(R.drawable.ic_qrcode);
+            refreshDelay(RETRY_TIME);
+        }
+    }
+
+    private Handler timerHandler = new Handler();
+    private Runnable timerRunnable = new Runnable() {
+        @Override
+        public void run() {
+            seedManager.refreshSeed();
+            refreshAnimator.start();
+        }
+    };
+    private void refreshDelay(long delay){
+        timerHandler.removeCallbacks(timerRunnable);
+        timerHandler.postDelayed(timerRunnable,delay);
     }
 }

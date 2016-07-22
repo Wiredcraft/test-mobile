@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,26 +14,29 @@ import test.wiredcraft.whitecomet.barcoder.wbarcoder.utils.WcLog;
 public class SeedManager {
     //TODO URL
     private static final String TAG = SeedManager.class.getSimpleName();
-    private static final String SEED_URL = "";
+    private static final String DEFAULT_SEED_URL = "http://192.168.31.156:3000/";
     private static final String SEED_PREFERENCE_NAME = "pref_seed";
     private static final String SEED_PREFERENCE_KEY_SEED = "seed";
     private static final String SEED_PREFERENCE_KEY_EXPIREDTIME = "expired_time";
 
 
-
-    private static SeedManager instantce = null;
-    public static SeedManager getInstantce(Context context){
-        if (instantce == null) instantce = new SeedManager(context);
-        return instantce;
+    private static SeedManager instance = null;
+    public static SeedManager getInstance(Context context){
+        if (instance == null) instance = new SeedManager(context);
+        return instance;
     }
 
     private Context context;
     private final Network network;
+    private SeedParser parser;
+    private String seedUrl;
     private SeedManager(Context context){
         this.context = context;
         network = new Network();
         preferences = context.getSharedPreferences(SEED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         seedRefreshedCallbacks = new HashSet<>();
+        parser = new DefaultSeedParser();
+        seedUrl = DEFAULT_SEED_URL;
     }
 
 
@@ -51,9 +51,15 @@ public class SeedManager {
         seedRefreshedCallbacks.remove(callback);
     }
 
+    public void setSeedParser(SeedParser parser){
+        this.parser = parser;
+    }
+    public void setSeedUrl(String url){
+        seedUrl = url;
+    }
     public void refreshSeed(){
         try {
-            network.getAsync(SEED_URL, networkCallback);
+            network.getAsync(seedUrl, networkCallback);
         } catch (Exception e) {
             WcLog.e(TAG,"refreshSeed request failed", e);
             Toast.makeText(context,"Refresh seed failed",Toast.LENGTH_LONG).show();
@@ -63,24 +69,22 @@ public class SeedManager {
     private Network.GetAsyncCallback networkCallback = new Network.GetAsyncCallback() {
         @Override
         public void onResponse(String string, IOException e) {
+            Seed newSeed = null;
             if(e != null){
                 WcLog.e(TAG,"refreshSeed request error", e);
-                Toast.makeText(context,"Refresh seed failed",Toast.LENGTH_LONG).show();
             }
-
             try {
-                Seed newSeed = new Gson().fromJson(string, Seed.class);
-                if( newSeed == null ) throw new JsonSyntaxException("json string is null");
+                newSeed = parser.parse(string);
+                if( newSeed == null ) throw new Exception("newSeed is null");
                 saveSeed(newSeed);
 
-                for (SeedRefreshedCallback callback:seedRefreshedCallbacks){
-                    callback.onRefresh(newSeed);
-                }
-
-            }catch (JsonSyntaxException e1){
-                WcLog.e(TAG,"json string error:" + string, e);
+            }catch (Exception e1){
+                WcLog.e(TAG,"newSeed error:" + string, e1);
             }
 
+            for (SeedRefreshedCallback callback:seedRefreshedCallbacks){
+                callback.onRefresh(newSeed);
+            }
         }
     };
 
@@ -96,5 +100,9 @@ public class SeedManager {
         editor.putString(SEED_PREFERENCE_KEY_SEED,seed.getSeed());
         editor.putLong(SEED_PREFERENCE_KEY_EXPIREDTIME,seed.getExpiredTime());
         editor.commit();
+    }
+
+    public interface SeedParser{
+        Seed parse(String json);
     }
 }

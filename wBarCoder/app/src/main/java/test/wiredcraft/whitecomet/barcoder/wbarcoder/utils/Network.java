@@ -21,7 +21,7 @@ public class Network {
 
     public void getAsync(String url, final GetAsyncCallback callback) throws IOException {
         Request request = new Request.Builder().url(url).build();
-        Response response = client.newCall(request).execute();
+//        Response response = client.newCall(request).execute();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
