@@ -30,10 +30,10 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 
     private ViewfinderView viewfinderView;
     private boolean hasSurface;
-    private CameraManager cameraManager;
+    protected CameraManager cameraManager;
     private CaptureActivityHandler handler;
     protected BeepManager beepManager;
-    protected AmbientLightManager ambientLightManager;
+    private AmbientLightManager ambientLightManager;
     protected InactivityTimer inactivityTimer;
     private Set<BarcodeFormat> decodeFormats;
     private Map<DecodeHintType,?> decodeHints = null;
@@ -66,8 +66,7 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
         handler = null;
 
         if (PreferencesConstants.KEY_DISABLE_AUTO_ORIENTATION) {
-//            setRequestedOrientation(getCurrentOrientation());
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            setRequestedOrientation(getCurrentOrientation());
         } else {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         }
@@ -91,7 +90,8 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
             surfaceHolder.addCallback(this);
         }
     }
-    private int getCurrentOrientation() {
+
+    protected int getCurrentOrientation() {
         int rotation = getWindowManager().getDefaultDisplay().getRotation();
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             switch (rotation) {

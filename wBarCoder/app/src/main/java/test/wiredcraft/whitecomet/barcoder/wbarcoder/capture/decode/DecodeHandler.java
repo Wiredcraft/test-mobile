@@ -16,6 +16,8 @@
 
 package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
@@ -25,13 +27,16 @@ import com.google.zxing.ReaderException;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.Surface;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 import java.util.Map;
 
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.R;
@@ -77,7 +82,18 @@ final class DecodeHandler extends Handler {
   private void decode(byte[] data, int width, int height) {
     long start = System.currentTimeMillis();
     Result rawResult = null;
-    PlanarYUVLuminanceSource source = activity.getCameraManager().buildLuminanceSource(data, width, height);
+
+    PlanarYUVLuminanceSource source;
+    if(activity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+      byte[] rotatedData = new byte[data.length];
+      for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++)
+          rotatedData[x * height + height - y - 1] = data[x + y * width];
+      }
+      source = activity.getCameraManager().buildLuminanceSource(rotatedData, height, width);
+    }else{
+      source = activity.getCameraManager().buildLuminanceSource(data, width, height);
+    }
     if (source != null) {
       BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
       try {

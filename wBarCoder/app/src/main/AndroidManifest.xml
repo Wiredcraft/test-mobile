@@ -32,7 +32,6 @@
 
         <activity android:name=".ScannerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
             android:theme="@style/CameraTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
