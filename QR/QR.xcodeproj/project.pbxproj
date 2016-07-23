@@ -16,6 +16,8 @@
 		76976DC51D4110C200B810BA /* QRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76976DC41D4110C200B810BA /* QRUITests.swift */; };
 		76976DD51D43AB2500B810BA /* SeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76976DD41D43AB2500B810BA /* SeedModel.swift */; settings = {ASSET_TAGS = (); }; };
 		76976DD71D43AB6000B810BA /* SeedModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76976DD61D43AB6000B810BA /* SeedModelTests.swift */; settings = {ASSET_TAGS = (); }; };
+		76976DD91D43AC8100B810BA /* SeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76976DD81D43AC8100B810BA /* SeedManager.swift */; settings = {ASSET_TAGS = (); }; };
+		76976DDB1D43AFFB00B810BA /* SeedManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76976DDA1D43AFFB00B810BA /* SeedManagerTests.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		76976DC61D4110C200B810BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76976DD41D43AB2500B810BA /* SeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeedModel.swift; sourceTree = "<group>"; };
 		76976DD61D43AB6000B810BA /* SeedModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeedModelTests.swift; sourceTree = "<group>"; };
+		76976DD81D43AC8100B810BA /* SeedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeedManager.swift; sourceTree = "<group>"; };
+		76976DDA1D43AFFB00B810BA /* SeedManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeedManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 				76976DAB1D4110C200B810BA /* Assets.xcassets */,
 				76976DAD1D4110C200B810BA /* LaunchScreen.storyboard */,
 				76976DB01D4110C200B810BA /* Info.plist */,
+				76976DD81D43AC8100B810BA /* SeedManager.swift */,
 				76976DD41D43AB2500B810BA /* SeedModel.swift */,
 			);
 			path = QR;
@@ -116,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				76976DB91D4110C200B810BA /* QRTests.swift */,
+				76976DDA1D43AFFB00B810BA /* SeedManagerTests.swift */,
 				76976DD61D43AB6000B810BA /* SeedModelTests.swift */,
 				76976DBB1D4110C200B810BA /* Info.plist */,
 			);
@@ -264,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76976DD91D43AC8100B810BA /* SeedManager.swift in Sources */,
 				76976DD51D43AB2500B810BA /* SeedModel.swift in Sources */,
 				76976DA71D4110C200B810BA /* ViewController.swift in Sources */,
 				76976DA51D4110C200B810BA /* AppDelegate.swift in Sources */,
@@ -275,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76976DD71D43AB6000B810BA /* SeedModelTests.swift in Sources */,
+				76976DDB1D43AFFB00B810BA /* SeedManagerTests.swift in Sources */,
 				76976DBA1D4110C200B810BA /* QRTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
