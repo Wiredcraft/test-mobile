@@ -42,12 +42,15 @@ public class SeedManager {
         }
         
         let data = getDataFromCache()
-        if let model = SeedModel(data: data) where model.expireTimeout() > 0 {
+        // if there's a cached model, and it will not expire soon (in 1s), return it. 
+        if let model = SeedModel(data: data) where model.expireTimeout() > 1.0 {
+            print("getSeedAsync returns cached model \(model)")
             runCallbackOnMainThread(model)
             return
         }
         getDataFromServer { (data) -> Void in
             let model = SeedModel(data: data)
+            print("getSeedAsync returns model from server \(model)")
             if let model = model where model.expireTimeout() > 0 {
                 self.cacheData(data!)
             }
