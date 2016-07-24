@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SeedModel {
+public struct SeedModel: Equatable {
     let rawData: NSData
     public let seed: NSString
     public let expiredAt: Int
@@ -32,4 +32,8 @@ public struct SeedModel {
     func isExpired(now: NSDate = NSDate()) -> Bool {
         return now.timeIntervalSince1970 * 1000 >= Double(expiredAt)
     }
+}
+
+public func ==(lhs: SeedModel, rhs: SeedModel) -> Bool {
+    return lhs.seed == rhs.seed && lhs.expiredAt == rhs.expiredAt
 }
