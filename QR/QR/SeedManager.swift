@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import Alamofire
 
 public class SeedManager {
     let seedKey = "seedKey"
-    let getSeedUrl = "http://localhost:3000/seed"
+    static let apiUrl = "http://10.126.52.103:3000"
+    let getSeedUrl = "\(apiUrl)/seed"
+    let validateSeedUrl = "\(apiUrl)/validate"
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
     let session = NSURLSession.sharedSession()
@@ -55,6 +58,13 @@ public class SeedManager {
                 self.cacheData(data!)
             }
             runCallbackOnMainThread(model)
+        }
+    }
+    
+    public func validateSeed(seed:NSString, callback:(Bool?) -> Void) {
+        Alamofire.request(.POST, validateSeedUrl, parameters:["seed":seed], encoding: .JSON)
+                .responseJSON { (response) -> Void in
+                    callback(response.result.value?["result"] as? Bool)
         }
     }
 }
