@@ -29,8 +29,9 @@ public struct SeedModel: Equatable {
             return nil
         }
     }
-    func isExpired(now: NSDate = NSDate()) -> Bool {
-        return now.timeIntervalSince1970 * 1000 >= Double(expiredAt)
+    
+    func expireTimeout(now: NSDate = NSDate()) -> NSTimeInterval {
+        return NSTimeInterval(expiredAt / 1000) - now.timeIntervalSince1970
     }
 }
 

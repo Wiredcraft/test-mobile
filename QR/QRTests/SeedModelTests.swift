@@ -10,12 +10,13 @@ import XCTest
 @testable import QR
 
 class SeedModelTests: XCTestCase {
+    let seed = "37790a1b728096b4141864f49159ad47"
+    
     func getData(seed:NSString, expiredAt: Int) -> NSData {
         return "{\"seed\":\"\(seed)\",\"expiredAt\":\(expiredAt)}".dataUsingEncoding(NSUTF8StringEncoding)!
     }
     
     func testSeedModelEqual() {
-        let seed = "37790a1b728096b4141864f49159ad47"
         let expiredAt = 1469277496963
         let data = getData(seed, expiredAt: expiredAt)
         let model = SeedModel(data: data)
@@ -25,12 +26,12 @@ class SeedModelTests: XCTestCase {
         let model3 = SeedModel(data: getData(seed, expiredAt: expiredAt-1))
         XCTAssertNotEqual(model, model3)
         
-        let model4 = SeedModel(data: getData("37790a1b728096b4141864f49159ad48", expiredAt: expiredAt))
+        let seed2 = "37790a1b728096b4141864f49159ad48"
+        let model4 = SeedModel(data: getData(seed2, expiredAt: expiredAt))
         XCTAssertNotEqual(model, model4)
     }
     
     func testSeedModelReturnOkOnValidJsonData() {
-        let seed = "37790a1b728096b4141864f49159ad47"
         let expiredAt = 1469277496963
         let model = SeedModel(data: getData(seed, expiredAt: expiredAt))
         XCTAssertNotNil(model)
@@ -48,17 +49,11 @@ class SeedModelTests: XCTestCase {
         XCTAssertNil(model)
     }
     
-    func testIsExpired() {
-        let expiredDate = NSDate()
-        let expiredAt = Int(expiredDate.timeIntervalSince1970 * 1000)
-        let model = SeedModel(data: getData("37790a1b728096b4141864f49159ad47", expiredAt: expiredAt))
-        
-        let later = NSDate(timeIntervalSinceNow: 1);
-        XCTAssertTrue(model!.isExpired(later))
-        
-        XCTAssertTrue(model!.isExpired(expiredDate))
-        
-        let early = NSDate(timeIntervalSinceNow: -1)
-        XCTAssertFalse(model!.isExpired(early))
+    func testSeedModelExpireTimeout() {
+        let now = NSDate()
+        let diff = 2.0
+        let expiredAt = Int(NSDate(timeInterval: diff, sinceDate: now).timeIntervalSince1970 * 1000)
+        let model = SeedModel(data: getData(seed, expiredAt: expiredAt))
+        XCTAssertEqualWithAccuracy(model!.expireTimeout(), diff, accuracy: 1.0)
     }
 }

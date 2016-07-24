@@ -42,13 +42,13 @@ public class SeedManager {
         }
         
         let data = getDataFromCache()
-        if let model = SeedModel(data: data) where !model.isExpired() {
+        if let model = SeedModel(data: data) where model.expireTimeout() > 0 {
             runCallbackOnMainThread(model)
             return
         }
         getDataFromServer { (data) -> Void in
             let model = SeedModel(data: data)
-            if let model = model where !model.isExpired() {
+            if let model = model where model.expireTimeout() > 0 {
                 self.cacheData(data!)
             }
             runCallbackOnMainThread(model)

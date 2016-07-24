@@ -142,7 +142,7 @@ class SeedManagerTests: XCTestCase {
         seedManager.getSeedAsync { seed in
             XCTAssertNotNil(seed)
             XCTAssertEqual(seed!.seed.length, 32)
-            XCTAssert(!seed!.isExpired())
+            XCTAssert(seed!.expireTimeout() > 0)
             expectation.fulfill()
         }
         waitForExpectationsWithTimeout(3) { error in
