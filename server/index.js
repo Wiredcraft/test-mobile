@@ -1,20 +1,10 @@
 const express = require('express');
 const app = express();
 
-function getRandomSeed() {
-    var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
-    var text = "";
-    for (var i = 0; i < 32; ++i) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-}
+const seedManager = require('./seedManager');
 
 app.get('/seed', (req, res) => {
-    const reply = {
-        seed: getRandomSeed(),
-        expiredAt: Date.now() + 6000
-    };
+    const reply = seedManager.getSeed();
     res.send(JSON.stringify(reply));
 });
 
