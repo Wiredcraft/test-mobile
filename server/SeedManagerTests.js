@@ -4,14 +4,34 @@ const timekeeper = require('timekeeper')
 const SeedManager = require('./SeedManager.js')
 
 describe('SeedManager', () => {
-    describe('#getSeed()', () => {
-        beforeEach(() => {
-            this.seedManager = new SeedManager(6000, 1000);
-        });
-        afterEach(() => {
-            this.seedManager = null;
-        });
+    beforeEach(() => {
+        this.seedManager = new SeedManager(6000, 1000);
+    });
+    afterEach(() => {
+        this.seedManager = null;
+    });
 
+    describe('#validateSeed', () => {
+        it('should return true on valid seed', () => {
+            const seed = this.seedManager.getSeed();
+            const valid = this.seedManager.validateSeed(seed.seed);
+            assert.ok(valid);
+        });
+        it('should return false on expired seed', () => {
+            const seed = this.seedManager.getSeed();
+            const sixSeconds = 6000;
+            timekeeper.travel(laterDate(sixSeconds));
+            const valid = this.seedManager.validateSeed(seed.seed);
+            timekeeper.reset();
+            assert.ok(!valid);
+        });
+        it('should return false on invalid seed', () => {
+            this.seedManager.getSeed(); // force generate a seed.
+            const valid = this.seedManager.validateSeed('lksjdfakjk11909uu2323lkjlsjdfa23');
+            assert.ok(!valid);
+        });
+    });
+    describe('#getSeed()', () => {
         it('should return a valid seed', () => {
             const now = new Date();
             timekeeper.freeze(now);

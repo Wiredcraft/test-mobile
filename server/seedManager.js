@@ -9,6 +9,7 @@ function getRandomSeed() {
 }
 
 function expireTimeout(seed) {
+    if (!seed) return -1;
     const now = Date.now();
     return seed.expiredAt - now;
 }
@@ -19,7 +20,7 @@ class SeedManager {
         this.minimumExpireTimeout = minimumExpireTimeout;
     }
     getSeed() {
-        if (this.seed && expireTimeout(this.seed) >= this.minimumExpireTimeout) {
+        if (expireTimeout(this.seed) >= this.minimumExpireTimeout) {
             return this.seed;
         }
         this.seed = {
@@ -27,6 +28,9 @@ class SeedManager {
             expiredAt: Date.now() + this.defaultExpireTimeout
         };
         return this.seed
+    }
+    validateSeed(seed) {
+        return expireTimeout(this.seed) > 0 && seed === this.seed.seed
     }
 }
 
