@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import AVFoundation
+import QRCodeReader
 
 class ViewController: UIViewController {
+    lazy var readerVC = QRCodeReaderViewController(metadataObjectTypes: [AVMetadataObjectTypeQRCode])
 
+    @IBAction func scanQR(sender: AnyObject) {
+        readerVC.completionBlock = { (result: String?) in
+            print(result)
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        
+        self.navigationController?.pushViewController(readerVC, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
