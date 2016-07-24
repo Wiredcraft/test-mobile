@@ -30,16 +30,16 @@ class QRCodeViewController: UIViewController {
     
     let seedManager = SeedManager()
     var theModel: SeedModel?
-    
+    var timer: NSTimer?
+
     func loadUI() {
-        print("getSeedAsync")
+        timeoutLabel.text = "loading QR"
         seedManager.getSeedAsync { (model) -> Void in
-            print("getSeedAsync callback")
+            self.theModel = model
             guard let model = model else {
                 self.timeoutLabel.text = "failed to load data"
                 return
             }
-            self.theModel = model
             if let img = createQRFromString(model.seed) {
                 self.qrImageView.image = img
             }
@@ -47,11 +47,49 @@ class QRCodeViewController: UIViewController {
         }
     }
     
-    func startSeedTimeout() {}
+    func stopSeedTimeout() {
+        if let timer = timer {
+            timer.invalidate()
+        }
+        timer = nil
+    }
+    func startSeedTimeout() {
+        guard let model = theModel else { return }
+        
+        if timer == nil {
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"startSeedTimeout", userInfo: nil, repeats:true)
+        }
+        
+        let timeout = Int(model.expireTimeout())
+        self.timeoutLabel.text = "\(timeout)s"
+        print("tick \(timeout)")
+        
+        if timeout <= 0 {
+            self.stopSeedTimeout()
+            self.loadUI()
+        }
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func startListenScreenEvents() {
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector:"startSeedTimeout", name:UIApplicationDidBecomeActiveNotification, object: nil)
+        nc.addObserver(self, selector:"stopSeedTimeout", name:UIApplicationWillResignActiveNotification, object: nil)
+    }
+    func stopListenScreenEvents() {
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.removeObserver(self)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopSeedTimeout()
+        stopListenScreenEvents()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.loadUI()
+        startListenScreenEvents()
     }
 
 }
