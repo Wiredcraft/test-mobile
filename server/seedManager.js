@@ -8,11 +8,26 @@ function getRandomSeed() {
     return text;
 }
 
-function getSeed() {
-    return {
-        seed: getRandomSeed(),
-        expiredAt: Date.now() + 6000
-    };
+function expireTimeout(seed) {
+    const now = Date.now();
+    return seed.expiredAt - now;
 }
 
-module.exports = {getSeed}
+class SeedManager {
+    constructor(defaultExpireTimeout, minimumExpireTimeout) {
+        this.defaultExpireTimeout = defaultExpireTimeout;
+        this.minimumExpireTimeout = minimumExpireTimeout;
+    }
+    getSeed() {
+        if (this.seed && expireTimeout(this.seed) >= this.minimumExpireTimeout) {
+            return this.seed;
+        }
+        this.seed = {
+            seed: getRandomSeed(),
+            expiredAt: Date.now() + this.defaultExpireTimeout
+        };
+        return this.seed
+    }
+}
+
+module.exports = SeedManager

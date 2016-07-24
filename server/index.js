@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 
-const seedManager = require('./seedManager');
+const SeedManager = require('./SeedManager');
+const seedManager = new SeedManager(6000, 1000);
 
 app.get('/seed', (req, res) => {
     const reply = seedManager.getSeed();
