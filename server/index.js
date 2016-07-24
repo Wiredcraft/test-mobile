@@ -1,11 +1,19 @@
 const express = require('express');
 const app = express();
 
+function getRandomSeed() {
+    var possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+    var text = "";
+    for (var i = 0; i < 32; ++i) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+}
+
 app.get('/seed', (req, res) => {
-    // todo: return a fake seed for now.
     const reply = {
-        seed: "37790a1b728096b4141864f49159ad47",
-        expiredAt: Date.now() + 60000
+        seed: getRandomSeed(),
+        expiredAt: Date.now() + 6000
     };
     res.send(JSON.stringify(reply));
 });
