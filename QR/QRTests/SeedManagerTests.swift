@@ -33,8 +33,10 @@ class MockedSeedManager : SeedManager {
 class SeedManagerTests: XCTestCase {
     func getData(seed:NSString, expiredDate:NSDate) -> SeedModel {
         let expiredAt = expiredDate.timeIntervalSince1970 * 1000
-        let data = "{\"seed\":\"\(seed)\",\"expiredAt\":\(expiredAt)}".dataUsingEncoding(NSUTF8StringEncoding)!
-        return SeedModel(data: data)!
+        return SeedModel([
+            "seed": seed,
+            "expiredAt": expiredAt
+        ])!
     }
 
     func testGetSeedAsyncNoCacheHttpOk() {

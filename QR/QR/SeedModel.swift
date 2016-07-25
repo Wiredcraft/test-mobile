@@ -9,27 +9,27 @@
 import Foundation
 
 public struct SeedModel: Equatable {
-    let rawData: NSData
     public let seed: NSString
     public let expiredAt: Int
-    
-    init?(data: NSData?) {
-        guard let data = data else { return nil }
-        do {
-            let dic = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
-            if let theSeed = dic?["seed"] as? NSString,
-                expire = dic?["expiredAt"] as? Int {
-                    seed = theSeed
-                    rawData = data
-                    expiredAt = expire
-            } else {
-                return nil
-            }
-        } catch {
+
+    init?(_ cachedJson: [NSString:AnyObject]?) {
+        guard let json = cachedJson else { return nil }
+        if let theSeed = json["seed"] as? NSString,
+            expiredTime = json["expiredAt"] as? Int {
+                seed = theSeed
+                expiredAt = expiredTime
+        } else {
             return nil
         }
     }
-    
+
+    func json() -> [NSString:AnyObject] {
+        return [
+            "seed": seed,
+            "expiredAt": expiredAt
+        ]
+    }
+
     func expireTimeout(now: NSDate = NSDate()) -> NSTimeInterval {
         return NSTimeInterval(expiredAt / 1000) - now.timeIntervalSince1970
     }

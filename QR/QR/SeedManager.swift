@@ -17,25 +17,24 @@ public class SeedManager {
     let validateSeedUrl = "\(apiUrl)/validate"
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
-    let session = NSURLSession.sharedSession()
 
     init() {}
 
     func getModelFromServer(callback: (SeedModel?) -> Void) {
-        let task = session.dataTaskWithURL(NSURL(string: getSeedUrl)!, completionHandler: {
-            (data, response, error) -> Void in
-            callback(SeedModel(data:data))
-        })
-        task.resume()
+        Alamofire.request(.GET, getSeedUrl)
+            .responseJSON { response in
+                let json = response.result.value as? [String:AnyObject]
+                callback(SeedModel(json))
+        }
     }
 
     func getModelFromCache() -> SeedModel? {
-        let data = userDefaults.objectForKey(seedKey) as? NSData
-        return SeedModel(data:data)
+        let data = userDefaults.objectForKey(seedKey) as? [String:AnyObject]
+        return SeedModel(data)
     }
 
     func cacheModel(model: SeedModel) {
-        userDefaults.setObject(model.rawData, forKey: seedKey)
+        userDefaults.setObject(model.json(), forKey: seedKey)
     }
 
     public func getSeedAsync(callback: (SeedModel?) -> Void) {
