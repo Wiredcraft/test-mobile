@@ -8,13 +8,14 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import test.wiredcraft.whitecomet.barcoder.wbarcoder.utils.Constant;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.utils.Network;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.utils.WcLog;
 
 public class SeedManager {
     //TODO URL
     private static final String TAG = SeedManager.class.getSimpleName();
-    private static final String DEFAULT_SEED_URL = "http://192.168.31.156:3000/";
+    private static final String DEFAULT_SEED_URL = Constant.SERVER_HOST;
     private static final String SEED_PREFERENCE_NAME = "pref_seed";
     private static final String SEED_PREFERENCE_KEY_SEED = "seed";
     private static final String SEED_PREFERENCE_KEY_EXPIREDTIME = "expired_time";

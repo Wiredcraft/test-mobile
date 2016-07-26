@@ -21,9 +21,6 @@ import java.util.zip.Inflater;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode.CaptureActivity;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode.ViewfinderView;
 
-/**
- * Created by 文戎 on 2016/7/12.
- */
 public class ScannerActivity extends CaptureActivity implements View.OnClickListener {
     private static final String TAG = ScannerActivity.class.getSimpleName();
     private FloatingActionButton fabBolt;

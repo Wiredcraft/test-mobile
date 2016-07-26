@@ -22,9 +22,6 @@ import java.util.Set;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.PreferencesConstants;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.CameraManager;
 
-/**
- * Created by 文戎 on 2016/7/11.
- */
 public abstract class CaptureActivity extends Activity implements SurfaceHolder.Callback{
     private static final String TAG = CaptureActivity.class.getSimpleName();
 

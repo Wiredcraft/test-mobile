@@ -13,6 +13,11 @@ public class WcLog {
     public static void e(String tag, String msg, Throwable e){
         Log.e(TAG,combineLog(tag,msg), e);
     }
+
+    private static final String TAG_TEST = "WBarcode_test";
+    public static void test(String tag, String msg){
+        Log.e(TAG_TEST,combineLog(tag,msg));
+    }
     private static String combineLog(String tag, String msg){
         return String.format("%1$s ===> [%2$s]", tag, msg);
     }
