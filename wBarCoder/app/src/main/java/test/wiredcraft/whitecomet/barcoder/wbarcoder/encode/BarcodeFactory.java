@@ -11,12 +11,10 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import java.util.Hashtable;
 
-/**
- * Created by 文戎 on 2016/7/14.
- */
 public class BarcodeFactory {
     private static final int DEFAULT_ICON_TARGET_SIZE = 40;
     private static final int DEFAULT_BARCODE_TARGET_SIZE = 400;
@@ -36,6 +34,7 @@ public class BarcodeFactory {
         this.context = context;
         encodeHintSet.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         format = BarcodeFormat.QR_CODE;
+        encodeHintSet.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H.toString());
         blackColor = 0xFF000000;
         whiteColor = 0xFFFFFFFF;
         width = DEFAULT_BARCODE_TARGET_SIZE;
@@ -45,6 +44,7 @@ public class BarcodeFactory {
     public void setInnerIcon(Bitmap icon, int targetWidth, int targetHeight){
         if(icon == null) {
             this.icon = null;
+            return;
         }
         iconTargetWidth = targetWidth;
         iconTargetHeight = targetHeight;
@@ -52,7 +52,7 @@ public class BarcodeFactory {
         float sx = (float) 2 * targetWidth / icon.getWidth();
         float sy = (float) 2 * targetHeight / icon.getHeight();
         m.setScale(sx, sy);
-        this.icon = Bitmap.createBitmap(this.icon, 0, 0, icon.getWidth(), icon.getHeight(), m, false);
+        this.icon = Bitmap.createBitmap(icon, 0, 0, icon.getWidth(), icon.getHeight(), m, false);
     }
     public void setInnerIcon(int icon, int targetWidth, int targetHeight){
         Bitmap iconBitmap = BitmapFactory.decodeResource(context.getResources(), icon);
@@ -70,6 +70,12 @@ public class BarcodeFactory {
     }
     public void setFormat(BarcodeFormat format){
         this.format = format;
+
+        if(format == BarcodeFormat.QR_CODE)
+            encodeHintSet.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H.toString());
+        else
+            encodeHintSet.remove(EncodeHintType.ERROR_CORRECTION);
+
     }
 
     public void setBlocksColor(int blackColor, int whiteColor){
