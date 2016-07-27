@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="test.wiredcraft.whitecomet.barcoder.wbarcoder.ScannerActivity">
+
+    <SurfaceView android:id="@+id/preview_view"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_centerInParent="true"/>
+
+    <test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.decode.ViewfinderView
+        android:id="@+id/viewfinder_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_bolt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:src="@drawable/ic_bolt"
+        app:layout_anchor="@id/preview_view"
+        app:layout_anchorGravity="bottom|right|end"/>
+</android.support.design.widget.CoordinatorLayout>
