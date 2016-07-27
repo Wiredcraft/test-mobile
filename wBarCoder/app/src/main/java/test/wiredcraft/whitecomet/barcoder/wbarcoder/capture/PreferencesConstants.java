@@ -19,10 +19,11 @@ package test.wiredcraft.whitecomet.barcoder.wbarcoder.capture;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.FrontLightMode;
 
 /**
- * The main settings activity.
- *
- * @author dswitkin@google.com (Daniel Switkin)
+ * <del>The main settings activity.</del> Constant Settings of the barcode instead of the original preference activity.<br/>
+ * See <a href=https://github.com/zxing/zxing/blob/master/android/src/com/google/zxing/client/android/PreferencesActivity.java>zxing/PreferencesActivity.java</a>
+ * @author <del>dswitkin@google.com (Daniel Switkin)</del>
  * @author Sean Owen
+ * @author shiyinayuriko
  */
 public final class PreferencesConstants {
 

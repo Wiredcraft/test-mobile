@@ -22,23 +22,54 @@ import java.util.Set;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.PreferencesConstants;
 import test.wiredcraft.whitecomet.barcoder.wbarcoder.capture.camera.CameraManager;
 
+/**
+ * An abstract class to help setup a scan activity.
+ * @author shiyinayuriko
+ */
 public abstract class CaptureActivity extends Activity implements SurfaceHolder.Callback{
     private static final String TAG = CaptureActivity.class.getSimpleName();
 
     private ViewfinderView viewfinderView;
     private boolean hasSurface;
+    /**
+     * To manager the camera, include the flash light.
+     * @see CameraManager
+     */
     protected CameraManager cameraManager;
     private CaptureActivityHandler handler;
+    /**
+     * To beep a sound and vibrate.Usually used when finishing a scanning.
+     * @see BeepManager
+     */
     protected BeepManager beepManager;
     private AmbientLightManager ambientLightManager;
+    /**
+     * To stop or resume the scanning.
+     * @see InactivityTimer
+     */
     protected InactivityTimer inactivityTimer;
     private Set<BarcodeFormat> decodeFormats;
     private Map<DecodeHintType,?> decodeHints = null;
     private String characterSet;
 
+    /**
+     * Finish this method so that the capture activity can get the ViewfinderView inflate in its children.
+     * @return
+     */
     protected abstract ViewfinderView getViewFinderView();
+
+    /**
+     * Finish this method so that the capture activity can get the SurfaceView inflate in its children.
+     * @return
+     */
     protected abstract SurfaceView getSurfaceView();
 
+    /**
+     * Finish it and when a barcode scan success, it will be called.
+     * @param rawResult The info in the barcode captured
+     * @param barcode The captured barcode bitmap.
+     * @param scaleFactor
+     */
     public abstract void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor);
 
     @Override
@@ -88,6 +119,11 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
         }
     }
 
+    /**
+     * Get the Current Orientation
+     * @return an Enum of ActivityInfo such as ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+     * @see ActivityInfo
+     */
     protected int getCurrentOrientation() {
         int rotation = getWindowManager().getDefaultDisplay().getRotation();
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
