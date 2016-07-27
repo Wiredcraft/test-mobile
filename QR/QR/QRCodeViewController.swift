@@ -57,7 +57,7 @@ class QRCodeViewController: UIViewController {
         guard let model = theModel else { return }
         
         if timer == nil {
-            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"startSeedTimeout", userInfo: nil, repeats:true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(QRCodeViewController.startSeedTimeout), userInfo: nil, repeats:true)
         }
         
         let timeout = Int(model.expireTimeout())
@@ -72,8 +72,8 @@ class QRCodeViewController: UIViewController {
     
     func startListenScreenEvents() {
         let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector:"startSeedTimeout", name:UIApplicationDidBecomeActiveNotification, object: nil)
-        nc.addObserver(self, selector:"stopSeedTimeout", name:UIApplicationWillResignActiveNotification, object: nil)
+        nc.addObserver(self, selector:#selector(QRCodeViewController.startSeedTimeout), name:UIApplicationDidBecomeActiveNotification, object: nil)
+        nc.addObserver(self, selector:#selector(QRCodeViewController.stopSeedTimeout), name:UIApplicationWillResignActiveNotification, object: nil)
     }
     func stopListenScreenEvents() {
         let nc = NSNotificationCenter.defaultCenter()
