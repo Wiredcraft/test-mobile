@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const SeedManager = require('./SeedManager');
-const seedManager = new SeedManager(6000, 1000);
+const seedManager = new SeedManager(10000, 1000, './savedSeed.json');
 
 app.get('/seed', (req, res) => {
     const reply = seedManager.getSeed();

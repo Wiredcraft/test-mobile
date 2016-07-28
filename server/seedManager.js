@@ -14,10 +14,33 @@ function expireTimeout(seed) {
     return seed.expiredAt - now;
 }
 
+const fs = require('fs');
+
+function saveSeed(seed, seedFile) {
+    if (!seedFile) return;
+    const jsonString = JSON.stringify(seed);
+    fs.writeFileSync(seedFile, jsonString, 'utf8');
+    console.info(`seed saved ${jsonString}`);
+}
+function loadSeed(seedFile) {
+    if (!seedFile) return null;
+    try {
+        const jsonString = fs.readFileSync(seedFile, 'utf8');
+        const seed = jsonString && JSON.parse(jsonString);
+        console.info(`seed loaded ${jsonString}`);
+        return seed;
+    } catch (err) {
+        console.error(`failed to load seed from ${seedFile}: ${err}`)
+        return null;
+    }
+}
+
 class SeedManager {
-    constructor(defaultExpireTimeout, minimumExpireTimeout) {
+    constructor(defaultExpireTimeout, minimumExpireTimeout, savedSeedFile) {
         this.defaultExpireTimeout = defaultExpireTimeout;
         this.minimumExpireTimeout = minimumExpireTimeout;
+        this.seedFile = savedSeedFile
+        this.seed = loadSeed(this.seedFile);
     }
     getSeed() {
         if (expireTimeout(this.seed) >= this.minimumExpireTimeout) {
@@ -27,6 +50,7 @@ class SeedManager {
             seed: getRandomSeed(),
             expiredAt: Date.now() + this.defaultExpireTimeout
         };
+        saveSeed(this.seed, this.seedFile);
         return this.seed
     }
     validateSeed(seed) {
