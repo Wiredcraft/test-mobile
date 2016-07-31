@@ -28,7 +28,7 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var timeoutLabel: UILabel!
     @IBOutlet weak var qrImageView: UIImageView!
     
-    let seedManager = SeedManager()
+    let seedManager = SeedManager.sharedInstance
     var theModel: SeedModel?
     var timer: NSTimer?
 

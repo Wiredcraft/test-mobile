@@ -24,7 +24,8 @@ public class SeedManager {
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
 
-    init() {}
+    init() {} // for testing only
+    static let sharedInstance = SeedManager()
 
     func getModelFromServer(callback: (SeedModel?) -> Void) {
         httpManager.request(.GET, getSeedUrl)

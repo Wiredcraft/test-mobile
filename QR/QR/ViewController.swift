@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     func validateSeed(seed:String) {
         HUD.show(.LabeledProgress(title:"validating seed", subtitle:seed))
         
-        let seedManager = SeedManager()
+        let seedManager = SeedManager.sharedInstance
         seedManager.validateSeed(seed, callback: { (valid) -> Void in
             var type: HUDContentType
             if valid == nil {
