@@ -38,6 +38,7 @@ class QRCodeViewController: UIViewController {
             self.theModel = model
             guard let model = model else {
                 self.timeoutLabel.text = "failed to load data"
+                self.qrImageView.image = nil;
                 return
             }
             if let img = createQRFromString(model.seed) {
