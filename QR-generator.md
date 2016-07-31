@@ -37,3 +37,46 @@ Here is a quick mockup of how it could look like (think Material Design!):![user
 ## Getting started
 
 There's nothing here. We leave it blank (at least after this sentence) to write down your choice of build tool, code structure, framework, testing approach, etc.
+
+### build tools / how to build & run?
+- npm for server
+    + run command `cd server && npm install` in project root to install server dependencies
+    + run `npm run test` to run server tests. if there's failure, please leave a comment in my PR. thanks!
+    + run `npm run start` to start the server
+- cocoapods and Xcode for iOS app
+    1. *change the value of `apiUrl` in `SeedManager.swift` to your server ip*
+    2. run command `cd QR && pod install && open QR.xcworkspace` in project root to install app dependencies and open the app project in Xcode.
+    3. make sure you completed step 1, then use Xcode shortcut `command+u` to build and run the tests. if there's failure, please leave a comment in my PR. thanks!
+    4. use Xcode shortcut `command+r` to build and run the app.
+
+### code structure
+- server
+    + `index.json`: the entry point of server
+    + `SeedManager.js`: the main logic of seed generation and validation.
+    + `SeedManagerTests.js`: the unit test of seed manager
+- app
+    + `QRCodeViewController.swift`: the logic for QR code ui.
+    + `SeedManager.swift`: the client proxy for seed server with caching.
+    + `SeedModel.swift`: the model of a seed.
+    + `ViewController.swift`: the entry view controller, which contains logic of opening QR scan ui and validating the scan result.
+
+### dependencies
+- server
+    + `express`: the well-known web framework for node.js
+    + `body-parser`: used to parse the request body to json object.
+    + `mocha`: the popular test framework, for assertion library, I use the node.js built-in assert module.
+    + `timekeeper`: time api mock, used for testing seed expiration logic.
+- app:
+    + `Alamofire`: the convenient http request library.
+    + `PKHUD`: the HUD ui library, used in validation ui when making http requests.
+    + `QRCodeReader.swift`: the QR scan ui and logic.
+
+### testing approach
+- unit tests
+    + server side: there are tests for domain logic code, `SeedManager.js`. use command `npm run test` to run the server tests. 
+    + app side: there are tests for domain logic code, `SeedManager.swift` and `SeedModel.swift`. use shortcut `ctrl-u` in Xcode to run the client tests.
+- integration tests
+    + `SeedManagerIntegrationTest.swift` is for integration test between the app and the server.
+    + 
+- functional tests
+    + automated functional ui tests is hard and brittle, I didn't adopt it. I manually test features through ui. 
