@@ -135,19 +135,4 @@ class SeedManagerTests: XCTestCase {
         }
     }
 
-    func testGetSeedAsync() {
-        let expectation = expectationWithDescription("getSeedAsync work with server")
-        let seedManager = SeedManager()
-        seedManager.getSeedAsync { seed in
-            XCTAssertNotNil(seed)
-            XCTAssertEqual(seed!.seed.length, 32)
-            XCTAssert(seed!.expireTimeout() > 0)
-            expectation.fulfill()
-        }
-        waitForExpectationsWithTimeout(3) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            }
-        }
-    }
 }
