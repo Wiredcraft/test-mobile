@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         seedManager.validateSeed(seed, callback: { (valid) -> Void in
             var type: HUDContentType
             if valid == nil {
-                type = .LabeledError(title:"validate failed", subtitle: nil)
+                type = .LabeledError(title:"connectivity error", subtitle: nil)
             } else if valid! {
                 type = .LabeledSuccess(title:"valid seed", subtitle: seed)
             } else {

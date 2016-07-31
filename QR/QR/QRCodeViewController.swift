@@ -41,9 +41,7 @@ class QRCodeViewController: UIViewController {
                 self.qrImageView.image = nil;
                 return
             }
-            if let img = createQRFromString(model.seed) {
-                self.qrImageView.image = img
-            }
+            self.qrImageView.image = createQRFromString(model.seed)
             self.startSeedTimeout()
         }
     }
@@ -61,8 +59,8 @@ class QRCodeViewController: UIViewController {
             timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(QRCodeViewController.startSeedTimeout), userInfo: nil, repeats:true)
         }
         
-        let timeout = Int(model.expireTimeout())
-        self.timeoutLabel.text = "\(timeout)s"
+        let timeout = model.expireTimeout()
+        self.timeoutLabel.text = "\(Int(timeout))s"
         print("tick \(timeout)")
         
         if timeout <= 0 {
