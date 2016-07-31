@@ -12,8 +12,13 @@ import QRCodeReader
 import PKHUD
 
 class ViewController: UIViewController {
-    lazy var readerVC = QRCodeReaderViewController(metadataObjectTypes: [AVMetadataObjectTypeQRCode])
-
+    lazy var readerVC:QRCodeReaderViewController = {
+        let reader = QRCodeReader(metadataObjectTypes: [AVMetadataObjectTypeQRCode])
+        let vc = QRCodeReaderViewController(cancelButtonTitle:"Cancel", coderReader:reader, startScanningAtLoad: true, showSwitchCameraButton:false, showTorchButton:false)
+        vc.title = "QR Scan"
+        return vc
+    }()
+    
     func validateSeed(seed:String) {
         HUD.show(.LabeledProgress(title:"validating seed", subtitle:seed))
         
@@ -34,7 +39,10 @@ class ViewController: UIViewController {
     }
     @IBAction func scanQR(sender: AnyObject) {
         readerVC.completionBlock = { (result: String?) in
-            guard let seed = result else { return }
+            guard let seed = result else {
+                self.navigationController?.popViewControllerAnimated(true)
+                return
+            }
             self.validateSeed(seed)
         }
         
