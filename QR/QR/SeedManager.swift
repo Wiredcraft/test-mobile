@@ -11,17 +11,23 @@ import Alamofire
 
 public class SeedManager {
     let seedKey = "seedKey"
-    static let apiUrl = "http://localhost:3000"
-//    static let apiUrl = "http://10.126.52.103:3000"
+//    static let apiUrl = "http://localhost:3000"
+    static let apiUrl = "http://10.126.52.103:3000"
     let getSeedUrl = "\(apiUrl)/seed"
     let validateSeedUrl = "\(apiUrl)/validate"
+    
+    lazy var httpManager: Manager = {
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.timeoutIntervalForResource = 2
+        return Alamofire.Manager(configuration: configuration)
+    }()
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
 
     init() {}
 
     func getModelFromServer(callback: (SeedModel?) -> Void) {
-        Alamofire.request(.GET, getSeedUrl)
+        httpManager.request(.GET, getSeedUrl)
             .responseJSON { response in
                 let json = response.result.value as? [String:AnyObject]
                 callback(SeedModel(json))
@@ -60,7 +66,7 @@ public class SeedManager {
     }
 
     public func validateSeed(seed:NSString, callback:(Bool?) -> Void) {
-        Alamofire.request(.POST, validateSeedUrl, parameters:["seed":seed], encoding: .JSON)
+        httpManager.request(.POST, validateSeedUrl, parameters:["seed":seed], encoding: .JSON)
                 .responseJSON { (response) -> Void in
                     callback(response.result.value?["result"] as? Bool)
         }
