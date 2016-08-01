@@ -1,0 +1,20 @@
+{
+  "name": "qr-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha SeedManagerTests.js",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3",
+    "timekeeper": "^0.1.1"
+  }
+}
