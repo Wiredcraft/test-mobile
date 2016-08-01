@@ -55,16 +55,20 @@ There's nothing here. We leave it blank (at least after this sentence) to write 
     + `SeedManager.js`: the main logic of seed generation and validation.
     + `SeedManagerTests.js`: the unit test of seed manager
 - app
+    + `Main.storyboard`: the ui and layout.
+    + `ViewController.swift`: the entry point view controller, which contains logic of opening QR scan ui and validating the scan result.
     + `QRCodeViewController.swift`: the logic for QR code ui.
     + `SeedManager.swift`: the client proxy for seed server with caching.
+    + `SeedManagerTests.swift`: unit tests for seed manager.
     + `SeedModel.swift`: the model of a seed.
-    + `ViewController.swift`: the entry view controller, which contains logic of opening QR scan ui and validating the scan result.
+    + `SeedModelTests.swift`: unit tests for seed model.
+    + `SeedManagerIntegrationTest.swift`: integration test for swift seed manager and node.js seed manager.
 
 ### dependencies
 - server
     + `express`: the well-known web framework for node.js
     + `body-parser`: used to parse the request body to json object.
-    + `mocha`: the popular test framework, for assertion library, I use the node.js built-in assert module.
+    + `mocha`: the popular test framework. for assertion library, I use the node.js built-in assert module.
     + `timekeeper`: time api mock, used for testing seed expiration logic.
 - app:
     + `Alamofire`: the convenient http request library.
