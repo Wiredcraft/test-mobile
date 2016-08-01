@@ -78,9 +78,8 @@ There's nothing here. We leave it blank (at least after this sentence) to write 
 ### testing approach
 - unit tests
     + server side: there are tests for domain logic code, `SeedManager.js`. use command `npm run test` to run the server tests. 
-    + app side: there are tests for domain logic code, `SeedManager.swift` and `SeedModel.swift`. use shortcut `ctrl-u` in Xcode to run the client tests.
+    + app side: there are tests for domain logic code, `SeedManager.swift` and `SeedModel.swift`. The server dependency of `SeedManager.swift` is mocked by subclassing. use shortcut `ctrl-u` in Xcode to run the client tests.
 - integration tests
     + `SeedManagerIntegrationTest.swift` is for integration test between the app and the server.
-    + 
 - functional tests
     + automated functional ui tests is hard and brittle, I didn't adopt it. I manually test features through ui. 
