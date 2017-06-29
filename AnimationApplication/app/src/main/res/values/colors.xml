@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="colorCloudBackgroundDay">#4b97d3</color>
+    <color name="colorSunBg">#4b97d3</color>
+    <color name="colorSun">#d04727</color>
+    <color name="colorSunn">#d36331</color>
+    <color name="colorSunnn">#d67639</color>
+    <color name="colorSunnnn">#d98a3f</color>
+    <color name="colorSunnnnn">#d8a146</color>
+    <color name="colorSunnnnnn">#d3b555</color>
+    <color name="colorSunnnnnnn">#c2c775</color>
+    <color name="colorSunnnnnnnn">#a0c9a7</color>
+</resources>
