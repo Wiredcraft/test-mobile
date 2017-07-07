@@ -6,7 +6,7 @@ GravitySquareView is easy to use. In the ViewController , just init it and invok
 
 The iOS simulator does not simulate any motion. You have to use a physical device to test anything with CMMotionManager.
 
-Example:
+# Example:
 ```
     let screenSize = UIScreen.main.bounds
     gravitySquareView = GravtitySquareView(frame: CGRect(x: screenSize.width/2, y: screenSize.height/2, width: 80, height: 80))
