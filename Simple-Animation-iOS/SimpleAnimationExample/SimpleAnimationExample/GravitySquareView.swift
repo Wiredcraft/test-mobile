@@ -22,9 +22,9 @@ class GravtitySquareView: UIView {
     }
     
     func start() {
+        
         guard let size = self.superview?.frame else { return }
         var f = self.frame
-        
         
         if motionManager.isAccelerometerAvailable {
             let queue = OperationQueue.current
@@ -64,7 +64,6 @@ class GravtitySquareView: UIView {
                 UIView.commitAnimations()
             })
         }
-    
     }
     
     func stop() {
