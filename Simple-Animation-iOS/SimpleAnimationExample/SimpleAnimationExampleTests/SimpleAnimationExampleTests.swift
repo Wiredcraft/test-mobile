@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreMotion
 @testable import SimpleAnimationExample
 
 class SimpleAnimationExampleTests: XCTestCase {
@@ -22,8 +23,11 @@ class SimpleAnimationExampleTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let motionManager = CMMotionManager()
+        let isAccelerometerAvailable = motionManager.isAccelerometerAvailable
+        XCTAssertTrue(isAccelerometerAvailable, "The simulator does not simulate any motion. You have to use a physical device to test anything with CMMotionManager.")
+
     }
     
     func testPerformanceExample() {
