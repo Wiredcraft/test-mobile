@@ -14,6 +14,7 @@
 		F40BB41B1F0F4FBD00A9AE73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40BB4191F0F4FBD00A9AE73 /* LaunchScreen.storyboard */; };
 		F40BB4261F0F4FBD00A9AE73 /* SimpleAnimationExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40BB4251F0F4FBD00A9AE73 /* SimpleAnimationExampleTests.swift */; };
 		F40BB4311F0F4FBD00A9AE73 /* SimpleAnimationExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40BB4301F0F4FBD00A9AE73 /* SimpleAnimationExampleUITests.swift */; };
+		F40BB43F1F0F503A00A9AE73 /* GravitySquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40BB43E1F0F503A00A9AE73 /* GravitySquareView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		F40BB42C1F0F4FBD00A9AE73 /* SimpleAnimationExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleAnimationExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F40BB4301F0F4FBD00A9AE73 /* SimpleAnimationExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAnimationExampleUITests.swift; sourceTree = "<group>"; };
 		F40BB4321F0F4FBD00A9AE73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F40BB43E1F0F503A00A9AE73 /* GravitySquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GravitySquareView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				F40BB4101F0F4FBD00A9AE73 /* AppDelegate.swift */,
+				F40BB43E1F0F503A00A9AE73 /* GravitySquareView.swift */,
 				F40BB4121F0F4FBD00A9AE73 /* ViewController.swift */,
 				F40BB4141F0F4FBD00A9AE73 /* Main.storyboard */,
 				F40BB4171F0F4FBD00A9AE73 /* Assets.xcassets */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F40BB4131F0F4FBD00A9AE73 /* ViewController.swift in Sources */,
+				F40BB43F1F0F503A00A9AE73 /* GravitySquareView.swift in Sources */,
 				F40BB4111F0F4FBD00A9AE73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
