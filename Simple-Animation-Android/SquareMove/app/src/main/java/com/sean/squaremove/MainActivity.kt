@@ -16,6 +16,12 @@ import android.view.WindowManager
 
 class MainActivity : AppCompatActivity() {
 
+    internal var sensorManager: SensorManager? = null
+    internal var sensor: Sensor? = null
+    private var init = false
+
+    private var squareMoveView: SquareMoveView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,12 +34,6 @@ class MainActivity : AppCompatActivity() {
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensor = sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
     }
-
-    internal var sensorManager: SensorManager? = null
-    internal var sensor: Sensor? = null
-    private var init = false
-
-    private var squareMoveView: SquareMoveView? = null
 
     // x, y is between [-MAX_ACCELEROMETER, MAX_ACCELEROMETER]
     internal fun moveTo(x: Float, y: Float) {
@@ -138,8 +138,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-
-
         private val MAX_ACCELEROMETER = 9.81f
     }
 }
