@@ -11,6 +11,6 @@
 * Send the download link to us
 
 ## Options
-* Desribe you expeirences on how to speed up Android Building
-* Desribe you expeirences on how to automate workflow
+* Describe you expeirences on how to speed up Android Building
+* Describe you expeirences on how to automate workflow
 * Can you write the Gradle task in kotlin ?
