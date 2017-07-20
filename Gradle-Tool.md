@@ -3,7 +3,7 @@
 ## Prerequisites
 * A [hockeyapp](hockeyapp.net) account
 
-## Requirsments in steps
+## Requirements in steps
 * Pick up one of the existing testing apps(QR-generator, Simple-Animation)
 * Build the app
 * Build a customize Gradle task that able to upload the apk to hockeyapp
