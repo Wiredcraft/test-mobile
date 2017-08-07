@@ -29,10 +29,10 @@ GET    /seed                   - Get the seed
 
 Here is a quick mockup of how it could look like (think Material Design!):![user interface](https://cloud.githubusercontent.com/assets/914595/12320458/cdca6356-bae3-11e5-8fd4-cff6ff647a12.jpg)
 
-### Addtional Requirement
+### Additional Requirement
 
-* QR-code could automaticlly refresh based on an expired date provide by the seed API.
-* Mobile devices should cachekd the seed data and the seed can be restore after the user force close the app.
+* QR-code could automatically refresh based on an expired date provide by the seed API.
+* Mobile devices should cached the seed data and the seed can be restore after the user force close the app.
 
 ## Getting started
 
