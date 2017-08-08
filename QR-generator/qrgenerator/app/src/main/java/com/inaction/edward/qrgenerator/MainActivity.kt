@@ -21,12 +21,14 @@ class MainActivity : AppCompatActivity() {
         fabMenu = findViewById(R.id.fabMenu)
 
         val scanFab: FloatingActionButton? = findViewById(R.id.scanFab)
+        scanFab?.size = FloatingActionButton.SIZE_MINI
         scanFab?.setOnClickListener {
             Toast.makeText(this@MainActivity, R.string.scan, Toast.LENGTH_SHORT).show()
             fabMenu?.collapse()
         }
 
         val generateFab: FloatingActionButton? = findViewById(R.id.generateFab)
+        generateFab?.size = FloatingActionButton.SIZE_MINI
         generateFab?.setOnClickListener {
             Toast.makeText(this@MainActivity, R.string.generate, Toast.LENGTH_SHORT).show()
             fabMenu?.collapse()
