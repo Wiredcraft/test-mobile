@@ -6,13 +6,32 @@
     android:layout_height="match_parent"
     tools:context="com.inaction.edward.qrgenerator.MainActivity">
 
-    <TextView
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fabMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="8dp"
+        app:fab_labelsPosition="left"
+        app:fab_labelStyle="@style/AppTheme"
+        >
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/scanFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/ic_scan"
+            app:fab_title="@string/scan"
+            />
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/generateFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/ic_qrcode"
+            app:fab_title="@string/generate"
+            />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </android.support.constraint.ConstraintLayout>

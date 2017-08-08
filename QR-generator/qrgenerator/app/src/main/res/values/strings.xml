@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QRGenerator</string>
+    <string name="scan">Scan</string>
+    <string name="generate">Generate</string>
 </resources>
