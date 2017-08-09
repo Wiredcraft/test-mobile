@@ -32,6 +32,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.google.code.gson:gson:2.8.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'me.dm7.barcodescanner:zxing:1.9.7'
+    implementation 'com.github.kenglxn.QRGen:android:2.3.0'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.8.47'
     androidTestImplementation 'com.android.support.test:runner:1.0.0'
