@@ -1,10 +1,25 @@
 <resources>
     <string name="app_name">QRGenerator</string>
+    <!-- activity names -->
     <string name="home_activity">Home</string>
     <string name="scanner_activity">Scan</string>
     <string name="generator_activity">QR-Code</string>
+    <!-- home buttons -->
     <string name="scan">Scan</string>
     <string name="generate">Generate</string>
+    <!-- generator activity -->
     <string name="counter_time">%1$d S</string>
     <string name="generate_error">Generate error, please try again later.</string>
+    <!-- permission -->
+    <string name="ask_permission_dialog_title">Permission Need</string>
+    <string name="ask_permission_dialog_message">Camera permission is required for scanning QR Code.</string>
+    <string name="ask_permission_dialog_grant">Sure</string>
+    <string name="ask_permission_dialog_reject">Reject</string>
+    <string name="permission_reject_message">Sorry, cannot open QR Code scanner without the permission.</string>
+    <!-- result -->
+    <string name="result_dialog_title">Result</string>
+    <string name="result_dialog_copy">Copy</string>
+    <string name="result_dialog_continue">Continue</string>
+    <string name="copy_to_clipboard_message">Seed has been copied to ClipBoard</string>
+
 </resources>
