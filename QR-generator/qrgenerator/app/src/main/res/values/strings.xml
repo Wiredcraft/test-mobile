@@ -4,9 +4,11 @@
     <string name="home_activity">Home</string>
     <string name="scanner_activity">Scan</string>
     <string name="generator_activity">QR-Code</string>
-    <!-- home buttons -->
+    <!-- home -->
     <string name="scan">Scan</string>
     <string name="generate">Generate</string>
+    <string name="empty_message">There is no QR Code yet, click button to scan or generate some.</string>
+    <string name="seed_type_image_description">QR Code source type</string>
     <!-- generator activity -->
     <string name="counter_time">%1$d S</string>
     <string name="generate_error">Generate error, please try again later.</string>

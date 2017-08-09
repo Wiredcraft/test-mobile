@@ -1,10 +1,13 @@
 package com.inaction.edward.qrgenerator
 
+import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import com.inaction.edward.qrgenerator.api.ApiClient
+import com.inaction.edward.qrgenerator.asynctasks.AddSeedAsyncTask
+import com.inaction.edward.qrgenerator.database.AppDatabase
 import com.inaction.edward.qrgenerator.entities.Seed
 import net.glxn.qrgen.android.QRCode
 import retrofit2.Call
@@ -74,6 +77,8 @@ class GeneratorActivity : AppCompatActivity() {
                 val seed = response?.body()
                 seed?.let {
                     mSeed = it
+                    // add it to database
+                    AddSeedAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, it)
                     showSeed()
                 } ?: kotlin.run {
                     toast(R.string.generate_error)

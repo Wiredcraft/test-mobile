@@ -6,6 +6,31 @@
     android:layout_height="match_parent"
     tools:context="com.inaction.edward.qrgenerator.MainActivity">
 
+    <TextView
+        android:id="@+id/emptyTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="center"
+        android:text="@string/empty_message"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/seedRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        />
+
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/fabMenu"
         android:layout_width="wrap_content"

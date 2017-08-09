@@ -1,9 +1,12 @@
 package com.inaction.edward.qrgenerator
 
+import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import com.google.zxing.Result
+import com.inaction.edward.qrgenerator.asynctasks.AddSeedAsyncTask
+import com.inaction.edward.qrgenerator.entities.Seed
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
 class ScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
@@ -37,6 +40,7 @@ class ScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
     override fun handleResult(result: Result?) {
         result?.let {
+            saveResult(it.text)
             showResult(it.text)
         }
     }
@@ -54,6 +58,12 @@ class ScanActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
                     scannerView?.resumeCameraPreview(this)
                 }
         alertDialog.show()
+    }
+
+    private fun saveResult(message: String) {
+        val seed = Seed(message, 0)
+        seed.type = 1
+        AddSeedAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, seed)
     }
 
 }

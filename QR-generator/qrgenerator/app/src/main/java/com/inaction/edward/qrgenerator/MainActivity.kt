@@ -2,13 +2,22 @@ package com.inaction.edward.qrgenerator
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.widget.TextView
 import com.getbase.floatingactionbutton.FloatingActionButton
 import com.getbase.floatingactionbutton.FloatingActionsMenu
+import com.inaction.edward.qrgenerator.adapters.SeedAdapter
+import com.inaction.edward.qrgenerator.asynctasks.LoadSeedListAsyncTask
+import com.inaction.edward.qrgenerator.entities.Seed
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,15 +26,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     var fabMenu: FloatingActionsMenu? = null
+    var emptyTextView: TextView? = null
+    var seedRecyclerView: RecyclerView? = null
+
+    private var mLoadSeedListAsyncTask: LoadSeedListAsyncTask? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupFabMenu()
+        setupUi()
     }
 
-    private fun setupFabMenu() {
+    private fun setupUi() {
+        emptyTextView = findViewById(R.id.emptyTextView)
+        seedRecyclerView = findViewById(R.id.seedRecyclerView)
+
+        // floating action menu
         fabMenu = findViewById(R.id.fabMenu)
 
         val scanFab: FloatingActionButton? = findViewById(R.id.scanFab)
@@ -45,6 +62,48 @@ class MainActivity : AppCompatActivity() {
         generateFab?.setOnClickListener {
             toActivity(GeneratorActivity::class.java)
             fabMenu?.collapse()
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+
+        loadSeedList()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        mLoadSeedListAsyncTask?.let {
+            it.cancel(true)
+            mLoadSeedListAsyncTask = null
+        }
+    }
+
+
+    private fun loadSeedList() {
+        LoadSeedListAsyncTask { list ->
+            if (list.isNotEmpty()) {
+                showList(list)
+            }
+
+            mLoadSeedListAsyncTask = null
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
+    }
+
+    private fun showList(list: List<Seed>) {
+        emptyTextView?.visibility = View.GONE
+
+        seedRecyclerView?.let {
+            val adapter = SeedAdapter(list)
+            it.adapter = adapter
+
+            val layoutManager = LinearLayoutManager(this)
+            it.layoutManager = layoutManager
+
+            it.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+
+            it.visibility = View.VISIBLE
+
         }
     }
 
