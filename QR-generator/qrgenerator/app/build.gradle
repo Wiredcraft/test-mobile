@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply from: 'upload.gradle'
+
 android {
     signingConfigs {
         release {
@@ -19,7 +21,7 @@ android {
         applicationId "com.inaction.edward.qrgenerator"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
+        versionCode 3
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
