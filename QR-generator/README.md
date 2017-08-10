@@ -33,3 +33,26 @@ Start the server:
 - API test with mockito
 - FAB menu test with Espresso
 
+
+## Gradle Tools
+
+There is a task named `upoload`, run this task after finishing `assembleRelease`, it will upload the APK to hockeyapp platform.
+
+### How to speed up Android Building?
+
+- Enable `Offline` mode in Gradle Settings.
+- Enable `Parallel` mode in Compiler Settings.
+- Enable `Configure on demand` mode in Compiler Settings.
+- Use `Daemon` by setting `org.gradle.daemon` to `true`.
+- Increase memory allocation if needed.
+
+### How to automate workflow
+
+- Rename release APK name with gradle.
+- Automatically archive all release APK after building is finished with gradle.
+
+
+## Explanation
+
+I upload some credentials on purpose, like keystore, keystore pass and upload token. I know it's very bad on production. Since this is a task and all those credentials are used in this project only, it's better to have them for you guys to test my code.
+
