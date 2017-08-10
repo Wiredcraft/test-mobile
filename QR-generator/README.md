@@ -1,5 +1,7 @@
 # Documentation of QR Code App
 
+[APP download link](https://rink.hockeyapp.net/apps/fac146a4cab04baf857d62c16a90d232)
+
 ## API Server
 
 The API server is built with python3, it only has one seed api: `http://localhost:2333/api/seed`.
