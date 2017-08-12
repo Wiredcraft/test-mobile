@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply from: 'upload.gradle'
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'qr'
+            keyPassword 'fzapNFNeP9ngQ5'
+            storeFile file('../keystore/keystore.jks')
+            storePassword 'wRhwBFKRL3Gk2Q'
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.inaction.edward.qrgenerator"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 3
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:recyclerview-v7:26.0.0'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'me.dm7.barcodescanner:zxing:1.9.7'
+    implementation 'com.github.kenglxn.QRGen:android:2.3.0'
+    implementation 'android.arch.persistence.room:runtime:1.0.0-alpha8'
+    kapt 'android.arch.persistence.room:compiler:1.0.0-alpha8'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.8.47'
+    androidTestImplementation 'com.android.support.test:runner:1.0.0'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.0'
+}

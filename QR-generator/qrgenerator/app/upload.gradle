@@ -1,0 +1,9 @@
+
+def RELEASE_APK_PATH = 'build/outputs/apk/release/app-release.apk'
+def APP_ID = 'fac146a4cab04baf857d62c16a90d232'
+def API_TOKEN = '9c8564075d17434ba31afcd462673a14'
+def UPLOAD_ENDPOINT = "https://rink.hockeyapp.net/api/2/apps/${APP_ID}/app_versions/upload"
+
+task upload(type: Exec) {
+    commandLine "curl", "-F", "ipa=@${RELEASE_APK_PATH}", "-H", "X-HockeyAppToken:${API_TOKEN}", UPLOAD_ENDPOINT
+}
