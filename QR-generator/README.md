@@ -8,8 +8,9 @@ The API server is built with python3, it only has one seed api: `http://localhos
 
 Start the server:
 
-1. Install `bottle` by running: `pip install bottle`
-2. Start server by running: `python3 server.py`
+1. Upgrade Python to version `3.6`
+2. Install `bottle` by running: `pip install bottle`
+3. Start server by running: `python3 server.py`
 
 
 ## APP
