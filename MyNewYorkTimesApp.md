@@ -3,29 +3,29 @@
 ## User Stories
 
 1. As a user on app first launch,
-  - When I reach the home page
-  - Then I should see a list (or gallery of news headlines). Each news item on this page should show: title, snippet, date, image
-  - And I should see a search box
+    - When I reach the home page
+    - Then I should see a list (or gallery of news headlines). Each news item on this page should show: title, snippet, date, image
+    - And I should see a search box
 2. As a user on the home page,
-  - When I tap on a news item
-  - Then I should see the news details
+    - When I tap on a news item
+    - Then I should see the news details
 3. As a user on the news details page,
-  - When I swipe left or right
-  - Then I should see the corresponding news before or after the current news item based on the order on the home page
+    - When I swipe left or right
+    - Then I should see the corresponding news before or after the current news item based on the order on the home page
 4. As a user on the home page,
-  - When I focus on to the search bar
-  - And enter search terms
-  - And press enter
-  - Then I should see the corresponding news result lists based on the search terms
+    - When I focus on to the search bar
+    - And enter search terms
+    - And press enter
+    - Then I should see the corresponding news result lists based on the search terms
 5. As a user at the home page,
-  - When I tap and focus into the search box
-  - Then I should see a list of my previous 10 search terms
+    - When I tap and focus into the search box
+    - Then I should see a list of my previous 10 search terms
 6. As a user at the home page with previous search terms shown,
-  - When I select a search term item
-  - Then I should see the corresponding news result lists based on the selected search term
+    - When I select a search term item
+    - Then I should see the corresponding news result lists based on the selected search term
 7. As a user on the home page with news list shown,
-  - When I scroll near the end of the list,
-  - Then the next page should be loaded (aka. “infinite scroll”)
+    - When I scroll near the end of the list,
+    - Then the next page should be loaded (aka. “infinite scroll”)
 
 ## API
 
