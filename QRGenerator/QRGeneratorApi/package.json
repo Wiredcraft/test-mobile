@@ -1,0 +1,11 @@
+{
+  "name": "qr-generator-api",
+  "version": "1.0.0",
+  "description": "REST Api for QRGenerator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "buginux",
+  "license": "ISC"
+}
