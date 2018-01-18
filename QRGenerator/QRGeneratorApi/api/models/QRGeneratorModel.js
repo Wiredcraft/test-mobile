@@ -2,14 +2,14 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var SeedSchema = new Schema(
+var SeedSchema = new Schema({
 	seed: {
-		type: string
+		type: String
 	}, 
 	expires_at: {
 		type: Date,
 		default: Date.now
 	}
-);
+});
 
 module.exports = mongoose.model('Seed', SeedSchema);
