@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "mongoose": "^4.13.9"
+    "mongoose": "^4.13.9",
+    "randomstring": "^1.1.5"
   }
 }
