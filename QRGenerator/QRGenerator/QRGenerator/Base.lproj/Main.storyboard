@@ -79,6 +79,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QhF-Pe-TR8"/>
                     </view>
+                    <connections>
+                        <outlet property="qrCodeImageView" destination="R0G-FO-kfs" id="sgQ-dz-lyu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ue-0Z-7Et" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
