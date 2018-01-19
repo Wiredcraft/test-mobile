@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23C7A14C2012263C00C91D2A /* QRSeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A14B2012263C00C91D2A /* QRSeedService.swift */; };
 		23C7A14E2012268700C91D2A /* QRSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A14D2012268700C91D2A /* QRSeed.swift */; };
+		23C7A15020122FBC00C91D2A /* QRSeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A14F20122FBB00C91D2A /* QRSeedCache.swift */; };
 		938520AE478D5792485F480D /* Pods_QRGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60FE8EA2348CDC760D24E1D /* Pods_QRGenerator.framework */; };
 		A20B5AA820105D7D00D86A82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20B5AA720105D7D00D86A82 /* AppDelegate.swift */; };
 		A20B5AAA20105D7D00D86A82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20B5AA920105D7D00D86A82 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		23C7A14B2012263C00C91D2A /* QRSeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRSeedService.swift; sourceTree = "<group>"; };
 		23C7A14D2012268700C91D2A /* QRSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRSeed.swift; sourceTree = "<group>"; };
+		23C7A14F20122FBB00C91D2A /* QRSeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRSeedCache.swift; sourceTree = "<group>"; };
 		A20B5AA420105D7D00D86A82 /* QRGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20B5AA720105D7D00D86A82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A20B5AA920105D7D00D86A82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				A20B5AA920105D7D00D86A82 /* ViewController.swift */,
 				A20B5AC720105E1600D86A82 /* QRCodeGenerateViewController.swift */,
 				23C7A14B2012263C00C91D2A /* QRSeedService.swift */,
+				23C7A14F20122FBB00C91D2A /* QRSeedCache.swift */,
 				23C7A14D2012268700C91D2A /* QRSeed.swift */,
 				A20B5AAB20105D7D00D86A82 /* Main.storyboard */,
 				A20B5AAE20105D7D00D86A82 /* Assets.xcassets */,
@@ -295,6 +298,7 @@
 				A20B5AC820105E1600D86A82 /* QRCodeGenerateViewController.swift in Sources */,
 				23C7A14E2012268700C91D2A /* QRSeed.swift in Sources */,
 				A20B5AA820105D7D00D86A82 /* AppDelegate.swift in Sources */,
+				23C7A15020122FBC00C91D2A /* QRSeedCache.swift in Sources */,
 				23C7A14C2012263C00C91D2A /* QRSeedService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

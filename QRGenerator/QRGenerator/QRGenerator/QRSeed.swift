@@ -10,19 +10,20 @@ import Foundation
 
 class QRSeed {
     let seed: String
-    let expiresAt: Date?
+    let expiresAt: TimeInterval
     
-    init(seed: String, expiresAt: Date?) {
+    init(seed: String, expiresAt: TimeInterval) {
         self.seed = seed
         self.expiresAt = expiresAt
     }
     
     init?(json: [String: AnyObject]) {
-        guard let seed = json["seed"] as? String else {
+        guard let seed = json["seed"] as? String,
+            let expiresAt = json["expires_at"] as? TimeInterval else {
             return nil
         }
         
         self.seed = seed
-        self.expiresAt = json["expires_at"] as? Date
+        self.expiresAt = expiresAt
     }
 }

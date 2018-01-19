@@ -17,6 +17,10 @@ class QRCodeGenerateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        generateQRCodeImage()
+    }
+    
+    private func generateQRCodeImage() {
         let spinner = JGProgressHUD(style: .dark)!
         spinner.textLabel.text = "Loading"
         spinner.show(in: view)
