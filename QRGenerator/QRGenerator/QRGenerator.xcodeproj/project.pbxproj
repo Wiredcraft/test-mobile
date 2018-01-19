@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		938520AE478D5792485F480D /* Pods_QRGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60FE8EA2348CDC760D24E1D /* Pods_QRGenerator.framework */; };
 		A20B5AA820105D7D00D86A82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20B5AA720105D7D00D86A82 /* AppDelegate.swift */; };
 		A20B5AAA20105D7D00D86A82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20B5AA920105D7D00D86A82 /* ViewController.swift */; };
 		A20B5AAD20105D7D00D86A82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20B5AAB20105D7D00D86A82 /* Main.storyboard */; };
@@ -38,6 +39,9 @@
 		A20B5ABC20105D7D00D86A82 /* QRGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGeneratorTests.swift; sourceTree = "<group>"; };
 		A20B5ABE20105D7D00D86A82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20B5AC720105E1600D86A82 /* QRCodeGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerateViewController.swift; sourceTree = "<group>"; };
+		C60FE8EA2348CDC760D24E1D /* Pods_QRGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F75350E50A8F5DA96C358004 /* Pods-QRGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRGenerator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRGenerator/Pods-QRGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		FAAD52A2647A8E31715D5F63 /* Pods-QRGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRGenerator.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRGenerator/Pods-QRGenerator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				938520AE478D5792485F480D /* Pods_QRGenerator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +69,8 @@
 				A20B5AA620105D7D00D86A82 /* QRGenerator */,
 				A20B5ABB20105D7D00D86A82 /* QRGeneratorTests */,
 				A20B5AA520105D7D00D86A82 /* Products */,
+				E4D5C36715AD83FA7C942F82 /* Pods */,
+				FCDEA4D370E3926A82055660 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +106,23 @@
 			path = QRGeneratorTests;
 			sourceTree = "<group>";
 		};
+		E4D5C36715AD83FA7C942F82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F75350E50A8F5DA96C358004 /* Pods-QRGenerator.debug.xcconfig */,
+				FAAD52A2647A8E31715D5F63 /* Pods-QRGenerator.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FCDEA4D370E3926A82055660 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C60FE8EA2348CDC760D24E1D /* Pods_QRGenerator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +130,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A20B5AC120105D7D00D86A82 /* Build configuration list for PBXNativeTarget "QRGenerator" */;
 			buildPhases = (
+				BF23FD27C379527DAAFDD152 /* [CP] Check Pods Manifest.lock */,
 				A20B5AA020105D7D00D86A82 /* Sources */,
 				A20B5AA120105D7D00D86A82 /* Frameworks */,
 				A20B5AA220105D7D00D86A82 /* Resources */,
+				B0B6FD49D672FA8653B2EAF1 /* [CP] Embed Pods Frameworks */,
+				7260C8337E883ECF61EFFBFC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,6 +223,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7260C8337E883ECF61EFFBFC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRGenerator/Pods-QRGenerator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0B6FD49D672FA8653B2EAF1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-QRGenerator/Pods-QRGenerator-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRGenerator/Pods-QRGenerator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF23FD27C379527DAAFDD152 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QRGenerator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A20B5AA020105D7D00D86A82 /* Sources */ = {
@@ -355,6 +438,7 @@
 		};
 		A20B5AC220105D7D00D86A82 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F75350E50A8F5DA96C358004 /* Pods-QRGenerator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -371,6 +455,7 @@
 		};
 		A20B5AC320105D7D00D86A82 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAAD52A2647A8E31715D5F63 /* Pods-QRGenerator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
