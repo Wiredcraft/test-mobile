@@ -70,22 +70,43 @@
                                     <constraint firstAttribute="width" secondItem="R0G-FO-kfs" secondAttribute="height" multiplier="1:1" id="DNB-mp-4i2"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYn-pP-tnb">
+                                <rect key="frame" x="0.0" y="553" width="375" height="114"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewH-ay-v8D" customClass="QRCountDownLabel" customModule="QRGenerator" customModuleProvider="target">
+                                        <rect key="frame" x="156.5" y="38.5" width="62" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ewH-ay-v8D" firstAttribute="centerY" secondItem="aYn-pP-tnb" secondAttribute="centerY" id="AP7-YB-SZ7"/>
+                                    <constraint firstItem="ewH-ay-v8D" firstAttribute="centerX" secondItem="aYn-pP-tnb" secondAttribute="centerX" id="TvC-dv-6SK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="R0G-FO-kfs" firstAttribute="leading" secondItem="QhF-Pe-TR8" secondAttribute="leading" id="9u4-Dd-60v"/>
+                            <constraint firstItem="aYn-pP-tnb" firstAttribute="top" secondItem="R0G-FO-kfs" secondAttribute="bottom" id="J1R-l7-G4j"/>
+                            <constraint firstItem="QhF-Pe-TR8" firstAttribute="trailing" secondItem="aYn-pP-tnb" secondAttribute="trailing" id="d8O-mz-gZh"/>
+                            <constraint firstItem="aYn-pP-tnb" firstAttribute="leading" secondItem="QhF-Pe-TR8" secondAttribute="leading" id="gWd-O7-SHL"/>
+                            <constraint firstItem="QhF-Pe-TR8" firstAttribute="bottom" secondItem="aYn-pP-tnb" secondAttribute="bottom" id="mlh-wh-ovb"/>
                             <constraint firstItem="QhF-Pe-TR8" firstAttribute="trailing" secondItem="R0G-FO-kfs" secondAttribute="trailing" id="vV6-Mv-mUE"/>
                             <constraint firstItem="R0G-FO-kfs" firstAttribute="centerY" secondItem="QhF-Pe-TR8" secondAttribute="centerY" id="vZ3-4F-dfT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QhF-Pe-TR8"/>
                     </view>
                     <connections>
+                        <outlet property="countDownLabel" destination="ewH-ay-v8D" id="a12-Tv-Add"/>
                         <outlet property="qrCodeImageView" destination="R0G-FO-kfs" id="sgQ-dz-lyu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ue-0Z-7Et" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="455" y="8"/>
+            <point key="canvasLocation" x="453.60000000000002" y="7.6461769115442282"/>
         </scene>
     </scenes>
 </document>

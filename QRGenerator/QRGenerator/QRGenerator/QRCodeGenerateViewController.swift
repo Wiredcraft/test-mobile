@@ -11,12 +11,16 @@ import JGProgressHUD
 
 class QRCodeGenerateViewController: UIViewController {
     @IBOutlet weak var qrCodeImageView: UIImageView!
+    @IBOutlet weak var countDownLabel: QRCountDownLabel!
     
     var qrCodeImage: CIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "QRCode"
+        
+        countDownLabel.delegate = self
         generateQRCodeImage()
     }
     
@@ -24,6 +28,7 @@ class QRCodeGenerateViewController: UIViewController {
         let spinner = JGProgressHUD(style: .dark)!
         spinner.textLabel.text = "Loading"
         spinner.show(in: view)
+        countDownLabel.isHidden = true
         
         QRSeedService.fetchQRSeed { [unowned self] seed in
             spinner.dismiss()
@@ -37,6 +42,8 @@ class QRCodeGenerateViewController: UIViewController {
             
             self.qrCodeImage = filter.outputImage
             self.displayQRCodeImage()
+            self.countDownLabel.startCountDown(withExpiresAt: seed.expiresAt)
+            self.countDownLabel.isHidden = false
         }
     }
     
@@ -46,5 +53,11 @@ class QRCodeGenerateViewController: UIViewController {
         
         let transformedImage = qrCodeImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrCodeImageView.image = UIImage(ciImage: transformedImage)
+    }
+}
+
+extension QRCodeGenerateViewController: QRCountDownLabelDelegate {
+    func countDownLabelDidExpired() {
+        generateQRCodeImage()
     }
 }

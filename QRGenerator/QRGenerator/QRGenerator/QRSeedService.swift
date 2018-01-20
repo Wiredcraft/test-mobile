@@ -13,14 +13,14 @@ class QRSeedService {
         let cache = QRSeedCache()
         let seed = cache.readCachedSeed()
         
-        // Seed is not expired
+        // Seed is cached && not expired
         if seed != nil && Date().timeIntervalSince1970 < seed!.expiresAt {
             completion(seed)
             return
         }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-            let seed = QRSeed(seed: "1234567890", expiresAt: Date().timeIntervalSince1970 + 1000)
+            let seed = QRSeed(seed: "1234567890", expiresAt: Date().timeIntervalSince1970 + 10)
             
             cache.save(seed: seed)
             
