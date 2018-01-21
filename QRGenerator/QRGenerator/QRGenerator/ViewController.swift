@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         self.title = "QRGenerator"
     }
     
+    // MARK: UI Events
+    
     @IBAction func handleMenuButton(sender: FloatingButton) {
         let controller = FloatingMenuViewController(fromView: sender)
         controller.delegate = self
@@ -38,17 +40,23 @@ class ViewController: UIViewController {
         present(controller, animated: true, completion: nil)
     }
     
+    // MARK: Private
+    
     private func actionScan() {
+        // Present QRCode reader controller
         readerViewController.delegate = self
         present(readerViewController, animated: true, completion: nil)
     }
     
     private func actionGenerateQRCode() {
+        // Instantiate controller from storyboard
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "QRCodeGenerateViewController")
+        
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    // Show text only hud
     private func showToast(withText text: String) {
         let hud = MBProgressHUD.showAdded(to: view, animated: true)
         hud.mode = .text
@@ -79,9 +87,9 @@ extension ViewController: FloatingMenuViewControllerDelegate {
         controller.dismiss(animated: true, completion: nil)
         
         if index == 0 {
-            actionScan()
-        } else if index == 1 {
             actionGenerateQRCode()
+        } else if index == 1 {
+            actionScan()
         }
     }
 }

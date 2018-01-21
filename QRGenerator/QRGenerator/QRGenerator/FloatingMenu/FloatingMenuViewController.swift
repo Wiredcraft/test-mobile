@@ -57,7 +57,7 @@ class FloatingMenuViewController: UIViewController {
         blurredView.frame = view.bounds
         view.addSubview(blurredView)
         
-        closeButton.addTarget(self, action: #selector(handleCloseButton(sender:)), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(handleCloseButton), for: .touchUpInside)
         view.addSubview(closeButton)
         
         for button in buttonItems {
@@ -70,6 +70,10 @@ class FloatingMenuViewController: UIViewController {
         super.viewWillAppear(animated)
         
         configureButtons()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        handleCloseButton()
     }
     
     func configureButtons() {
@@ -89,7 +93,7 @@ class FloatingMenuViewController: UIViewController {
         }
     }
     
-    @objc func handleCloseButton(sender: FloatingButton) {
+    @objc func handleCloseButton() {
         delegate?.floatingMenuControllerDidCancel?(controller: self)
         dismiss(animated: true, completion: nil)
     }

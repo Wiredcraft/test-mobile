@@ -45,6 +45,7 @@ class QRCodeGenerateViewController: UIViewController {
         }
     }
     
+    // Show loading hud
     private func showLoading(withText text: String = "Loading") -> MBProgressHUD {
         let hud = MBProgressHUD.showAdded(to: view, animated: true)
         hud.mode = MBProgressHUDMode.indeterminate
@@ -64,6 +65,7 @@ class QRCodeGenerateViewController: UIViewController {
 
 extension QRCodeGenerateViewController: QRCountDownLabelDelegate {
     func countDownLabelDidExpired() {
+        // Seed is expired
         generateQRCodeImage()
     }
 }
