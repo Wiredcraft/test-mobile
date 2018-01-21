@@ -42,9 +42,18 @@
                                     <segue destination="h4n-Cp-r9w" kind="show" id="X0u-gp-QRQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nb-99-HUA">
+                                <rect key="frame" x="170" y="304.5" width="35" height="30"/>
+                                <state key="normal" title="Scan"/>
+                                <connections>
+                                    <action selector="actionScan" destination="BYZ-38-t0r" eventType="touchUpInside" id="V7F-0B-LEo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="9Nb-99-HUA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0hr-9f-Lf9"/>
+                            <constraint firstItem="ri1-N2-e9c" firstAttribute="top" secondItem="9Nb-99-HUA" secondAttribute="bottom" constant="16" id="PE3-Ec-mi4"/>
                             <constraint firstItem="ri1-N2-e9c" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="QUl-MA-Bca"/>
                             <constraint firstItem="ri1-N2-e9c" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="m8j-B1-mcy"/>
                         </constraints>

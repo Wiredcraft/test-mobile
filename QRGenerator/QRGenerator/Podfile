@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'QRGenerator' do
 	pod 'Alamofire'
-	pod 'JGProgressHUD'
+	pod 'MBProgressHUD'
+	pod 'QRCodeReader.swift', '~> 8.0.3'
 end

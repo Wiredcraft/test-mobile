@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import JGProgressHUD
+import MBProgressHUD
 
 class QRCodeGenerateViewController: UIViewController {
     @IBOutlet weak var qrCodeImageView: UIImageView!
@@ -25,13 +25,11 @@ class QRCodeGenerateViewController: UIViewController {
     }
     
     private func generateQRCodeImage() {
-        let spinner = JGProgressHUD(style: .dark)!
-        spinner.textLabel.text = "Loading"
-        spinner.show(in: view)
         countDownLabel.isHidden = true
         
+        let hud = showLoading()
         QRSeedService.fetchQRSeed { [unowned self] seed in
-            spinner.dismiss()
+            hud.hide(animated: true)
             
             guard let seed = seed else { return }
             
@@ -45,6 +43,14 @@ class QRCodeGenerateViewController: UIViewController {
             self.countDownLabel.startCountDown(withExpiresAt: seed.expiresAt)
             self.countDownLabel.isHidden = false
         }
+    }
+    
+    private func showLoading(withText text: String = "Loading") -> MBProgressHUD {
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        hud.mode = MBProgressHUDMode.indeterminate
+        hud.label.text = text
+        
+        return hud
     }
     
     private func displayQRCodeImage() {
