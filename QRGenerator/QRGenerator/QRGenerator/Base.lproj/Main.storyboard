@@ -35,27 +35,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ri1-N2-e9c">
-                                <rect key="frame" x="155.5" y="350.5" width="64" height="30"/>
-                                <state key="normal" title="Generate"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiz-j2-PM8" customClass="FloatingButton" customModule="QRGenerator" customModuleProvider="target">
+                                <rect key="frame" x="309" y="601" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Cje-Sw-zaf"/>
+                                    <constraint firstAttribute="width" constant="50" id="nFB-QM-A9R"/>
+                                </constraints>
                                 <connections>
-                                    <segue destination="h4n-Cp-r9w" kind="show" id="X0u-gp-QRQ"/>
+                                    <action selector="handleMenuButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Hk-QQ-e5T"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nb-99-HUA">
-                                <rect key="frame" x="170" y="304.5" width="35" height="30"/>
-                                <state key="normal" title="Scan"/>
-                                <connections>
-                                    <action selector="actionScan" destination="BYZ-38-t0r" eventType="touchUpInside" id="V7F-0B-LEo"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-image" translatesAutoresizingMaskIntoConstraints="NO" id="DLd-Xo-Yyh">
+                                <rect key="frame" x="119" y="206.5" width="137" height="186"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9Nb-99-HUA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0hr-9f-Lf9"/>
-                            <constraint firstItem="ri1-N2-e9c" firstAttribute="top" secondItem="9Nb-99-HUA" secondAttribute="bottom" constant="16" id="PE3-Ec-mi4"/>
-                            <constraint firstItem="ri1-N2-e9c" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="QUl-MA-Bca"/>
-                            <constraint firstItem="ri1-N2-e9c" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="m8j-B1-mcy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uiz-j2-PM8" secondAttribute="bottom" constant="16" id="GNH-JX-DlV"/>
+                            <constraint firstItem="DLd-Xo-Yyh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ozl-z2-J0f"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uiz-j2-PM8" secondAttribute="trailing" constant="16" id="kMZ-uU-Cyy"/>
+                            <constraint firstItem="DLd-Xo-Yyh" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-66" id="lIf-V7-3UF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -68,22 +67,22 @@
         <!--Code Generate View Controller-->
         <scene sceneID="Uxu-jw-idk">
             <objects>
-                <viewController id="h4n-Cp-r9w" customClass="QRCodeGenerateViewController" customModule="QRGenerator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRCodeGenerateViewController" id="h4n-Cp-r9w" customClass="QRCodeGenerateViewController" customModule="QRGenerator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dvg-qc-dwJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R0G-FO-kfs">
-                                <rect key="frame" x="0.0" y="178" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="156" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="R0G-FO-kfs" secondAttribute="height" multiplier="1:1" id="DNB-mp-4i2"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYn-pP-tnb">
-                                <rect key="frame" x="0.0" y="553" width="375" height="114"/>
+                                <rect key="frame" x="0.0" y="531" width="375" height="136"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewH-ay-v8D" customClass="QRCountDownLabel" customModule="QRGenerator" customModuleProvider="target">
-                                        <rect key="frame" x="156.5" y="38.5" width="62" height="38.5"/>
+                                        <rect key="frame" x="156.5" y="49.5" width="62" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -118,4 +117,7 @@
             <point key="canvasLocation" x="453.60000000000002" y="7.6461769115442282"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background-image" width="137" height="186"/>
+    </resources>
 </document>

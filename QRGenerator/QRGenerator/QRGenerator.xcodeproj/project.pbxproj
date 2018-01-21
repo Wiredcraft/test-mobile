@@ -11,6 +11,10 @@
 		23C7A14E2012268700C91D2A /* QRSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A14D2012268700C91D2A /* QRSeed.swift */; };
 		23C7A15020122FBC00C91D2A /* QRSeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A14F20122FBB00C91D2A /* QRSeedCache.swift */; };
 		23C7A152201368B500C91D2A /* QRCountDownLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A151201368B500C91D2A /* QRCountDownLabel.swift */; };
+		23C7A15520146E0E00C91D2A /* UIColor+FloatingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A15420146E0E00C91D2A /* UIColor+FloatingMenu.swift */; };
+		23C7A15720146E6700C91D2A /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A15620146E6700C91D2A /* FloatingButton.swift */; };
+		23C7A15920147E8F00C91D2A /* FloatingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A15820147E8F00C91D2A /* FloatingMenuViewController.swift */; };
+		23C7A15B20147FD200C91D2A /* UIImage+FloatingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C7A15A20147FD200C91D2A /* UIImage+FloatingMenu.swift */; };
 		938520AE478D5792485F480D /* Pods_QRGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60FE8EA2348CDC760D24E1D /* Pods_QRGenerator.framework */; };
 		A20B5AA820105D7D00D86A82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20B5AA720105D7D00D86A82 /* AppDelegate.swift */; };
 		A20B5AAA20105D7D00D86A82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20B5AA920105D7D00D86A82 /* ViewController.swift */; };
@@ -36,6 +40,10 @@
 		23C7A14D2012268700C91D2A /* QRSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRSeed.swift; sourceTree = "<group>"; };
 		23C7A14F20122FBB00C91D2A /* QRSeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRSeedCache.swift; sourceTree = "<group>"; };
 		23C7A151201368B500C91D2A /* QRCountDownLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCountDownLabel.swift; sourceTree = "<group>"; };
+		23C7A15420146E0E00C91D2A /* UIColor+FloatingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FloatingMenu.swift"; sourceTree = "<group>"; };
+		23C7A15620146E6700C91D2A /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		23C7A15820147E8F00C91D2A /* FloatingMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingMenuViewController.swift; sourceTree = "<group>"; };
+		23C7A15A20147FD200C91D2A /* UIImage+FloatingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+FloatingMenu.swift"; sourceTree = "<group>"; };
 		A20B5AA420105D7D00D86A82 /* QRGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20B5AA720105D7D00D86A82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A20B5AA920105D7D00D86A82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +79,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23C7A15320146DD800C91D2A /* FloatingMenu */ = {
+			isa = PBXGroup;
+			children = (
+				23C7A15420146E0E00C91D2A /* UIColor+FloatingMenu.swift */,
+				23C7A15A20147FD200C91D2A /* UIImage+FloatingMenu.swift */,
+				23C7A15620146E6700C91D2A /* FloatingButton.swift */,
+				23C7A15820147E8F00C91D2A /* FloatingMenuViewController.swift */,
+			);
+			path = FloatingMenu;
+			sourceTree = "<group>";
+		};
 		A20B5A9B20105D7D00D86A82 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +113,7 @@
 		A20B5AA620105D7D00D86A82 /* QRGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				23C7A15320146DD800C91D2A /* FloatingMenu */,
 				A20B5AA720105D7D00D86A82 /* AppDelegate.swift */,
 				A20B5AA920105D7D00D86A82 /* ViewController.swift */,
 				A20B5AC720105E1600D86A82 /* QRCodeGenerateViewController.swift */,
@@ -299,12 +319,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C7A15920147E8F00C91D2A /* FloatingMenuViewController.swift in Sources */,
 				23C7A152201368B500C91D2A /* QRCountDownLabel.swift in Sources */,
 				A20B5AAA20105D7D00D86A82 /* ViewController.swift in Sources */,
+				23C7A15720146E6700C91D2A /* FloatingButton.swift in Sources */,
 				A20B5AC820105E1600D86A82 /* QRCodeGenerateViewController.swift in Sources */,
 				23C7A14E2012268700C91D2A /* QRSeed.swift in Sources */,
 				A20B5AA820105D7D00D86A82 /* AppDelegate.swift in Sources */,
+				23C7A15B20147FD200C91D2A /* UIImage+FloatingMenu.swift in Sources */,
 				23C7A15020122FBC00C91D2A /* QRSeedCache.swift in Sources */,
+				23C7A15520146E0E00C91D2A /* UIColor+FloatingMenu.swift in Sources */,
 				23C7A14C2012263C00C91D2A /* QRSeedService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
