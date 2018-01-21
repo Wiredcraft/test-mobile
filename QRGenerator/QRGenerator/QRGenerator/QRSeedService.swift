@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class QRSeedService {
     class func fetchQRSeed(withCompletion completion: @escaping (QRSeed?) -> ()) {
@@ -19,11 +20,23 @@ class QRSeedService {
             return
         }
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-            let seed = QRSeed(seed: "1234567890", expiresAt: Date().timeIntervalSince1970 + 10)
+        Alamofire.request(URL(string: "http://localhost:3000/seed")!)
+        .validate()
+        .responseJSON { (response) in
+            guard response.result.isSuccess else {
+                print("Error while fetching seed: \(String(describing: response.result.error))")
+                completion(nil)
+                return
+            }
+            
+            guard let value = response.result.value as? [String: Any],
+                let seed = QRSeed(json: value) else {
+                print("Malformed data received from fetchSeed service")
+                completion(nil)
+                return
+            }
             
             cache.save(seed: seed)
-            
             completion(seed)
         }
     }

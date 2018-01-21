@@ -13,6 +13,10 @@ class QRCountDownLabel: UILabel {
     var timer: Timer?
     weak var delegate: QRCountDownLabelDelegate?
     
+    deinit {
+        timer?.invalidate()
+    }
+    
     func startCountDown(withExpiresAt expiresAt: TimeInterval) {
         remainSeconds = Int(ceil(expiresAt - Date().timeIntervalSince1970))
         text = "\(remainSeconds) s"

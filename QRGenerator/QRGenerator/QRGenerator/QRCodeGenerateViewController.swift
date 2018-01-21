@@ -12,6 +12,7 @@ import MBProgressHUD
 class QRCodeGenerateViewController: UIViewController {
     @IBOutlet weak var qrCodeImageView: UIImageView!
     @IBOutlet weak var countDownLabel: QRCountDownLabel!
+    @IBOutlet weak var errorView: UIView!
     
     var qrCodeImage: CIImage!
     
@@ -20,18 +21,25 @@ class QRCodeGenerateViewController: UIViewController {
         
         self.title = "QRCode"
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(errorViewTapped))
+        errorView.addGestureRecognizer(tapGesture)
+        
         countDownLabel.delegate = self
         generateQRCodeImage()
     }
     
     private func generateQRCodeImage() {
         countDownLabel.isHidden = true
+        errorView.isHidden = true
         
         let hud = showLoading()
         QRSeedService.fetchQRSeed { [unowned self] seed in
             hud.hide(animated: true)
             
-            guard let seed = seed else { return }
+            guard let seed = seed else {
+                self.errorView.isHidden = false
+                return
+            }
             
             let data = seed.seed.data(using: String.Encoding.utf8)
             let filter = CIFilter(name: "CIQRCodeGenerator")!
@@ -60,6 +68,10 @@ class QRCodeGenerateViewController: UIViewController {
         
         let transformedImage = qrCodeImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrCodeImageView.image = UIImage(ciImage: transformedImage)
+    }
+    
+    @objc private func errorViewTapped() {
+        generateQRCodeImage()
     }
 }
 
