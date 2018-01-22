@@ -1,0 +1,10 @@
+platform :ios, '9.0'
+
+inhibit_all_warnings!
+use_frameworks!
+
+target 'QRGenerator' do
+	pod 'Alamofire'
+	pod 'MBProgressHUD'
+	pod 'QRCodeReader.swift', '~> 8.0.3'
+end
