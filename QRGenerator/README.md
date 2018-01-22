@@ -9,7 +9,9 @@
 
 1. `cd QRGeneratorApi` - change working directory into server
 2. `npm install` - install server dependencies
-3. `npm run start` - start the sever
+3. `brew install mongodb` - install mongodb
+4. `mongod` - start the mongodb
+5. `npm run start` - start the sever
 
 ### iOS
 
