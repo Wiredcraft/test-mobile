@@ -38,6 +38,7 @@ class QRCodeGenerateViewController: UIViewController {
             
             guard let seed = seed else {
                 self.errorView.isHidden = false
+                self.qrCodeImageView.isHidden = true
                 return
             }
             
@@ -68,6 +69,7 @@ class QRCodeGenerateViewController: UIViewController {
         
         let transformedImage = qrCodeImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         qrCodeImageView.image = UIImage(ciImage: transformedImage)
+        qrCodeImageView.isHidden = false
     }
     
     @objc private func errorViewTapped() {
