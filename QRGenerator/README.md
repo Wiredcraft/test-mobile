@@ -34,3 +34,22 @@
 * `Alamofire` - iOS http request library
 * `MBProgressHUD` - For show loading or tips hud
 * `QRCodeReader.swift` - To scan the QR
+
+## FAQ
+
+Q: When I run the command `mongod`, the terminal says
+
+```
+[initandlisten] exception in initAndListen: 20 Attempted to create a lock file on a read-only directory: /data/db, terminating
+[initandlisten] shutdown: going to close listening sockets...
+[initandlisten] shutdown: going to flush diaglog...
+[initandlisten] now exiting
+[initandlisten] shutting down with code:100
+```
+
+A: You should create `/data/db` directory before you run the command.
+
+```
+$ sudo mkdir /data/db
+$ sudo chown -R $USER /data/db 
+```
