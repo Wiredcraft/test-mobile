@@ -1,0 +1,3 @@
+class Seed < ApplicationRecord
+	
+end
