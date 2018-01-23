@@ -33,7 +33,15 @@ extension QRGenerator: TargetType {
     }
     
     public var sampleData: Data {
-        return Data()
+        switch self {
+        case .seed:
+            return try! JSONSerialization.data(withJSONObject: [
+                "seed" : "1234567890",
+                "expiresAt" : "2018-01-23T18:41:55+08:00"
+            ], options: .prettyPrinted)
+        default:
+            return Data()
+        }
     }
     
     public var task: Task {
