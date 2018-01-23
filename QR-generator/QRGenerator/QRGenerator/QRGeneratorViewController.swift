@@ -13,9 +13,9 @@ import Moya
 import ObjectMapper
 
 class QRGeneratorViewController: UIViewController {
-    var seedCancellable: Cancellable?
-    var expiresTimer: Timer?
-    lazy var qrcodeImageView: UIImageView = {
+    private var seedCancellable: Cancellable?
+    private var expiresTimer: Timer?
+    private lazy var qrcodeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.gray.cgColor
@@ -66,8 +66,7 @@ class QRGeneratorViewController: UIViewController {
         let formatter = ISO8601DateFormatter()
         let expiresDate = expiresAt.flatMap { formatter.date(from: $0) }
         if let interval = expiresDate?.timeIntervalSince(Date()) {
-            print(interval)
-            expiresTimer = Timer(fire: Date(), interval: interval, repeats: true, block: { [weak self] timer in
+            expiresTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [weak self] timer in
                 self?.requestData()
             })
         }
