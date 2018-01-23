@@ -3,7 +3,7 @@ import PerfectHTTP
 import PerfectHTTPServer
 
 var routes = Routes()
-routes.add(method: .get, uri: "/") {
+routes.add(method: .get, uri: "/seed") {
     request, response in
     
     // create seed model
@@ -22,7 +22,7 @@ routes.add(method: .get, uri: "/") {
     }
     
     response.setHeader(.contentType, value: "application/json")
-    try? response.setBody(json: seed.toJSONString())
+    try? response.setBody(json: seed.toJSON())
         .completed()
 }
 
