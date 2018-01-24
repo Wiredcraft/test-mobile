@@ -25,6 +25,7 @@
 		D6FA88FE201827B600901156 /* Archivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FA88FD201827B600901156 /* Archivable.swift */; };
 		D6FA89002018293C00901156 /* Seed+Archivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FA88FF2018293C00901156 /* Seed+Archivable.swift */; };
 		D6FA89022018318300901156 /* Seed+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FA89012018318300901156 /* Seed+ViewModel.swift */; };
+		D6FA89352018801C00901156 /* QRCountDownLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FA89342018801C00901156 /* QRCountDownLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		D6FA88FD201827B600901156 /* Archivable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archivable.swift; sourceTree = "<group>"; };
 		D6FA88FF2018293C00901156 /* Seed+Archivable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Seed+Archivable.swift"; sourceTree = "<group>"; };
 		D6FA89012018318300901156 /* Seed+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Seed+ViewModel.swift"; sourceTree = "<group>"; };
+		D6FA89342018801C00901156 /* QRCountDownLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCountDownLabel.swift; sourceTree = "<group>"; };
 		F72E13AF2B1369785C0E2C0E /* Pods-QRGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRGenerator.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRGenerator/Pods-QRGenerator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 				D649BD422015E5F9002903F3 /* QRGeneratorViewController.swift */,
 				D6FA88F920175FAF00901156 /* QRScannerViewController.swift */,
 				D6FA88FB20175FE400901156 /* QREntryViewController.swift */,
+				D6FA89342018801C00901156 /* QRCountDownLabel.swift */,
 				D649BD6E20171AFF002903F3 /* Seed.swift */,
 				D6FA88FD201827B600901156 /* Archivable.swift */,
 				D6FA88FF2018293C00901156 /* Seed+Archivable.swift */,
@@ -467,6 +470,7 @@
 				D649BD432015E5F9002903F3 /* QRGeneratorViewController.swift in Sources */,
 				D6FA88FC20175FE400901156 /* QREntryViewController.swift in Sources */,
 				D628A33120172285008EDE10 /* QRGeneratorProvider.swift in Sources */,
+				D6FA89352018801C00901156 /* QRCountDownLabel.swift in Sources */,
 				D6FA88FE201827B600901156 /* Archivable.swift in Sources */,
 				D6FA89002018293C00901156 /* Seed+Archivable.swift in Sources */,
 				D649BD412015E5F9002903F3 /* AppDelegate.swift in Sources */,

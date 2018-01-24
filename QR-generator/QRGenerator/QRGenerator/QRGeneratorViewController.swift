@@ -14,6 +14,7 @@ import ObjectMapper
 
 class QRGeneratorViewController: UIViewController {
     private var seedCancellable: Cancellable?
+    private let seedExpiredLabel = QRCountDownLabel()
     private lazy var qrcodeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.borderWidth = 1
@@ -50,6 +51,11 @@ class QRGeneratorViewController: UIViewController {
             make.center.equalTo(view)
             make.width.height.equalTo(300)
         }
+        view.addSubview(seedExpiredLabel)
+        seedExpiredLabel.snp.makeConstraints { (make) in
+            make.left.right.equalTo(view)
+            make.top.equalTo(qrcodeImageView.snp.bottom).offset(20)
+        }
     }
     
     private func setupQRCodeImage(seed: String?) {
@@ -59,11 +65,10 @@ class QRGeneratorViewController: UIViewController {
     }
     
     private func setupAutoRefreshTimer(expiresAt: String?) {
+
         let expiresDate = expiresAt.flatMap { ISO8601DateFormatter().date(from: $0) }
         if let interval = expiresDate?.timeIntervalSince(Date()) {
-            Timer.scheduledTimer(withTimeInterval: interval, repeats: false, block: { [weak self] timer in
-                // invalid previous timer
-                timer.invalidate()
+            seedExpiredLabel.start(with: interval, completion: { [weak self] in
                 self?.requestData()
             })
         }
