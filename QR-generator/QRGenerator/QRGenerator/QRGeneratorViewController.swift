@@ -92,11 +92,11 @@ class QRGeneratorViewController: UIViewController {
                     }
                 }
             case let .failure(error):
-                
                 if let seed = Seed.unarchiveFromDisk(),
-                   seed.expiresDate == nil || Date() > seed.expiresDate!  {
+                   seed.expiresDate == nil || Date() <= seed.expiresDate!  {
                     // if cached seed is valid, then show the qrcode image.
                     self.setupQRCodeImage(seed: seed.seed)
+                    self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
                 } else {
                     // if cached seed is expired, then show the error toast.
                     self.view.makeToast(error.localizedDescription)

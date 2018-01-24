@@ -39,14 +39,20 @@ class QRCountDownLabel: UIView {
         expiresTimer?.invalidate()
         expiresTimer = nil
         
-        var count = Int(interval)
+        guard interval > 0 else {
+            countLabel.text = "Interval should great than 0"
+            return
+        }
+        
+        var count = Int(ceil(interval))
         countLabel.text = String(count) + "S"
         
+        // start countdown timer
         expiresTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] timer in
-            
             count -= 1
             self?.countLabel.text = String(count) + "S"
             if count <= 0 {
+                timer.invalidate()
                 completion?()
             }
         })
