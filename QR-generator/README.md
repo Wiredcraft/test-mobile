@@ -1,25 +1,15 @@
 ## Usage
 
 ### Server
-You can run swift server or rails server, it dependents your favor and system.
 
-#### Swift Server
 Before you begin ，make sure your macOS version number is greater than 10.12.
 
 - `cd QRGeneratorAPISwift`
-- `build swift`
+- `swift build`
 	- download dependencies and build 
 - `.build/x86_64-apple-macosx10.10/debug/QRGeneratorAPISwift`
 	- run server
-
-#### Rails Server
-
-- `cd QRGeneratorRails`
-- `bundle install`
-	- download dependencies
-- `rails server`
-	- run server
- 
+	- the path denpends on your system. you will find it in log after executing `swift build`
 
 ### App
 

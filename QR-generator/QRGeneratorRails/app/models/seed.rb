@@ -1,3 +1,0 @@
-class Seed < ApplicationRecord
-	
-end
