@@ -681,6 +681,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8BU8NMY9TY;
 				INFOPLIST_FILE = QRGenerator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplec.QRGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -697,6 +698,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8BU8NMY9TY;
 				INFOPLIST_FILE = QRGenerator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplec.QRGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
