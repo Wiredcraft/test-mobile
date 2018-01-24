@@ -40,7 +40,7 @@ class QRCountDownLabel: UIView {
         expiresTimer = nil
         
         guard interval > 0 else {
-            countLabel.text = "Interval should great than 0"
+            countLabel.text = "Interval should be great than 0"
             return
         }
         

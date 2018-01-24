@@ -18,5 +18,6 @@ class QREntryViewController: UIViewController {
         navigationItem.title = "Home"
     }
 
+    
 }
 
