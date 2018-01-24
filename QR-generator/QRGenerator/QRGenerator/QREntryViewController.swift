@@ -6,4 +6,9 @@
 //  Copyright © 2018年 tripleCC. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class QREntryViewController: UIViewController {
+    
+}
+

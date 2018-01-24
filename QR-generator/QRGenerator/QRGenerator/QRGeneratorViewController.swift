@@ -14,7 +14,6 @@ import ObjectMapper
 
 class QRGeneratorViewController: UIViewController {
     private var seedCancellable: Cancellable?
-    private var expiresTimer: Timer?
     private lazy var qrcodeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.borderWidth = 1
@@ -60,13 +59,11 @@ class QRGeneratorViewController: UIViewController {
     }
     
     private func setupAutoRefreshTimer(expiresAt: String?) {
-        // invalid previous timer
-        expiresTimer?.invalidate()
-        
-        let formatter = ISO8601DateFormatter()
-        let expiresDate = expiresAt.flatMap { formatter.date(from: $0) }
+        let expiresDate = expiresAt.flatMap { ISO8601DateFormatter().date(from: $0) }
         if let interval = expiresDate?.timeIntervalSince(Date()) {
-            expiresTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true, block: { [weak self] timer in
+            Timer.scheduledTimer(withTimeInterval: interval, repeats: false, block: { [weak self] timer in
+                // invalid previous timer
+                timer.invalidate()
                 self?.requestData()
             })
         }
@@ -83,12 +80,22 @@ class QRGeneratorViewController: UIViewController {
                 if let json = try? response.mapJSON() {
                     // map to seed model
                     if let seed = Mapper<Seed>().map(JSONObject: json) {
+                        
+                        seed.archiveToDisk()
                         self.setupQRCodeImage(seed: seed.seed)
                         self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
                     }
                 }
             case let .failure(error):
-                self.view.makeToast(error.localizedDescription)
+                
+                if let seed = Seed.unarchiveFromDisk(),
+                   seed.expiresDate == nil || Date() > seed.expiresDate!  {
+                    // if cached seed is valid, then show the qrcode image.
+                    self.setupQRCodeImage(seed: seed.seed)
+                } else {
+                    // if cached seed is expired, then show the error toast.
+                    self.view.makeToast(error.localizedDescription)
+                }
             }
         }
     }

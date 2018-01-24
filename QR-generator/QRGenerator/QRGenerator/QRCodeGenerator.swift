@@ -20,10 +20,9 @@ public class QRCodeGenerator {
     }
     
     public func generate() -> UIImage? {
-        let filter = CIFilter(name: "QRCodeGenerator")
+        let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(data, forKey: "inputMessage")
         filter?.setValue("Q", forKey: "inputCorrectionLevel")
-        
         return filter?.outputImage.flatMap { UIImage(ciImage: $0) }
     }
 }

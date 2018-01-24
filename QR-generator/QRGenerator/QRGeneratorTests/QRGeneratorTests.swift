@@ -11,6 +11,11 @@ import XCTest
 
 class QRGeneratorTests: XCTestCase {
     
+    struct QRGeneratorTestsConst {
+        static let qrcode: String = "123456789"
+        static let expiresAt: String = "2018-01-24T15:37:46+08:00"
+    }
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,16 +26,39 @@ class QRGeneratorTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSeedArchivable() {
+        var seed = Seed()
+        seed.expiresAt = QRGeneratorTestsConst.expiresAt
+        seed.seed = QRGeneratorTestsConst.qrcode
+        let json = seed.archive()
+        XCTAssertEqual(json["seed"] as? String, seed.seed)
+        XCTAssertEqual(json["expiresAt"] as? String, seed.expiresAt)
+        
+        var unarchivedSeed = Seed(unarchive: ["seed" : QRGeneratorTestsConst.qrcode,
+                                               "expiresAt" : QRGeneratorTestsConst.expiresAt])
+        XCTAssertNotNil(unarchivedSeed)
+        XCTAssertEqual(QRGeneratorTestsConst.qrcode, unarchivedSeed?.seed)
+        XCTAssertEqual(QRGeneratorTestsConst.expiresAt, unarchivedSeed?.expiresAt)
+        
+        seed.archiveToDisk()
+        unarchivedSeed = Seed.unarchiveFromDisk()
+        XCTAssertNotNil(unarchivedSeed)
+        XCTAssertEqual(seed.seed, unarchivedSeed?.seed)
+        XCTAssertEqual(seed.expiresAt, unarchivedSeed?.expiresAt)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testSeedAPI() {
+        
     }
     
+    func testQRCodeGenerator() {
+        var image = QRCodeGenerator(string: QRGeneratorTestsConst.qrcode).generate()
+        XCTAssertNotNil(image)
+        XCTAssertTrue(QRGeneratorTestsConst.qrcode == QRCodeReader(image: image!).read())
+        
+        let imageData = QRGeneratorTestsConst.qrcode.data(using: .isoLatin1, allowLossyConversion: false)!
+        image = QRCodeGenerator(data: imageData).generate()
+        XCTAssertNotNil(image)
+        XCTAssertTrue(QRGeneratorTestsConst.qrcode == QRCodeReader(image: image!).read())
+    }
 }
