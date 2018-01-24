@@ -75,34 +75,34 @@ class QRGeneratorViewController: UIViewController {
     }
     
     private func requestData() -> Void {
-        // request seed json
-        view.makeToastActivity(.center)
-        seedCancellable = QRGeneratorProvider.request(.seed) { result in
-            self.view.hideToastActivity()
-            switch result {
-            case let .success(response):
-                // parse data to json
-                if let json = try? response.mapJSON() {
-                    // map to seed model
-                    if let seed = Mapper<Seed>().map(JSONObject: json) {
-                        
-                        seed.archiveToDisk()
-                        self.setupQRCodeImage(seed: seed.seed)
-                        self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
+        if let seed = Seed.unarchiveFromDisk(),
+            seed.expiresDate == nil || Date() <= seed.expiresDate!  {
+            // if cached seed is valid, then show the qrcode image.
+            self.setupQRCodeImage(seed: seed.seed)
+            self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
+        }  else {
+            // request seed json
+            view.makeToastActivity(.center)
+            seedCancellable = QRGeneratorProvider.request(.seed) { result in
+                self.view.hideToastActivity()
+                switch result {
+                case let .success(response):
+                    // parse data to json
+                    if let json = try? response.mapJSON() {
+                        // map to seed model
+                        if let seed = Mapper<Seed>().map(JSONObject: json) {
+                            
+                            seed.archiveToDisk()
+                            self.setupQRCodeImage(seed: seed.seed)
+                            self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
+                        }
                     }
-                }
-            case let .failure(error):
-                if let seed = Seed.unarchiveFromDisk(),
-                   seed.expiresDate == nil || Date() <= seed.expiresDate!  {
-                    // if cached seed is valid, then show the qrcode image.
-                    self.setupQRCodeImage(seed: seed.seed)
-                    self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
-                } else {
-                    // if cached seed is expired, then show the error toast.
+                case let .failure(error):
                     self.view.makeToast(error.localizedDescription)
                 }
             }
         }
+        
     }
 }
 
