@@ -11,7 +11,7 @@ import SnapKit
 import AVFoundation
 
 public protocol QRScannerViewControllerDelegate {
-    func scannerViewController(_: UIViewController, didFinishScanWithResult result: String?)
+    func scannerViewController(_ viewController: UIViewController, didFinishScanWithResult result: String?)
 }
 
 class QRScannerViewController: UIViewController {
@@ -54,6 +54,11 @@ class QRScannerViewController: UIViewController {
     
     private func setupNavigation() {
         navigationItem.title = "QRScaner"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissButtonOnClicked))
+    }
+    
+    @objc func dismissButtonOnClicked() {
+        dismiss(animated: true, completion: nil)
     }
     
     private func sessionStartScan() {

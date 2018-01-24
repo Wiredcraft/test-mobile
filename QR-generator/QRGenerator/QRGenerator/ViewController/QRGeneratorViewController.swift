@@ -46,6 +46,8 @@ class QRGeneratorViewController: UIViewController {
     }
     
     private func layoutPageSubviews() {
+        view.backgroundColor = UIColor.white
+        
         view.addSubview(qrcodeImageView)
         qrcodeImageView.snp.makeConstraints { (make) in
             make.center.equalTo(view)
