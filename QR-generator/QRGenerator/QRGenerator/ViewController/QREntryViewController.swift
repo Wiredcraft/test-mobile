@@ -11,27 +11,14 @@ import RHSideButtons
 import SnapKit
 
 class QREntryViewController: UIViewController {
-    private var qrcodeLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.lightGray
-        label.font = UIFont.systemFont(ofSize: 20);
-        label.textAlignment = .center
-        return label
-    }()
+   
+    @IBOutlet weak var qrcodeLabel: UILabel!
+    
     private var sideButton: RHSideButtons?
     private var buttons = [RHButtonView]()
     override func viewDidLoad() {
         setupNavigation()
-        layoutPageSubviews()
         addSideButtons()
-    }
-    
-    private func layoutPageSubviews() {
-        view.addSubview(qrcodeLabel)
-        qrcodeLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(40)
-            make.left.right.equalTo(view)
-        }
     }
     
     override func viewDidLayoutSubviews() {
