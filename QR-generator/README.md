@@ -2,7 +2,7 @@
 
 ### Server
 
-Before you begin ，make sure your macOS version number is greater than 10.12.
+Before runing the server ，make sure your macOS version number is greater than 10.12.
 
 - `cd QRGeneratorAPISwift`
 - `swift build`
@@ -23,6 +23,12 @@ Before you begin ，make sure your macOS version number is greater than 10.12.
 	- run the unit test
 
 ## Dependency
+
+### Server
+- ObjectMapper
+	- JSON Object mapping 
+- PerfectHTTPServer
+	- HTTP server written in swift
 
 ### App
 
