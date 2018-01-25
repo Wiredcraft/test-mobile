@@ -59,9 +59,7 @@ class QRGeneratorViewController: UIViewController {
         self.qrcodeImageView.image = qrcodeImage
     }
     
-    private func setupAutoRefreshTimer(expiresAt: String?) {
-
-        let expiresDate = expiresAt.flatMap { ISO8601DateFormatter().date(from: $0) }
+    private func setupAutoRefreshTimer(expiresDate: Date?) {
         if let interval = expiresDate?.timeIntervalSince(Date()) {
             seedExpiredLabel.start(with: interval, completion: { [weak self] in
                 self?.requestData()
@@ -83,7 +81,7 @@ class QRGeneratorViewController: UIViewController {
                         
                         seed.archiveToDisk()
                         self.setupQRCodeImage(seed: seed.seed)
-                        self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
+                        self.setupAutoRefreshTimer(expiresDate: seed.expiresDate)
                     }
                 }
             case let .failure(error):
@@ -99,7 +97,7 @@ class QRGeneratorViewController: UIViewController {
             seed.expiresDate == nil || Date() <= seed.expiresDate!  {
             // if cached seed is valid, then show the qrcode image.
             setupQRCodeImage(seed: seed.seed)
-            setupAutoRefreshTimer(expiresAt: seed.expiresAt)
+            setupAutoRefreshTimer(expiresDate: seed.expiresDate)
         }  else {
             requestNewData()
         }
