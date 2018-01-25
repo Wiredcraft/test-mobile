@@ -34,15 +34,8 @@ class QRGeneratorViewController: UIViewController {
         seedCancellable?.cancel()
     }
     
-    @objc func refreshButtonOnClick() {
-        // cancel the previous request
-        seedCancellable?.cancel()
-        requestData()
-    }
-    
     private func setupNavigation() {
         navigationItem.title = "QRGenerator"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshButtonOnClick))
     }
     
     private func layoutPageSubviews() {
@@ -76,33 +69,39 @@ class QRGeneratorViewController: UIViewController {
         }
     }
     
-    private func requestData() -> Void {
+    private func requestNewData() {
+        // request seed json
+        view.makeToastActivity(.center)
+        seedCancellable = QRGeneratorProvider.request(.seed) { result in
+            self.view.hideToastActivity()
+            switch result {
+            case let .success(response):
+                // parse data to json
+                if let json = try? response.mapJSON() {
+                    // map to seed model
+                    if let seed = Mapper<Seed>().map(JSONObject: json) {
+                        
+                        seed.archiveToDisk()
+                        self.setupQRCodeImage(seed: seed.seed)
+                        self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
+                    }
+                }
+            case let .failure(error):
+                self.view.makeToast(error.localizedDescription)
+                self.setupQRCodeImage(seed: nil)
+                self.seedExpiredLabel.stop()
+            }
+        }
+    }
+    
+    private func requestData() {
         if let seed = Seed.unarchiveFromDisk(),
             seed.expiresDate == nil || Date() <= seed.expiresDate!  {
             // if cached seed is valid, then show the qrcode image.
-            self.setupQRCodeImage(seed: seed.seed)
-            self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
+            setupQRCodeImage(seed: seed.seed)
+            setupAutoRefreshTimer(expiresAt: seed.expiresAt)
         }  else {
-            // request seed json
-            view.makeToastActivity(.center)
-            seedCancellable = QRGeneratorProvider.request(.seed) { result in
-                self.view.hideToastActivity()
-                switch result {
-                case let .success(response):
-                    // parse data to json
-                    if let json = try? response.mapJSON() {
-                        // map to seed model
-                        if let seed = Mapper<Seed>().map(JSONObject: json) {
-                            
-                            seed.archiveToDisk()
-                            self.setupQRCodeImage(seed: seed.seed)
-                            self.setupAutoRefreshTimer(expiresAt: seed.expiresAt)
-                        }
-                    }
-                case let .failure(error):
-                    self.view.makeToast(error.localizedDescription)
-                }
-            }
+            requestNewData()
         }
         
     }

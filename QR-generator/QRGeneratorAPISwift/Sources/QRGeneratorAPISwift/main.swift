@@ -14,7 +14,7 @@ routes.add(method: .get, uri: "/seed") {
     if #available(OSX 10.12, *) {
         
         // create expiresAt date string
-        let date = Date(timeIntervalSinceNow: 60)
+        let date = Date(timeIntervalSinceNow: 20)
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.timeZone = TimeZone.ReferenceType.local
         let formatDateString = dateFormatter.string(from: date)

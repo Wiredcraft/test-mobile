@@ -57,4 +57,10 @@ class QRCountDownLabel: UIView {
             }
         })
     }
+    
+    internal func stop() {
+        expiresTimer?.invalidate()
+        expiresTimer = nil
+        countLabel.text = nil
+    }
 }
