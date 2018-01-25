@@ -22,8 +22,8 @@ class QREntryViewController: UIViewController {
     private var buttons = [RHButtonView]()
     override func viewDidLoad() {
         setupNavigation()
+        layoutPageSubviews()
         addSideButtons()
-        
     }
     
     private func layoutPageSubviews() {

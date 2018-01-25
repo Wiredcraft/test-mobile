@@ -35,7 +35,7 @@ class QRScannerViewController: UIViewController {
     
     private lazy var scanMaskLayer: CALayer = {
         let path = UIBezierPath(rect: UIScreen.main.bounds)
-        path.append(UIBezierPath(rect: scanWindowFrame))
+        path.append(UIBezierPath(rect: scanWindowFrame).reversing())
         let layer = CAShapeLayer()
         layer.path = path.cgPath
         layer.strokeColor = UIColor.orange.cgColor
