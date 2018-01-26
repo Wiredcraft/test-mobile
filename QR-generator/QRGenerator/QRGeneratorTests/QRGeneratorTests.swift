@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import Moya
+import ObjectMapper
 @testable import QRGenerator
 
 class QRGeneratorTests: XCTestCase {
@@ -48,7 +50,21 @@ class QRGeneratorTests: XCTestCase {
     }
     
     func testSeedAPI() {
+        let target: QRGenerator = .seed
+        let provider = MoyaProvider<QRGenerator>(stubClosure: MoyaProvider.immediatelyStub)
+        var message: String?
+        provider.request(target) { result in
+            if case let .success(response) = result {
+                message = String(data: response.data, encoding: .utf8)
+            }
+        }
+        XCTAssertNotNil(message)
+        XCTAssertEqual(message, String(data: target.sampleData, encoding: .utf8))
         
+        let seed = Mapper<Seed>().map(JSONString: message!)
+        XCTAssertNotNil(seed)
+        XCTAssertNotNil(seed?.expiresAt)
+        XCTAssertNotNil(seed?.seed)
     }
     
     func testQRCodeGenerator() {
