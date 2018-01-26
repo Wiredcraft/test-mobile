@@ -34,17 +34,17 @@ class QRGeneratorTests: XCTestCase {
         XCTAssertEqual(json["seed"] as? String, seed.seed)
         XCTAssertEqual(json["expiresAt"] as? String, seed.expiresAt)
         
-        var unarchivedSeed = Seed(unarchive: ["seed" : QRGeneratorTestsConst.qrcode,
+        let unarchivedSeed = Seed(unarchive: ["seed" : QRGeneratorTestsConst.qrcode,
                                                "expiresAt" : QRGeneratorTestsConst.expiresAt])
         XCTAssertNotNil(unarchivedSeed)
-        XCTAssertEqual(QRGeneratorTestsConst.qrcode, unarchivedSeed?.seed)
-        XCTAssertEqual(QRGeneratorTestsConst.expiresAt, unarchivedSeed?.expiresAt)
+        XCTAssertEqual(QRGeneratorTestsConst.qrcode, unarchivedSeed.seed)
+        XCTAssertEqual(QRGeneratorTestsConst.expiresAt, unarchivedSeed.expiresAt)
         
         seed.archiveToDisk()
-        unarchivedSeed = Seed.unarchiveFromDisk()
-        XCTAssertNotNil(unarchivedSeed)
-        XCTAssertEqual(seed.seed, unarchivedSeed?.seed)
-        XCTAssertEqual(seed.expiresAt, unarchivedSeed?.expiresAt)
+        let unarchivedDiskSeed = Seed.unarchiveFromDisk()
+        XCTAssertNotNil(unarchivedDiskSeed)
+        XCTAssertEqual(seed.seed, unarchivedDiskSeed?.seed)
+        XCTAssertEqual(seed.expiresAt, unarchivedDiskSeed?.expiresAt)
     }
     
     func testSeedAPI() {

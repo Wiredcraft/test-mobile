@@ -14,8 +14,7 @@ extension Seed: Archivable {
         return toJSON()
     }
     
-    init?(unarchive: [String : Any]?) {
-        guard let values = unarchive else { return nil }
+    init(unarchive values: [String : Any]) {
         let object = Mapper<Seed>().map(JSON: values)
         seed = object?.seed
         expiresAt = object?.expiresAt
