@@ -4,8 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 /**
@@ -13,19 +11,16 @@ import java.util.*
  */
 object CommonUtils {
 
-    private val SDF = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-
     /**
      * Return left time(seconds).
      *
      * If expired, return "Expired at XXXX-XX-XXTXX:XX:XX.XXXZ"
      */
-    fun showCountdown(expireTime: Long): String {
-        val countdown = expireTime - System.currentTimeMillis()
+    fun showCountdown(countdown: Long): String {
         return if (countdown > 0) {
             (countdown / 1000).toString() + "s"
         } else {
-            "Expired at " + SDF.format(Date(expireTime))
+            "Expired"
         }
     }
 

@@ -4,7 +4,12 @@ var crypto = require('crypto');
 var EXPIRED_TIME = 60 * 1000;
 
 app.get('/seed', function (req, res) {
-  var dateTime = new Date().valueOf();
+  var now = new Date().valueOf();
+
+  // return different seed per {EXPIRED_TIME}
+  var dateTime = now - now % EXPIRED_TIME;
+
+  // return seed
   var seed = crypto.createHash("md5").update(dateTime + '').digest('hex');
   var timeLong = dateTime + EXPIRED_TIME;
   var time = ISODateString(new Date(timeLong));

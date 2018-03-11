@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context="com.seazon.qrgenerator.ui.GenerateActivity"
-    tools:showIn="@layout/activity_generate">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              tools:context="com.seazon.qrgenerator.ui.GenerateActivity"
+              tools:showIn="@layout/activity_generate">
 
     <ImageView
         android:id="@+id/codeView"
         android:layout_width="192dp"
         android:layout_height="192dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"/>
 
-    <TextView
+    <com.seazon.qrgenerator.ui.CountdownView
         android:id="@+id/timeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="59s" />
+        tools:text="59s"/>
 
 </LinearLayout>
