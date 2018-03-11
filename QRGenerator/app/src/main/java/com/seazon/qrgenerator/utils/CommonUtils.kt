@@ -1,5 +1,9 @@
 package com.seazon.qrgenerator.utils
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,6 +27,17 @@ object CommonUtils {
         } else {
             "Expired at " + SDF.format(Date(expireTime))
         }
+    }
+
+    /**
+     * open app detail, for 2.3+
+     */
+    fun openAppDetail(activity: Activity, packageName: String) {
+        val intent = Intent()
+        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+        val uri = Uri.fromParts("package", packageName, null)
+        intent.data = uri
+        activity.startActivity(intent)
     }
 
 }
