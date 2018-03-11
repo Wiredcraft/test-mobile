@@ -24,7 +24,7 @@ class CountdownView : TextView {
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    fun start(expireTime: Long, l: TicListener) {
+    fun start(expireTime: Long, l: TicListener?) {
         listener = l
         val leftTime = expireTime - System.currentTimeMillis()
         text = CommonUtils.showCountdown(leftTime)
