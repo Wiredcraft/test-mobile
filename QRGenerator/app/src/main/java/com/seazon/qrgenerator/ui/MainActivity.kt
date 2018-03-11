@@ -3,10 +3,10 @@ package com.seazon.qrgenerator.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.seazon.qrgenerator.R
+import com.seazon.qrgenerator.utils.AnimationUtils
 import com.uuzuche.lib_zxing.activity.CodeUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fab_submenu.*
@@ -16,25 +16,50 @@ import kotlinx.android.synthetic.main.fab_submenu.*
  */
 class MainActivity : AppCompatActivity() {
 
-    val REQUEST_CODE_SCAN = 1001;
+    val REQUEST_CODE_SCAN = 1001
+
+    var showFabSub = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        fab.setOnClickListener { toggleFabSub() }
         fabGenerate.setOnClickListener({
-            val intent = Intent(this, GenerateActivity::class.java)
-            startActivity(intent)
+            hideFabSub({
+                val intent = Intent(this, GenerateActivity::class.java)
+                startActivity(intent)
+            })
         })
         fabScan.setOnClickListener({
-            val intent = Intent(this, ScanActivity::class.java)
-            startActivityForResult(intent, REQUEST_CODE_SCAN)
+            hideFabSub({
+                val intent = Intent(this, ScanActivity::class.java)
+                startActivityForResult(intent, REQUEST_CODE_SCAN)
+            })
         })
+    }
+
+    private fun toggleFabSub() {
+        if (showFabSub) {
+            hideFabSub()
+        } else {
+            showFabSub()
+        }
+    }
+
+    private fun showFabSub() {
+        showFabSub = true
+        AnimationUtils.rotate(fab, 0f, 45f)
+        AnimationUtils.move(fabGenerate, 0f, resources.getDimension(R.dimen.fab_submenu_translation_y_generate), true)
+        AnimationUtils.move(fabScan, 0f, resources.getDimension(R.dimen.fab_submenu_translation_y_scan), true)
+    }
+
+    private fun hideFabSub(callback: () -> Unit = {}) {
+        showFabSub = false
+        AnimationUtils.rotate(fab, 45f, 0f)
+        AnimationUtils.move(fabGenerate, resources.getDimension(R.dimen.fab_submenu_translation_y_generate), 0f, false)
+        AnimationUtils.move(fabScan, resources.getDimension(R.dimen.fab_submenu_translation_y_scan), 0f, false, callback)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

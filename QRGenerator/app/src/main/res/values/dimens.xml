@@ -1,5 +1,8 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_sub_margin">24dp</dimen>
     <dimen name="fab_submenu_radius">16dp</dimen>
     <dimen name="fab_submenu_elevation">8dp</dimen>
+    <dimen name="fab_submenu_translation_y_generate">-120dp</dimen>
+    <dimen name="fab_submenu_translation_y_scan">-60dp</dimen>
 </resources>

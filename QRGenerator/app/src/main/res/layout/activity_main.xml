@@ -22,6 +22,6 @@
 
     <include layout="@layout/content_main" />
 
-    <include layout="@layout/fab_submenu"/>
+    <include layout="@layout/fab_submenu" />
 
 </android.support.design.widget.CoordinatorLayout>
