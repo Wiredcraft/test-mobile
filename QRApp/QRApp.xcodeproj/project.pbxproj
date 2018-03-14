@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78470792059A1B4000FE0C5 /* AppDelegate.swift */; };
-		D784707C2059A1B4000FE0C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784707B2059A1B4000FE0C5 /* ViewController.swift */; };
-		D784707F2059A1B4000FE0C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D784707D2059A1B4000FE0C5 /* Main.storyboard */; };
+		D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */; };
 		D78470812059A1B4000FE0C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D78470802059A1B4000FE0C5 /* Assets.xcassets */; };
 		D78470842059A1B4000FE0C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78470822059A1B4000FE0C5 /* LaunchScreen.storyboard */; };
 		D784708F2059A1B4000FE0C5 /* QRAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784708E2059A1B4000FE0C5 /* QRAppTests.swift */; };
+		D784709B2059AAE8000FE0C5 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784709A2059AAE8000FE0C5 /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +28,14 @@
 /* Begin PBXFileReference section */
 		D78470762059A1B4000FE0C5 /* QRApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D78470792059A1B4000FE0C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D784707B2059A1B4000FE0C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D784707E2059A1B4000FE0C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBaseViewController.swift; sourceTree = "<group>"; };
 		D78470802059A1B4000FE0C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D78470832059A1B4000FE0C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D78470852059A1B4000FE0C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D784708A2059A1B4000FE0C5 /* QRAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D784708E2059A1B4000FE0C5 /* QRAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRAppTests.swift; sourceTree = "<group>"; };
 		D78470902059A1B4000FE0C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D784709A2059AAE8000FE0C5 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				D78470792059A1B4000FE0C5 /* AppDelegate.swift */,
-				D784707B2059A1B4000FE0C5 /* ViewController.swift */,
-				D784707D2059A1B4000FE0C5 /* Main.storyboard */,
+				D784709A2059AAE8000FE0C5 /* UIColor+Extensions.swift */,
+				D78470992059A764000FE0C5 /* ViewControllers */,
 				D78470802059A1B4000FE0C5 /* Assets.xcassets */,
 				D78470822059A1B4000FE0C5 /* LaunchScreen.storyboard */,
 				D78470852059A1B4000FE0C5 /* Info.plist */,
@@ -94,6 +94,14 @@
 				D78470902059A1B4000FE0C5 /* Info.plist */,
 			);
 			path = QRAppTests;
+			sourceTree = "<group>";
+		};
+		D78470992059A764000FE0C5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,7 +189,6 @@
 			files = (
 				D78470842059A1B4000FE0C5 /* LaunchScreen.storyboard in Resources */,
 				D78470812059A1B4000FE0C5 /* Assets.xcassets in Resources */,
-				D784707F2059A1B4000FE0C5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D784707C2059A1B4000FE0C5 /* ViewController.swift in Sources */,
+				D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */,
+				D784709B2059AAE8000FE0C5 /* UIColor+Extensions.swift in Sources */,
 				D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,14 +231,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D784707D2059A1B4000FE0C5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D784707E2059A1B4000FE0C5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D78470822059A1B4000FE0C5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

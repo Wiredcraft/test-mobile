@@ -12,10 +12,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    func makeRootViewController() -> UIViewController {
+        return UINavigationController(rootViewController: QRBaseViewController())
+    }
+    
+    var windowBackgroundColor: UIColor? {
+        return UIColor.blue
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // UIWindow setup
+        //
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        guard let window = self.window else {
+            fatalError("UIWindow initialization failed. Application closing...")
+        }
+        
+        window.rootViewController = makeRootViewController()
+        window.makeKeyAndVisible()
+        window.backgroundColor = windowBackgroundColor
         return true
     }
 
