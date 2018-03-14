@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">QR-generator</string>
+
+    <string name="page_scan">SCAN</string>
+    <string name="page_generate">QR-Code</string>
+    <string name="scan_failed">scan failed</string>
+
+    <string name="permission_before_grant">Need this permission to work properly.</string>
+    <string name="permission_after_deny">This permission is not granted and does not work properly.</string>
+    <string name="permission_grant">Grant …</string>
+    <string name="permission_exit">Exit</string>
+</resources>
