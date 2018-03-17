@@ -13,6 +13,7 @@ import UIKit
 class QRBaseViewController: UIViewController {
 
     //let backend: Backend
+    let http = HTTPService()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -21,7 +22,36 @@ class QRBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
+        
+//        asyncCalculation()
+//            .displayErrorOnUI()
+//            .onLoadingStateChange { isLoading in
+//                print(isLoading)
+//            }
+//            .onSuccess { lol in
+//                print(lol)
+//            }
+//            .onFailure { error in
+//                print("virhe")
+//            }
+        http.jsonRequest(url: URL(string: "https://httpbin.org/delay/0")!).onSuccess { dict in
+            print(dict)
+        }
+        
+    }
+    
+    func asyncCalculation() -> AsyncOperation<String> {
+        return AsyncOperation { complete in
+            let url = URL(string: "https://httpbin.org/delay/5")
+            let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                guard let error = error else {
+                    complete(.success("LOL"))
+                    return
+                }
+                complete(.failure(error as NSError))
+            }
+            task.resume()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
