@@ -34,12 +34,12 @@ public protocol Operation: Cancellable {
 /// Generic class for asyncronous operation that can be executed in a similar fashion as futures,
 /// but also provides custom functionality to this application's context.
 ///
-class AsyncOperation<T>: Operation {
+public class AsyncOperation<T>: Operation {
     
-    let future: Future<T, NSError>
+    open let future: Future<T, NSError>
     let cancellationBlock: () -> Void
     
-    var state: OperationState {
+    open var state: OperationState {
         if !future.isCompleted {
             return .inProgress
         }
@@ -67,9 +67,19 @@ class AsyncOperation<T>: Operation {
         self.cancellationBlock = { }
     }
     
+    public init (error: NSError) {
+        self.future = Future(error: error)
+        self.cancellationBlock = { }
+    }
+    
+    public init (value: T) {
+        self.future = Future(value: value)
+        self.cancellationBlock = { }
+    }
+    
     /// TODO: Implement proper cancelling to the AsyncOperation
     ///
-    func cancel() {
+    open  func cancel() {
         cancellationBlock()
     }
 }

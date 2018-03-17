@@ -29,7 +29,7 @@ enum HTTPMethod: String {
 /// Generic HTTP response handler which gives the request data and
 /// response code as parameters and expect Result type as return value.
 ///
-public typealias HTTPResponseHandler<T> = (Data, URLResponse) -> Result<T, NSError>
+public typealias HTTPResponse = (data: Data, response: URLResponse)
 
 class HTTPService {
     
@@ -57,9 +57,11 @@ class HTTPService {
     /// - Parameter method: HTTP method.
     /// - Parameter url: HTTP URL for the request.
     /// - Parameter body: Body of the HTTP request.
-    /// - Parameter handler: Handler for the successful request mapping data and response code into a generic type.
     ///
-    func startHTTPRequest<T>(_ method: HTTPMethod, url: URL, body: String? = nil, handler: @escaping HTTPResponseHandler<T>) -> AsyncOperation<T> {
+    func startHTTPRequest(_ method: HTTPMethod, url: URL?, body: String? = nil) -> AsyncOperation<HTTPResponse> {
+        guard let url = url else {
+            return AsyncOperation(error: NSError())
+        }
         return AsyncOperation { [weak self] complete in
             guard let sself = self else {
                 complete(.failure(NSError()))
@@ -73,47 +75,49 @@ class HTTPService {
                     complete(.failure((error as NSError?) ?? NSError()))
                     return
                 }
-                complete(handler(data, response))
+                complete(.success(HTTPResponse(data, response)))
             }.resume()
         }
     }
     
     /// Wrapper for GET request.
     ///
-    func GET<T>(url: URL, handler: @escaping HTTPResponseHandler<T>) -> AsyncOperation<T> {
-        return startHTTPRequest(.GET, url: url, handler: handler)
+    func GET(url: URL?) -> AsyncOperation<HTTPResponse> {
+        return startHTTPRequest(.GET, url: url)
     }
     
     /// Wrapper for POST request.
     ///
-    func POST<T>(url: URL, body: String, handler: @escaping HTTPResponseHandler<T>) -> AsyncOperation<T> {
-        return startHTTPRequest(.POST, url: url, body: body, handler: handler)
+    func POST(url: URL?, body: String) -> AsyncOperation<HTTPResponse> {
+        return startHTTPRequest(.POST, url: url, body: body)
     }
     
     /// Wrapper for PUT request.
     ///
-    func PUT<T>(url: URL, body: String, handler: @escaping HTTPResponseHandler<T>) -> AsyncOperation<T> {
-        return startHTTPRequest(.PUT, url: url, body: body, handler: handler)
+    func PUT(url: URL?, body: String) -> AsyncOperation<HTTPResponse> {
+        return startHTTPRequest(.PUT, url: url, body: body)
     }
     
     /// Wrapper for DELETE request.
     ///
-    func DELETE<T>(url: URL, body: String, handler: @escaping HTTPResponseHandler<T>) -> AsyncOperation<T> {
-        return startHTTPRequest(.DELETE, url: url, body: body, handler: handler)
+    func DELETE(url: URL?, body: String) -> AsyncOperation<HTTPResponse> {
+        return startHTTPRequest(.DELETE, url: url, body: body)
     }
     
     /// Abstraction for JSON requests which return AsyncOperation with dictionary.
     ///
-    func jsonRequest(url: URL) -> AsyncOperation<[String : Any]>{
-        return GET(url: url) { data, response in
-            do {
-                let result = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
-                guard let r = result else {
-                    return .failure(NSError())
+    func jsonRequest(_ url: URL?) -> AsyncOperation<[String : Any]> {
+        return GET(url: url).flatMap { httpResponse in
+            AsyncOperation { complete in
+                do {
+                    let result = try JSONSerialization.jsonObject(with: httpResponse.data, options: []) as? [String : Any]
+                    guard let r = result else {
+                        return complete(.failure(NSError()))
+                    }
+                    return complete(.success(r))
+                } catch {
+                    return complete(.failure(NSError()))
                 }
-                return .success(r)
-            } catch {
-                return .failure(NSError())
             }
         }
     }

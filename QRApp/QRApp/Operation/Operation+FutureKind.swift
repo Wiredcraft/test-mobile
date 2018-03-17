@@ -49,6 +49,18 @@ public extension Operation {
         future.onComplete(executionContext, callback: callback)
         return self
     }
+    
+    func map<U>(_ fn: @escaping (T) -> U) -> AsyncOperation<U> {
+        return AsyncOperation(future: future.map(fn))
+    }
+    
+    func flatMap<U>(_ fn: @escaping (T) -> AsyncOperation<U>) -> AsyncOperation<U> {
+        let newFuture = future.flatMap { value -> Future<U, NSError> in
+            let op = fn(value)
+            return op.future
+        }
+        return AsyncOperation(future: newFuture)
+    }
 }
 
 /// Extensions to the standard Future kind functionality

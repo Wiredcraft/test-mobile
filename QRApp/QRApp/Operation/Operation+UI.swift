@@ -12,6 +12,7 @@ import Foundation
 ///
 extension Operation {
     
+    @discardableResult
     func displayErrorOnUI() -> Self {
         _ = onFailure(DispatchQueue.main.context) { error in
             print("error")
