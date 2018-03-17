@@ -13,12 +13,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func makeRootViewController() -> UIViewController {
-        return UINavigationController(rootViewController: QRBaseViewController())
-    }
+    /// AppDelegate owns backend and other global services and injects them elsewhere.
+    ///
+    let backend: Backend
     
     var windowBackgroundColor: UIColor? {
         return UIColor.blue
+    }
+    
+    override init() {
+        backend = Backend()
+        super.init()
+    }
+    
+    func makeRootViewController() -> UIViewController {
+        return UINavigationController(rootViewController: QRBaseViewController(backend: makeBackendService()))
+    }
+    
+    func makeBackendService() -> Backend {
+        return Backend()
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

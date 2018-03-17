@@ -27,25 +27,25 @@ public extension Operation {
     }
     
     @discardableResult
-    func onFailure(callback: @escaping (NSError) -> Void) -> Self {
+    func onFailure(callback: @escaping (AppError) -> Void) -> Self {
         future.onFailure(callback: callback)
         return self
     }
     
     @discardableResult
-    func onFailure(_ executionContext: @escaping ExecutionContext, callback: @escaping (NSError) -> Void) -> Self {
+    func onFailure(_ executionContext: @escaping ExecutionContext, callback: @escaping (AppError) -> Void) -> Self {
         future.onFailure(executionContext, callback: callback)
         return self
     }
     
     @discardableResult
-    func onComplete(callback: @escaping (Result<T, NSError>) -> Void) -> Self {
+    func onComplete(callback: @escaping (Result<T, AppError>) -> Void) -> Self {
         future.onComplete(callback: callback)
         return self
     }
     
     @discardableResult
-    func onComplete(_ executionContext: @escaping ExecutionContext, callback: @escaping (Result<T, NSError>) -> Void) -> Self {
+    func onComplete(_ executionContext: @escaping ExecutionContext, callback: @escaping (Result<T, AppError>) -> Void) -> Self {
         future.onComplete(executionContext, callback: callback)
         return self
     }
@@ -55,7 +55,7 @@ public extension Operation {
     }
     
     func flatMap<U>(_ fn: @escaping (T) -> AsyncOperation<U>) -> AsyncOperation<U> {
-        let newFuture = future.flatMap { value -> Future<U, NSError> in
+        let newFuture = future.flatMap { value -> Future<U, AppError> in
             let op = fn(value)
             return op.future
         }

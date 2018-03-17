@@ -12,10 +12,15 @@ import UIKit
 ///
 class QRBaseViewController: UIViewController {
 
-    let backend = Backend()
+    let backend: Backend
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    init(backend: Backend) {
+        self.backend = backend
+        super.init(nibName: nil, bundle: nil)
     }
 
     override func viewDidLoad() {
@@ -23,9 +28,8 @@ class QRBaseViewController: UIViewController {
         view.backgroundColor = .white
         
         backend.getQRCodeRandomSeed().onSuccess { dict in
-            print(dict)
+            print(BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"))
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +45,7 @@ class QRBaseViewController: UIViewController {
         navBar.isTranslucent = false
     }
     
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

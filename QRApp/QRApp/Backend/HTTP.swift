@@ -26,79 +26,41 @@ enum HTTPMethod: String {
     case CONNECT
 }
 
-/// Generic HTTP response handler which gives the request data and
-/// response code as parameters and expect Result type as return value.
+/// Generic HTTP response type which contains the response payload and
+/// other response data as parameters.
 ///
-public typealias HTTPResponse = (data: Data, response: URLResponse)
+typealias HTTPResponse = (data: Data, response: URLResponse)
 
 class HTTPService {
     
-    let session: URLSession
+    let session = URLSession(configuration: .default)
     
-    public init() {
-        session = URLSession(configuration: .default)
-    }
-    
-    /// Creates URLRequest.
-    ///
-    /// - Parameter method: HTTP method.
-    /// - Parameter url: HTTP URL for the request.
-    /// - Parameter body: Body of the HTTP request.
-    ///
-    private func createRequest(_ method: HTTPMethod, url: URL, body: String? = nil) -> URLRequest {
-        return with(NSMutableURLRequest(url: url)) {
-            $0.httpMethod = method.rawValue
-            $0.httpBody = body?.data(using: .utf8)
-        } as URLRequest
-    }
-    
-    /// Starts HTTP request and returns AsyncOperation.
-    ///
-    /// - Parameter method: HTTP method.
-    /// - Parameter url: HTTP URL for the request.
-    /// - Parameter body: Body of the HTTP request.
-    ///
     func startHTTPRequest(_ method: HTTPMethod, url: URL?, body: String? = nil) -> AsyncOperation<HTTPResponse> {
-        guard let url = url else {
-            return AsyncOperation(error: NSError())
+        guard let task = HTTPTask(method, session: session, url: url, body: body) else {
+            return AsyncOperation(error: AppError.makeUnknownError())
         }
-        return AsyncOperation { [weak self] complete in
-            guard let sself = self else {
-                complete(.failure(NSError()))
-                return
-            }
-            
-            sself.session.dataTask(with: sself.createRequest(method, url: url, body: body))
-            { data, response, error in
-                guard let data = data,
-                    let response = response else {
-                    complete(.failure((error as NSError?) ?? NSError()))
-                    return
-                }
-                complete(.success(HTTPResponse(data, response)))
-            }.resume()
-        }
+        return task.start()
     }
     
-    /// Wrapper for GET request.
+    /// Quick wrapper for GET request.
     ///
     func GET(url: URL?) -> AsyncOperation<HTTPResponse> {
         return startHTTPRequest(.GET, url: url)
     }
     
-    /// Wrapper for POST request.
+    /// Quick wrapper for POST request.
     ///
     func POST(url: URL?, body: String) -> AsyncOperation<HTTPResponse> {
         return startHTTPRequest(.POST, url: url, body: body)
     }
     
-    /// Wrapper for PUT request.
+    /// Quick wrapper for PUT request.
     ///
     func PUT(url: URL?, body: String) -> AsyncOperation<HTTPResponse> {
         return startHTTPRequest(.PUT, url: url, body: body)
     }
     
-    /// Wrapper for DELETE request.
+    /// Quick wrapper for DELETE request.
     ///
     func DELETE(url: URL?, body: String) -> AsyncOperation<HTTPResponse> {
         return startHTTPRequest(.DELETE, url: url, body: body)
@@ -106,17 +68,17 @@ class HTTPService {
     
     /// Abstraction for JSON requests which return AsyncOperation with dictionary.
     ///
-    func jsonRequest(_ url: URL?) -> AsyncOperation<[String : Any]> {
-        return GET(url: url).flatMap { httpResponse in
+    func jsonRequest(method: HTTPMethod = .GET, _ url: URL?, body: String? = nil) -> AsyncOperation<[String : Any]> {
+        return startHTTPRequest(method, url: url, body: body).flatMap { httpResponse in
             AsyncOperation { complete in
                 do {
                     let result = try JSONSerialization.jsonObject(with: httpResponse.data, options: []) as? [String : Any]
                     guard let r = result else {
-                        return complete(.failure(NSError()))
+                        return complete(.failure(AppError.makeCustomError("JSON parsing failure")))
                     }
                     return complete(.success(r))
                 } catch {
-                    return complete(.failure(NSError()))
+                    return complete(.failure(AppError.makeCustomError("JSON parsing failure")))
                 }
             }
         }

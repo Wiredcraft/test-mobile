@@ -23,6 +23,10 @@
 		D7D2C08D205D370D0035E5EF /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C08C205D370D0035E5EF /* General.swift */; };
 		D7D2C091205D74E70035E5EF /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C090205D74E70035E5EF /* String+Extensions.swift */; };
 		D7D2C093205D76CE0035E5EF /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C092205D76CE0035E5EF /* Array+Extensions.swift */; };
+		D7D2C095205D7F790035E5EF /* BaseDictModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C094205D7F790035E5EF /* BaseDictModel.swift */; };
+		D7D2C098205D886E0035E5EF /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C097205D886D0035E5EF /* AppError.swift */; };
+		D7D2C09A205DAA2A0035E5EF /* URLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C099205DAA2A0035E5EF /* URLResponse.swift */; };
+		D7D2C09C205DBB5D0035E5EF /* HTTP+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C09B205DBB5D0035E5EF /* HTTP+Task.swift */; };
 		D7F147A22059C51100057F92 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784709D2059C06E000FE0C5 /* SnapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +62,10 @@
 		D7D2C08C205D370D0035E5EF /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		D7D2C090205D74E70035E5EF /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		D7D2C092205D76CE0035E5EF /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		D7D2C094205D7F790035E5EF /* BaseDictModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDictModel.swift; sourceTree = "<group>"; };
+		D7D2C097205D886D0035E5EF /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		D7D2C099205DAA2A0035E5EF /* URLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponse.swift; sourceTree = "<group>"; };
+		D7D2C09B205DBB5D0035E5EF /* HTTP+Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTP+Task.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,7 @@
 				D78470802059A1B4000FE0C5 /* Assets.xcassets */,
 				D78470822059A1B4000FE0C5 /* LaunchScreen.storyboard */,
 				D78470852059A1B4000FE0C5 /* Info.plist */,
+				D7D2C096205D7F820035E5EF /* Model */,
 			);
 			path = QRApp;
 			sourceTree = "<group>";
@@ -158,6 +167,7 @@
 			children = (
 				D784709A2059AAE8000FE0C5 /* UIColor+Extensions.swift */,
 				D7D2C090205D74E70035E5EF /* String+Extensions.swift */,
+				D7D2C099205DAA2A0035E5EF /* URLResponse.swift */,
 				D7D2C092205D76CE0035E5EF /* Array+Extensions.swift */,
 			);
 			path = Extensions;
@@ -176,8 +186,18 @@
 			children = (
 				D7D2C088205D2E960035E5EF /* Backend.swift */,
 				D7D2C08A205D31F40035E5EF /* HTTP.swift */,
+				D7D2C09B205DBB5D0035E5EF /* HTTP+Task.swift */,
 			);
 			path = Backend;
+			sourceTree = "<group>";
+		};
+		D7D2C096205D7F820035E5EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D7D2C097205D886D0035E5EF /* AppError.swift */,
+				D7D2C094205D7F790035E5EF /* BaseDictModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +344,7 @@
 				D7D2C091205D74E70035E5EF /* String+Extensions.swift in Sources */,
 				D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */,
 				D7489E2F205D2BB8003D3A63 /* Operation+UI.swift in Sources */,
+				D7D2C098205D886E0035E5EF /* AppError.swift in Sources */,
 				D7D2C093205D76CE0035E5EF /* Array+Extensions.swift in Sources */,
 				D784709B2059AAE8000FE0C5 /* UIColor+Extensions.swift in Sources */,
 				D7D2C08D205D370D0035E5EF /* General.swift in Sources */,
@@ -331,6 +352,9 @@
 				D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */,
 				D7D2C08B205D31F40035E5EF /* HTTP.swift in Sources */,
 				D7D2C089205D2E960035E5EF /* Backend.swift in Sources */,
+				D7D2C095205D7F790035E5EF /* BaseDictModel.swift in Sources */,
+				D7D2C09A205DAA2A0035E5EF /* URLResponse.swift in Sources */,
+				D7D2C09C205DBB5D0035E5EF /* HTTP+Task.swift in Sources */,
 				D79B1A91205C1F7F005454EA /* Operation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

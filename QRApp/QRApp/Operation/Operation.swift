@@ -27,7 +27,7 @@ public protocol Cancellable {
 public protocol Operation: Cancellable {
     associatedtype T = Any
     
-    var future: Future<T, NSError> { get }
+    var future: Future<T, AppError> { get }
     var state: OperationState { get }
 }
 
@@ -36,7 +36,7 @@ public protocol Operation: Cancellable {
 ///
 public class AsyncOperation<T>: Operation {
     
-    open let future: Future<T, NSError>
+    open let future: Future<T, AppError>
     let cancellationBlock: () -> Void
     
     open var state: OperationState {
@@ -46,28 +46,28 @@ public class AsyncOperation<T>: Operation {
         return future.isFailure ? .failure : .success
     }
     
-    public init(future: Future<T, NSError>, cancellationBlock: @escaping () -> Void) {
+    public init(future: Future<T, AppError>, cancellationBlock: @escaping () -> Void) {
         self.future = future
         self.cancellationBlock = cancellationBlock
     }
     
-    public init(future: Future<T, NSError>) {
+    public init(future: Future<T, AppError>) {
         self.future = future
         self.cancellationBlock = { }
     }
     
-    public init(_ operationBlock: @escaping (@escaping (Result<T, NSError>) -> Void) -> Void,
+    public init(_ operationBlock: @escaping (@escaping (Result<T, AppError>) -> Void) -> Void,
                 cancellationBlock: @escaping () -> Void) {
         self.future = Future { complete in operationBlock { operationResult in complete(operationResult) } }
         self.cancellationBlock = cancellationBlock
     }
     
-    public init(_ operationBlock: @escaping (@escaping (Result<T, NSError>) -> Void) -> Void) {
+    public init(_ operationBlock: @escaping (@escaping (Result<T, AppError>) -> Void) -> Void) {
         self.future = Future { complete in operationBlock { operationResult in complete(operationResult) } }
         self.cancellationBlock = { }
     }
     
-    public init (error: NSError) {
+    public init (error: AppError) {
         self.future = Future(error: error)
         self.cancellationBlock = { }
     }
