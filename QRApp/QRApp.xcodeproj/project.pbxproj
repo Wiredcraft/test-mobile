@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7489E2D205D29D8003D3A63 /* Operation+FutureKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7489E2C205D29D8003D3A63 /* Operation+FutureKind.swift */; };
+		D7489E2F205D2BB8003D3A63 /* Operation+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7489E2E205D2BB8003D3A63 /* Operation+UI.swift */; };
 		D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78470792059A1B4000FE0C5 /* AppDelegate.swift */; };
 		D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */; };
 		D78470812059A1B4000FE0C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D78470802059A1B4000FE0C5 /* Assets.xcassets */; };
@@ -15,6 +17,7 @@
 		D784709B2059AAE8000FE0C5 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784709A2059AAE8000FE0C5 /* UIColor+Extensions.swift */; };
 		D78470A12059C06E000FE0C5 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784709E2059C06E000FE0C5 /* BrightFutures.framework */; };
 		D78470A22059C06E000FE0C5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784709F2059C06E000FE0C5 /* Result.framework */; };
+		D79B1A91205C1F7F005454EA /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1A90205C1F7F005454EA /* Operation.swift */; };
 		D7F147A22059C51100057F92 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784709D2059C06E000FE0C5 /* SnapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D7489E2C205D29D8003D3A63 /* Operation+FutureKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+FutureKind.swift"; sourceTree = "<group>"; };
+		D7489E2E205D2BB8003D3A63 /* Operation+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+UI.swift"; sourceTree = "<group>"; };
 		D78470762059A1B4000FE0C5 /* QRApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D78470792059A1B4000FE0C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBaseViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +47,7 @@
 		D784709D2059C06E000FE0C5 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		D784709E2059C06E000FE0C5 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = ../Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
 		D784709F2059C06E000FE0C5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		D79B1A90205C1F7F005454EA /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				D78470792059A1B4000FE0C5 /* AppDelegate.swift */,
-				D784709A2059AAE8000FE0C5 /* UIColor+Extensions.swift */,
+				D79B1A93205C3689005454EA /* Extensions */,
+				D79B1A92205C1F85005454EA /* Operation */,
 				D78470992059A764000FE0C5 /* ViewControllers */,
 				D78470802059A1B4000FE0C5 /* Assets.xcassets */,
 				D78470822059A1B4000FE0C5 /* LaunchScreen.storyboard */,
@@ -122,6 +129,24 @@
 				D784709D2059C06E000FE0C5 /* SnapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D79B1A92205C1F85005454EA /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				D79B1A90205C1F7F005454EA /* Operation.swift */,
+				D7489E2E205D2BB8003D3A63 /* Operation+UI.swift */,
+				D7489E2C205D29D8003D3A63 /* Operation+FutureKind.swift */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
+		D79B1A93205C3689005454EA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D784709A2059AAE8000FE0C5 /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,8 +291,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */,
+				D7489E2F205D2BB8003D3A63 /* Operation+UI.swift in Sources */,
 				D784709B2059AAE8000FE0C5 /* UIColor+Extensions.swift in Sources */,
+				D7489E2D205D29D8003D3A63 /* Operation+FutureKind.swift in Sources */,
 				D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */,
+				D79B1A91205C1F7F005454EA /* Operation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
