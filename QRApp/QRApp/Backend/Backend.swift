@@ -25,6 +25,6 @@ class Backend {
     }
     
     func getQRCodeRandomSeed() -> AsyncOperation<[String : Any]> {
-        return backendService.jsonRequest(generateURLFromPath("delay", "0"))
+        return backendService.jsonRequest(generateURLFromPath("delay", "5"))
     }
 }

@@ -14,11 +14,19 @@ public extension UIImage {
         return self.scaled(CGSize(width: width, height: height))
     }
     
-    func scaled(_ newSize: CGSize) -> UIImage{
+    func scaled(_ newSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
         self.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
         let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return newImage
+    }
+    
+    static func asQRCodeImageFrom(_ text: String) -> UIImage? {
+        return QRCode(text: text)?.asUIImage()
+    }
+    
+    static func asQRCodeImageFrom(_ text: String, for size: Int) -> UIImage? {
+        return QRCode(text: text)?.asUIImageScaledTo(size: size)
     }
 }

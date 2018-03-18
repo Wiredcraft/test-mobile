@@ -11,6 +11,7 @@ import UIKit
 class DisplayQRViewController: QRBaseViewController {
     
     private let imageView = UIImageView()
+    private lazy var loadingIndicator = LoadingIndicatorView(superview: view)
     
     private let QRCodeSize = 300
     
@@ -19,12 +20,21 @@ class DisplayQRViewController: QRBaseViewController {
         title = "Display QR VC"
         
         view.addSubview(imageView)
-        
         imageView.snp.makeConstraints { make in
             make.size.equalTo(QRCodeSize)
             make.center.equalTo(view)
         }
         
-        imageView.image = QRCode(text: "Hello world!")?.asUIImageScaledTo(size: QRCodeSize)
+        backend
+            .getQRCodeRandomSeed()
+            .bindToLoadingIndicator(loadingIndicator)
+            .onSuccess { [weak self] dict in
+                //self?.imageView.image = UIImage.asQRCodeImageFrom(BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"), for: self?.QRCodeSize ?? 0)
+                self?.imageView.image = QRCode(text: BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"))?.asWiredCraftQRImage(size: 300)
+        }
+        
+        
+        
+        //imageView.image = UIImage.asQRCodeImageFrom("Hello world!", for: QRCodeSize)
     }
 }

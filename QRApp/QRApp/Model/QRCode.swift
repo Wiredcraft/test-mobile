@@ -53,6 +53,26 @@ class QRCode {
         return UIImage(ciImage: transformedImage)
     }
     
+    func asWiredCraftQRImage(size: Int) -> UIImage {
+        let qrImage = asUIImageScaledTo(size: size)
+        let wiredCraftLogo = UIImage(named: "wired")
+        let cgSize = CGSize(width: size, height: size)
+        
+        // QR codes can restore up to ~30% of their data,
+        // but at worst only around 7% so for safety reasons
+        // let's pick the lower bound limit.
+        //
+        let wiredCraftLogoSize = (size.asDouble() * size.asDouble() * 0.07).squareRoot()
+        let logoOffset = (size.asDouble() - wiredCraftLogoSize) / 2
+        
+        UIGraphicsBeginImageContextWithOptions(cgSize, false, 0)
+        qrImage.draw(in: CGRect(origin: .zero, size: cgSize))
+        wiredCraftLogo?.draw(in: CGRect(
+            origin: CGPoint(x: logoOffset, y: logoOffset),
+            size: CGSize(width: wiredCraftLogoSize, height: wiredCraftLogoSize)))
+        return UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+    }
+    
     private class func createQRImage(_ data: Data) -> CIImage? {
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(data, forKey: "inputMessage")

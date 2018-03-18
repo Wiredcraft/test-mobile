@@ -10,14 +10,20 @@ import Foundation
 
 /// Operation extensions to bind events to UI
 ///
-extension Operation {
+public extension Operation {
     
     @discardableResult
     func displayErrorOnUI() -> Self {
         _ = onFailure(DispatchQueue.main.context) { error in
             print("error")
         }
-        
         return self
     }
+    
+    func bindToLoadingIndicator(_ indicator: LoadingProtocol) -> Self {
+        return onLoadingStateChange { state in
+            state ? indicator.start() : indicator.stop()
+        }
+    }
 }
+
