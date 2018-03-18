@@ -8,16 +8,29 @@
 
 import UIKit
 
-typealias ActionButtonConfigurator = (title: String, image: UIImage?)
+typealias ActionButtonConfigurator = (title: String, image: UIImage?, getTargetVC: (Backend) -> QRBaseViewController)
 
-class MainViewController: QRBaseViewController, ActionButtonViewDelegate {
-
-    var buttonActionView: ActionButtonView?
+class MainViewController: QRBaseViewController {
     
-    var menuConfigurator: [ActionButtonConfigurator] {
+    // Handles ActionButton displaying and menu-like functionality
+    //
+    private var buttonActionView: ActionButtonView?
+    
+    /// Simple configurator, which provides functionality and interface for each action button.
+    /// Target ViewControllers are passed as closures to prevent unintentional initialization
+    /// and minimize memory/performance overhead.
+    ///
+    private var menuConfigurator: [ActionButtonConfigurator] {
         return [
-            ActionButtonConfigurator(title: "Get QR", image: UIImage(named: "qr")),
-            ActionButtonConfigurator(title: "Scan QR", image: UIImage(named: "scan"))
+            ActionButtonConfigurator(
+                title: "Get QR",
+                image: UIImage(named: "qr"),
+                getTargetVC: { be in return DisplayQRViewController(backend: be) }),
+            
+            ActionButtonConfigurator(
+                title: "Scan QR",
+                image: UIImage(named: "scan"),
+                getTargetVC: { be in return DisplayQRViewController(backend: be) })
         ]
     }
     
@@ -32,13 +45,20 @@ class MainViewController: QRBaseViewController, ActionButtonViewDelegate {
         
         buttonActionView = ActionButtonView(superview: view, delegate: self)
     }
+}
+
+/// MARK: ActionButtonViewDelegate
+///
+extension MainViewController: ActionButtonViewDelegate {
     
     func numberOfButtonsInButtonActionView(_ buttonActionView: ActionButtonView) -> Int {
         return menuConfigurator.count
     }
     
     func actionButtonView(_ buttonActionView: ActionButtonView, didSelectButtonAtIndex index: Int) {
-        print(index)
+        navigationController?.pushViewController(
+            menuConfigurator[index].getTargetVC(backend),
+            animated: true)
     }
     
     func actionButtonView(_ buttonActionView: ActionButtonView, titleForButtonAtIndex index: Int) -> String? {

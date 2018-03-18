@@ -22,6 +22,8 @@
 		D7A57236205E8CC900C3125B /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57235205E8CC900C3125B /* TapButton.swift */; };
 		D7A57238205E9C2E00C3125B /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57237205E9C2E00C3125B /* Int+Extensions.swift */; };
 		D7A5723C205EB99400C3125B /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5723B205EB99400C3125B /* UIImage+Extensions.swift */; };
+		D7A5723E205ED82400C3125B /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5723D205ED82400C3125B /* QRCode.swift */; };
+		D7A5723F205ED82700C3125B /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5723D205ED82400C3125B /* QRCode.swift */; };
 		D7D2C089205D2E960035E5EF /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C088205D2E960035E5EF /* Backend.swift */; };
 		D7D2C08B205D31F40035E5EF /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C08A205D31F40035E5EF /* HTTP.swift */; };
 		D7D2C08D205D370D0035E5EF /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C08C205D370D0035E5EF /* General.swift */; };
@@ -68,6 +70,7 @@
 		D7A57235205E8CC900C3125B /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
 		D7A57237205E9C2E00C3125B /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		D7A5723B205EB99400C3125B /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		D7A5723D205ED82400C3125B /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		D7D2C088205D2E960035E5EF /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		D7D2C08A205D31F40035E5EF /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		D7D2C08C205D370D0035E5EF /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 			children = (
 				D7D2C097205D886D0035E5EF /* AppError.swift */,
 				D7D2C094205D7F790035E5EF /* BaseDictModel.swift */,
+				D7A5723D205ED82400C3125B /* QRCode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -386,6 +390,7 @@
 				D7D2C093205D76CE0035E5EF /* Array+Extensions.swift in Sources */,
 				D7FA2E8D205E634D006E7A4D /* ActionButtonView.swift in Sources */,
 				D784709B2059AAE8000FE0C5 /* UIColor+Extensions.swift in Sources */,
+				D7A5723E205ED82400C3125B /* QRCode.swift in Sources */,
 				D7D2C08D205D370D0035E5EF /* General.swift in Sources */,
 				D7FA2E89205DC076006E7A4D /* MainViewController.swift in Sources */,
 				D7A57234205E72D600C3125B /* ActionButton.swift in Sources */,
@@ -408,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D784708F2059A1B4000FE0C5 /* QRAppTests.swift in Sources */,
+				D7A5723F205ED82700C3125B /* QRCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
