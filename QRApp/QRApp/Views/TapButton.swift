@@ -21,7 +21,7 @@ class TapButton: UIButton {
         }
     }
     
-    init() {
+    init(image: UIImage? = nil) {
         super.init(frame: .zero)
         addTarget(self, action: #selector(touchDown), for: .touchDown)
         addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
@@ -29,6 +29,8 @@ class TapButton: UIButton {
         addTarget(self, action: #selector(touchDragEnter), for: .touchDragEnter)
         addTarget(self, action: #selector(touchDragExit), for: .touchDragExit)
         addTarget(self, action: #selector(touchCancel), for: .touchCancel)
+        
+        setImage(image, for: .normal)
     }
     
     private func buttonClicked() {

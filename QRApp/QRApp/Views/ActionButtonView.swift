@@ -32,7 +32,7 @@ class ActionButtonView: UIView {
     
     weak var delegate: ActionButtonViewDelegate?
     
-    private let triggerButton = with(TapButton()) {
+    private let triggerButton = with(TapButton(image: UIImage(named: "plus"))) {
         $0.backgroundColor = .darkBlue
         $0.layer.cornerRadius = ActionButtonView.buttonDiameter / 2
     }
@@ -53,38 +53,33 @@ class ActionButtonView: UIView {
             make.right.bottom.equalTo(superview).inset(20)
         }
         
-        generateButtons()
+        generateActionButtons()
         
         triggerButton.onClick = { [weak self] _ in
             guard let sself = self else { return }
-            sself.isOpen ? sself.close() : sself.open()
+            sself.displayButtonsState(!sself.isOpen)
         }
     }
     
-    private func open() {
+    private func displayButtonsState(_ show: Bool) {
+        // Present and animate individual buttons.
+        //
         for (index, button) in self.actionButtons.enumerated() {
             UIView.animate(withDuration: 0.2, delay: index.asDouble() * 0.1, animations: {
-                button.alpha = 1
-                button.transform = CGAffineTransform(translationX: 0, y: -20 - index.asCGFloat() * 20)
+                button.alpha = show ? 1 : 0
+                button.transform =  show ? CGAffineTransform(translationX: 0, y: -20 - index.asCGFloat() * 20) : .identity
             }, completion: nil)
         }
-        UIView.animate(withDuration: 0.4) {
-            
-        }
-        self.isOpen = true
+        
+        // Animate trigger button.
+        //
+        UIView.animate(withDuration: 0.2 + 0.2, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.3, options: [], animations: {
+            self.triggerButton.transform = show ? CGAffineTransform(rotationAngle: CGFloat.pi * 5 / 4) : .identity
+        }, completion: nil)
+        self.isOpen = show
     }
     
-    private func close() {
-        UIView.animate(withDuration: 0.2) {
-            for button in self.actionButtons {
-                button.alpha = 0
-                button.transform = CGAffineTransform.identity
-            }
-        }
-        self.isOpen = false
-    }
-    
-    private func generateButtons() {
+    private func generateActionButtons() {
         let numberOfButtons = delegate?.numberOfButtonsInButtonActionView(self) ?? 0
         
         for index in 0 ..< numberOfButtons {
@@ -106,6 +101,7 @@ class ActionButtonView: UIView {
             button.onClick = { [weak self] _ in
                 guard let sself = self else { return }
                 sself.delegate?.actionButtonView(sself, didSelectButtonAtIndex: index)
+                sself.displayButtonsState(false)
             }
             
             actionButtons.append(button)

@@ -24,6 +24,8 @@ class ActionButton: UIView {
         $0.font = $0.font.withSize(12)
     }
     
+    private let buttonImageScale = Int(ActionButtonView.buttonDiameter * 0.5)
+    
     /// Pass-through click handler to the underlying TapButton instance
     ///
     var onClick: ((_ sender: TapButton) -> Void)? {
@@ -40,7 +42,10 @@ class ActionButton: UIView {
     
     init(title: String?, image: UIImage, backgroundColor: UIColor = .darkBlue) {
         super.init(frame: .zero)
+        
         button.backgroundColor = backgroundColor
+        button.imageView?.backgroundColor = .white
+        button.setImage(image.scaled(width: buttonImageScale, height: buttonImageScale), for: .normal)
         label.text = title
         
         addSubview(button)

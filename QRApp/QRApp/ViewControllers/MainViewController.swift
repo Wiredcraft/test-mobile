@@ -8,9 +8,18 @@
 
 import UIKit
 
+typealias ActionButtonConfigurator = (title: String, image: UIImage?)
+
 class MainViewController: QRBaseViewController, ActionButtonViewDelegate {
 
     var buttonActionView: ActionButtonView?
+    
+    var menuConfigurator: [ActionButtonConfigurator] {
+        return [
+            ActionButtonConfigurator(title: "Get QR", image: UIImage(named: "qr")),
+            ActionButtonConfigurator(title: "Scan QR", image: UIImage(named: "scan"))
+        ]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +34,18 @@ class MainViewController: QRBaseViewController, ActionButtonViewDelegate {
     }
     
     func numberOfButtonsInButtonActionView(_ buttonActionView: ActionButtonView) -> Int {
-        return 2
+        return menuConfigurator.count
     }
     
     func actionButtonView(_ buttonActionView: ActionButtonView, didSelectButtonAtIndex index: Int) {
         print(index)
     }
     
-    func actionButtonView(_ buttonActionView: ActionButtonView, titleForButtonAtIndex: Int) -> String? {
-        return "Scan QR"
+    func actionButtonView(_ buttonActionView: ActionButtonView, titleForButtonAtIndex index: Int) -> String? {
+        return menuConfigurator[index].title
     }
     
-    func actionButtonView(_ buttonActionView: ActionButtonView, imageForButtonAtIndex: Int) -> UIImage? {
-        return nil
+    func actionButtonView(_ buttonActionView: ActionButtonView, imageForButtonAtIndex index: Int) -> UIImage? {
+        return menuConfigurator[index].image
     }
 }
