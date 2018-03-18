@@ -26,10 +26,6 @@ class QRBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        backend.getQRCodeRandomSeed().onSuccess { dict in
-            print(BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"))
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +37,7 @@ class QRBaseViewController: UIViewController {
             return
         }
         navBar.tintColor = .white
+        navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         navBar.barTintColor = .darkBlue
         navBar.isTranslucent = false
     }

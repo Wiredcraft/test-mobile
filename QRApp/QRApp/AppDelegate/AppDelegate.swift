@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func makeRootViewController() -> UIViewController {
-        return UINavigationController(rootViewController: QRBaseViewController(backend: makeBackendService()))
+        return UINavigationController(rootViewController: MainViewController(backend: makeBackendService()))
     }
     
     func makeBackendService() -> Backend {

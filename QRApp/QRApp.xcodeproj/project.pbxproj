@@ -18,6 +18,9 @@
 		D78470A12059C06E000FE0C5 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784709E2059C06E000FE0C5 /* BrightFutures.framework */; };
 		D78470A22059C06E000FE0C5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784709F2059C06E000FE0C5 /* Result.framework */; };
 		D79B1A91205C1F7F005454EA /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1A90205C1F7F005454EA /* Operation.swift */; };
+		D7A57234205E72D600C3125B /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57233205E72D600C3125B /* ActionButton.swift */; };
+		D7A57236205E8CC900C3125B /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57235205E8CC900C3125B /* TapButton.swift */; };
+		D7A57238205E9C2E00C3125B /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57237205E9C2E00C3125B /* Int+Extensions.swift */; };
 		D7D2C089205D2E960035E5EF /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C088205D2E960035E5EF /* Backend.swift */; };
 		D7D2C08B205D31F40035E5EF /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C08A205D31F40035E5EF /* HTTP.swift */; };
 		D7D2C08D205D370D0035E5EF /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C08C205D370D0035E5EF /* General.swift */; };
@@ -25,9 +28,12 @@
 		D7D2C093205D76CE0035E5EF /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C092205D76CE0035E5EF /* Array+Extensions.swift */; };
 		D7D2C095205D7F790035E5EF /* BaseDictModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C094205D7F790035E5EF /* BaseDictModel.swift */; };
 		D7D2C098205D886E0035E5EF /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C097205D886D0035E5EF /* AppError.swift */; };
-		D7D2C09A205DAA2A0035E5EF /* URLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C099205DAA2A0035E5EF /* URLResponse.swift */; };
+		D7D2C09A205DAA2A0035E5EF /* URLResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C099205DAA2A0035E5EF /* URLResponse+Extensions.swift */; };
 		D7D2C09C205DBB5D0035E5EF /* HTTP+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C09B205DBB5D0035E5EF /* HTTP+Task.swift */; };
 		D7F147A22059C51100057F92 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784709D2059C06E000FE0C5 /* SnapKit.framework */; };
+		D7FA2E89205DC076006E7A4D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2E88205DC076006E7A4D /* MainViewController.swift */; };
+		D7FA2E8B205DC1C3006E7A4D /* DisplayQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2E8A205DC1C3006E7A4D /* DisplayQRViewController.swift */; };
+		D7FA2E8D205E634D006E7A4D /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA2E8C205E634D006E7A4D /* ActionButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +63,9 @@
 		D784709E2059C06E000FE0C5 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = ../Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
 		D784709F2059C06E000FE0C5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		D79B1A90205C1F7F005454EA /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		D7A57233205E72D600C3125B /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		D7A57235205E8CC900C3125B /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
+		D7A57237205E9C2E00C3125B /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		D7D2C088205D2E960035E5EF /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		D7D2C08A205D31F40035E5EF /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		D7D2C08C205D370D0035E5EF /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
@@ -64,8 +73,11 @@
 		D7D2C092205D76CE0035E5EF /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		D7D2C094205D7F790035E5EF /* BaseDictModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDictModel.swift; sourceTree = "<group>"; };
 		D7D2C097205D886D0035E5EF /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
-		D7D2C099205DAA2A0035E5EF /* URLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResponse.swift; sourceTree = "<group>"; };
+		D7D2C099205DAA2A0035E5EF /* URLResponse+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+Extensions.swift"; sourceTree = "<group>"; };
 		D7D2C09B205DBB5D0035E5EF /* HTTP+Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTP+Task.swift"; sourceTree = "<group>"; };
+		D7FA2E88205DC076006E7A4D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D7FA2E8A205DC1C3006E7A4D /* DisplayQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQRViewController.swift; sourceTree = "<group>"; };
+		D7FA2E8C205E634D006E7A4D /* ActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,16 +123,17 @@
 		D78470782059A1B4000FE0C5 /* QRApp */ = {
 			isa = PBXGroup;
 			children = (
-				D78470792059A1B4000FE0C5 /* AppDelegate.swift */,
+				D7FA2E87205DBFD4006E7A4D /* AppDelegate */,
 				D7D2C08F205D6D320035E5EF /* Backend */,
 				D7D2C08E205D37130035E5EF /* Utils */,
 				D79B1A93205C3689005454EA /* Extensions */,
 				D79B1A92205C1F85005454EA /* Operation */,
 				D78470992059A764000FE0C5 /* ViewControllers */,
+				D7D2C096205D7F820035E5EF /* Model */,
 				D78470802059A1B4000FE0C5 /* Assets.xcassets */,
 				D78470822059A1B4000FE0C5 /* LaunchScreen.storyboard */,
+				D7A57232205E72A900C3125B /* Views */,
 				D78470852059A1B4000FE0C5 /* Info.plist */,
-				D7D2C096205D7F820035E5EF /* Model */,
 			);
 			path = QRApp;
 			sourceTree = "<group>";
@@ -138,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */,
+				D7FA2E88205DC076006E7A4D /* MainViewController.swift */,
+				D7FA2E8A205DC1C3006E7A4D /* DisplayQRViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -166,11 +181,22 @@
 			isa = PBXGroup;
 			children = (
 				D784709A2059AAE8000FE0C5 /* UIColor+Extensions.swift */,
+				D7A57237205E9C2E00C3125B /* Int+Extensions.swift */,
 				D7D2C090205D74E70035E5EF /* String+Extensions.swift */,
-				D7D2C099205DAA2A0035E5EF /* URLResponse.swift */,
+				D7D2C099205DAA2A0035E5EF /* URLResponse+Extensions.swift */,
 				D7D2C092205D76CE0035E5EF /* Array+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D7A57232205E72A900C3125B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7FA2E8C205E634D006E7A4D /* ActionButtonView.swift */,
+				D7A57235205E8CC900C3125B /* TapButton.swift */,
+				D7A57233205E72D600C3125B /* ActionButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D7D2C08E205D37130035E5EF /* Utils */ = {
@@ -198,6 +224,14 @@
 				D7D2C094205D7F790035E5EF /* BaseDictModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D7FA2E87205DBFD4006E7A4D /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D78470792059A1B4000FE0C5 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,19 +377,25 @@
 			files = (
 				D7D2C091205D74E70035E5EF /* String+Extensions.swift in Sources */,
 				D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */,
+				D7FA2E8B205DC1C3006E7A4D /* DisplayQRViewController.swift in Sources */,
 				D7489E2F205D2BB8003D3A63 /* Operation+UI.swift in Sources */,
 				D7D2C098205D886E0035E5EF /* AppError.swift in Sources */,
 				D7D2C093205D76CE0035E5EF /* Array+Extensions.swift in Sources */,
+				D7FA2E8D205E634D006E7A4D /* ActionButtonView.swift in Sources */,
 				D784709B2059AAE8000FE0C5 /* UIColor+Extensions.swift in Sources */,
 				D7D2C08D205D370D0035E5EF /* General.swift in Sources */,
+				D7FA2E89205DC076006E7A4D /* MainViewController.swift in Sources */,
+				D7A57234205E72D600C3125B /* ActionButton.swift in Sources */,
 				D7489E2D205D29D8003D3A63 /* Operation+FutureKind.swift in Sources */,
 				D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */,
 				D7D2C08B205D31F40035E5EF /* HTTP.swift in Sources */,
 				D7D2C089205D2E960035E5EF /* Backend.swift in Sources */,
 				D7D2C095205D7F790035E5EF /* BaseDictModel.swift in Sources */,
-				D7D2C09A205DAA2A0035E5EF /* URLResponse.swift in Sources */,
+				D7D2C09A205DAA2A0035E5EF /* URLResponse+Extensions.swift in Sources */,
 				D7D2C09C205DBB5D0035E5EF /* HTTP+Task.swift in Sources */,
+				D7A57238205E9C2E00C3125B /* Int+Extensions.swift in Sources */,
 				D79B1A91205C1F7F005454EA /* Operation.swift in Sources */,
+				D7A57236205E8CC900C3125B /* TapButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +543,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 38RMUB4555;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/build/iOS";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = QRApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.villev.QRApp;
@@ -519,6 +560,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 38RMUB4555;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/build/iOS";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = QRApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.villev.QRApp;

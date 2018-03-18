@@ -22,7 +22,6 @@ class Backend {
             .addToBeginning(baseURL)
             .joined(separator: "/")
             .asURL()
-        
     }
     
     func getQRCodeRandomSeed() -> AsyncOperation<[String : Any]> {
