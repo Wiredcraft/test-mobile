@@ -75,4 +75,5 @@ Carthage/Build
 *.xcscmblueprint
 .DS_Store
 xcuserdata
-*/xcuserdata
+*/xcuserdata/*
+QRApp/QRApp.xcodeproj/xcuserdata
