@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Basic popup Alert class.
+///
 class Alert {
     
     static func showOKAlert(_ title: String, message: String = "", showIn vc: UIViewController) {

@@ -32,7 +32,7 @@ typealias HTTPResponse = (data: Data, response: URLResponse)
 
 class HTTPService {
     
-    let session = URLSession(configuration: .default)
+    private let session = URLSession(configuration: .default)
     
     func startHTTPRequest(_ method: HTTPMethod, url: URL?, body: String? = nil) -> AsyncOperation<HTTPResponse> {
         guard let task = HTTPTask(method, session: session, url: url, body: body) else {

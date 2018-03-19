@@ -16,6 +16,11 @@ import SnapKit
     func actionButtonView(_ buttonActionView: ActionButtonView, didSelectButtonAtIndex index: Int)
 }
 
+/// View which handles menu like functionality.
+/// Consists of trigger button, which opens the menu
+/// and multiple action button with different action.
+/// Action buttons are configured by the delegate.
+///
 class ActionButtonView: UIView {
     
     static let buttonDiameter = CGFloat(60)

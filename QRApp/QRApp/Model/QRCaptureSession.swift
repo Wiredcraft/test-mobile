@@ -9,6 +9,9 @@
 import AVFoundation
 import UIKit
 
+/// Protocol to provide call in case of successful
+/// QR code capture.
+///
 @objc protocol QRCaptureSessionDelegate {
     func didReadQRCode(code: String)
 }
@@ -42,19 +45,21 @@ class QRCaptureSession: NSObject, AVCaptureMetadataOutputObjectsDelegate {
             return nil
         }
         
-        if captureSession.canAddInput(videoInput) {
-            captureSession.addInput(videoInput)
-        } else {
+        // Verify capture session can add input.
+        //
+        guard captureSession.canAddInput(videoInput) else {
             return nil
         }
+        captureSession.addInput(videoInput)
         
-        if captureSession.canAddOutput(metadataOutput) {
-            captureSession.addOutput(metadataOutput)
-            metadataOutput.metadataObjectTypes = [.qr]
-        } else {
+        // Verify capture session can add output.
+        //
+        guard captureSession.canAddOutput(metadataOutput) else {
             return nil
         }
+        captureSession.addOutput(metadataOutput)
         
+        metadataOutput.metadataObjectTypes = [.qr]
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = targetView.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
@@ -69,6 +74,10 @@ class QRCaptureSession: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         captureSession.stopRunning()
     }
     
+    
+    /// Forward local AVCaptureMetadataOutputObjectsDelegate method to
+    /// QRCaptureSessionDelegate.
+    ///
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         guard
             let metadataObject = metadataObjects.first,

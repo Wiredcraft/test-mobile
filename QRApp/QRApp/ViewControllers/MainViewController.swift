@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// Main ViewController of the application.
+/// Provides small menu and welcoming text.
+///
 class MainViewController: QRBaseViewController {
     
     // Handles ActionButton displaying and menu-like functionality

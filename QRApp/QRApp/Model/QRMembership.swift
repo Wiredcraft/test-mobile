@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// Class which contains the membership data.
+/// Can be cached to local userdefaults.
+///
 class QRMembership: NSObject, NSCoding {
     
     private static let SEED_KEY = "seed"

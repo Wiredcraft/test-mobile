@@ -8,14 +8,19 @@
 
 import UIKit
 
+/// ViewController which handles loading QR membership from
+/// either local cache or online service.
+///
 class DisplayQRViewController: QRBaseViewController {
     
     private let imageView = UIImageView()
     private lazy var loadingIndicator = LoadingIndicatorView(superview: view)
-    
     private let QRCodeSize = 300
     
-    var membershipExistsAndIsValid: Bool {
+    // Property to verify membership is in cache
+    // and that it is valid.
+    //
+    private var membershipExistsAndIsValid: Bool {
         guard
             let membership = QRUserDefaults.standard.qrMembershipInStorage,
             !(Date.dateFrom(iso8061DateString: membership.expires_at)?.hasPassed() ?? true) else {

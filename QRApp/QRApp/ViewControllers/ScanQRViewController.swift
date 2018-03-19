@@ -11,6 +11,9 @@ import UIKit
 import AVFoundation
 import UIKit
 
+/// ViewController to handle scanning QR images with
+/// QRCaptureSession.
+///
 class ScanQRViewController: QRBaseViewController, QRCaptureSessionDelegate {
     
     var qrSession: QRCaptureSession?
