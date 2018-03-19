@@ -16,9 +16,9 @@ class Backend {
     
     private var baseURL: String {
         if BuildParameters.buildType == .development {
-            return "https://localhost:3000"
+            return "http://localhost:3000"
         } else {
-            return "https://localhost:3000"
+            return "http://localhost:3000"
         }
     }
     
@@ -32,7 +32,7 @@ class Backend {
     }
     
     func getQRCodeRandomSeed() -> AsyncOperation<QRMembership> {
-        return backendService.jsonRequest(generateURLFromPath("delay", "0")).flatMap { dict in
+        return backendService.jsonRequest(generateURLFromPath("seed")).flatMap { dict in
             AsyncOperation { complete in
                 let baseDict = BaseDictModel(dict)
                 guard
