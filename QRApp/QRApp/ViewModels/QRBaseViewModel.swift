@@ -6,8 +6,8 @@
 //  Copyright © 2018 Ville Välimaa. All rights reserved.
 //
 
-import Foundation
-
+/// Base viewmodel for viewmodels in the application.
+///
 class QRBaseViewModel {
     
     let backend: Backend

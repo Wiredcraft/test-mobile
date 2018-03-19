@@ -10,6 +10,8 @@
 		D7489E2D205D29D8003D3A63 /* Operation+FutureKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7489E2C205D29D8003D3A63 /* Operation+FutureKind.swift */; };
 		D7489E2F205D2BB8003D3A63 /* Operation+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7489E2E205D2BB8003D3A63 /* Operation+UI.swift */; };
 		D74C7E88205FB803000D6085 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C097205D886D0035E5EF /* AppError.swift */; };
+		D74C7E89205FBAEC000D6085 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C08C205D370D0035E5EF /* General.swift */; };
+		D74C7E8B205FBCB0000D6085 /* BuildParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7E8A205FBCB0000D6085 /* BuildParameters.swift */; };
 		D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78470792059A1B4000FE0C5 /* AppDelegate.swift */; };
 		D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */; };
 		D78470812059A1B4000FE0C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D78470802059A1B4000FE0C5 /* Assets.xcassets */; };
@@ -65,6 +67,7 @@
 /* Begin PBXFileReference section */
 		D7489E2C205D29D8003D3A63 /* Operation+FutureKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+FutureKind.swift"; sourceTree = "<group>"; };
 		D7489E2E205D2BB8003D3A63 /* Operation+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Operation+UI.swift"; sourceTree = "<group>"; };
+		D74C7E8A205FBCB0000D6085 /* BuildParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildParameters.swift; sourceTree = "<group>"; };
 		D78470762059A1B4000FE0C5 /* QRApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D78470792059A1B4000FE0C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBaseViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				D7D2C08C205D370D0035E5EF /* General.swift */,
+				D74C7E8A205FBCB0000D6085 /* BuildParameters.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -417,6 +421,7 @@
 			files = (
 				D7D2C091205D74E70035E5EF /* String+Extensions.swift in Sources */,
 				D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */,
+				D74C7E8B205FBCB0000D6085 /* BuildParameters.swift in Sources */,
 				D7FA2E8B205DC1C3006E7A4D /* DisplayQRViewController.swift in Sources */,
 				D7A57243205F06FF00C3125B /* LoadingIndicatorView.swift in Sources */,
 				D7489E2F205D2BB8003D3A63 /* Operation+UI.swift in Sources */,
@@ -455,6 +460,7 @@
 				D7A57251205FB53300C3125B /* HTTP+Task.swift in Sources */,
 				D74C7E88205FB803000D6085 /* AppError.swift in Sources */,
 				D7A57257205FB6AB00C3125B /* Operation+FutureKind.swift in Sources */,
+				D74C7E89205FBAEC000D6085 /* General.swift in Sources */,
 				D7A57256205FB6A800C3125B /* Operation+UI.swift in Sources */,
 				D7A5724C205FB25300C3125B /* QRBaseViewModel.swift in Sources */,
 				D784708F2059A1B4000FE0C5 /* QRAppTests.swift in Sources */,
@@ -621,6 +627,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.villev.QRApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

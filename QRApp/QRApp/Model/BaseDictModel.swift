@@ -8,6 +8,10 @@
 
 import Foundation
 
+/// Base dictionary model, which is initialized with
+/// dictionary and provides safe getters for its values
+/// submodels.
+///
 public class BaseDictModel {
     
     private var dict: [String : Any]

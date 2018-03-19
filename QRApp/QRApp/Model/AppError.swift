@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// Application's own error type.
+/// Still WIP.
+///
 public class AppError: Error {
     
     public let httpStatusCode: Int?

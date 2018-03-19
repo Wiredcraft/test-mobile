@@ -30,7 +30,7 @@ class ActionButtonView: UIView {
     //
     private var actionButtons: [ActionButton] = []
     
-    weak var delegate: ActionButtonViewDelegate?
+    private weak var delegate: ActionButtonViewDelegate?
     
     private let triggerButton = with(TapButton(image: UIImage(named: "plus"))) {
         $0.backgroundColor = .darkBlue

@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// ViewModel for the application main VC.
+///
 class MainViewModel: QRBaseViewModel {
     
     typealias ActionButtonConfigurator = (title: String, image: UIImage?, getTargetVC: (Backend) -> QRBaseViewController)

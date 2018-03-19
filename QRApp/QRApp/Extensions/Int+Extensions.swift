@@ -6,7 +6,6 @@
 //  Copyright © 2018 Ville Välimaa. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public extension Int {

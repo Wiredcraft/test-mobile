@@ -53,6 +53,8 @@ class QRCode {
         return UIImage(ciImage: transformedImage)
     }
     
+    /// Generates QR code with WiredCraft logo in the center.
+    ///
     func asWiredCraftQRImage(size: Int) -> UIImage {
         let qrImage = asUIImageScaledTo(size: size)
         let wiredCraftLogo = UIImage(named: "wired")
@@ -62,14 +64,14 @@ class QRCode {
         // but at worst only around 7% so for safety reasons
         // let's pick the lower bound limit.
         //
-        let wiredCraftLogoSize = (size.asDouble() * size.asDouble() * 0.07).squareRoot()
-        let logoOffset = (size.asDouble() - wiredCraftLogoSize) / 2
+        let logoSize = (size.asDouble() * size.asDouble() * 0.07).squareRoot()
+        let logoOffset = (size.asDouble() - logoSize) / 2
         
         UIGraphicsBeginImageContextWithOptions(cgSize, false, 0)
         qrImage.draw(in: CGRect(origin: .zero, size: cgSize))
         wiredCraftLogo?.draw(in: CGRect(
             origin: CGPoint(x: logoOffset, y: logoOffset),
-            size: CGSize(width: wiredCraftLogoSize, height: wiredCraftLogoSize)))
+            size: CGSize(width: logoSize, height: logoSize)))
         return UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
     }
     

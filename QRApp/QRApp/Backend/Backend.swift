@@ -8,13 +8,20 @@
 
 import Foundation
 
+/// Class to handle backend actions with viewcontrollers and/or viewmodels.
+///
 class Backend {
     
-    let backendService = HTTPService()
+    private let backendService = HTTPService()
     
-    var baseURL: String {
-        return "https://httpbin.org"
+    private var baseURL: String {
+        if BuildParameters.buildType == .development {
+            return "https://httpbin.org"
+        } else {
+            return "https://httpbin.org"
+        }
     }
+    
     
     func generateURLFromPath(_ components: String...) -> URL? {
         return components
