@@ -130,6 +130,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D74C7E8E20601295000D6085 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D78470802059A1B4000FE0C5 /* Assets.xcassets */,
+				D78470822059A1B4000FE0C5 /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		D74C7E8F206012F1000D6085 /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				D78470852059A1B4000FE0C5 /* Info.plist */,
+			);
+			path = Plist;
+			sourceTree = "<group>";
+		};
 		D784706D2059A1B4000FE0C5 = {
 			isa = PBXGroup;
 			children = (
@@ -153,16 +170,15 @@
 			isa = PBXGroup;
 			children = (
 				D7FA2E87205DBFD4006E7A4D /* AppDelegate */,
+				D74C7E8E20601295000D6085 /* Assets */,
 				D7D2C08F205D6D320035E5EF /* Backend */,
-				D7D2C08E205D37130035E5EF /* Utils */,
 				D79B1A93205C3689005454EA /* Extensions */,
-				D79B1A92205C1F85005454EA /* Operation */,
-				D78470992059A764000FE0C5 /* ViewControllers */,
 				D7D2C096205D7F820035E5EF /* Model */,
-				D78470802059A1B4000FE0C5 /* Assets.xcassets */,
-				D78470822059A1B4000FE0C5 /* LaunchScreen.storyboard */,
+				D79B1A92205C1F85005454EA /* Operation */,
+				D74C7E8F206012F1000D6085 /* Plist */,
+				D7D2C08E205D37130035E5EF /* Utils */,
+				D78470992059A764000FE0C5 /* ViewControllers */,
 				D7A57232205E72A900C3125B /* Views */,
-				D78470852059A1B4000FE0C5 /* Info.plist */,
 				D7A5724D205FB25900C3125B /* ViewModels */,
 			);
 			path = QRApp;
@@ -610,7 +626,7 @@
 				DEVELOPMENT_TEAM = 38RMUB4555;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/build/iOS";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				INFOPLIST_FILE = QRApp/Info.plist;
+				INFOPLIST_FILE = QRApp/Plist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.villev.QRApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -627,7 +643,7 @@
 				DEVELOPMENT_TEAM = 38RMUB4555;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/build/iOS";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				INFOPLIST_FILE = QRApp/Info.plist;
+				INFOPLIST_FILE = QRApp/Plist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.villev.QRApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
