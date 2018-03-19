@@ -15,4 +15,8 @@ public extension Array {
         copy.insert(element, at:0)
         return copy
     }
+    
+    var isNotEmpty: Bool {
+        return !isEmpty
+    }
 }

@@ -27,6 +27,10 @@ public class BaseDictModel {
         return self.dict[key] as? T ?? defaultValue
     }
     
+    public func get<T>(_ key: String) -> T? {
+        return self.dict[key] as? T
+    }
+    
     public subscript(key: String) -> Any? {
         return dict[key]
     }
@@ -35,16 +39,32 @@ public class BaseDictModel {
         return get(key, defaultValue: "")
     }
     
+    public func string(_ key: String) -> String? {
+        return get(key)
+    }
+    
     public func intOrZero(_ key: String) -> Int {
         return get(key, defaultValue: 0)
+    }
+    
+    public func int(_ key: String) -> Int? {
+        return get(key)
     }
     
     public func doubleOrZero(_ key: String) -> Double {
         return get(key, defaultValue: 0)
     }
     
+    public func double(_ key: String) -> Double? {
+        return get(key)
+    }
+    
     public func boolOrFalse(_ key: String) -> Bool {
         return get(key, defaultValue: false)
+    }
+    
+    public func bool(_ key: String) -> Bool? {
+        return get(key)
     }
     
     public func subModel(_ key: String) -> BaseDictModel {

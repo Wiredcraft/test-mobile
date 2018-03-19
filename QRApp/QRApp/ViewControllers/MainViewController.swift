@@ -14,6 +14,11 @@ class MainViewController: QRBaseViewController {
     //
     private var buttonActionView: ActionButtonView?
     
+    private let welcomeLabel = with(UILabel()) {
+        $0.text = "Welcome to the QR scanner application!"
+        $0.textAlignment = .center
+    }
+    
     private let viewModel: MainViewModel
     
     override init(backend: Backend) {
@@ -25,6 +30,13 @@ class MainViewController: QRBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Main"
+        
+        view.addSubview(welcomeLabel)
+        welcomeLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view.center)
+            make.top.equalTo(view.snp.top).offset(100)
+            make.left.right.equalTo(view)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

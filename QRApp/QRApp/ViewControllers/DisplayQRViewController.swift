@@ -15,6 +15,15 @@ class DisplayQRViewController: QRBaseViewController {
     
     private let QRCodeSize = 300
     
+    var membershipExistsAndIsValid: Bool {
+        guard
+            let membership = QRUserDefaults.standard.qrMembershipInStorage,
+            !(Date.dateFrom(iso8061DateString: membership.expires_at)?.hasPassed() ?? true) else {
+            return false
+        }
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Display QR VC"
@@ -25,13 +34,27 @@ class DisplayQRViewController: QRBaseViewController {
             make.center.equalTo(view)
         }
         
+        membershipExistsAndIsValid ? loadMembershipFromStorage() : loadMembershipFromOnline()
+    }
+    
+    private func loadMembershipFromOnline() {
         backend
             .getQRCodeRandomSeed()
             .bindToLoadingIndicator(loadingIndicator)
             .showErrorOnFailure(self)
-            .onSuccess { [weak self] dict in
-                //self?.imageView.image = UIImage.asQRCodeImageFrom(BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"), for: self?.QRCodeSize ?? 0)
-                self?.imageView.image = QRCode(text: BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"))?.asWiredCraftQRImage(size: 300)
+            .onSuccess { [weak self] membership in
+                guard let sself = self else { return }
+                QRUserDefaults.standard.qrMembershipInStorage = membership
+                sself.displayMembershipAsQRCode(membership)
         }
+    }
+    
+    private func loadMembershipFromStorage() {
+        guard let membership = QRUserDefaults.standard.qrMembershipInStorage else { return }
+        displayMembershipAsQRCode(membership)
+    }
+    
+    private func displayMembershipAsQRCode(_ membership: QRMembership) {
+        self.imageView.image = QRCode(text: membership.seed)?.asWiredCraftQRImage(size: self.QRCodeSize)
     }
 }
