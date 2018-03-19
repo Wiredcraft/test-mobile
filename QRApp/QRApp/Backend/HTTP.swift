@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 /// HTTP Method types
 ///

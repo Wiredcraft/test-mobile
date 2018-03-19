@@ -32,9 +32,5 @@ class DisplayQRViewController: QRBaseViewController {
                 //self?.imageView.image = UIImage.asQRCodeImageFrom(BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"), for: self?.QRCodeSize ?? 0)
                 self?.imageView.image = QRCode(text: BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"))?.asWiredCraftQRImage(size: 300)
         }
-        
-        
-        
-        //imageView.image = UIImage.asQRCodeImageFrom("Hello world!", for: QRCodeSize)
     }
 }

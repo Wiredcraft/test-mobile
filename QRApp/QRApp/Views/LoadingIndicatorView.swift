@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// Protocol for loading indicators to provide interface
+/// for operations or other actions.
+///
 public protocol LoadingProtocol {
     func start()
     func stop()
