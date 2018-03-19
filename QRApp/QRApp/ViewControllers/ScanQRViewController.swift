@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 import UIKit
 
-class ScanQRViewController: QRBaseViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScanQRViewController: QRBaseViewController, QRCaptureSessionDelegate {
     
     var qrSession: QRCaptureSession?
     
@@ -19,11 +19,12 @@ class ScanQRViewController: QRBaseViewController, AVCaptureMetadataOutputObjects
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         
-        guard let session = QRCaptureSession(delegate: self, targetView: view) else {
+        guard let session = QRCaptureSession(targetView: view) else {
             Alert.showOKAlert("Scanning not supported", message: "QR Scanning failure", showIn: self)
             return
         }
         qrSession = session
+        session.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,14 +45,9 @@ class ScanQRViewController: QRBaseViewController, AVCaptureMetadataOutputObjects
         }
     }
     
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        guard
-            let metadataObject = metadataObjects.first,
-            let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
-            let stringValue = readableObject.stringValue else { return }
-            
+    func didReadQRCode(code: String) {
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-        Alert.showOKAlert("QR Code found!", message: "'\(stringValue)'", showIn: self)
+        Alert.showOKAlert("QR Code found!", message: "'\(code)'", showIn: self)
     }
     
     override var prefersStatusBarHidden: Bool {

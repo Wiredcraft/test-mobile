@@ -28,6 +28,7 @@ class DisplayQRViewController: QRBaseViewController {
         backend
             .getQRCodeRandomSeed()
             .bindToLoadingIndicator(loadingIndicator)
+            .showErrorOnFailure(self)
             .onSuccess { [weak self] dict in
                 //self?.imageView.image = UIImage.asQRCodeImageFrom(BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"), for: self?.QRCodeSize ?? 0)
                 self?.imageView.image = QRCode(text: BaseDictModel(dict).subModel("headers").stringOrEmpty("Connection"))?.asWiredCraftQRImage(size: 300)

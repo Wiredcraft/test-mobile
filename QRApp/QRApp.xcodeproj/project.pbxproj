@@ -12,6 +12,8 @@
 		D74C7E88205FB803000D6085 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C097205D886D0035E5EF /* AppError.swift */; };
 		D74C7E89205FBAEC000D6085 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C08C205D370D0035E5EF /* General.swift */; };
 		D74C7E8B205FBCB0000D6085 /* BuildParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7E8A205FBCB0000D6085 /* BuildParameters.swift */; };
+		D74C7E8C205FE966000D6085 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57242205F06FF00C3125B /* LoadingIndicatorView.swift */; };
+		D74C7E8D205FE9FC000D6085 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57248205F207200C3125B /* Alert.swift */; };
 		D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78470792059A1B4000FE0C5 /* AppDelegate.swift */; };
 		D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */; };
 		D78470812059A1B4000FE0C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D78470802059A1B4000FE0C5 /* Assets.xcassets */; };
@@ -458,9 +460,11 @@
 			files = (
 				D7A57252205FB64700C3125B /* HTTP.swift in Sources */,
 				D7A57251205FB53300C3125B /* HTTP+Task.swift in Sources */,
+				D74C7E8C205FE966000D6085 /* LoadingIndicatorView.swift in Sources */,
 				D74C7E88205FB803000D6085 /* AppError.swift in Sources */,
 				D7A57257205FB6AB00C3125B /* Operation+FutureKind.swift in Sources */,
 				D74C7E89205FBAEC000D6085 /* General.swift in Sources */,
+				D74C7E8D205FE9FC000D6085 /* Alert.swift in Sources */,
 				D7A57256205FB6A800C3125B /* Operation+UI.swift in Sources */,
 				D7A5724C205FB25300C3125B /* QRBaseViewModel.swift in Sources */,
 				D784708F2059A1B4000FE0C5 /* QRAppTests.swift in Sources */,

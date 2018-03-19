@@ -9,19 +9,30 @@
 import AVFoundation
 import UIKit
 
+@objc protocol QRCaptureSessionDelegate {
+    func didReadQRCode(code: String)
+}
+
 /// Wrapper for capturing QR codes with
 /// AVFoundations tools.
 ///
-class QRCaptureSession {
+class QRCaptureSession: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     
     private var captureSession = AVCaptureSession()
     private var previewLayer = AVCaptureVideoPreviewLayer()
+    private var metadataOutput = AVCaptureMetadataOutput()
     
     var isRunning: Bool {
         return captureSession.isRunning
     }
     
-    init?(delegate: AVCaptureMetadataOutputObjectsDelegate, targetView: UIView) {
+    weak var delegate: QRCaptureSessionDelegate? {
+        didSet {
+            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        }
+    }
+    
+    init?(targetView: UIView) {
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
         let videoInput: AVCaptureDeviceInput
         
@@ -31,18 +42,14 @@ class QRCaptureSession {
             return nil
         }
         
-        if (captureSession.canAddInput(videoInput)) {
+        if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
         } else {
             return nil
         }
         
-        let metadataOutput = AVCaptureMetadataOutput()
-        
-        if (captureSession.canAddOutput(metadataOutput)) {
+        if captureSession.canAddOutput(metadataOutput) {
             captureSession.addOutput(metadataOutput)
-            
-            metadataOutput.setMetadataObjectsDelegate(delegate, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
             return nil
@@ -62,5 +69,13 @@ class QRCaptureSession {
     
     func stop() {
         captureSession.stopRunning()
+    }
+    
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        guard
+            let metadataObject = metadataObjects.first,
+            let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
+            let qrCodeAsString = readableObject.stringValue else { return }
+        delegate?.didReadQRCode(code: qrCodeAsString)
     }
 }
