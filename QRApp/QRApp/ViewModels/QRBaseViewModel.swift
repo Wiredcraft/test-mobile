@@ -10,7 +10,7 @@
 ///
 class QRBaseViewModel {
     
-    let backend: Backend
+    private let backend: Backend
     
     init(backend: Backend) {
         self.backend = backend

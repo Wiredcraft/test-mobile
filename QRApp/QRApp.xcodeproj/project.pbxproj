@@ -20,6 +20,13 @@
 		D74C7E952060154E000D6085 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7E932060154E000D6085 /* Date+Extensions.swift */; };
 		D74C7E9720602304000D6085 /* QRUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7E9620602304000D6085 /* QRUserDefaults.swift */; };
 		D74C7E9820602304000D6085 /* QRUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7E9620602304000D6085 /* QRUserDefaults.swift */; };
+		D74C7E9A20603E64000D6085 /* OperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7E9920603E64000D6085 /* OperationTests.swift */; };
+		D74C7E9C20604287000D6085 /* QRBaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7E9B20604287000D6085 /* QRBaseTestCase.swift */; };
+		D74C7E9E20604C39000D6085 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7E9D20604C39000D6085 /* ModelTests.swift */; };
+		D74C7EA0206052DE000D6085 /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7E9F206052DE000D6085 /* ExtensionTests.swift */; };
+		D74C7EA2206058C5000D6085 /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7EA1206058C5000D6085 /* UtilsTests.swift */; };
+		D74C7EA420605A69000D6085 /* HTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7EA320605A69000D6085 /* HTTPTests.swift */; };
+		D74C7EA720605DBD000D6085 /* MockHTTPSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C7EA520605DBD000D6085 /* MockHTTPSession.swift */; };
 		D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78470792059A1B4000FE0C5 /* AppDelegate.swift */; };
 		D784707C2059A1B4000FE0C5 /* QRBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */; };
 		D78470812059A1B4000FE0C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D78470802059A1B4000FE0C5 /* Assets.xcassets */; };
@@ -40,7 +47,6 @@
 		D7A57247205F181F00C3125B /* QRCaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57246205F181F00C3125B /* QRCaptureSession.swift */; };
 		D7A57249205F207200C3125B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57248205F207200C3125B /* Alert.swift */; };
 		D7A5724B205FB25300C3125B /* QRBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5724A205FB25300C3125B /* QRBaseViewModel.swift */; };
-		D7A5724C205FB25300C3125B /* QRBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5724A205FB25300C3125B /* QRBaseViewModel.swift */; };
 		D7A5724F205FB2CD00C3125B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5724E205FB2CD00C3125B /* MainViewModel.swift */; };
 		D7A57251205FB53300C3125B /* HTTP+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C09B205DBB5D0035E5EF /* HTTP+Task.swift */; };
 		D7A57252205FB64700C3125B /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2C08A205D31F40035E5EF /* HTTP.swift */; };
@@ -79,6 +85,13 @@
 		D74C7E90206013A9000D6085 /* QRMembership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRMembership.swift; sourceTree = "<group>"; };
 		D74C7E932060154E000D6085 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		D74C7E9620602304000D6085 /* QRUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRUserDefaults.swift; sourceTree = "<group>"; };
+		D74C7E9920603E64000D6085 /* OperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTests.swift; sourceTree = "<group>"; };
+		D74C7E9B20604287000D6085 /* QRBaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBaseTestCase.swift; sourceTree = "<group>"; };
+		D74C7E9D20604C39000D6085 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		D74C7E9F206052DE000D6085 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
+		D74C7EA1206058C5000D6085 /* UtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
+		D74C7EA320605A69000D6085 /* HTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTests.swift; sourceTree = "<group>"; };
+		D74C7EA520605DBD000D6085 /* MockHTTPSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHTTPSession.swift; sourceTree = "<group>"; };
 		D78470762059A1B4000FE0C5 /* QRApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D78470792059A1B4000FE0C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D784707B2059A1B4000FE0C5 /* QRBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRBaseViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +210,13 @@
 			isa = PBXGroup;
 			children = (
 				D784708E2059A1B4000FE0C5 /* QRAppTests.swift */,
+				D74C7E9B20604287000D6085 /* QRBaseTestCase.swift */,
+				D74C7E9920603E64000D6085 /* OperationTests.swift */,
+				D74C7EA320605A69000D6085 /* HTTPTests.swift */,
+				D74C7E9F206052DE000D6085 /* ExtensionTests.swift */,
+				D74C7EA520605DBD000D6085 /* MockHTTPSession.swift */,
+				D74C7EA1206058C5000D6085 /* UtilsTests.swift */,
+				D74C7E9D20604C39000D6085 /* ModelTests.swift */,
 				D78470902059A1B4000FE0C5 /* Info.plist */,
 			);
 			path = QRAppTests;
@@ -492,18 +512,24 @@
 				D7A57252205FB64700C3125B /* HTTP.swift in Sources */,
 				D7A57251205FB53300C3125B /* HTTP+Task.swift in Sources */,
 				D74C7E8C205FE966000D6085 /* LoadingIndicatorView.swift in Sources */,
+				D74C7E9A20603E64000D6085 /* OperationTests.swift in Sources */,
 				D74C7E88205FB803000D6085 /* AppError.swift in Sources */,
 				D7A57257205FB6AB00C3125B /* Operation+FutureKind.swift in Sources */,
+				D74C7EA2206058C5000D6085 /* UtilsTests.swift in Sources */,
+				D74C7E9E20604C39000D6085 /* ModelTests.swift in Sources */,
 				D74C7E89205FBAEC000D6085 /* General.swift in Sources */,
 				D74C7E8D205FE9FC000D6085 /* Alert.swift in Sources */,
 				D7A57256205FB6A800C3125B /* Operation+UI.swift in Sources */,
+				D74C7E9C20604287000D6085 /* QRBaseTestCase.swift in Sources */,
 				D74C7E92206013A9000D6085 /* QRMembership.swift in Sources */,
 				D74C7E952060154E000D6085 /* Date+Extensions.swift in Sources */,
-				D7A5724C205FB25300C3125B /* QRBaseViewModel.swift in Sources */,
 				D784708F2059A1B4000FE0C5 /* QRAppTests.swift in Sources */,
 				D7A5723F205ED82700C3125B /* QRCode.swift in Sources */,
+				D74C7EA0206052DE000D6085 /* ExtensionTests.swift in Sources */,
+				D74C7EA420605A69000D6085 /* HTTPTests.swift in Sources */,
 				D7A57255205FB6A300C3125B /* Operation.swift in Sources */,
 				D74C7E9820602304000D6085 /* QRUserDefaults.swift in Sources */,
+				D74C7EA720605DBD000D6085 /* MockHTTPSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -67,12 +67,12 @@ public class AsyncOperation<T>: Operation {
         self.cancellationBlock = { }
     }
     
-    public init (error: AppError) {
+    public init(error: AppError) {
         self.future = Future(error: error)
         self.cancellationBlock = { }
     }
     
-    public init (value: T) {
+    public init(value: T) {
         self.future = Future(value: value)
         self.cancellationBlock = { }
     }

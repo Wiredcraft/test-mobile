@@ -25,6 +25,7 @@ class ScanQRViewController: QRBaseViewController, QRCaptureSessionDelegate {
         }
         qrSession = session
         session.delegate = self
+        session.start()
     }
     
     override func viewWillAppear(_ animated: Bool) {

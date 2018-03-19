@@ -16,9 +16,9 @@ class Backend {
     
     private var baseURL: String {
         if BuildParameters.buildType == .development {
-            return "https://httpbin.org"
+            return "https://localhost:3000"
         } else {
-            return "https://httpbin.org"
+            return "https://localhost:3000"
         }
     }
     
@@ -38,11 +38,9 @@ class Backend {
                 guard
                     let seed = baseDict.string("seed"),
                     let expires_at = baseDict.string("expires_at") else {
-                        //return complete(.failure(AppError.makeUnknownError()))
-                        return complete(.success(QRMembership(seed: "37790a1b728096b4141864f49159ad47", expires_at: "2018-03-19T18:38:01+00:00")))
+                        return complete(.failure(AppError.makeUnknownError()))
                 }
-                //return complete(.success(QRMembership(seed: seed, expires_at: expires_at)))
-                return complete(.success(QRMembership(seed: "37790a1b728096b4141864f49159ad47", expires_at: "2018-03-19T22:25:01+00:00")))
+                return complete(.success(QRMembership(seed: seed, expires_at: expires_at)))
             }
         }
     }

@@ -59,8 +59,6 @@ class QRCaptureSession: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         previewLayer.frame = targetView.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         targetView.layer.addSublayer(previewLayer)
-        
-        captureSession.startRunning()
     }
     
     func start() {

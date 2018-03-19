@@ -23,7 +23,7 @@ class HTTPTask {
         return with(NSMutableURLRequest(url: url)) {
             $0.httpMethod = method.rawValue
             $0.httpBody = body?.data(using: .utf8)
-            } as URLRequest
+        } as URLRequest
     }
     
     /// Starts HTTP request and returns AsyncOperation.
@@ -47,7 +47,7 @@ class HTTPTask {
                         return
                 }
                 complete(.success(HTTPResponse(data, r)))
-                }.resume()
+            }.resume()
         }
     }
     
