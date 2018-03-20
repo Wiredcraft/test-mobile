@@ -29,6 +29,7 @@ Application implements BaseDict class which is a safe wrapper for dictionaries r
 - QRCode class can generate QR codes with WiredCraft logo embedded in the center. This will not be an issue, because the logo will take about ~7% of the space and can be recovered by the QR parsing algorithm.
 - Application uses `with<T>()`-function defined in `General.swift` to keep property declarations and configurations in the same place.
 - Strings are stored in the application explicitly. In actual large scale application they should be stored to localization files and fetched from there. This is a known decision.
+- Dependencies are handled with Carthage. Exact versioning is used for maximum safety and to mitigate problems in case external libraries fail to follow semantic versioning principles.
 
 ## Golang backend
 Golang backend is a simple REST-API with one endpoint: `/seed`.
