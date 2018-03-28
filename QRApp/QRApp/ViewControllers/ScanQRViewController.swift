@@ -15,7 +15,7 @@ import UIKit
 ///
 class ScanQRViewController: QRBaseViewController, QRCaptureSessionDelegate {
     
-    var qrSession: QRCaptureSession?
+    private var qrSession: QRCaptureSession?
     
     override func viewDidLoad() {
         super.viewDidLoad()
