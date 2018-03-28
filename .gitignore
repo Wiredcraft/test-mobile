@@ -55,3 +55,25 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# iOS stuff
+*.hmap
+*.ipa
+
+# Carthage
+#
+# We want to include potential Carthage dependencies in our repo, hence this
+# is commented out:
+#
+# Carthage/Checkouts
+Carthage/Build
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+.DS_Store
+xcuserdata
+*/xcuserdata/*
+QRApp/QRApp.xcodeproj/xcuserdata
