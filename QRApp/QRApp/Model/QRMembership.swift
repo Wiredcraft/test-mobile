@@ -11,7 +11,7 @@ import Foundation
 /// Class which contains the membership data.
 /// Can be cached to local userdefaults.
 ///
-class QRMembership: NSObject, NSCoding {
+class QRMembership: NSObject, NSCoding, Expirable {
     
     private static let SEED_KEY = "seed"
     private static let EXPIRES_AT_KEY = "expires_at"
@@ -22,6 +22,10 @@ class QRMembership: NSObject, NSCoding {
     public init(seed: String, expires_at: String) {
         self.seed = seed
         self.expires_at = expires_at
+    }
+    
+    func hasExpired() -> Bool {
+        return Date.dateFrom(iso8061DateString: expires_at)?.hasPassed() ?? true
     }
     
     func encode(with aCoder: NSCoder) {

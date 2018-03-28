@@ -21,12 +21,10 @@ class DisplayQRViewController: QRBaseViewController {
     // and that it is valid.
     //
     private var membershipExistsAndIsValid: Bool {
-        guard
-            let membership = QRUserDefaults.standard.qrMembershipInStorage,
-            !(Date.dateFrom(iso8061DateString: membership.expires_at)?.hasPassed() ?? true) else {
+        guard let membership = QRUserDefaults.standard.qrMembershipInStorage else {
             return false
         }
-        return true
+        return !membership.hasExpired()
     }
     
     override func viewDidLoad() {

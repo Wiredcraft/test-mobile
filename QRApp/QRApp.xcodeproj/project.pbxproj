@@ -35,6 +35,8 @@
 		D784709B2059AAE8000FE0C5 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784709A2059AAE8000FE0C5 /* UIColor+Extensions.swift */; };
 		D78470A12059C06E000FE0C5 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784709E2059C06E000FE0C5 /* BrightFutures.framework */; };
 		D78470A22059C06E000FE0C5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D784709F2059C06E000FE0C5 /* Result.framework */; };
+		D788F2F1206B6CF8000B58B5 /* DomainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788F2F0206B6CF8000B58B5 /* DomainProtocols.swift */; };
+		D788F2F2206B6E19000B58B5 /* DomainProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788F2F0206B6CF8000B58B5 /* DomainProtocols.swift */; };
 		D79B1A91205C1F7F005454EA /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79B1A90205C1F7F005454EA /* Operation.swift */; };
 		D7A57234205E72D600C3125B /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57233205E72D600C3125B /* ActionButton.swift */; };
 		D7A57236205E8CC900C3125B /* TapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A57235205E8CC900C3125B /* TapButton.swift */; };
@@ -105,6 +107,7 @@
 		D784709D2059C06E000FE0C5 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		D784709E2059C06E000FE0C5 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = ../Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
 		D784709F2059C06E000FE0C5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		D788F2F0206B6CF8000B58B5 /* DomainProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainProtocols.swift; sourceTree = "<group>"; };
 		D79B1A90205C1F7F005454EA /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		D7A57233205E72D600C3125B /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		D7A57235205E8CC900C3125B /* TapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapButton.swift; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 				D78470992059A764000FE0C5 /* ViewControllers */,
 				D7A57232205E72A900C3125B /* Views */,
 				D7A5724D205FB25900C3125B /* ViewModels */,
+				D788F2F3206B6F29000B58B5 /* Protocols */,
 			);
 			path = QRApp;
 			sourceTree = "<group>";
@@ -241,6 +245,14 @@
 				D784709D2059C06E000FE0C5 /* SnapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D788F2F3206B6F29000B58B5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D788F2F0206B6CF8000B58B5 /* DomainProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		D79B1A92205C1F85005454EA /* Operation */ = {
@@ -488,6 +500,7 @@
 				D7A57247205F181F00C3125B /* QRCaptureSession.swift in Sources */,
 				D7FA2E89205DC076006E7A4D /* MainViewController.swift in Sources */,
 				D7A57234205E72D600C3125B /* ActionButton.swift in Sources */,
+				D788F2F1206B6CF8000B58B5 /* DomainProtocols.swift in Sources */,
 				D7489E2D205D29D8003D3A63 /* Operation+FutureKind.swift in Sources */,
 				D784707A2059A1B4000FE0C5 /* AppDelegate.swift in Sources */,
 				D7D2C08B205D31F40035E5EF /* HTTP.swift in Sources */,
@@ -524,6 +537,7 @@
 				D74C7E92206013A9000D6085 /* QRMembership.swift in Sources */,
 				D74C7E952060154E000D6085 /* Date+Extensions.swift in Sources */,
 				D784708F2059A1B4000FE0C5 /* QRAppTests.swift in Sources */,
+				D788F2F2206B6E19000B58B5 /* DomainProtocols.swift in Sources */,
 				D7A5723F205ED82700C3125B /* QRCode.swift in Sources */,
 				D74C7EA0206052DE000D6085 /* ExtensionTests.swift in Sources */,
 				D74C7EA420605A69000D6085 /* HTTPTests.swift in Sources */,
