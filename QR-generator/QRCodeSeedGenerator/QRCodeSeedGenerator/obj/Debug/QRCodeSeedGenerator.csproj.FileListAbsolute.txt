@@ -1,0 +1,147 @@
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\ApplicationInsights.config
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csc.exe
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csc.exe.config
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csc.rsp
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csi.exe
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csi.rsp
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.AppContext.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.Collections.Immutable.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.Diagnostics.StackTrace.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.IO.FileSystem.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.IO.FileSystem.Primitives.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\vbc.exe
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\vbc.exe.config
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\vbc.rsp
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\VBCSCompiler.exe
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\VBCSCompiler.exe.config
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\QRCodeSeedGenerator.dll.config
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\QRCodeSeedGenerator.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\QRCodeSeedGenerator.pdb
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Antlr3.Runtime.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.Agent.Intercept.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.DependencyCollector.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.PerfCounterCollector.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.ServerTelemetryChannel.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.Web.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.WindowsServer.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.ApplicationInsights.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.Web.Infrastructure.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Newtonsoft.Json.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Net.Http.Formatting.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Helpers.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Http.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Http.WebHost.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Mvc.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Optimization.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Razor.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.Deployment.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.Razor.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\WebGrease.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Newtonsoft.Json.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Net.Http.Formatting.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Helpers.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Http.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Http.WebHost.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Mvc.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Optimization.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Razor.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.Deployment.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.Razor.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Antlr3.Runtime.pdb
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.ApplicationInsights.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.DependencyCollector.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.ServerTelemetryChannel.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.WindowsServer.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.Web.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\obj\Debug\QRCodeSeedGenerator.dll
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\obj\Debug\QRCodeSeedGenerator.pdb
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\QRCodeSeedGenerator.dll.CodeAnalysisLog.xml
+c:\users\jason\documents\visual studio 2017\Projects\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\QRCodeSeedGenerator.dll.lastcodeanalysissucceeded
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\ApplicationInsights.config
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csc.exe
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csc.exe.config
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csc.rsp
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csi.exe
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\csi.rsp
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.AppContext.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\vbc.exe
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\vbc.exe.config
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\vbc.rsp
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\VBCSCompiler.exe
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\QRCodeSeedGenerator.dll.config
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\QRCodeSeedGenerator.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\QRCodeSeedGenerator.pdb
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Antlr3.Runtime.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.Web.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Newtonsoft.Json.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Net.Http.Formatting.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Helpers.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Http.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Http.WebHost.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Mvc.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Optimization.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Razor.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.Razor.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\WebGrease.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Newtonsoft.Json.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Net.Http.Formatting.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Helpers.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Http.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Http.WebHost.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Mvc.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Optimization.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.Razor.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\System.Web.WebPages.Razor.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Antlr3.Runtime.pdb
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\bin\Microsoft.AI.Web.xml
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\obj\Debug\QRCodeSeedGenerator.csprojResolveAssemblyReference.cache
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\obj\Debug\QRCodeSeedGenerator.dll
+C:\Users\Jason\Documents\GitHub\test-mobile\QRCodeSeedGenerator\QRCodeSeedGenerator\obj\Debug\QRCodeSeedGenerator.pdb
