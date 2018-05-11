@@ -68,8 +68,8 @@ Open the project in Android Studio.
 
 ## Screenshots:
 <img src="Screenshots/client_gif.gif" width="35%" />
-<img src="Screenshots/server_1.PNG" width="25%" />
-<img src="Screenshots/server_2.PNG" width="25%" />
+<img src="Screenshots/server_1.PNG" width="75%" />
+<img src="Screenshots/server_2.PNG" width="75%" />
 
 
 	
