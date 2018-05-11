@@ -2,8 +2,6 @@ package me.jludden.qrcodegenerator
 
 import io.reactivex.observers.TestObserver
 import junit.framework.Assert.assertTrue
-import me.jludden.qrcodegenerator.QRSeedGeneratorAPI.QRSeedGenAPI
-import me.jludden.qrcodegenerator.QRSeedGeneratorAPI.SeedResult
 import org.junit.Test
 import java.util.regex.Pattern
 
@@ -12,7 +10,7 @@ class QRSeedAPITest {
     fun apiCall_succeeds() {
         val seedAPI = QRSeedGenAPI.create()
         val testSubscriber = TestObserver<SeedResult>()
-        seedAPI.getQRseed().subscribe(testSubscriber)
+        seedAPI.getSeedFromServer().subscribe(testSubscriber)
 
         val results : List<SeedResult> = testSubscriber.values()
         testSubscriber.assertNoErrors()

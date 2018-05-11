@@ -28,7 +28,7 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class HomeActivityTest {
+public class LaunchQRGeneratorActivityTest {
 
     @Rule
     public IntentsTestRule<HomeActivity> mIntentsRule = new IntentsTestRule<>(HomeActivity.class);

@@ -1,10 +1,13 @@
 # QR-generator
 
 ## Design
-To accomplish this task, I created an ASP.NET API Server and a Kotlin Android Client.
+To accomplish this task, I created an ASP.NET API Server and a Kotlin Android Client. [Try it out in the Web Browser!](https://appetize.io/embed/nwmw280f28cg1cwkgrk9aw2adr?device=nexus5&scale=75&orientation=portrait&osVersion=7.1)
 
-### Server
-API Server (QRCodeSeedGenerator) that provides a single GET interface
+## Server
+API Server build on ASP.NET Web API that provides a single GET interface. 
+- In a nutshell, GET /api/seed returns a random string seed and a datetime expires_at value. 
+- The server is hosted on AWS: [http://qrcodeseedgenerator-dev.us-west-2.elasticbeanstalk.com/api/seed](http://qrcodeseedgenerator-dev.us-west-2.elasticbeanstalk.com/api/seed)
+- The files for the server live in the QR-generator/QRCodeSeedGenerator directory. 
 
 #### Description
 Unfortunately there is a considerable amount of boilerplate to this ASP.NET Web Api Project, but these are the 3 most important files:
@@ -18,7 +21,7 @@ Unfortunately there is a considerable amount of boilerplate to this ASP.NET Web 
 		* Routing table 
 		* By default creates route "api/{controller}/{id}"
 
-### Testing
+#### Server Testing
 Open the QRCodeSeedGenerator.sln
 	- Build it and verify the unit tests pass
 	- F5 (run in IE or Chrome) (confirm localhost:Port + default home page for Web API project appears) 
@@ -34,82 +37,31 @@ Open the QRCodeSeedGenerator.sln
 		* Seed: length 32 string of random alphanumeric
 
 
-### Client
-Kotlin
-Android
-TODO
+## Client
+A simple Android app, written in Kotlin, that can call the Server Seed API and then uses it to generate a QR code. The files for the client can be found in the QR-generator/QRCodeClient directory.
+[Try it out in the Web Browser](https://appetize.io/embed/nwmw280f28cg1cwkgrk9aw2adr?device=nexus5&scale=75&orientation=portrait&osVersion=7.1)
 
-## Delete Below?? 
+#### Description
+- HomeActivity.kt - define the home activity and set up the Floating Action Button logic
+- QRSeedProvider.kt - define the API for accessing the QR Seed Server
+- QRGenerationActivity.kt - define the QR Generation activity. Use the QRSeedProvider to get a QR Seed. If successful, generate and display the QR image. Otherwise, show an error message.
 
-Make sure you have read the [README.md](https://github.com/Wiredcraft/mobile-test/blob/master/README.md) first.
+#### Libraries Used
+- [RapidFloatingActionButton](https://github.com/wangjiegulu/RapidFloatingActionButton) - although google offers a simple floating action button in the support library, it takes a bit of work to set up menu of floating action buttons that appear when the primary button is clicked. 
+- [ZXing Android Embedded](https://github.com/journeyapps/zxing-android-embedded) - an Android port of Google's ZXing barcode scanning and creation library.
+- [RxJava / RxAndroid](https://github.com/ReactiveX/RxJava/wiki) - library for composing asynchronous and event-based programs by using observable sequences, with Android bindings
+- [Retrofit](https://github.com/square/retrofit) - HTTP client, with Moshi and the RxJava adapter, to convert the JSON into an observable stream of Java (Kotlin) classes
 
-## Context
 
-- A client needs to display a QR code it in their App.
-- The App is a typical user membership App, which can be used to login and manage one's membership.
-- The QR code can be used to identify one's membership or similar.
-
-## Requirements
-
-### Tasks
-
-1. Build a simple API server that can provide an API which generates a random seed.
-2. Build a simple App that can call the seed API and generate a QR code based on the seed.
-
-### UI
-
-Here is a quick mockup of how it could look like (think Material Design!): ![user interface](https://cloud.githubusercontent.com/assets/914595/12320458/cdca6356-bae3-11e5-8fd4-cff6ff647a12.jpg)
-
-### API
-
-(in Open API 3.0 format)
-
-```yaml
-paths:
-  /seed:
-    get:
-      description: Get a seed that can be used to generate a QR code
-      responses:
-        '200':
-          description: seed issued
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Seed'
-components:
-  schemas:
-    Seed:
-      type: object
-      properties:
-        seed:
-          type: string
-          example: 37790a1b728096b4141864f49159ad47
-        expires_at:
-          type: dateTime
-          description: ISO date-time
-          example: '1985-04-12T23:20:50.52Z'
-```
-
-### Tech stack
-
-- API
-    - Use anything for the backend. We prefer Node.js.
-- iOS
-    - Use Swift
-- Android
-    - Use Kotlin 
-
-### Bonus
-
-- Write clear **documentation** on how it's designed and how to run the code.
-- Provide proper unit test.
-- Write good commit messages.
-- An online demo is always welcome.
-
-### Advanced requirements
-
-These are used for some further challenges. You can safely skip them if you are not asked to do any, but feel free to try out.
-
-- Provide an auto-refresh strategy, for example with the `expires_at` value.
-- Provide an offline QR code access strategy. for example with a cache.
-- Build a "Scan" feature that can demonstrate how it works (see the mock).
+#### Client Testing
+Open the project in Android Studio.
+	- Build and verify the unit tests and instrumentation tests pass
+	- Change the build variant to MockDebug to get a fake QR seed result. Switch back to prodDebug to hit the web server
+	- Run on an emulator or linked device
+	- Hello Wiredcraft! should appear on the HomeActivity
+	- Click the Floating Action Button in the bottom-right corner
+	- A Scan Code button and a Generate Code button should both appear
+	- Scan Code has not been implemented. Clicking it should just show a message letting the user know
+	- Clicking Generate Code will launch the QR Code Generator activity. The activity may briefly show a loading icon, then the QR code should appear, with the text version of the code shown below it.
+	- Test launching the Generate Code Activity again with the wifi/data OFF (enable airplane mode). The Activity should now show a message that the QR Code could not be fetched from the server.
+	

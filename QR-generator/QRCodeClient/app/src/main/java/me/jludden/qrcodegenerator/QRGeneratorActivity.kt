@@ -1,6 +1,5 @@
 package me.jludden.qrcodegenerator
 
-import me.jludden.qrcodegenerator.QRSeedGeneratorAPI.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_qrgenerator.*
@@ -14,9 +13,9 @@ import io.reactivex.schedulers.Schedulers
 
 class QRGeneratorActivity : AppCompatActivity() {
 
-    var disposable: Disposable? = null //hold a reference so we can GC
-    private val seedAPI : QRSeedGenAPI by lazy { //Seed Generation API
-        QRSeedGenAPI.create()
+    private var disposable: Disposable? = null //hold a reference so we can GC
+    private val seedAPI : QRSeedProvider by lazy { //Seed Generation API
+        Injection.provideQRSeedGenerator()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +27,7 @@ class QRGeneratorActivity : AppCompatActivity() {
 
     //Being operation to get QR code seed from server
     private fun startQRSeedRequest() {
-        disposable =  seedAPI.getQRseed()
+        disposable =  seedAPI.getQRSeed()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
