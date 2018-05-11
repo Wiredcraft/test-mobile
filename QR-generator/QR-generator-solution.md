@@ -67,9 +67,9 @@ Open the project in Android Studio.
 - Test launching the Generate Code Activity again with the wifi/data OFF (enable airplane mode). The Activity should now show a message that the QR Code could not be fetched from the server (make sure you are in a prod build variant).
 
 ## Screenshots:
-<img src="QR-generator/Screenshots/client_gif.gif" width="35%" />
-<img src="QR-generator/Screenshots/server_1.PNG" width="25%" />
-<img src="QR-generator/Screenshots/server_2.PNG" width="25%" />
+<img src="Screenshots/client_gif.gif" width="35%" />
+<img src="Screenshots/server_1.PNG" width="25%" />
+<img src="Screenshots/server_2.PNG" width="25%" />
 
 
 	
