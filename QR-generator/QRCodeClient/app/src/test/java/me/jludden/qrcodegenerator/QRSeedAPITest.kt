@@ -6,10 +6,11 @@ import org.junit.Test
 import java.util.regex.Pattern
 
 class QRSeedAPITest {
+
     @Test
     fun apiCall_succeeds() {
-        val seedAPI = QRSeedGenAPI.create()
         val testSubscriber = TestObserver<SeedResult>()
+        val seedAPI = DaggerQrGenComponent.builder().build().apiService
         seedAPI.getSeedFromServer().subscribe(testSubscriber)
 
         val results : List<SeedResult> = testSubscriber.values()

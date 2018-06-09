@@ -8,11 +8,14 @@ import android.os.Bundle
 import android.widget.ImageView
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import dagger.Component
+import dagger.Lazy
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import me.jludden.qrcodegenerator.databinding.ActivityQrgeneratorBinding
-
+import javax.inject.Inject
+import javax.inject.Singleton
 
 //Main data binding model
 data class QRCode(val bitmap: Bitmap, val text: String)
@@ -23,30 +26,34 @@ fun setImageBitmap(view: ImageView, image : Bitmap?) {
     view.setImageBitmap(image)
 }
 
-//Activity that shows a QR Code
+//Define dagger injection class interface
+@Component(modules = [(QrGenModule::class)])
+@Singleton
+interface QrGenComponent {
+    val apiService: QRSeedGenAPI
+    fun inject(app: QRGeneratorActivity)
+}
+
+//Activity that loads a seed and generates the resulting QR Code
 class QRGeneratorActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityQrgeneratorBinding
     private var disposable: Disposable? = null //hold a reference so we can GC
-    private val seedAPI : QRSeedProvider by lazy { //Seed Generation API
-        Injection.provideQRSeedGenerator()
-    }
-    private val barcodeEncoder by lazy { //Barcode Image Generation API
-        Injection.provideBarcodeEncoder()
-    }
+    @Inject lateinit var seedProvider: QRSeedProvider
+    @Inject lateinit var barcodeEncoder: Lazy<BarcodeEncoder>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_qrgenerator)
+        DaggerQrGenComponent.builder().build().inject(this)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         startQRSeedRequest()
     }
 
-    //Being operation to get QR code seed from server
+    //Begin operation to get QR code seed from server
     private fun startQRSeedRequest() {
         binding.isLoading = true
-        disposable = seedAPI.getQRSeed()
+        disposable = seedProvider.getQRSeed()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -59,7 +66,7 @@ class QRGeneratorActivity : AppCompatActivity() {
     private fun onQRRequestResult(code: String) {
         binding.isLoading = false
         try {
-            val bitmap = barcodeEncoder.encodeBitmap(code, BarcodeFormat.QR_CODE, 400, 400)
+            val bitmap = barcodeEncoder.get().encodeBitmap(code, BarcodeFormat.QR_CODE, 400, 400)
             binding.qrCode = QRCode(bitmap, code)
         } catch (e: Exception) { }
     }
