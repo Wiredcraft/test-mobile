@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">QRCodeGenerator</string>
+    <string name="action_settings">Settings</string>
+    <string name="qr_code_description">displayed QR code</string>
+    <string name="qr_gen_error">Error generating code</string>
+    <string name="qr_request_timeout">Failed to fetch QR code from server</string>
+</resources>
