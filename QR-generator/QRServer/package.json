@@ -1,0 +1,13 @@
+{
+  "name": "qr_server",
+  "version": "1.0.0",
+  "description": "QR server",
+  "main": "index.js",
+  "author": "melonrice",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.7.4",
+    "express": "^4.16.3",
+    "randomstring": "^1.1.5"
+  }
+}
