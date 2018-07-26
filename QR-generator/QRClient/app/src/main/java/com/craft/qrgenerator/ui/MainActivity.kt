@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     private var mShowSubFab = false
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -55,11 +54,14 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener { toggleSubFab() }
         fabGenerate.setOnClickListener({
             hideSubFab({
+                val intent = Intent(this, QRGenerateActivity::class.java)
+                startActivity(intent)
             })
         })
         fabScan.setOnClickListener({
             hideSubFab({
-
+                val intent = Intent(this, ScanActivity::class.java)
+                startActivityForResult(intent, REQUEST_CODE_SCAN)
             })
         })
     }

@@ -15,7 +15,7 @@ import com.uuzuche.lib_zxing.activity.CodeUtils
 class ScanActivity : AppCompatActivity() {
 
     companion object {
-        const val REQUEST_CODE_ASK_PERMISSIONS = 123
+        const val REQUEST_CODE_PERMISSIONS = 123
     }
 
     private var mCallback: CodeUtils.AnalyzeCallback = object : CodeUtils.AnalyzeCallback {
@@ -48,7 +48,7 @@ class ScanActivity : AppCompatActivity() {
 
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        if (requestCode == REQUEST_CODE_ASK_PERMISSIONS) {
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
             PermissionManager.onRequestPermissionsResult(this, grantResults)
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -61,7 +61,7 @@ class ScanActivity : AppCompatActivity() {
         captureFragment.analyzeCallback = mCallback
         supportFragmentManager.beginTransaction().replace(R.id.fl_my_container, captureFragment).commit()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            PermissionManager.checkPermission(this, Manifest.permission.CAMERA, REQUEST_CODE_ASK_PERMISSIONS)
+            PermissionManager.checkPermission(this, Manifest.permission.CAMERA, REQUEST_CODE_PERMISSIONS)
         }
     }
 

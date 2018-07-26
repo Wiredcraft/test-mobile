@@ -24,6 +24,9 @@
         <activity
             android:name=".ui.ScanActivity"
             android:label="@string/page_scan"/>
+        <activity
+            android:name=".ui.QRGenerateActivity"
+            android:label="@string/page_generate"/>
     </application>
 
 </manifest>
