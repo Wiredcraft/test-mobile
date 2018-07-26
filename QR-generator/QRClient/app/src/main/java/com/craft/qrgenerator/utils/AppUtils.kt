@@ -29,7 +29,7 @@ class AppUtils {
          */
         fun dateTolong(strDate: String): Long {
             val str = dateFormat(strDate)
-            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
             var time: Long = 0
             try {
                 val date = sdf.parse(str)

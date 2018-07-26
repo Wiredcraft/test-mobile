@@ -8,6 +8,9 @@ import android.view.animation.Interpolator
 import android.view.animation.OvershootInterpolator
 
 
+/**
+ * rotate Animate
+ */
 fun View.rotate(fromDegrees: Float, toDegrees: Float) {
     val animator = ObjectAnimator.ofFloat(this, "rotation", fromDegrees, toDegrees)
     val lin = DecelerateInterpolator()
@@ -16,14 +19,17 @@ fun View.rotate(fromDegrees: Float, toDegrees: Float) {
     animator.start()
 }
 
+/**
+ * move vertical Animate
+ */
 fun View.move(fromYDelta: Float, toYDelta: Float, overshoot: Boolean, callback: () -> Unit = {}) {
     val animator = ObjectAnimator.ofFloat(this, "translationY", fromYDelta, toYDelta)
-    val lin: Interpolator = if (overshoot) {
+    val interpolator: Interpolator = if (overshoot) {
         OvershootInterpolator()
     } else {
         DecelerateInterpolator()
     }
-    animator.interpolator = lin
+    animator.interpolator = interpolator
     animator.duration = 200
     animator.addListener(object : Animator.AnimatorListener {
         override fun onAnimationRepeat(animation: Animator) {

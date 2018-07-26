@@ -28,17 +28,22 @@ class TimeView : TextView {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) :
             super(context, attrs, defStyleAttr, defStyleRes)
 
+    /**
+     * start count down
+     */
     fun start(expireTime: Long, l: TimerListener?) {
         mListener = l
-        val leftTime = expireTime - System.currentTimeMillis()
-        text = AppUtils.showTime(leftTime)
-        if (leftTime <= 0) {
+        //get count down time
+        val time = expireTime - System.currentTimeMillis()
+        text = AppUtils.showTime(time)
+        if (time <= 0) {
             return
         }
 
-        mTimer = object : CountDownTimer(leftTime, INTERVAL) {
+        mTimer = object : CountDownTimer(time, INTERVAL) {
 
             override fun onTick(millisUntilFinished: Long) {
+                //update time
                 text = AppUtils.showTime(millisUntilFinished)
             }
 
@@ -49,6 +54,9 @@ class TimeView : TextView {
         mTimer?.start()
     }
 
+    /**
+     * stop count down
+     */
     fun stop() {
         mTimer?.cancel()
     }
