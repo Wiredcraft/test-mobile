@@ -3,7 +3,6 @@ package com.craft.qrgenerator.ui
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.craft.qrgenerator.R
 import com.craft.qrgenerator.api.ApiClient
 import com.craft.qrgenerator.bean.SeedBean
@@ -40,7 +39,6 @@ class QRGenerateActivity : AppCompatActivity() {
     }
 
     private fun getSeed() {
-        Log.d(TAG, "getSeed")
         ApiClient.get().getApiService().getSeed().enqueue(object : Callback<SeedBean> {
             override fun onResponse(call: Call<SeedBean>, response: Response<SeedBean>) {
                 try {
@@ -68,7 +66,6 @@ class QRGenerateActivity : AppCompatActivity() {
         val time = AppUtils.dateTolong(seed.expires_at)
         timeView.start(time, object : TimeView.TimerListener {
             override fun onFinish() {
-                Log.d(TAG, "onFinish")
                 getSeed()
             }
         })
@@ -83,7 +80,6 @@ class QRGenerateActivity : AppCompatActivity() {
         imageCode.setImageBitmap(bitmap)
         timeView.start(AppUtils.dateTolong(seed.expires_at), object : TimeView.TimerListener {
             override fun onFinish() {
-                Log.d(TAG, "onFinish")
                 timeView.text = AppUtils.showTime(0)
             }
         })
