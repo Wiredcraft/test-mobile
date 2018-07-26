@@ -3,4 +3,8 @@
     <string name="scan_failed">scan failed</string>
     <string name="page_scan">QRScan</string>
     <string name="page_generate">QRCode</string>
+    <string name="permission_before_grant">Need this permission to work properly.</string>
+    <string name="permission_after_deny">This permission is not granted and does not work properly.</string>
+    <string name="permission_grant">Grant permission</string>
+    <string name="permission_exit">Exit</string>
 </resources>
