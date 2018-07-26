@@ -1,0 +1,48 @@
+machine:
+  timezone:
+    Asia/Shanghai # Set the timezone
+  java:
+    version: openjdk8
+  environment:
+    ANDROID_HOME: /usr/local/android-sdk-linux
+    GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xms1024m -Xmx2560m"'
+    # 版本
+    VARIANT: 'debug'
+general:
+  build_dir: QR-generator/QRClient
+  branches:
+    only:
+      - master
+
+dependencies:
+  pre:
+    - gem install fir-cli
+    - chmod +x gradlew
+  cache_directories:
+    - ~/.gradle
+    - ~/.android
+  override:
+        - echo y | android update sdk --no-ui --filter "android-28,build-tools-28.0.0"
+        - echo y | android update sdk --no-ui --filter "android-27,build-tools-27.0.3"
+        - echo y | android update sdk --no-ui --all --filter "platform-tools, tools"
+        - echo y | android update sdk --no-ui --all --filter "android-28, build-tools-28.0.0"
+        - echo y | android update sdk --no-ui --all --filter "android-27, build-tools-27.0.3"
+        - echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
+        - echo y | android update sdk --no-ui --all --filter "extra-android-support"
+
+#        - ANDROID_HOME=/usr/local/android-sdk-linux
+        - mkdir "$ANDROID_HOME/licenses" || true
+        - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+        - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+        - echo -e "\nd975f751698a77b662f1254ddbeed3901e976f5a" > "$ANDROID_HOME/licenses/intel-android-extra-license"
+
+        - ./gradlew dependencies
+
+test:
+  override:
+     # assemble
+     # - ./gradlew clean testDebugUnitTest
+     - ./gradlew clean assembleDebug
+
+     # upload to fir
+     - fir publish app/build/outputs/apk/debug/app-$VARIANT.apk -T 078f5dc4c1bc8121de84409ec76d689d -c "ci test"
