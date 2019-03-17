@@ -15,6 +15,11 @@
 		A51D62D1223D1DC000DD0825 /* QRCodeToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62D0223D1DC000DD0825 /* QRCodeToolTests.swift */; };
 		A51D62DC223D1DC000DD0825 /* QRCodeToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62DB223D1DC000DD0825 /* QRCodeToolUITests.swift */; };
 		A51D62EA223D21CD00DD0825 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62E9223D21CD00DD0825 /* HomeViewController.swift */; };
+		A51D62EC223E2AB500DD0825 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62EB223E2AB500DD0825 /* HomeView.swift */; };
+		A51D62EE223E34EA00DD0825 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62ED223E34EA00DD0825 /* ScanViewController.swift */; };
+		A51D62F0223E355400DD0825 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62EF223E355400DD0825 /* ScanView.swift */; };
+		A51D62F2223E363800DD0825 /* GenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F1223E363800DD0825 /* GenerateViewController.swift */; };
+		A51D62F4223E376300DD0825 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F3223E376300DD0825 /* BaseViewController.swift */; };
 		CD15528605F47EED77987F6B /* Pods_QRCodeToolTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1001E7F19F4BC17393BFF40 /* Pods_QRCodeToolTests.framework */; };
 		E131E9C0F850A5A4ED399A15 /* Pods_QRCodeTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B372C76AED82E8443CE69ED1 /* Pods_QRCodeTool.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +60,11 @@
 		A51D62DB223D1DC000DD0825 /* QRCodeToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeToolUITests.swift; sourceTree = "<group>"; };
 		A51D62DD223D1DC000DD0825 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A51D62E9223D21CD00DD0825 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A51D62EB223E2AB500DD0825 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A51D62ED223E34EA00DD0825 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		A51D62EF223E355400DD0825 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		A51D62F1223E363800DD0825 /* GenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateViewController.swift; sourceTree = "<group>"; };
+		A51D62F3223E376300DD0825 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B372C76AED82E8443CE69ED1 /* Pods_QRCodeTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCodeTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1001E7F19F4BC17393BFF40 /* Pods_QRCodeToolTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCodeToolTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF86504DE2218812465011E /* Pods-QRCodeToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeToolTests/Pods-QRCodeToolTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,7 +148,12 @@
 			isa = PBXGroup;
 			children = (
 				A51D62BB223D1DBE00DD0825 /* AppDelegate.swift */,
+				A51D62F3223E376300DD0825 /* BaseViewController.swift */,
 				A51D62E9223D21CD00DD0825 /* HomeViewController.swift */,
+				A51D62EB223E2AB500DD0825 /* HomeView.swift */,
+				A51D62ED223E34EA00DD0825 /* ScanViewController.swift */,
+				A51D62EF223E355400DD0825 /* ScanView.swift */,
+				A51D62F1223E363800DD0825 /* GenerateViewController.swift */,
 				A51D62BF223D1DBE00DD0825 /* Main.storyboard */,
 				A51D62C2223D1DC000DD0825 /* Assets.xcassets */,
 				A51D62C4223D1DC000DD0825 /* LaunchScreen.storyboard */,
@@ -375,8 +390,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51D62EC223E2AB500DD0825 /* HomeView.swift in Sources */,
+				A51D62F2223E363800DD0825 /* GenerateViewController.swift in Sources */,
 				A51D62BC223D1DBE00DD0825 /* AppDelegate.swift in Sources */,
+				A51D62F0223E355400DD0825 /* ScanView.swift in Sources */,
 				A51D62EA223D21CD00DD0825 /* HomeViewController.swift in Sources */,
+				A51D62F4223E376300DD0825 /* BaseViewController.swift in Sources */,
+				A51D62EE223E34EA00DD0825 /* ScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +576,10 @@
 				DEVELOPMENT_TEAM = 4N47R2MCGG;
 				INFOPLIST_FILE = QRCodeTool/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = kevin.QRCodeTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -573,7 +596,10 @@
 				DEVELOPMENT_TEAM = 4N47R2MCGG;
 				INFOPLIST_FILE = QRCodeTool/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = kevin.QRCodeTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -590,7 +616,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B95F5629Y8;
 				INFOPLIST_FILE = QRCodeToolTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = kevin.QRCodeToolTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -608,7 +638,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B95F5629Y8;
 				INFOPLIST_FILE = QRCodeToolTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = kevin.QRCodeToolTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -625,7 +659,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B95F5629Y8;
 				INFOPLIST_FILE = QRCodeToolUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = kevin.QRCodeToolUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -642,7 +680,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B95F5629Y8;
 				INFOPLIST_FILE = QRCodeToolUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = kevin.QRCodeToolUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
