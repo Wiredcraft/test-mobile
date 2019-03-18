@@ -18,7 +18,7 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = "Home"
         
         self.homeView.scanButton?.addTarget(self, action: #selector(scanButtonClicked), for: .touchUpInside)
