@@ -12,12 +12,23 @@ import AVKit
 class ScanView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     var maskLayer: CAShapeLayer?
+    var animateLine: CALayer?
+    
     var session: AVCaptureSession?
     var videoLayer: AVCaptureVideoPreviewLayer?
     
+    var didScannedQRCode: ((String) -> Void)?
+    
+    let squareSpace: CGFloat = 50.0
+    var squareWidth: CGFloat {
+        return kScreenWidth - squareSpace * 2
+    }
+    var squareTop: CGFloat {
+        return kNavBarHeight + (kScreenHeight - kNavBarHeight - squareWidth) / 2.0
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.loadCaptureConfig()
         self.loadSubViews()
     }
@@ -27,14 +38,18 @@ class ScanView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func loadSubViews() {
+        self.videoLayer = AVCaptureVideoPreviewLayer.init(session: self.session!)
+        self.videoLayer?.videoGravity = .resizeAspectFill
+        self.layer.addSublayer(self.videoLayer!)
         
         self.maskLayer = CAShapeLayer()
         self.maskLayer?.fillRule = .evenOdd
-        self.maskLayer?.backgroundColor = UIColor.black.withAlphaComponent(0.1).cgColor
+        self.maskLayer?.fillColor = UIColor.black.withAlphaComponent(0.5).cgColor
         self.layer.addSublayer(self.maskLayer!)
         
-        self.videoLayer = AVCaptureVideoPreviewLayer.init(session: self.session!)
-        self.layer.addSublayer(self.videoLayer!)
+        self.animateLine = CALayer.init()
+        self.animateLine?.backgroundColor = themeColor.cgColor
+        self.layer.addSublayer(self.animateLine!)
     }
     
     func loadCaptureConfig() {
@@ -52,17 +67,66 @@ class ScanView: UIView, AVCaptureMetadataOutputObjectsDelegate {
             session?.addOutput(metadataOutput)
         }
         metadataOutput.metadataObjectTypes = [.qr]
-//        metadataOutput.rectOfInterest = CGRect.init(x: (self.scanLayer?.frame.minX)! / kScreenWidth, y: (self.scanLayer?.frame.minY)! / kScreenHeight, width: (self.scanLayer?.frame.size.width)! / kScreenWidth, height: (self.scanLayer?.frame.size.height)! / kScreenHeight)
+        
+        let notificationCenter = NotificationCenter.default
+        let queue = OperationQueue.main
+        let notificationName = NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange
+        notificationCenter.addObserver(forName:notificationName,
+                                       object: nil,
+                                       queue: queue,
+                                       using: {(a) in
+                                        metadataOutput.rectOfInterest = (self.videoLayer?.metadataOutputRectConverted(fromLayerRect: self.scanArea()))!
+        })
+    }
+    
+    func scanArea() -> CGRect {
+        return CGRect.init(x: self.squareSpace, y: self.squareTop, width: squareWidth, height: squareWidth);
+    }
+    
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        let metadataObj = metadataObjects.first as! AVMetadataMachineReadableCodeObject
+        if metadataObj.type == AVMetadataObject.ObjectType.qr {//for qr code
+            let qrCodeString = metadataObj.stringValue
+            if let resultBlock = self.didScannedQRCode {
+                resultBlock(qrCodeString!)
+            }
+        }
+
+        self.stopScan()
+    }
+    
+    public func startScan() {
+        self.session?.startRunning()
+        let animation: CABasicAnimation = CABasicAnimation.init(keyPath: "position.y")
+        animation.repeatCount = Float(CGFloat.greatestFiniteMagnitude)
+        animation.duration = 2;
+        animation.isRemovedOnCompletion = false;
+        animation.fromValue = squareTop;
+        animation.toValue = squareTop + squareWidth;
+        self.animateLine?.add(animation, forKey: "animateLine")
+    }
+    
+    public func stopScan() {
+        self.session?.stopRunning()
+        self.animateLine?.removeAnimation(forKey: "animateLine")
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.maskLayer?.frame = self.bounds
+        self.videoLayer?.frame = self.bounds
+        self.animateLine?.frame = CGRect.init(x: squareSpace, y: squareTop, width: squareWidth, height: 2)
+        self.layoutMask()
     }
     
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        
+    func layoutMask() {
+        let path = UIBezierPath.init(rect: (self.maskLayer?.bounds)!).cgPath
+        let squarePath = UIBezierPath.init(rect: CGRect.init(x: squareSpace, y: squareTop, width: squareWidth, height: squareWidth)).cgPath
+        let thePath = CGMutablePath.init()
+        thePath.addPath(path)
+        thePath.addPath(squarePath)
+        self.maskLayer?.path = thePath
     }
-    
+
 }
 

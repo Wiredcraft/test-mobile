@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//MARK: common dimension
 let kScreenWidth = UIScreen.main.bounds.size.width
 let kScreenHeight = UIScreen.main.bounds.size.height
 let kStatusHeight = CGFloat(kIsFullScreen ? 44 : 20)
@@ -27,3 +28,7 @@ var kIsFullScreen: Bool {
     }
     return false
 }
+
+//MARK: color
+let themeColor = UIColor.init(red: 50.0 / 255.0, green: 120.0 / 255.0, blue: 240.0 / 255.0, alpha: 1)
+

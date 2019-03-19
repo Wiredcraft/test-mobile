@@ -10,6 +10,10 @@ import UIKit
 
 class GenerateViewController: BaseViewController {
 
+    override func loadView() {
+        self.view = GenerateView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -12,7 +12,6 @@ class HomeView: UIView {
     var scanButton : UIButton?      //scan QR code
     var generateButton : UIButton?  //generate QR code
     var moreButton : UIButton?      //show detail opeations
-    let themeColor = UIColor.init(red: 50.0 / 255.0, green: 120.0 / 255.0, blue: 240.0 / 255.0, alpha: 1)
     let buttonWidth = 55.0
 
     var _isShowingDetailOperations : Bool = false

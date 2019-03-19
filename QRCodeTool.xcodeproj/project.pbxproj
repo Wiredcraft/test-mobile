@@ -22,6 +22,9 @@
 		A51D62F4223E376300DD0825 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F3223E376300DD0825 /* BaseViewController.swift */; };
 		A51D62F6223E9FF100DD0825 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F5223E9FF100DD0825 /* Utils.swift */; };
 		A51D62F8223EAAD000DD0825 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F7223EAAD000DD0825 /* Const.swift */; };
+		A5C299A0224112C9000FA7F3 /* ScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2999F224112C9000FA7F3 /* ScanResultViewController.swift */; };
+		A5C299A22241138D000FA7F3 /* ScanResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299A12241138D000FA7F3 /* ScanResultView.swift */; };
+		A5C299A422412529000FA7F3 /* GenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299A322412529000FA7F3 /* GenerateView.swift */; };
 		CD15528605F47EED77987F6B /* Pods_QRCodeToolTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1001E7F19F4BC17393BFF40 /* Pods_QRCodeToolTests.framework */; };
 		E131E9C0F850A5A4ED399A15 /* Pods_QRCodeTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B372C76AED82E8443CE69ED1 /* Pods_QRCodeTool.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +72,9 @@
 		A51D62F3223E376300DD0825 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A51D62F5223E9FF100DD0825 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A51D62F7223EAAD000DD0825 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		A5C2999F224112C9000FA7F3 /* ScanResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultViewController.swift; sourceTree = "<group>"; };
+		A5C299A12241138D000FA7F3 /* ScanResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultView.swift; sourceTree = "<group>"; };
+		A5C299A322412529000FA7F3 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
 		B372C76AED82E8443CE69ED1 /* Pods_QRCodeTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCodeTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1001E7F19F4BC17393BFF40 /* Pods_QRCodeToolTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCodeToolTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF86504DE2218812465011E /* Pods-QRCodeToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeToolTests/Pods-QRCodeToolTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 				A51D62ED223E34EA00DD0825 /* ScanViewController.swift */,
 				A51D62EF223E355400DD0825 /* ScanView.swift */,
 				A51D62F1223E363800DD0825 /* GenerateViewController.swift */,
+				A5C299A322412529000FA7F3 /* GenerateView.swift */,
+				A5C2999F224112C9000FA7F3 /* ScanResultViewController.swift */,
+				A5C299A12241138D000FA7F3 /* ScanResultView.swift */,
 				A51D62F5223E9FF100DD0825 /* Utils.swift */,
 				A51D62F7223EAAD000DD0825 /* Const.swift */,
 				A51D62BF223D1DBE00DD0825 /* Main.storyboard */,
@@ -398,11 +407,14 @@
 			files = (
 				A51D62EC223E2AB500DD0825 /* HomeView.swift in Sources */,
 				A51D62F2223E363800DD0825 /* GenerateViewController.swift in Sources */,
+				A5C299A0224112C9000FA7F3 /* ScanResultViewController.swift in Sources */,
+				A5C299A422412529000FA7F3 /* GenerateView.swift in Sources */,
 				A51D62BC223D1DBE00DD0825 /* AppDelegate.swift in Sources */,
 				A51D62F0223E355400DD0825 /* ScanView.swift in Sources */,
 				A51D62EA223D21CD00DD0825 /* HomeViewController.swift in Sources */,
 				A51D62F4223E376300DD0825 /* BaseViewController.swift in Sources */,
 				A51D62EE223E34EA00DD0825 /* ScanViewController.swift in Sources */,
+				A5C299A22241138D000FA7F3 /* ScanResultView.swift in Sources */,
 				A51D62F6223E9FF100DD0825 /* Utils.swift in Sources */,
 				A51D62F8223EAAD000DD0825 /* Const.swift in Sources */,
 			);

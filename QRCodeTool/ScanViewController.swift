@@ -20,6 +20,20 @@ class ScanViewController: BaseViewController {
         super.viewDidLoad()
 
         self.title = "Scan"
+        self.scanView.didScannedQRCode = {(scanResult) in
+            let scanResViewController = ScanResultViewController()
+            scanResViewController.qrCode = scanResult
+            self.navigationController?.pushViewController(scanResViewController, animated: true)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.scanView.startScan()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.scanView.stopScan()
+    }
 }
