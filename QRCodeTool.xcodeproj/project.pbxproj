@@ -14,17 +14,25 @@
 		A51D62C6223D1DC000DD0825 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51D62C4223D1DC000DD0825 /* LaunchScreen.storyboard */; };
 		A51D62D1223D1DC000DD0825 /* QRCodeToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62D0223D1DC000DD0825 /* QRCodeToolTests.swift */; };
 		A51D62DC223D1DC000DD0825 /* QRCodeToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62DB223D1DC000DD0825 /* QRCodeToolUITests.swift */; };
-		A51D62EA223D21CD00DD0825 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62E9223D21CD00DD0825 /* HomeViewController.swift */; };
-		A51D62EC223E2AB500DD0825 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62EB223E2AB500DD0825 /* HomeView.swift */; };
-		A51D62EE223E34EA00DD0825 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62ED223E34EA00DD0825 /* ScanViewController.swift */; };
-		A51D62F0223E355400DD0825 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62EF223E355400DD0825 /* ScanView.swift */; };
-		A51D62F2223E363800DD0825 /* GenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F1223E363800DD0825 /* GenerateViewController.swift */; };
-		A51D62F4223E376300DD0825 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F3223E376300DD0825 /* BaseViewController.swift */; };
-		A51D62F6223E9FF100DD0825 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F5223E9FF100DD0825 /* Utils.swift */; };
+		A51D62EA223D21CD00DD0825 /* QTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62E9223D21CD00DD0825 /* QTHomeViewController.swift */; };
+		A51D62EC223E2AB500DD0825 /* QTHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62EB223E2AB500DD0825 /* QTHomeView.swift */; };
+		A51D62EE223E34EA00DD0825 /* QTScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62ED223E34EA00DD0825 /* QTScanViewController.swift */; };
+		A51D62F0223E355400DD0825 /* QTScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62EF223E355400DD0825 /* QTScanView.swift */; };
+		A51D62F2223E363800DD0825 /* QTGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F1223E363800DD0825 /* QTGenerateViewController.swift */; };
+		A51D62F4223E376300DD0825 /* QTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F3223E376300DD0825 /* QTViewController.swift */; };
 		A51D62F8223EAAD000DD0825 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D62F7223EAAD000DD0825 /* Const.swift */; };
-		A5C299A0224112C9000FA7F3 /* ScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2999F224112C9000FA7F3 /* ScanResultViewController.swift */; };
-		A5C299A22241138D000FA7F3 /* ScanResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299A12241138D000FA7F3 /* ScanResultView.swift */; };
-		A5C299A422412529000FA7F3 /* GenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299A322412529000FA7F3 /* GenerateView.swift */; };
+		A5895C1C22425D6200CF2AE8 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5895C1B22425D6200CF2AE8 /* UIAlertController+extensions.swift */; };
+		A5895C1E224267E200CF2AE8 /* UIImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5895C1D224267E200CF2AE8 /* UIImage+extensions.swift */; };
+		A5895C2622426C8D00CF2AE8 /* QTNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5895C2522426C8D00CF2AE8 /* QTNetworkError.swift */; };
+		A5895C2A2242869C00CF2AE8 /* QTToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5895C292242869C00CF2AE8 /* QTToast.swift */; };
+		A5895C2C22428CF800CF2AE8 /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5895C2B22428CF800CF2AE8 /* UIView+extensions.swift */; };
+		A5C299A0224112C9000FA7F3 /* QTScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C2999F224112C9000FA7F3 /* QTScanResultViewController.swift */; };
+		A5C299A22241138D000FA7F3 /* QTScanResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299A12241138D000FA7F3 /* QTScanResultView.swift */; };
+		A5C299A422412529000FA7F3 /* QTGenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299A322412529000FA7F3 /* QTGenerateView.swift */; };
+		A5C299A62241D04D000FA7F3 /* QTSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299A52241D04D000FA7F3 /* QTSeed.swift */; };
+		A5C299A82241D1B5000FA7F3 /* QTNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299A72241D1B5000FA7F3 /* QTNetworkClient.swift */; };
+		A5C299AA2241DF60000FA7F3 /* QTApiGetSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299A92241DF60000FA7F3 /* QTApiGetSeed.swift */; };
+		A5C299AC2241DF72000FA7F3 /* QTNetworkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C299AB2241DF72000FA7F3 /* QTNetworkApi.swift */; };
 		CD15528605F47EED77987F6B /* Pods_QRCodeToolTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1001E7F19F4BC17393BFF40 /* Pods_QRCodeToolTests.framework */; };
 		E131E9C0F850A5A4ED399A15 /* Pods_QRCodeTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B372C76AED82E8443CE69ED1 /* Pods_QRCodeTool.framework */; };
 /* End PBXBuildFile section */
@@ -64,17 +72,25 @@
 		A51D62D7223D1DC000DD0825 /* QRCodeToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRCodeToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51D62DB223D1DC000DD0825 /* QRCodeToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeToolUITests.swift; sourceTree = "<group>"; };
 		A51D62DD223D1DC000DD0825 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A51D62E9223D21CD00DD0825 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A51D62EB223E2AB500DD0825 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		A51D62ED223E34EA00DD0825 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
-		A51D62EF223E355400DD0825 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
-		A51D62F1223E363800DD0825 /* GenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateViewController.swift; sourceTree = "<group>"; };
-		A51D62F3223E376300DD0825 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		A51D62F5223E9FF100DD0825 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A51D62E9223D21CD00DD0825 /* QTHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTHomeViewController.swift; sourceTree = "<group>"; };
+		A51D62EB223E2AB500DD0825 /* QTHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTHomeView.swift; sourceTree = "<group>"; };
+		A51D62ED223E34EA00DD0825 /* QTScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTScanViewController.swift; sourceTree = "<group>"; };
+		A51D62EF223E355400DD0825 /* QTScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTScanView.swift; sourceTree = "<group>"; };
+		A51D62F1223E363800DD0825 /* QTGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTGenerateViewController.swift; sourceTree = "<group>"; };
+		A51D62F3223E376300DD0825 /* QTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTViewController.swift; sourceTree = "<group>"; };
 		A51D62F7223EAAD000DD0825 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		A5C2999F224112C9000FA7F3 /* ScanResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultViewController.swift; sourceTree = "<group>"; };
-		A5C299A12241138D000FA7F3 /* ScanResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultView.swift; sourceTree = "<group>"; };
-		A5C299A322412529000FA7F3 /* GenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateView.swift; sourceTree = "<group>"; };
+		A5895C1B22425D6200CF2AE8 /* UIAlertController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+extensions.swift"; sourceTree = "<group>"; };
+		A5895C1D224267E200CF2AE8 /* UIImage+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extensions.swift"; sourceTree = "<group>"; };
+		A5895C2522426C8D00CF2AE8 /* QTNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTNetworkError.swift; sourceTree = "<group>"; };
+		A5895C292242869C00CF2AE8 /* QTToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTToast.swift; sourceTree = "<group>"; };
+		A5895C2B22428CF800CF2AE8 /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
+		A5C2999F224112C9000FA7F3 /* QTScanResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTScanResultViewController.swift; sourceTree = "<group>"; };
+		A5C299A12241138D000FA7F3 /* QTScanResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTScanResultView.swift; sourceTree = "<group>"; };
+		A5C299A322412529000FA7F3 /* QTGenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTGenerateView.swift; sourceTree = "<group>"; };
+		A5C299A52241D04D000FA7F3 /* QTSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTSeed.swift; sourceTree = "<group>"; };
+		A5C299A72241D1B5000FA7F3 /* QTNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTNetworkClient.swift; sourceTree = "<group>"; };
+		A5C299A92241DF60000FA7F3 /* QTApiGetSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTApiGetSeed.swift; sourceTree = "<group>"; };
+		A5C299AB2241DF72000FA7F3 /* QTNetworkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTNetworkApi.swift; sourceTree = "<group>"; };
 		B372C76AED82E8443CE69ED1 /* Pods_QRCodeTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCodeTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1001E7F19F4BC17393BFF40 /* Pods_QRCodeToolTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCodeToolTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF86504DE2218812465011E /* Pods-QRCodeToolTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeToolTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeToolTests/Pods-QRCodeToolTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,17 +174,15 @@
 			isa = PBXGroup;
 			children = (
 				A51D62BB223D1DBE00DD0825 /* AppDelegate.swift */,
-				A51D62F3223E376300DD0825 /* BaseViewController.swift */,
-				A51D62E9223D21CD00DD0825 /* HomeViewController.swift */,
-				A51D62EB223E2AB500DD0825 /* HomeView.swift */,
-				A51D62ED223E34EA00DD0825 /* ScanViewController.swift */,
-				A51D62EF223E355400DD0825 /* ScanView.swift */,
-				A51D62F1223E363800DD0825 /* GenerateViewController.swift */,
-				A5C299A322412529000FA7F3 /* GenerateView.swift */,
-				A5C2999F224112C9000FA7F3 /* ScanResultViewController.swift */,
-				A5C299A12241138D000FA7F3 /* ScanResultView.swift */,
-				A51D62F5223E9FF100DD0825 /* Utils.swift */,
+				A51D62F3223E376300DD0825 /* QTViewController.swift */,
 				A51D62F7223EAAD000DD0825 /* Const.swift */,
+				A5895C1F2242686D00CF2AE8 /* home */,
+				A5895C202242687E00CF2AE8 /* scan */,
+				A5895C212242688800CF2AE8 /* generate */,
+				A5895C2422426B5E00CF2AE8 /* API */,
+				A5895C23224268E300CF2AE8 /* model */,
+				A5895C272242760F00CF2AE8 /* utils */,
+				A5895C282242866C00CF2AE8 /* components */,
 				A51D62BF223D1DBE00DD0825 /* Main.storyboard */,
 				A51D62C2223D1DC000DD0825 /* Assets.xcassets */,
 				A51D62C4223D1DC000DD0825 /* LaunchScreen.storyboard */,
@@ -193,6 +207,80 @@
 				A51D62DD223D1DC000DD0825 /* Info.plist */,
 			);
 			path = QRCodeToolUITests;
+			sourceTree = "<group>";
+		};
+		A5895C1F2242686D00CF2AE8 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				A51D62E9223D21CD00DD0825 /* QTHomeViewController.swift */,
+				A51D62EB223E2AB500DD0825 /* QTHomeView.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		A5895C202242687E00CF2AE8 /* scan */ = {
+			isa = PBXGroup;
+			children = (
+				A51D62ED223E34EA00DD0825 /* QTScanViewController.swift */,
+				A51D62EF223E355400DD0825 /* QTScanView.swift */,
+				A5895C22224268A300CF2AE8 /* scanResult */,
+			);
+			path = scan;
+			sourceTree = "<group>";
+		};
+		A5895C212242688800CF2AE8 /* generate */ = {
+			isa = PBXGroup;
+			children = (
+				A51D62F1223E363800DD0825 /* QTGenerateViewController.swift */,
+				A5C299A322412529000FA7F3 /* QTGenerateView.swift */,
+			);
+			path = generate;
+			sourceTree = "<group>";
+		};
+		A5895C22224268A300CF2AE8 /* scanResult */ = {
+			isa = PBXGroup;
+			children = (
+				A5C2999F224112C9000FA7F3 /* QTScanResultViewController.swift */,
+				A5C299A12241138D000FA7F3 /* QTScanResultView.swift */,
+			);
+			path = scanResult;
+			sourceTree = "<group>";
+		};
+		A5895C23224268E300CF2AE8 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A5C299A52241D04D000FA7F3 /* QTSeed.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		A5895C2422426B5E00CF2AE8 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A5C299A72241D1B5000FA7F3 /* QTNetworkClient.swift */,
+				A5C299AB2241DF72000FA7F3 /* QTNetworkApi.swift */,
+				A5895C2522426C8D00CF2AE8 /* QTNetworkError.swift */,
+				A5C299A92241DF60000FA7F3 /* QTApiGetSeed.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A5895C272242760F00CF2AE8 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				A5895C1B22425D6200CF2AE8 /* UIAlertController+extensions.swift */,
+				A5895C1D224267E200CF2AE8 /* UIImage+extensions.swift */,
+				A5895C2B22428CF800CF2AE8 /* UIView+extensions.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		A5895C282242866C00CF2AE8 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				A5895C292242869C00CF2AE8 /* QTToast.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +349,7 @@
 		A51D62B0223D1DBE00DD0825 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = QT;
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "彭柯柱";
@@ -405,17 +494,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A51D62EC223E2AB500DD0825 /* HomeView.swift in Sources */,
-				A51D62F2223E363800DD0825 /* GenerateViewController.swift in Sources */,
-				A5C299A0224112C9000FA7F3 /* ScanResultViewController.swift in Sources */,
-				A5C299A422412529000FA7F3 /* GenerateView.swift in Sources */,
+				A51D62EC223E2AB500DD0825 /* QTHomeView.swift in Sources */,
+				A51D62F2223E363800DD0825 /* QTGenerateViewController.swift in Sources */,
+				A5C299A0224112C9000FA7F3 /* QTScanResultViewController.swift in Sources */,
+				A5C299A422412529000FA7F3 /* QTGenerateView.swift in Sources */,
+				A5895C2A2242869C00CF2AE8 /* QTToast.swift in Sources */,
 				A51D62BC223D1DBE00DD0825 /* AppDelegate.swift in Sources */,
-				A51D62F0223E355400DD0825 /* ScanView.swift in Sources */,
-				A51D62EA223D21CD00DD0825 /* HomeViewController.swift in Sources */,
-				A51D62F4223E376300DD0825 /* BaseViewController.swift in Sources */,
-				A51D62EE223E34EA00DD0825 /* ScanViewController.swift in Sources */,
-				A5C299A22241138D000FA7F3 /* ScanResultView.swift in Sources */,
-				A51D62F6223E9FF100DD0825 /* Utils.swift in Sources */,
+				A5895C2C22428CF800CF2AE8 /* UIView+extensions.swift in Sources */,
+				A5C299A62241D04D000FA7F3 /* QTSeed.swift in Sources */,
+				A5C299AC2241DF72000FA7F3 /* QTNetworkApi.swift in Sources */,
+				A51D62F0223E355400DD0825 /* QTScanView.swift in Sources */,
+				A5895C2622426C8D00CF2AE8 /* QTNetworkError.swift in Sources */,
+				A51D62EA223D21CD00DD0825 /* QTHomeViewController.swift in Sources */,
+				A51D62F4223E376300DD0825 /* QTViewController.swift in Sources */,
+				A5C299AA2241DF60000FA7F3 /* QTApiGetSeed.swift in Sources */,
+				A5895C1E224267E200CF2AE8 /* UIImage+extensions.swift in Sources */,
+				A5895C1C22425D6200CF2AE8 /* UIAlertController+extensions.swift in Sources */,
+				A51D62EE223E34EA00DD0825 /* QTScanViewController.swift in Sources */,
+				A5C299A22241138D000FA7F3 /* QTScanResultView.swift in Sources */,
+				A5C299A82241D1B5000FA7F3 /* QTNetworkClient.swift in Sources */,
 				A51D62F8223EAAD000DD0825 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,8 +734,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B95F5629Y8;
+				DEVELOPMENT_TEAM = K57QA65F3P;
 				INFOPLIST_FILE = QRCodeToolTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -647,6 +745,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kevin.QRCodeToolTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QRCodeTool.app/QRCodeTool";
@@ -659,8 +758,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B95F5629Y8;
+				DEVELOPMENT_TEAM = K57QA65F3P;
 				INFOPLIST_FILE = QRCodeToolTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -669,6 +769,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kevin.QRCodeToolTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QRCodeTool.app/QRCodeTool";
@@ -681,7 +782,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B95F5629Y8;
+				DEVELOPMENT_TEAM = K57QA65F3P;
 				INFOPLIST_FILE = QRCodeToolUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -702,7 +803,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B95F5629Y8;
+				DEVELOPMENT_TEAM = K57QA65F3P;
 				INFOPLIST_FILE = QRCodeToolUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

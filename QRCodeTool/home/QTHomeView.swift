@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  QTHomeView.swift
 //  QRCodeTool
 //
 //  Created by 彭柯柱 on 2019/3/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeView: UIView {
+class QTHomeView: UIView {
     var scanButton : UIButton?      //scan QR code
     var generateButton : UIButton?  //generate QR code
     var moreButton : UIButton?      //show detail opeations
@@ -43,7 +43,7 @@ class HomeView: UIView {
         self.moreButton = UIButton.init(type: .custom)
         self.moreButton?.setTitle("+", for: .normal)
         self.moreButton?.setTitleColor(.white, for: .normal)
-        self.moreButton?.backgroundColor = themeColor
+        self.moreButton?.backgroundColor = kThemeColor
         self.moreButton?.titleLabel?.font = .systemFont(ofSize: 36)
         self.addSubview(self.moreButton!)
         self.moreButton?.snp.makeConstraints({ (maker) in
@@ -55,7 +55,7 @@ class HomeView: UIView {
         self.generateButton = UIButton.init(type: .custom)
         self.generateButton?.setImage(UIImage.init(named: "icon-assets-receive"), for: .normal)
         self.generateButton?.setTitleColor(.white, for: .normal)
-        self.generateButton?.backgroundColor = themeColor
+        self.generateButton?.backgroundColor = kThemeColor
         self.addSubview(self.generateButton!)
         self.generateButton?.snp.makeConstraints({ (maker) in
             maker.size.equalTo(self.moreButton!)
@@ -66,7 +66,7 @@ class HomeView: UIView {
         self.scanButton = UIButton.init(type: .custom)
         self.scanButton?.setImage(UIImage.init(named: "icon-scan-white"), for: .normal)
         self.scanButton?.setTitleColor(.white, for: .normal)
-        self.scanButton?.backgroundColor = themeColor
+        self.scanButton?.backgroundColor = kThemeColor
         self.addSubview(self.scanButton!)
         self.scanButton?.snp.makeConstraints({ (maker) in
             maker.size.equalTo(self.moreButton!)

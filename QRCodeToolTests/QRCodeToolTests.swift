@@ -10,6 +10,7 @@ import XCTest
 @testable import QRCodeTool
 
 class QRCodeToolTests: XCTestCase {
+    let apiGetSeed: QTApiGetSeed = QTApiGetSeed()
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -22,6 +23,18 @@ class QRCodeToolTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let exception: XCTestExpectation = self.expectation(description: "Time out")
+        self.apiGetSeed.getRandomSeed({ (result) in
+            print("json: " + "\((result!.responseData)!)")
+            print("seed: " + "\((result?.seed)!)")
+            exception.fulfill()
+        }) { (error) in
+            print("error: " + "\((error?.message)!)")
+            exception.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 30, handler: nil)
     }
 
     func testPerformanceExample() {
@@ -32,3 +45,4 @@ class QRCodeToolTests: XCTestCase {
     }
 
 }
+

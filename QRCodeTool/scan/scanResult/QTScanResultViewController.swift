@@ -1,5 +1,5 @@
 //
-//  ScanResultViewController.swift
+//  QTScanResultViewController.swift
 //  QRCodeTool
 //
 //  Created by 彭柯柱 on 2019/3/19.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ScanResultViewController: BaseViewController {
+class QTScanResultViewController: QTViewController {
 
     public var qrCode: String?
-    let scanResultView: ScanResultView = ScanResultView()
+    let scanResultView: QTScanResultView = QTScanResultView()
     
     override func loadView() {
         scanResultView.qrCode = self.qrCode

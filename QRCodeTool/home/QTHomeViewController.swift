@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  QTHomeViewController.swift
 //  QRCodeTool
 //
 //  Created by 彭柯柱 on 2019/3/16.
@@ -9,8 +9,8 @@
 import UIKit
 import SnapKit
 
-class HomeViewController: BaseViewController {
-    let homeView = HomeView()
+class QTHomeViewController: QTViewController {
+    let homeView = QTHomeView()
     
     override func loadView() {
         self.view = homeView
@@ -26,12 +26,12 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func scanButtonClicked() {
-        let scanViewController = ScanViewController.init()
+        let scanViewController = QTScanViewController.init()
         self.navigationController?.pushViewController(scanViewController, animated: true)
     }
     
     @objc func generateButtonClicked() {
-        let generateViewController = GenerateViewController.init()
+        let generateViewController = QTGenerateViewController.init()
         self.navigationController?.pushViewController(generateViewController, animated: true)
     }
 }

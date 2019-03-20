@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = .init(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = .white
-        let navigationController : UINavigationController = .init(rootViewController: HomeViewController())
+        let navigationController : UINavigationController = .init(rootViewController: QTHomeViewController())
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         

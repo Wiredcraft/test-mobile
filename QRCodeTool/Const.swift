@@ -30,5 +30,6 @@ var kIsFullScreen: Bool {
 }
 
 //MARK: color
-let themeColor = UIColor.init(red: 50.0 / 255.0, green: 120.0 / 255.0, blue: 240.0 / 255.0, alpha: 1)
-
+let kThemeColor = UIColor.init(red: 50.0 / 255.0, green: 120.0 / 255.0, blue: 240.0 / 255.0, alpha: 1)
+let kTextColor = UIColor.init(red: 51.0 / 255.0, green: 51.0 / 255.0, blue: 51.0 / 255.0, alpha: 1)
+let kTextFont = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)

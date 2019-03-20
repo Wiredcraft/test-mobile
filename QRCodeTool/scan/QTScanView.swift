@@ -1,5 +1,5 @@
 //
-//  ScanView.swift
+//  QTScanView.swift
 //  QRCodeTool
 //
 //  Created by 彭柯柱 on 2019/3/17.
@@ -9,7 +9,7 @@
 import UIKit
 import AVKit
 
-class ScanView: UIView, AVCaptureMetadataOutputObjectsDelegate {
+class QTScanView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     var maskLayer: CAShapeLayer?
     var animateLine: CALayer?
@@ -48,7 +48,7 @@ class ScanView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         self.layer.addSublayer(self.maskLayer!)
         
         self.animateLine = CALayer.init()
-        self.animateLine?.backgroundColor = themeColor.cgColor
+        self.animateLine?.backgroundColor = kThemeColor.cgColor
         self.layer.addSublayer(self.animateLine!)
     }
     
@@ -91,7 +91,7 @@ class ScanView: UIView, AVCaptureMetadataOutputObjectsDelegate {
                 resultBlock(qrCodeString!)
             }
         }
-
+        
         self.stopScan()
     }
     
@@ -127,6 +127,9 @@ class ScanView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         thePath.addPath(squarePath)
         self.maskLayer?.path = thePath
     }
-
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVCaptureInputPortFormatDescriptionDidChange, object: nil)
+    }
 }
 

@@ -1,5 +1,5 @@
 //
-//  BaseViewController.swift
+//  QTViewController.swift
 //  QRCodeTool
 //
 //  Created by 彭柯柱 on 2019/3/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class QTViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  ScanResultView.swift
+//  QTScanResultView.swift
 //  QRCodeTool
 //
 //  Created by 彭柯柱 on 2019/3/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScanResultView: UIView {
+class QTScanResultView: UIView {
     
     var qrCode: String? {
         didSet {
@@ -30,13 +30,14 @@ class ScanResultView: UIView {
     
     func loadSubViews() {
         self.qrCodeText = UITextView.init()
-        self.qrCodeText?.textColor = themeColor
+        self.qrCodeText?.textColor = kThemeColor
         self.qrCodeText?.isEditable = false
         self.qrCodeText?.font = UIFont.systemFont(ofSize: 20)
         self.addSubview(self.qrCodeText!)
         
+        let edges = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
         self.qrCodeText?.snp.makeConstraints({ (maker) in
-            maker.edges.equalToSuperview().offset(0)
+            maker.edges.equalToSuperview().inset(edges)
         })
     }
     
