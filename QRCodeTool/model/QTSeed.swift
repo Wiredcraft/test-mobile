@@ -10,5 +10,6 @@ import UIKit
 
 class QTSeed: NSObject {
     var seed: String?
-    var expireAt: Double?
+    var expiresAt: Double?
+
 }

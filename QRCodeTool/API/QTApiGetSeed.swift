@@ -10,11 +10,12 @@ import UIKit
 
 class QTApiGetSeedResult: QTNetworkApiResult {
     var seed: QTSeed?
+    
     override init(responseData: NSDictionary?) {
         super.init(responseData: responseData)
         
         let seed: QTSeed = QTSeed()
-        seed.expireAt = ((responseData!["expires_at"] as? Double)!) / 1000.0
+        seed.expiresAt = ((responseData!["expires_at"] as? Double)!) / 1000.0
         seed.seed = responseData!["seed"] as? String
         self.seed = seed
     }

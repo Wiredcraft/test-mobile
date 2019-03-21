@@ -22,6 +22,7 @@ class QTGenerateViewController: QTViewController {
         
         self.title = "QR-Code"
         
+        self.loadCacheSeed()
         self.loadData(true)
         
         self.generateView.shouldUpdateSeed = {[weak self] in
@@ -34,11 +35,23 @@ class QTGenerateViewController: QTViewController {
         self.apiGetSeed.getRandomSeed({ (result) in
             self.generateView.isLoading = false
             self.generateView.seed = result?.seed
+            self.cacheSeed(result?.seed)
         }) { (error) in
             self.generateView.isLoading = false
             let errorCode = (error?.code)!
             UIAlertController.showAlert("\(errorCode)", error?.message, "OK", self.navigationController)
         }
+    }
+    
+    func cacheSeed(_ seed: QTSeed?) {//userDefaults cache qr code
+        UserDefaults.standard.set(seed?.seed, forKey: kUserQRCodeKey)
+    }
+    
+    func loadCacheSeed() {//load code from userDefauls
+        let cachedSeed: QTSeed = QTSeed()
+        let seedStr = UserDefaults.standard.string(forKey: kUserQRCodeKey)
+        cachedSeed.seed = seedStr
+        self.generateView.seed = cachedSeed
     }
     
     deinit {

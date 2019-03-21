@@ -22,7 +22,6 @@ class QTScanResultViewController: QTViewController {
         super.viewDidLoad()
         
         self.title = "Scanned Result"
-        // Do any additional setup after loading the view.
     }
 
 }

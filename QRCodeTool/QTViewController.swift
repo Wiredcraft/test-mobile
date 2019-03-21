@@ -8,15 +8,28 @@
 
 import UIKit
 
-class QTViewController: UIViewController {
+class QTViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.white
         if (self.navigationController?.viewControllers.count)! > 1 {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "mobi_native_icon_back")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backButtonClicked))
+            let backImage = UIImage.init(named: "mobi_native_icon_back")?.withRenderingMode(.alwaysOriginal)
+            self.navigationItem.leftBarButtonItem = .init(image: backImage, style: .plain, target: self, action: #selector(backButtonClicked))
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController!.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
+            return self.navigationController!.viewControllers.count > 1
+        }
+        return true
     }
     
     @objc func backButtonClicked() {

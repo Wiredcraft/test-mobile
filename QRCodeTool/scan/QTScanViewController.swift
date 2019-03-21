@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class QTScanViewController: QTViewController {
     
@@ -20,11 +21,14 @@ class QTScanViewController: QTViewController {
         super.viewDidLoad()
 
         self.title = "Scan"
+        
         self.scanView.didScannedQRCode = {(scanResult) in
             let scanResViewController = QTScanResultViewController()
             scanResViewController.qrCode = scanResult
             self.navigationController?.pushViewController(scanResViewController, animated: true)
         }
+        
+        self.checkCameraAccess()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,5 +39,21 @@ class QTScanViewController: QTViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.scanView.stopScan()
+    }
+    
+    func checkCameraAccess() {
+        let authStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        switch authStatus {
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { (granted) in
+                self.checkCameraAccess()
+            }
+            break
+        case .denied:
+            UIAlertController.showAlert("Tip", "Please check the camera access!", "OK", self)
+            break
+        default: break
+            
+        }
     }
 }

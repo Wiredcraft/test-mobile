@@ -30,7 +30,7 @@ class QTScanResultView: UIView {
     
     func loadSubViews() {
         self.qrCodeText = UITextView.init()
-        self.qrCodeText?.textColor = kThemeColor
+        self.qrCodeText?.textColor = kTextColor
         self.qrCodeText?.isEditable = false
         self.qrCodeText?.font = UIFont.systemFont(ofSize: 20)
         self.addSubview(self.qrCodeText!)

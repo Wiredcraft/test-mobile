@@ -54,12 +54,17 @@ class QTToast: NSObject {
     
     func layoutViews() {
         self.toastLabel?.sizeToFit()
-        if (self.toastLabel?.width)! > (self.containerView?.width)! - 10 * 2 {
-            self.toastLabel?.width = (self.containerView?.width)! - 10 * 2
+        let screenToLabelSpace: CGFloat = 10.0
+        let labelPadding: CGFloat = 10.0
+        let maxWidth = (self.containerView?.width)! - screenToLabelSpace * 2 - labelPadding * 2
+        if (self.toastLabel?.width)! > maxWidth {
+            self.toastLabel?.width = (self.containerView?.width)! - screenToLabelSpace * 2
             self.toastLabel?.sizeToFit()
+        } else {
+            self.toastLabel?.width = (self.toastLabel?.width)! + 10 * 2
         }
-        self.toastLabel?.width = (self.toastLabel?.width)! + 10 * 2
-        self.toastLabel?.height = (self.toastLabel?.height)! + 10 * 2
+        
+        self.toastLabel?.height = (self.toastLabel?.height)! + 5 * 2
         self.toastLabel?.centerX = (self.containerView?.width)! / 2.0
         self.toastLabel?.bottom = (self.containerView?.height)! - 60.0
         self.toastLabel?.layer.cornerRadius = 4.0

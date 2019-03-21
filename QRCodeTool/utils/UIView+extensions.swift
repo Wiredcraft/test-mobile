@@ -35,12 +35,10 @@ extension UIView {
     
     var bottom: CGFloat {
         set {
-            var rect = self.frame
-            rect.origin.y = newValue - self.height
-            self.frame = rect
+            self.y = newValue - self.height
         }
         get {
-            return self.frame.origin.y + self.height
+            return self.y + self.height
         }
     }
 
@@ -69,9 +67,7 @@ extension UIView {
     
     var centerX: CGFloat {
         set {
-            var rect = self.frame
-            rect.origin.x = newValue - self.width / 2.0
-            self.frame = rect
+            self.x = newValue - self.width / 2.0
         }
         get {
             return self.x + self.width / 2.0
@@ -80,9 +76,7 @@ extension UIView {
 
     var centerY: CGFloat {
         set {
-            var rect = self.frame
-            rect.origin.y = newValue - self.height / 2.0
-            self.frame = rect
+            self.y = newValue - self.height / 2.0
         }
         get {
             return self.y + self.height / 2.0

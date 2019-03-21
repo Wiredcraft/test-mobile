@@ -12,8 +12,10 @@ class QTGenerateView: UIView {
     
     var seed: QTSeed? {
         didSet {
-            self.updateUI()
-            self.startCountdown()
+            if (self.seed?.seed) != nil {
+                self.updateUI()
+                self.startCountdown()
+            }
         }
     }
     
@@ -35,8 +37,7 @@ class QTGenerateView: UIView {
     }
     
     var timer: Timer?
-    let defaultRemainSeconds: Int = 60              //defalut auto-refresh timeInterval is 60s
-    lazy var remainSeconds = defaultRemainSeconds
+    var remainSeconds: Int!
     
     var indicator: UIActivityIndicatorView?
     var qrCodeImgView: UIImageView?
@@ -102,11 +103,17 @@ class QTGenerateView: UIView {
     }
     
     func startCountdown() {
-        if (self.seed?.expireAt)! > NSTimeIntervalSince1970 {
-            self.remainSeconds = Int((self.seed?.expireAt)! - NSDate().timeIntervalSince1970)
-        } else {
-            self.remainSeconds = defaultRemainSeconds
+        stopCountdown()
+        if let expireAt = self.seed?.expiresAt {
+            let remainSeconds = (Int)(expireAt - NSDate().timeIntervalSince1970)
+            if remainSeconds > 0 {
+                self.remainSeconds = remainSeconds
+                self.startTimer()
+            }
         }
+    }
+    
+    func startTimer() {
         let timerIsOnUse = (self.timer != nil && (self.timer?.isValid)!)
         if (!timerIsOnUse) {
             self.timer = Timer.scheduledTimer(timeInterval: 1,
@@ -118,7 +125,7 @@ class QTGenerateView: UIView {
     }
     
     @objc func countDown() {
-        self.countingLabel?.text = "\(remainSeconds)" + "s"
+        self.countingLabel?.text = "\(remainSeconds!)" + "s"
         if self.remainSeconds == 0 {
             if let callback = self.shouldUpdateSeed {
                 callback()
