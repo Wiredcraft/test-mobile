@@ -1,6 +1,6 @@
 # Mobile Test - GitHub Users List App
 
-Make sure you read **all** of this document carefully, and follow the guidelines in it.
+Make sure you read the whole document carefully and follow the guidelines in it.
 
 ## Context
 
@@ -34,8 +34,9 @@ We are building an App, which is used to list Github user profiles.
 
 ### Functionality
 
-- Use Swift >=4.2.
-- Provide proper unit test.
+- Use Swift >=4.2 for iOS.
+- Use Kotlin >=1.3 for Android.
+- Provide proper unit tests.
 - For API use this: https://api.github.com/search/users?q=swift&page=1, or similar.
 
 ### Bonus
@@ -48,25 +49,26 @@ We are building an App, which is used to list Github user profiles.
 
 *These are used for some further challenges. You can safely skip them if you are not asked to do any, but feel free to try out.*
 
-- Apply the "SOLID" design.
+- Apply the "SOLID" design for iOS.
+- Apply the Material design for Android.
 
 ## What We Care About
 
-Feel free to use any open-source library if you see a good fit, but also remember that we're more interested in finding out your code skill and problem solving skill.
+Feel free to use any open-source library as you see fit, but remember that we are evaluating your coding skills and problem solving skills.
 
 Here's what you should aim for:
 
 - Good use of current Android & Swift best practices.
 - We are usually interested in how you use Structs, Enums, Extensions, and Protocol Oriented Programming etc.
-- Solid testing approach.
+- Good testing approach.
 - Extensible code.
 
 ## FAQ
 
 > Where should I send back the result when I'm done?
 
-Fork this repo and send us a pull request when you think it's ready for review. You don't have to finish everything prior and you can continue work on it. We don't have a deadline for the task.
+Fork this repo and send us a pull request when you think it's ready for review. You don't have to finish everything prior and you can continue to work on it. We don't have a deadline for the task.
 
 > What if I have a question?
 
-Create a new issue in the repo and we will get back to you quickly.
+Create a new issue in the repo and we will get back to you shortly.
