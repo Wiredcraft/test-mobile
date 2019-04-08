@@ -23,6 +23,14 @@ We are building an App, which is used to list Github user profiles.
     - When I focus on to the search bar
     - And enter search terms
     - Then I should see the corresponding news result lists based on the search terms real time
+5. As a user on the home page,
+	- When I pull the list down
+	- And the list reach Top
+	- Then I should see the list refresh
+6. As a user on the home page,
+	- When I scroll up
+	- And the list reach bottom
+	- Then I should be able continue scrolling to see next page's data
 
 ### Functionality
 
