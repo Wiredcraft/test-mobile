@@ -36,7 +36,7 @@ We are building an App, which is used to list Github user profiles.
 
 - Use Swift >=4.2.
 - Provide proper unit test.
-- For API use this: https://api.github.com/search/users?q=swift, or similar.
+- For API use this: https://api.github.com/search/users?q=swift&page=1, or similar.
 
 ### Bonus
 
