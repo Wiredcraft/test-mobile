@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'GitHubUsers' do
+  use_frameworks!
+
+  pod 'RxSwift',    '~> 4.0'
+  pod 'RxCocoa',    '~> 4.0'
+  pod 'Kingfisher', '~> 4.9.0'
+  pod 'NSObject+Rx'
+  pod 'Moya/RxSwift', '~> 12.0'
+  pod 'SnapKit', '~> 4.2.0'
+  pod 'MJRefresh', '~> 3.1.16'
+  pod 'PKHUD'
+  target 'GitHubUsersTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

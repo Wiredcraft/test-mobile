@@ -1,0 +1,57 @@
+PODS:
+  - Alamofire (4.8.2)
+  - Kingfisher (4.9.0)
+  - MJRefresh (3.1.16)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - Moya/RxSwift (12.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - "NSObject+Rx (4.4.1)":
+    - RxSwift (~> 4.3)
+  - PKHUD (5.2.1)
+  - Result (4.1.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - Kingfisher (~> 4.9.0)
+  - MJRefresh (~> 3.1.16)
+  - Moya/RxSwift (~> 12.0)
+  - "NSObject+Rx"
+  - PKHUD
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
+  - SnapKit (~> 4.2.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Kingfisher
+    - MJRefresh
+    - Moya
+    - "NSObject+Rx"
+    - PKHUD
+    - Result
+    - RxCocoa
+    - RxSwift
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Kingfisher: 64539b51826b778206daa6ed815d12653caa69dd
+  MJRefresh: 7798e16e53a5ef7f332dd05b27664db4e29530fd
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  "NSObject+Rx": 9884a92f19b610795c431e10b4e601913b59c9e9
+  PKHUD: 4e6162c4c39ac367c6934e9855c6b4762ee16256
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: 7564a89a9663d76a077534c2ac4e6579a72434e2
+
+COCOAPODS: 1.5.3
