@@ -22,7 +22,7 @@ We are building an App, which is used to list Github user profiles.
 4. As a user on the home page,
     - When I focus on to the search bar
     - And enter search terms
-    - Then I should see the corresponding news result lists based on the search terms real time
+    - Then I should see the corresponding new result lists based on the search terms real time
 5. As a user on the home page,
 	- When I pull the list down
 	- And the list reach Top
