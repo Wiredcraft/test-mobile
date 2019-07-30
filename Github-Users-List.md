@@ -14,11 +14,12 @@ We are building an App, which is used to list Github user profiles.
     - When I reach the home page
     - Then I should see a list of GitHub users.
     - Each user item on this page should display as below: 
-    	- avatar at left and center vertical
-    	- right part has two lines
-    	- first line is user name, you can use `login`
-    	- second line contains `html_url` and `score`
-    	- `scroe` always next to `html_url` and need display
+    	- avatar at left and center vertically
+    	- right part has two lines of text
+    	- first line contains name and score, you can use `login` and `score`
+	    - score is always aligned next to name on the right with a small margin
+	    - when name is too long and pushes score to the edge, keep score displayed in full and shrink name label by trimming the end of text (ex. "verylongname... 109.45402")
+    	- second line is URL, you can use `html_url`
     - And I should see a search box
 2. As a user on the home page,
     - When I tap on a user item
