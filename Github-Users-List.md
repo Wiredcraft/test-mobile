@@ -12,7 +12,13 @@ We are building an App, which is used to list Github user profiles.
 
 1. As a user on app first launch,
     - When I reach the home page
-    - Then I should see a list of GitHub users. Each user item on this page should show: name, avatar, the home page URL
+    - Then I should see a list of GitHub users.
+    - Each user item on this page should display as below: 
+    	- avatar at left and center vertical
+    	- right part has two lines
+    	- first line is user name, you can use `login`
+    	- second line contains `html_url` and `score`
+    	- `scroe` always next to `html_url` and need display
     - And I should see a search box
 2. As a user on the home page,
     - When I tap on a user item
