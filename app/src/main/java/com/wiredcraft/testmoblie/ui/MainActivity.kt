@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.util.Pair
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.Menu
+import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -18,6 +21,7 @@ import com.wiredcraft.testmoblie.bean.UserBean
 import com.wiredcraft.testmoblie.listener.OnLoadMoreListener
 import com.wiredcraft.testmoblie.network.OkHttpManager
 import com.wiredcraft.testmoblie.network.ResponseCallBack
+import com.wiredcraft.testmoblie.util.NetworkUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 
@@ -26,14 +30,16 @@ class MainActivity : AppCompatActivity() {
 
     private val BASE_URL = "https://api.github.com/search/users"
 
-    private val LOAD_SUCCESS = 1000
-    private val LOAD_ERROR = 1001
-    private val LOAD_FAIL = 1002
+    private val LOAD_MORE = 1001//加载更多数据
+    private val REFRESH = 1002//刷新数据
+
+    private val SUCCESS = 2001//接口请求成功
+    private val FAIL = 2002//接口请求失败
 
     private var searchView: SearchView? = null
-    private var userList = ArrayList<UserBean>()
-    private var userAdapter: UserRecyclerViewAdapter? = null
-    private var page = 1
+    private var userList = ArrayList<UserBean>()//数据源
+    private var userAdapter: UserRecyclerViewAdapter? = null//适配器
+    private var page = 1//页码
     private var searchText = "swift"//搜索关键字，因为api规定了q参数是必填项，所以我这里把搜索关键字默认为swift
 
     var handler = object: Handler() {
@@ -43,17 +49,16 @@ class MainActivity : AppCompatActivity() {
                 swipe_refresh_layout.isRefreshing = false
             }
             when{
-                msg?.what == LOAD_SUCCESS -> {//请求成功
-                    userAdapter?.notifyDataSetChanged()
-                }
-                msg?.what == LOAD_ERROR -> {//请求错误
-                    if (msg?.obj is String) {
-                        Toast.makeText(this@MainActivity, msg?.obj as String, Toast.LENGTH_SHORT).show()
+                msg?.what == SUCCESS -> {//刷新成功
+                    if (userList.size == 0) {
+                        userAdapter?.tipsMessage = getString(R.string.empty_text)
                     }
+                    userAdapter?.notifyDataSetChanged()//列表全局刷新
                 }
-                msg?.what == LOAD_FAIL -> {//请求失败
-                    userAdapter?.notifyItemChanged(userAdapter!!.itemCount)
-                    Toast.makeText(this@MainActivity, R.string.load_fail, Toast.LENGTH_SHORT).show()
+                msg?.what == FAIL -> {//刷新接口请求失败
+                    userAdapter?.hasMoreData = false
+                    userAdapter?.tipsMessage = getString(R.string.load_fail)
+                    userAdapter?.notifyDataSetChanged()
                 }
             }
 
@@ -65,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initToolbar()
         initView()
-        initData()
+        loadData(REFRESH)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -84,7 +89,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 searchText = newText.toString()
-                initData()
+                loadData(REFRESH)
                 return false
             }
         })
@@ -104,7 +109,7 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         swipe_refresh_layout.setColorSchemeResources(R.color.colorPrimary)
         swipe_refresh_layout.setOnRefreshListener {
-            initData()//下拉刷新，加载数据
+            loadData(REFRESH)//下拉刷新，加载数据
         }
 
         //初始化适配器
@@ -115,91 +120,64 @@ class MainActivity : AppCompatActivity() {
         //添加滑动监听，当滑动到最下面的时候加载更多
         recycler_view.addOnScrollListener(object : OnLoadMoreListener(){
             override fun onLoadMore() {
-                page++
-                loadMoreData()
+                swipe_refresh_layout.isRefreshing = true //开始加载动画
+                loadData(LOAD_MORE)
             }
         })
 
         //列表点击监听
         userAdapter?.onItemClickListener = object : UserRecyclerViewAdapter.OnItemClickListener{
-            override fun onClick(position: Int) {
+            override fun onClick(view: View, position: Int) {
                 //跳转到UserDetail页面
                 var intent = Intent()
                 intent.putExtra(UserDetailActivity.HTML_URL, userList[position].html_url)
                 intent.setClass(this@MainActivity, UserDetailActivity::class.java)
-                startActivity(intent)
+                var optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity,
+                        Pair.create(view, getString(R.string.transition_name)))
+                startActivity(intent, optionsCompat.toBundle())
             }
         }
     }
 
     /**
-     * 刷新数据
+     * 数据网络请求
+     * @param type 类型：1.下拉刷新；2.上拉加载更多
      */
-    private fun initData() {
-        userAdapter?.isRefreshing = true
-        page = 1//每次刷新页码都设置为1
-        val url = "$BASE_URL?q=$searchText&page=$page"
+    private fun loadData(type: Int) {
+        if (!NetworkUtil.isNetworkAvailable(applicationContext)) {
+            //如果没有网络，则取消加载动画
+            swipe_refresh_layout.isRefreshing = false
+            //Toast提示
+            Toast.makeText(this, R.string.check_network_text, Toast.LENGTH_SHORT).show()
+            handler.sendEmptyMessage(FAIL)
+            return
+        }
+
+        if (type == REFRESH) {
+            userList.clear()//清理userList所有数据
+            page = 1 //page重新赋值为1
+        } else if (type == LOAD_MORE) {
+            page++ //页码加一
+        }
+        val url = "$BASE_URL?q=$searchText&page=$page" //拼接完全url
         OkHttpManager.mInstance.doGet(url, object : ResponseCallBack{
-            override fun onFailure(e: Throwable) {
-                userAdapter?.isRefreshing = false
-                handler.sendEmptyMessage(LOAD_FAIL)
+
+            override fun onFailure(e: Throwable) {//请求失败
+                handler.sendEmptyMessage(FAIL)
             }
 
-            override fun onSuccess(response: Response) {
-                userAdapter?.isRefreshing = false
+            override fun onSuccess(response: Response) {//请求成功
                 val responseJson = response.body?.string()
                 //将返回值json字符串转成对象
                 var data
                         = Gson().fromJson<DataResponseBean<UserBean>>(responseJson, object : TypeToken<DataResponseBean<UserBean>>(){}.type)
 
                 if (data.total_count > 0) {//如果总数大于0，就意味着获取到了正常的用户数据
-                    userList.clear()//清理userList所有数据
+                    userAdapter?.hasMoreData = true
                     userList.addAll(data.items)//加上最新加载到的数据集合
-                    page = 1 //下拉刷新后page重新赋值为1
-                    handler.sendEmptyMessage(LOAD_SUCCESS)//通知主线程加载成功
-
-                } else {//如果总数不大于0，则未获取到数据，有可能返回了错误信息
-                    data.message.let {//如果存在message，则通知主线程
-                        var msg = Message()
-                        msg.what = LOAD_ERROR
-                        msg.obj = it
-                        handler.sendMessage(msg)
-                    }
-                }
-            }
-
-        })
-    }
-
-    /**
-     * 加载更多数据
-     */
-    private fun loadMoreData() {
-        val url = "$BASE_URL?q=$searchText&page=$page"
-        OkHttpManager.mInstance.doGet(url, object : ResponseCallBack{
-            override fun onFailure(e: Throwable) {
-                userAdapter?.isLoadMoreSuccess = false
-                handler.sendEmptyMessage(LOAD_FAIL)
-            }
-
-            override fun onSuccess(response: Response) {
-                userAdapter?.isLoadMoreSuccess = true
-                val responseJson = response.body?.string()
-                //将返回值json字符串转成对象
-                var data
-                        = Gson().fromJson<DataResponseBean<UserBean>>(responseJson, object : TypeToken<DataResponseBean<UserBean>>(){}.type)
-
-                if (data.total_count > 0) {//如果总数大于0，就意味着获取到了正常的用户数据
-                    userList.addAll(data.items)//加上最新加载到的数据集合
-                    handler.sendEmptyMessage(LOAD_SUCCESS)//通知主线程加载成功
-
-                } else {//如果总数不大于0，则未获取到数据，有可能返回了错误信息
-                    data.message.let {//如果存在message，则通知主线程
-                        var msg = Message()
-                        msg.what = LOAD_ERROR
-                        msg.obj = it
-                        handler.sendMessage(msg)
-                    }
+                    handler.sendEmptyMessage(SUCCESS)//通知主线程有新数据
+                } else {
+                    userAdapter?.hasMoreData = false
                 }
             }
         })

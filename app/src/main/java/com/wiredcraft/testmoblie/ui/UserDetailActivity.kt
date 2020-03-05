@@ -1,5 +1,6 @@
 package com.wiredcraft.testmoblie.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -36,7 +37,11 @@ class UserDetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         //设置返回按钮监听
         toolbar.setNavigationOnClickListener {
-            finish()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                finishAfterTransition()
+            } else {
+                finish()
+            }
         }
     }
 

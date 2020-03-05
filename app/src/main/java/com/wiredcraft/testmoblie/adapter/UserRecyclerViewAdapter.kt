@@ -21,17 +21,19 @@ import com.wiredcraft.testmoblie.bean.UserBean
 class UserRecyclerViewAdapter(private val context: Context,
                               private val userList: List<UserBean>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var isRefreshing: Boolean = true //是否正在刷新
-    var isLoadMoreSuccess: Boolean = true //上拉记载更多是否成功
+    var hasMoreData: Boolean = true //是否有更多数据
+    var tipsMessage = context.resources.getString(R.string.loading)!! //提示信息
 
     var onItemClickListener : OnItemClickListener? = null//点击监听接口
 
+    //item的类型
     enum class Status(i: Int) {
         DATA(100),//正常的数据
         FOOTER(101),//上拉加载更多
-        NO_DATA(102),//没有数据
+        NO_DATA(102)//没有数据
     }
 
+    //Glide配置
     private var requestOption = RequestOptions().apply{
         error(R.mipmap.ic_launcher)
         placeholder(R.mipmap.ic_launcher)
@@ -109,27 +111,21 @@ class UserRecyclerViewAdapter(private val context: Context,
                     urlText.text = userBean.html_url
                     //卡片点击监听
                     userCardView.setOnClickListener {
-                        onItemClickListener?.onClick(position)
+                        onItemClickListener?.onClick(userCardView, position)
                     }
                 }
             }
             getItemViewType(position) == Status.NO_DATA.ordinal -> {//空数据类型
                 var emptyHolder = holder as EmptyViewHolder
-                emptyHolder.apply {
-                    if (isRefreshing) {
-                        tipsText.text = context.resources.getString(R.string.loading)
-                    } else {
-                        tipsText.text = context.resources.getString(R.string.empty_text)
-                    }
-                }
+                emptyHolder.tipsText.text = tipsMessage//设置数据为空的原因信息
             }
             getItemViewType(position) == Status.FOOTER.ordinal -> {//加载更多
                 var loadMoreHolder = holder as LoadMoreViewHolder
                 loadMoreHolder.apply {
-                    if (isLoadMoreSuccess) {
+                    if (hasMoreData) {
                         loadingText.text = context.resources.getString(R.string.loading)
                     } else {
-                        loadingText.text = context.resources.getString(R.string.load_fail)
+                        loadingText.text = context.resources.getString(R.string.no_more_data)
                     }
                 }
             }
@@ -137,7 +133,7 @@ class UserRecyclerViewAdapter(private val context: Context,
     }
 
     interface OnItemClickListener{
-        fun onClick(position: Int)
+        fun onClick(view: View, position: Int)
     }
 
 }

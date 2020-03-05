@@ -9,7 +9,8 @@
     android:layout_margin="5dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:foreground="@drawable/ripple_drawable"
+    android:transitionName="@string/transition_name"
     app:cardBackgroundColor="@color/white"
     app:contentPadding="10dp"
     app:cardCornerRadius="5dp"
@@ -34,18 +35,20 @@
             android:layout_toRightOf="@+id/image_view">
             <TextView
                 android:id="@+id/name_text"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
+                android:layout_gravity="center_vertical"
                 style="@style/HomeTextStyle"
-                tools:text="verylongnahjkhkjhk"/>
+                tools:text="verylongnahjkhkjhdddddddddddddddddd"/>
             <TextView
                 android:id="@+id/score_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                tools:text="12312312313213132dddd12312313"/>
+                android:layout_gravity="center_vertical"
+                tools:text="12312312313213"/>
         </LinearLayout>
 
         <TextView
