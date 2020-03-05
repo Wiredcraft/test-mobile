@@ -19,7 +19,6 @@ import com.wiredcraft.testmoblie.listener.OnLoadMoreListener
 import com.wiredcraft.testmoblie.network.OkHttpManager
 import com.wiredcraft.testmoblie.network.ResponseCallBack
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_app_bar.*
 import okhttp3.*
 
 
@@ -75,6 +74,7 @@ class MainActivity : AppCompatActivity() {
         //获取SearchView对象
         val searchItem = menu?.findItem(R.id.search)
         searchView = searchItem?.actionView as SearchView?
+        searchView?.queryHint = "swift"
         //添加SearchView为监听
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
 

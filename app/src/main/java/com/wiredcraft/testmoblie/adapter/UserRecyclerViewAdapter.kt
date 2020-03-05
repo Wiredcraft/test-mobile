@@ -24,7 +24,7 @@ class UserRecyclerViewAdapter(private val context: Context,
     var isRefreshing: Boolean = true //是否正在刷新
     var isLoadMoreSuccess: Boolean = true //上拉记载更多是否成功
 
-    var onItemClickListener : OnItemClickListener? = null
+    var onItemClickListener : OnItemClickListener? = null//点击监听接口
 
     enum class Status(i: Int) {
         DATA(100),//正常的数据
