@@ -1,10 +1,13 @@
 package com.wiredcraft.testmoblie.ui
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.SearchView
+import android.view.Menu
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -28,10 +31,11 @@ class MainActivity : AppCompatActivity() {
     private val LOAD_ERROR = 1001
     private val LOAD_FAIL = 1002
 
+    private var searchView: SearchView? = null
     private var userList = ArrayList<UserBean>()
     private var userAdapter: UserRecyclerViewAdapter? = null
     private var page = 1
-    private var searchTerm = "swift"//搜索关键字，因为api规定了q参数是必填项，所以我这里把搜索关键字默认为swift
+    private var searchText = "swift"//搜索关键字，因为api规定了q参数是必填项，所以我这里把搜索关键字默认为swift
 
     var handler = object: Handler() {
         override fun handleMessage(msg: Message?) {
@@ -44,9 +48,12 @@ class MainActivity : AppCompatActivity() {
                     userAdapter?.notifyDataSetChanged()
                 }
                 msg?.what == LOAD_ERROR -> {//请求错误
-                    Toast.makeText(this@MainActivity, msg?.obj as String, Toast.LENGTH_SHORT).show()
+                    if (msg?.obj is String) {
+                        Toast.makeText(this@MainActivity, msg?.obj as String, Toast.LENGTH_SHORT).show()
+                    }
                 }
                 msg?.what == LOAD_FAIL -> {//请求失败
+                    userAdapter?.notifyItemChanged(userAdapter!!.itemCount)
                     Toast.makeText(this@MainActivity, R.string.load_fail, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -62,6 +69,28 @@ class MainActivity : AppCompatActivity() {
         initData()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        //初始化菜单
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        //获取SearchView对象
+        val searchItem = menu?.findItem(R.id.search)
+        searchView = searchItem?.actionView as SearchView?
+        //添加SearchView为监听
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchText = newText.toString()
+                initData()
+                return false
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         handler.removeCallbacksAndMessages(null)
@@ -69,6 +98,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initToolbar() {
         toolbar.title = resources.getString(R.string.home_page)
+        setSupportActionBar(toolbar)
     }
 
     private fun initView() {
@@ -76,6 +106,8 @@ class MainActivity : AppCompatActivity() {
         swipe_refresh_layout.setOnRefreshListener {
             initData()//下拉刷新，加载数据
         }
+
+        //初始化适配器
         userAdapter = UserRecyclerViewAdapter(this, userList)
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter = userAdapter
@@ -87,19 +119,34 @@ class MainActivity : AppCompatActivity() {
                 loadMoreData()
             }
         })
+
+        //列表点击监听
+        userAdapter?.onItemClickListener = object : UserRecyclerViewAdapter.OnItemClickListener{
+            override fun onClick(position: Int) {
+                //跳转到UserDetail页面
+                var intent = Intent()
+                intent.putExtra(UserDetailActivity.HTML_URL, userList[position].html_url)
+                intent.setClass(this@MainActivity, UserDetailActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     /**
      * 刷新数据
      */
     private fun initData() {
-        val url = "$BASE_URL?q=$searchTerm&page=1"
+        userAdapter?.isRefreshing = true
+        page = 1//每次刷新页码都设置为1
+        val url = "$BASE_URL?q=$searchText&page=$page"
         OkHttpManager.mInstance.doGet(url, object : ResponseCallBack{
             override fun onFailure(e: Throwable) {
+                userAdapter?.isRefreshing = false
                 handler.sendEmptyMessage(LOAD_FAIL)
             }
 
             override fun onSuccess(response: Response) {
+                userAdapter?.isRefreshing = false
                 val responseJson = response.body?.string()
                 //将返回值json字符串转成对象
                 var data
@@ -128,13 +175,15 @@ class MainActivity : AppCompatActivity() {
      * 加载更多数据
      */
     private fun loadMoreData() {
-        val url = "$BASE_URL?q=$searchTerm&page=$page"
+        val url = "$BASE_URL?q=$searchText&page=$page"
         OkHttpManager.mInstance.doGet(url, object : ResponseCallBack{
             override fun onFailure(e: Throwable) {
+                userAdapter?.isLoadMoreSuccess = false
                 handler.sendEmptyMessage(LOAD_FAIL)
             }
 
             override fun onSuccess(response: Response) {
+                userAdapter?.isLoadMoreSuccess = true
                 val responseJson = response.body?.string()
                 //将返回值json字符串转成对象
                 var data
@@ -153,7 +202,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-
         })
     }
 }

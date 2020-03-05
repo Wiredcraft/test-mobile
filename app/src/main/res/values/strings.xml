@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">TestMoblie</string>
     <string name="home_page">HomePage</string>
+    <string name="user_detail">UserDetail</string>
     <string name="load_fail">Failed to load</string>
     <string name="loading">loading...</string>
+    <string name="empty_text">There is no data</string>
+    <string name="back">Back</string>
 </resources>
