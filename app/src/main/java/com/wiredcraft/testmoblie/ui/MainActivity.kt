@@ -10,8 +10,8 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.View
 import com.wiredcraft.github_users.ui.UserDetailActivity
-import com.wiredcraft.github_users.widget.MyGithubView
-import com.wiredcraft.github_users.widget.MyGithubView.Companion.REFRESH
+import com.wiredcraft.github_users.widget.GithubUsersView
+import com.wiredcraft.github_users.widget.GithubUsersView.Companion.REFRESH
 import com.wiredcraft.testmoblie.R
 import com.wiredcraft.testmoblie.bean.UserBean
 import kotlinx.android.synthetic.main.activity_main.*
@@ -44,8 +44,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                my_github_view.searchText = newText.toString()
-                my_github_view.loadData(REFRESH)
+                github_users_view.searchText = newText.toString()
+                github_users_view.loadData(REFRESH)
                 return false
             }
         })
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         //设置点击监听
-        my_github_view.onViewItemClickListener = object : MyGithubView.OnViewItemClickListener{
+        github_users_view.onViewItemClickListener = object : GithubUsersView.OnViewItemClickListener{
             override fun onItemClick(view: View, userBean: UserBean) {
                 //跳转到UserDetail页面
                 var intent = Intent()

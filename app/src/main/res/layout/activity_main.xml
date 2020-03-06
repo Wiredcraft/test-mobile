@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.wiredcraft.github_users.widget.GithubUsersView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/github_users_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <com.wiredcraft.github_users.widget.MyGithubView
-        android:id="@+id/my_github_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.wiredcraft.github_users.widget.MyGithubView>
-
-</android.support.design.widget.CoordinatorLayout>
+</com.wiredcraft.github_users.widget.GithubUsersView>
 

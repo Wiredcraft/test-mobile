@@ -2,13 +2,13 @@
 
 I apply the Material design and used some open-source library to complete this application.
 
-Include two pages in total.(Home page and user detail page)
+All function is in github_users module.
 
 ## Customize common title bar
 
 - Use AppBarLayout and Toolbar to implement title bar as a common title bar.
 
-## Home page
+## GithubUsersView
 
 - Use CoordinatorLayout as a parent layout.
 - Use common title bar as title.
@@ -37,6 +37,64 @@ Include two pages in total.(Home page and user detail page)
 - Create a network util to check network status.
 - Use Transition animation.
 - Add leakcanary to check Memory leak.
+
+## Usage
+
+1.Add GithubUsersView in layout file
+
+```
+<com.wiredcraft.github_users.widget.GithubUsersView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/github_users_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+</com.wiredcraft.github_users.widget.GithubUsersView>
+```
+
+2.Initialize menu and SearchView in Activity. And add SearchView listener.
+
+```
+override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        //初始化菜单
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        //获取SearchView对象
+        val searchItem = menu?.findItem(R.id.search)
+        searchView = searchItem?.actionView as SearchView?
+        searchView?.queryHint = "swift"
+        //添加SearchView为监听
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                github_users_view.searchText = newText.toString()
+                github_users_view.loadData(REFRESH)
+                return false
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
+    }
+```
+
+3.Add GithubUsersView item click listener.
+```
+//设置点击监听
+        github_users_view.onViewItemClickListener = object : GithubUsersView.OnViewItemClickListener{
+            override fun onItemClick(view: View, userBean: UserBean) {
+                //跳转到UserDetail页面
+                var intent = Intent()
+                intent.putExtra(UserDetailActivity.HTML_URL, userBean.html_url)
+                intent.setClass(this@MainActivity, UserDetailActivity::class.java)
+                var optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity,
+                        Pair.create(view, getString(R.string.transition_name)))
+                startActivity(intent, optionsCompat.toBundle())
+            }
+        }
+```
+
+
 
 
 # Wiredcraft Mobile Developer Coding Test

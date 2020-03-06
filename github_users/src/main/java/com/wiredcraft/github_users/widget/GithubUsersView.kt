@@ -23,7 +23,7 @@ import com.wiredcraft.testmoblie.util.NetworkUtil
 import kotlinx.android.synthetic.main.layout_mygithub.view.*
 import okhttp3.Response
 
-class MyGithubView @JvmOverloads constructor(
+class GithubUsersView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : CoordinatorLayout(context, attrs, defStyleAttr) {
 
