@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.widget.Toast
@@ -121,7 +122,6 @@ class MainActivity : AppCompatActivity() {
         //添加滑动监听，当滑动到最下面的时候加载更多
         recycler_view.addOnScrollListener(object : OnLoadMoreListener(){
             override fun onLoadMore() {
-                swipe_refresh_layout.isRefreshing = true //开始加载动画
                 loadData(LOAD_MORE)
             }
         })
@@ -147,7 +147,9 @@ class MainActivity : AppCompatActivity() {
     private fun loadData(type: Int) {
         if (!NetworkUtil.isNetworkAvailable(applicationContext)) {
             //如果没有网络，则取消加载动画
-            swipe_refresh_layout.isRefreshing = false
+            if (swipe_refresh_layout.isRefreshing) {
+                swipe_refresh_layout.isRefreshing = false
+            }
             //Toast提示
             Toast.makeText(this, R.string.check_network_text, Toast.LENGTH_SHORT).show()
             handler.sendEmptyMessage(FAIL)
@@ -155,31 +157,37 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (type == REFRESH) {
+            if (!swipe_refresh_layout.isRefreshing) {
+                swipe_refresh_layout.isRefreshing = true //开启刷新动画
+            }
             userList.clear()//清理userList所有数据
             page = 1 //page重新赋值为1
         } else if (type == LOAD_MORE) {
             page++ //页码加一
         }
         val url = "$BASE_URL?q=$searchText&page=$page" //拼接完全url
+        Log.i("Test", url)
         OkHttpManager.mInstance.doGet(url, object : ResponseCallBack{
 
             override fun onFailure(e: Throwable) {//请求失败
                 handler.sendEmptyMessage(FAIL)
+                Log.i("Test", "Fail")
             }
 
             override fun onSuccess(response: Response) {//请求成功
+                Log.i("Test", "Success")
                 val responseJson = response.body?.string()
                 //将返回值json字符串转成对象
                 var data
                         = Gson().fromJson<DataResponseBean<UserBean>>(responseJson, object : TypeToken<DataResponseBean<UserBean>>(){}.type)
 
-                if (data.total_count > 0) {//如果总数大于0，就意味着获取到了正常的用户数据
-                    userAdapter?.hasMoreData = true
+                if (data.items != null && data.items.size > 0) {//如果itmes的size大于0，就意味着获取到了正常的用户数据
+                    userAdapter?.hasMoreData = data.items.size >= 30 //接口一页返回的数据最多是30条，所以如果小于30条，意味着下一页没有更多数据了。
                     userList.addAll(data.items)//加上最新加载到的数据集合
-                    handler.sendEmptyMessage(SUCCESS)//通知主线程有新数据
                 } else {
                     userAdapter?.hasMoreData = false
                 }
+                handler.sendEmptyMessage(SUCCESS)//通知主线程接口调用成功
             }
         })
     }
