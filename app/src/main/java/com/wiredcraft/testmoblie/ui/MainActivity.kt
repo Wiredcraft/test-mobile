@@ -23,6 +23,7 @@ import com.wiredcraft.testmoblie.network.OkHttpManager
 import com.wiredcraft.testmoblie.network.ResponseCallBack
 import com.wiredcraft.testmoblie.util.NetworkUtil
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_title_bar.*
 import okhttp3.*
 
 

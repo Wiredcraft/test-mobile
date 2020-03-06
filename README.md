@@ -1,3 +1,44 @@
+# Design ideas
+
+I apply the Material design and used some open-source library to complete this application.
+
+Include two pages in total.(Home page and user detail page)
+
+## Customize common title bar
+
+- Use AppBarLayout and Toolbar to implement title bar as a common title bar.
+
+## Home page
+
+- Use CoordinatorLayout as a parent layout.
+- Use common title bar as title.
+- Use SearchView and menu to implement search function which in the title bar.
+- Use RecyclerView to implement user list.
+- Use SwipeRefreshLayout to implement pull down to refresh.
+- Use RecyclerView.OnScrollListener to implement pull up to load more data.
+- Use CardView to implement list element layout.
+- Use custom ripple to implement CardView's click effect.
+- Use okhttp to implement network GET request.
+- Use Glide to load image.
+- Use Gson to parse the data.
+- Use Enums to distinguish different data status in adapter.
+- Use handler to implement communication between threads.
+
+## User detail page
+
+- Use CoordinatorLayout as a parent layout.
+- Use common title bar as title and add a back icon to the left of the title.
+- Use WebView to load url.
+- Use ProgressBar to see the loading progress.
+
+## Others
+
+- Add network permission.
+- Create a network util to check network status.
+- Use Transition animation.
+- Add leakcanary to check Memory leak.
+
+
 # Wiredcraft Mobile Developer Coding Test
 
 Make sure you read **all** of this document carefully, and follow the guidelines in it.
