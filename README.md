@@ -42,7 +42,7 @@ All function is in github_users module.
 
 1.Add GithubUsersView in layout file
 
-```
+```xml
 <com.wiredcraft.github_users.widget.GithubUsersView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/github_users_view"
@@ -53,7 +53,7 @@ All function is in github_users module.
 
 2.Initialize menu and SearchView in Activity. And add SearchView listener.
 
-```
+```kotlin
 override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //初始化菜单
         menuInflater.inflate(R.menu.toolbar_menu, menu)
@@ -79,7 +79,8 @@ override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 ```
 
 3.Add GithubUsersView item click listener.
-```
+
+```kotlin
 //设置点击监听
         github_users_view.onViewItemClickListener = object : GithubUsersView.OnViewItemClickListener{
             override fun onItemClick(view: View, userBean: UserBean) {
