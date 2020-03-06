@@ -1,12 +1,13 @@
-package com.wiredcraft.testmoblie.ui
+package com.wiredcraft.github_users.ui
 
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebView
-import com.wiredcraft.testmoblie.R
+import com.wiredcraft.github_users.R
 import kotlinx.android.synthetic.main.activity_user_detail.*
 import kotlinx.android.synthetic.main.layout_title_bar.*
 
@@ -33,11 +34,11 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun initToolbar() {
-        toolbar.title = resources.getString(R.string.user_detail)//标题名字
-        toolbar.navigationIcon = resources.getDrawable(R.mipmap.icon_back)//返回键文案
+        toolbar?.title = resources.getString(R.string.user_detail)//标题名字
+        toolbar?.navigationIcon = resources.getDrawable(R.mipmap.icon_back)//返回键文案
         setSupportActionBar(toolbar)
         //设置返回按钮监听
-        toolbar.setNavigationOnClickListener {
+        toolbar?.setNavigationOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 finishAfterTransition()
             } else {

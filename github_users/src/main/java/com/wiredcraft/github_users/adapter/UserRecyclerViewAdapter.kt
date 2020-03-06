@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.wiredcraft.testmoblie.R
+import com.wiredcraft.github_users.R
 import com.wiredcraft.testmoblie.bean.UserBean
 
 /**

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Github users</string>
+    <string name="home_page">HomePage</string>
+    <string name="user_detail">UserDetail</string>
+    <string name="load_fail">Failed to load</string>
+    <string name="loading">loading...</string>
+    <string name="empty_text">There is no data</string>
+    <string name="no_more_data">There is no more data</string>
+    <string name="back">Back</string>
+    <string name="check_network_text">Please check your network connection.</string>
+    <string name="transition_name">transition_name</string>
+
+</resources>
