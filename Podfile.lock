@@ -1,0 +1,154 @@
+PODS:
+  - Alamofire (5.2.1)
+  - Differentiator (4.0.1)
+  - ESCategory_swift (0.2.0):
+    - ESCategory_swift/Array (= 0.2.0)
+    - ESCategory_swift/Data (= 0.2.0)
+    - ESCategory_swift/Date (= 0.2.0)
+    - ESCategory_swift/Dictionary (= 0.2.0)
+    - ESCategory_swift/Int (= 0.2.0)
+    - ESCategory_swift/Log (= 0.2.0)
+    - ESCategory_swift/NSAttributedString (= 0.2.0)
+    - ESCategory_swift/NSBundle (= 0.2.0)
+    - ESCategory_swift/NSNumber (= 0.2.0)
+    - ESCategory_swift/String (= 0.2.0)
+    - ESCategory_swift/UIApplication (= 0.2.0)
+    - ESCategory_swift/UIColor (= 0.2.0)
+    - ESCategory_swift/UIDevice (= 0.2.0)
+    - ESCategory_swift/UIFont (= 0.2.0)
+    - ESCategory_swift/UIImage (= 0.2.0)
+    - ESCategory_swift/UINavigationController (= 0.2.0)
+    - ESCategory_swift/UIScreen (= 0.2.0)
+    - ESCategory_swift/UITextField (= 0.2.0)
+    - ESCategory_swift/UIView (= 0.2.0)
+    - ESCategory_swift/UIViewController (= 0.2.0)
+    - ESCategory_swift/URL (= 0.2.0)
+    - ESCategory_swift/UserDefaults (= 0.2.0)
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/Array (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/Data (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/Date (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/Dictionary (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/Int (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/Log (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/NSAttributedString (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/NSBundle (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/NSNumber (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/String (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UIApplication (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UIColor (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UIDevice (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UIFont (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UIImage (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UINavigationController (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UIScreen (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UITextField (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UIView (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UIViewController (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/URL (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - ESCategory_swift/UserDefaults (0.2.0):
+    - MBProgressHUD (~> 1.2.0)
+  - Kingfisher (5.13.4):
+    - Kingfisher/Core (= 5.13.4)
+  - Kingfisher/Core (5.13.4)
+  - MBProgressHUD (1.2.0)
+  - MJRefresh (3.1.15.7)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya-ObjectMapper (2.9):
+    - Moya-ObjectMapper/Core (= 2.9)
+  - Moya-ObjectMapper/Core (2.9):
+    - Moya (~> 14.0.0-beta.6)
+    - ObjectMapper
+  - Moya-ObjectMapper/RxSwift (2.9):
+    - Moya-ObjectMapper/Core
+    - Moya/RxSwift
+    - RxSwift
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - ObjectMapper (4.2.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - ESCategory_swift (= 0.2.0)
+  - Kingfisher (= 5.13.4)
+  - MJRefresh (= 3.1.15.7)
+  - Moya (= 14.0.0)
+  - Moya-ObjectMapper (= 2.9)
+  - Moya-ObjectMapper/RxSwift
+  - Moya/RxSwift
+  - RxCocoa (= 5.1.1)
+  - RxDataSources (= 4.0.1)
+  - RxSwift (= 5.1.1)
+  - SnapKit (= 5.0.1)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Differentiator
+    - ESCategory_swift
+    - Kingfisher
+    - MBProgressHUD
+    - MJRefresh
+    - Moya
+    - Moya-ObjectMapper
+    - ObjectMapper
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  ESCategory_swift: a83fc01c36962a48125cf778fc1de1d71fca6eae
+  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Moya-ObjectMapper: 967a99d9ea3aa9c93ddbe112aeca3667f53bfe93
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: b425e80747bbcefc640537c2f83d5ec3d86951f2
+
+COCOAPODS: 1.9.1

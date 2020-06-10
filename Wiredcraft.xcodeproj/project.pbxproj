@@ -1,0 +1,744 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		505B628FADF453C75DFADBE5 /* Pods_Wiredcraft_WiredcraftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7DF8041131A94A782FDAC4 /* Pods_Wiredcraft_WiredcraftUITests.framework */; };
+		8314D3DAEFBF7A9194455D5E /* Pods_Wiredcraft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E6F6E084BCF463806C00CF /* Pods_Wiredcraft.framework */; };
+		921C9B9D6CFC632F6D280820 /* Pods_WiredcraftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE68A84C30359F9FEEAA901 /* Pods_WiredcraftTests.framework */; };
+		971418CF2490F8A300488E00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418CE2490F8A300488E00 /* AppDelegate.swift */; };
+		971418D12490F8A300488E00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418D02490F8A300488E00 /* SceneDelegate.swift */; };
+		971418D32490F8A300488E00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418D22490F8A300488E00 /* ViewController.swift */; };
+		971418D62490F8A300488E00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 971418D42490F8A300488E00 /* Main.storyboard */; };
+		971418D82490F8A500488E00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 971418D72490F8A500488E00 /* Assets.xcassets */; };
+		971418DB2490F8A500488E00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 971418D92490F8A500488E00 /* LaunchScreen.storyboard */; };
+		971418E62490F8A500488E00 /* WiredcraftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418E52490F8A500488E00 /* WiredcraftTests.swift */; };
+		971418F12490F8A500488E00 /* WiredcraftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418F02490F8A500488E00 /* WiredcraftUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		971418E22490F8A500488E00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 971418C32490F8A300488E00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 971418CA2490F8A300488E00;
+			remoteInfo = Wiredcraft;
+		};
+		971418ED2490F8A500488E00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 971418C32490F8A300488E00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 971418CA2490F8A300488E00;
+			remoteInfo = Wiredcraft;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B919260DD9DE123A41CB3F7 /* Pods-Wiredcraft.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiredcraft.release.xcconfig"; path = "Target Support Files/Pods-Wiredcraft/Pods-Wiredcraft.release.xcconfig"; sourceTree = "<group>"; };
+		0C7DF8041131A94A782FDAC4 /* Pods_Wiredcraft_WiredcraftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiredcraft_WiredcraftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1672892AE2A66016EBE95EF9 /* Pods-Wiredcraft-WiredcraftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiredcraft-WiredcraftUITests.release.xcconfig"; path = "Target Support Files/Pods-Wiredcraft-WiredcraftUITests/Pods-Wiredcraft-WiredcraftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3A63F397341A06D7A5F5DC96 /* Pods-WiredcraftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiredcraftTests.debug.xcconfig"; path = "Target Support Files/Pods-WiredcraftTests/Pods-WiredcraftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3D8D9CF35860FAFF4DA07D5F /* Pods-WiredcraftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiredcraftTests.release.xcconfig"; path = "Target Support Files/Pods-WiredcraftTests/Pods-WiredcraftTests.release.xcconfig"; sourceTree = "<group>"; };
+		3F4FDC623E704A9501B56FA1 /* Pods-Wiredcraft-WiredcraftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiredcraft-WiredcraftUITests.debug.xcconfig"; path = "Target Support Files/Pods-Wiredcraft-WiredcraftUITests/Pods-Wiredcraft-WiredcraftUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6CE68A84C30359F9FEEAA901 /* Pods_WiredcraftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WiredcraftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		971418CB2490F8A300488E00 /* Wiredcraft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wiredcraft.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		971418CE2490F8A300488E00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		971418D02490F8A300488E00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		971418D22490F8A300488E00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		971418D52490F8A300488E00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		971418D72490F8A500488E00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		971418DA2490F8A500488E00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		971418DC2490F8A500488E00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		971418E12490F8A500488E00 /* WiredcraftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiredcraftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		971418E52490F8A500488E00 /* WiredcraftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiredcraftTests.swift; sourceTree = "<group>"; };
+		971418E72490F8A500488E00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		971418EC2490F8A500488E00 /* WiredcraftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiredcraftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		971418F02490F8A500488E00 /* WiredcraftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiredcraftUITests.swift; sourceTree = "<group>"; };
+		971418F22490F8A500488E00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1E6F6E084BCF463806C00CF /* Pods_Wiredcraft.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiredcraft.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCDAEEE3A5FEA3F3FEB4F8C8 /* Pods-Wiredcraft.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiredcraft.debug.xcconfig"; path = "Target Support Files/Pods-Wiredcraft/Pods-Wiredcraft.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		971418C82490F8A300488E00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8314D3DAEFBF7A9194455D5E /* Pods_Wiredcraft.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		971418DE2490F8A500488E00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921C9B9D6CFC632F6D280820 /* Pods_WiredcraftTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		971418E92490F8A500488E00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				505B628FADF453C75DFADBE5 /* Pods_Wiredcraft_WiredcraftUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07D78A5AB019C34C47715C42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1E6F6E084BCF463806C00CF /* Pods_Wiredcraft.framework */,
+				0C7DF8041131A94A782FDAC4 /* Pods_Wiredcraft_WiredcraftUITests.framework */,
+				6CE68A84C30359F9FEEAA901 /* Pods_WiredcraftTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		971418C22490F8A300488E00 = {
+			isa = PBXGroup;
+			children = (
+				971418CD2490F8A300488E00 /* Wiredcraft */,
+				971418E42490F8A500488E00 /* WiredcraftTests */,
+				971418EF2490F8A500488E00 /* WiredcraftUITests */,
+				971418CC2490F8A300488E00 /* Products */,
+				D8C65BDD20E8A0DB9850100A /* Pods */,
+				07D78A5AB019C34C47715C42 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		971418CC2490F8A300488E00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				971418CB2490F8A300488E00 /* Wiredcraft.app */,
+				971418E12490F8A500488E00 /* WiredcraftTests.xctest */,
+				971418EC2490F8A500488E00 /* WiredcraftUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		971418CD2490F8A300488E00 /* Wiredcraft */ = {
+			isa = PBXGroup;
+			children = (
+				971418CE2490F8A300488E00 /* AppDelegate.swift */,
+				971418D02490F8A300488E00 /* SceneDelegate.swift */,
+				971418D22490F8A300488E00 /* ViewController.swift */,
+				971418D42490F8A300488E00 /* Main.storyboard */,
+				971418D72490F8A500488E00 /* Assets.xcassets */,
+				971418D92490F8A500488E00 /* LaunchScreen.storyboard */,
+				971418DC2490F8A500488E00 /* Info.plist */,
+			);
+			path = Wiredcraft;
+			sourceTree = "<group>";
+		};
+		971418E42490F8A500488E00 /* WiredcraftTests */ = {
+			isa = PBXGroup;
+			children = (
+				971418E52490F8A500488E00 /* WiredcraftTests.swift */,
+				971418E72490F8A500488E00 /* Info.plist */,
+			);
+			path = WiredcraftTests;
+			sourceTree = "<group>";
+		};
+		971418EF2490F8A500488E00 /* WiredcraftUITests */ = {
+			isa = PBXGroup;
+			children = (
+				971418F02490F8A500488E00 /* WiredcraftUITests.swift */,
+				971418F22490F8A500488E00 /* Info.plist */,
+			);
+			path = WiredcraftUITests;
+			sourceTree = "<group>";
+		};
+		D8C65BDD20E8A0DB9850100A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DCDAEEE3A5FEA3F3FEB4F8C8 /* Pods-Wiredcraft.debug.xcconfig */,
+				0B919260DD9DE123A41CB3F7 /* Pods-Wiredcraft.release.xcconfig */,
+				3F4FDC623E704A9501B56FA1 /* Pods-Wiredcraft-WiredcraftUITests.debug.xcconfig */,
+				1672892AE2A66016EBE95EF9 /* Pods-Wiredcraft-WiredcraftUITests.release.xcconfig */,
+				3A63F397341A06D7A5F5DC96 /* Pods-WiredcraftTests.debug.xcconfig */,
+				3D8D9CF35860FAFF4DA07D5F /* Pods-WiredcraftTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		971418CA2490F8A300488E00 /* Wiredcraft */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 971418F52490F8A500488E00 /* Build configuration list for PBXNativeTarget "Wiredcraft" */;
+			buildPhases = (
+				0A73DF5ABE530740A5891FAD /* [CP] Check Pods Manifest.lock */,
+				971418C72490F8A300488E00 /* Sources */,
+				971418C82490F8A300488E00 /* Frameworks */,
+				971418C92490F8A300488E00 /* Resources */,
+				7D9D00E97441C3ACDD4DC111 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Wiredcraft;
+			productName = Wiredcraft;
+			productReference = 971418CB2490F8A300488E00 /* Wiredcraft.app */;
+			productType = "com.apple.product-type.application";
+		};
+		971418E02490F8A500488E00 /* WiredcraftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 971418F82490F8A500488E00 /* Build configuration list for PBXNativeTarget "WiredcraftTests" */;
+			buildPhases = (
+				B703FD2FA55A1D708B92A496 /* [CP] Check Pods Manifest.lock */,
+				971418DD2490F8A500488E00 /* Sources */,
+				971418DE2490F8A500488E00 /* Frameworks */,
+				971418DF2490F8A500488E00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				971418E32490F8A500488E00 /* PBXTargetDependency */,
+			);
+			name = WiredcraftTests;
+			productName = WiredcraftTests;
+			productReference = 971418E12490F8A500488E00 /* WiredcraftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		971418EB2490F8A500488E00 /* WiredcraftUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 971418FB2490F8A500488E00 /* Build configuration list for PBXNativeTarget "WiredcraftUITests" */;
+			buildPhases = (
+				3050F7A3023A23A5B537F5B8 /* [CP] Check Pods Manifest.lock */,
+				971418E82490F8A500488E00 /* Sources */,
+				971418E92490F8A500488E00 /* Frameworks */,
+				971418EA2490F8A500488E00 /* Resources */,
+				EF11AF1BCC59CF3A67B9372F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				971418EE2490F8A500488E00 /* PBXTargetDependency */,
+			);
+			name = WiredcraftUITests;
+			productName = WiredcraftUITests;
+			productReference = 971418EC2490F8A500488E00 /* WiredcraftUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		971418C32490F8A300488E00 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = codeLocker;
+				TargetAttributes = {
+					971418CA2490F8A300488E00 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					971418E02490F8A500488E00 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 971418CA2490F8A300488E00;
+					};
+					971418EB2490F8A500488E00 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 971418CA2490F8A300488E00;
+					};
+				};
+			};
+			buildConfigurationList = 971418C62490F8A300488E00 /* Build configuration list for PBXProject "Wiredcraft" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 971418C22490F8A300488E00;
+			productRefGroup = 971418CC2490F8A300488E00 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				971418CA2490F8A300488E00 /* Wiredcraft */,
+				971418E02490F8A500488E00 /* WiredcraftTests */,
+				971418EB2490F8A500488E00 /* WiredcraftUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		971418C92490F8A300488E00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				971418DB2490F8A500488E00 /* LaunchScreen.storyboard in Resources */,
+				971418D82490F8A500488E00 /* Assets.xcassets in Resources */,
+				971418D62490F8A300488E00 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		971418DF2490F8A500488E00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		971418EA2490F8A500488E00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A73DF5ABE530740A5891FAD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wiredcraft-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3050F7A3023A23A5B537F5B8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wiredcraft-WiredcraftUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D9D00E97441C3ACDD4DC111 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wiredcraft/Pods-Wiredcraft-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wiredcraft/Pods-Wiredcraft-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wiredcraft/Pods-Wiredcraft-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B703FD2FA55A1D708B92A496 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WiredcraftTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF11AF1BCC59CF3A67B9372F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wiredcraft-WiredcraftUITests/Pods-Wiredcraft-WiredcraftUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wiredcraft-WiredcraftUITests/Pods-Wiredcraft-WiredcraftUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wiredcraft-WiredcraftUITests/Pods-Wiredcraft-WiredcraftUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		971418C72490F8A300488E00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				971418D32490F8A300488E00 /* ViewController.swift in Sources */,
+				971418CF2490F8A300488E00 /* AppDelegate.swift in Sources */,
+				971418D12490F8A300488E00 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		971418DD2490F8A500488E00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				971418E62490F8A500488E00 /* WiredcraftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		971418E82490F8A500488E00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				971418F12490F8A500488E00 /* WiredcraftUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		971418E32490F8A500488E00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 971418CA2490F8A300488E00 /* Wiredcraft */;
+			targetProxy = 971418E22490F8A500488E00 /* PBXContainerItemProxy */;
+		};
+		971418EE2490F8A500488E00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 971418CA2490F8A300488E00 /* Wiredcraft */;
+			targetProxy = 971418ED2490F8A500488E00 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		971418D42490F8A300488E00 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				971418D52490F8A300488E00 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		971418D92490F8A500488E00 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				971418DA2490F8A500488E00 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		971418F32490F8A500488E00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		971418F42490F8A500488E00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		971418F62490F8A500488E00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCDAEEE3A5FEA3F3FEB4F8C8 /* Pods-Wiredcraft.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Wiredcraft/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codeLocker.Wiredcraft;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		971418F72490F8A500488E00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B919260DD9DE123A41CB3F7 /* Pods-Wiredcraft.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Wiredcraft/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codeLocker.Wiredcraft;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		971418F92490F8A500488E00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A63F397341A06D7A5F5DC96 /* Pods-WiredcraftTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WiredcraftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codeLocker.WiredcraftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wiredcraft.app/Wiredcraft";
+			};
+			name = Debug;
+		};
+		971418FA2490F8A500488E00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D8D9CF35860FAFF4DA07D5F /* Pods-WiredcraftTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WiredcraftTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codeLocker.WiredcraftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wiredcraft.app/Wiredcraft";
+			};
+			name = Release;
+		};
+		971418FC2490F8A500488E00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F4FDC623E704A9501B56FA1 /* Pods-Wiredcraft-WiredcraftUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WiredcraftUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codeLocker.WiredcraftUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Wiredcraft;
+			};
+			name = Debug;
+		};
+		971418FD2490F8A500488E00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1672892AE2A66016EBE95EF9 /* Pods-Wiredcraft-WiredcraftUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WiredcraftUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = codeLocker.WiredcraftUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Wiredcraft;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		971418C62490F8A300488E00 /* Build configuration list for PBXProject "Wiredcraft" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				971418F32490F8A500488E00 /* Debug */,
+				971418F42490F8A500488E00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		971418F52490F8A500488E00 /* Build configuration list for PBXNativeTarget "Wiredcraft" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				971418F62490F8A500488E00 /* Debug */,
+				971418F72490F8A500488E00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		971418F82490F8A500488E00 /* Build configuration list for PBXNativeTarget "WiredcraftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				971418F92490F8A500488E00 /* Debug */,
+				971418FA2490F8A500488E00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		971418FB2490F8A500488E00 /* Build configuration list for PBXNativeTarget "WiredcraftUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				971418FC2490F8A500488E00 /* Debug */,
+				971418FD2490F8A500488E00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 971418C32490F8A300488E00 /* Project object */;
+}
