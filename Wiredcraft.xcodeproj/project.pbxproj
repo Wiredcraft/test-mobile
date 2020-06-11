@@ -29,6 +29,7 @@
 		9714192A2492380000488E00 /* WCHomeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971419292492380000488E00 /* WCHomeNetworkService.swift */; };
 		9714192C24924D6B00488E00 /* WCUserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714192B24924D6B00488E00 /* WCUserListModel.swift */; };
 		97BC182324926E9B0011A74E /* WCHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BC182224926E9B0011A74E /* WCHomeViewModel.swift */; };
+		97BC1826249298190011A74E /* WCRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BC1825249298190011A74E /* WCRefresh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		971419292492380000488E00 /* WCHomeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCHomeNetworkService.swift; sourceTree = "<group>"; };
 		9714192B24924D6B00488E00 /* WCUserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCUserListModel.swift; sourceTree = "<group>"; };
 		97BC182224926E9B0011A74E /* WCHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCHomeViewModel.swift; sourceTree = "<group>"; };
+		97BC1825249298190011A74E /* WCRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCRefresh.swift; sourceTree = "<group>"; };
 		C1E6F6E084BCF463806C00CF /* Pods_Wiredcraft.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiredcraft.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCDAEEE3A5FEA3F3FEB4F8C8 /* Pods-Wiredcraft.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiredcraft.debug.xcconfig"; path = "Target Support Files/Pods-Wiredcraft/Pods-Wiredcraft.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +150,7 @@
 		971418CD2490F8A300488E00 /* Wiredcraft */ = {
 			isa = PBXGroup;
 			children = (
+				97BC1824249298070011A74E /* Tools */,
 				9714192124922DA500488E00 /* Network */,
 				9714191924910AB900488E00 /* Macros */,
 				971418FE2491077F00488E00 /* Section */,
@@ -330,6 +333,14 @@
 				971419292492380000488E00 /* WCHomeNetworkService.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		97BC1824249298070011A74E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				97BC1825249298190011A74E /* WCRefresh.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		D8C65BDD20E8A0DB9850100A /* Pods */ = {
@@ -586,6 +597,7 @@
 				97141916249109B500488E00 /* WCTabBarViewController.swift in Sources */,
 				97141918249109CB00488E00 /* WCNavigationController.swift in Sources */,
 				9714192424922DCF00488E00 /* WCAPI.swift in Sources */,
+				97BC1826249298190011A74E /* WCRefresh.swift in Sources */,
 				971419142491087200488E00 /* WCHomeViewController.swift in Sources */,
 				9714192C24924D6B00488E00 /* WCUserListModel.swift in Sources */,
 				97141926249235D100488E00 /* WCNetworkLog.swift in Sources */,

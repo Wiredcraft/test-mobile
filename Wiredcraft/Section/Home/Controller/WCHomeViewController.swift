@@ -21,6 +21,8 @@ class WCHomeViewController: WCBaseViewController {
     /// search input view
     fileprivate var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
+        searchBar.text = "swift"
+        searchBar.placeholder = "please input here to search"
         return searchBar
     }()
     
@@ -31,6 +33,11 @@ class WCHomeViewController: WCBaseViewController {
         tableView.tableFooterView = UIView()
         tableView.keyboardDismissMode = .onDrag
         tableView.rowHeight = 78.0
+        
+        /// route to the Detail
+        tableView.rx.modelSelected(WCUserModel.self).subscribe(onNext: { (user) in
+            
+        }).disposed(by: self.disposeBag)
         return tableView
     }()
     
@@ -50,7 +57,7 @@ class WCHomeViewController: WCBaseViewController {
     private func loadUI() {
         /// self's view top extend limit
         /// avoid the navigationbar cover some component which layout on the top
-        self.edgesForExtendedLayout = [.left, .right, .bottom]
+        self.edgesForExtendedLayout = [.left, .right,]
         self.view.addSubview(self.searchBar)
         self.view.addSubview(self.usersTableView)
     }
@@ -79,6 +86,9 @@ extension WCHomeViewController {
         self.viewModel.searchFail.subscribe(onNext: { [weak self] (error) in
             self?.view.es_hint(error)
         }).disposed(by: self.disposeBag)
+        
+        /// enable the usersTableView's refresh function
+        self.viewModel.enableRefreshScrollView(self.usersTableView)
         
         /// bind the data to tableView
         let _ = self.viewModel.users.bind(to: self.usersTableView.rx.items) { [weak self] (_, row, element) in

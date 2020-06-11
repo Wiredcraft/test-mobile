@@ -12,7 +12,7 @@ import ObjectMapper
 /*
  * the data model of user list
  */
-struct WCUserListModel: Mappable {
+struct WCUserListModel: Mappable, WCRefreshResponse {
     
     /// the count of all users searched
     /// if the have been displayed data count == total_count, there is no more data
