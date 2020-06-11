@@ -14,8 +14,7 @@ import Moya
  * if make the network log function enable, need income WCNetworkLog instance
  * else income a empty array
  */
-//let AMHomeProvider = MoyaProvider<WCHomeAPI>(plugins: WCConstants.enableNetworkLog ? [WCNetworkLog()] : [])
-let AMHomeProvider = MoyaProvider<WCHomeAPI>(plugins: [WCNetworkLog()])
+let AMHomeProvider = MoyaProvider<WCHomeAPI>(plugins: WCConstants.enableNetworkLog ? [WCNetworkLog()] : [])
 
 /// home module's API
 enum WCHomeAPI {

@@ -36,6 +36,10 @@ class WCHomeViewController: WCBaseViewController {
         
         /// route to the Detail
         tableView.rx.modelSelected(WCUserModel.self).subscribe(onNext: { (user) in
+            let detailVc = WCDetailViewController()
+            detailVc.link = user.html_url
+            detailVc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(detailVc, animated: true)
             
         }).disposed(by: self.disposeBag)
         return tableView

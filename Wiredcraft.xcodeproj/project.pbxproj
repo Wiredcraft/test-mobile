@@ -30,6 +30,7 @@
 		9714192C24924D6B00488E00 /* WCUserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714192B24924D6B00488E00 /* WCUserListModel.swift */; };
 		97BC182324926E9B0011A74E /* WCHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BC182224926E9B0011A74E /* WCHomeViewModel.swift */; };
 		97BC1826249298190011A74E /* WCRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BC1825249298190011A74E /* WCRefresh.swift */; };
+		97BC18282492AD230011A74E /* WCDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BC18272492AD230011A74E /* WCDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		9714192B24924D6B00488E00 /* WCUserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCUserListModel.swift; sourceTree = "<group>"; };
 		97BC182224926E9B0011A74E /* WCHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCHomeViewModel.swift; sourceTree = "<group>"; };
 		97BC1825249298190011A74E /* WCRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCRefresh.swift; sourceTree = "<group>"; };
+		97BC18272492AD230011A74E /* WCDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCDetailViewController.swift; sourceTree = "<group>"; };
 		C1E6F6E084BCF463806C00CF /* Pods_Wiredcraft.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiredcraft.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCDAEEE3A5FEA3F3FEB4F8C8 /* Pods-Wiredcraft.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiredcraft.debug.xcconfig"; path = "Target Support Files/Pods-Wiredcraft/Pods-Wiredcraft.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -290,6 +292,7 @@
 		9714190A2491080600488E00 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				97BC18272492AD230011A74E /* WCDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				9714190E2491082500488E00 /* WCBaseViewController.swift in Sources */,
 				971418CF2490F8A300488E00 /* AppDelegate.swift in Sources */,
 				971419122491084E00488E00 /* WCBaseViewModel.swift in Sources */,
+				97BC18282492AD230011A74E /* WCDetailViewController.swift in Sources */,
 				9714191D2491C21000488E00 /* WCHomeUserCell.swift in Sources */,
 				971419102491084000488E00 /* WCBaseModel.swift in Sources */,
 				97BC182324926E9B0011A74E /* WCHomeViewModel.swift in Sources */,
