@@ -11,13 +11,24 @@
 		8314D3DAEFBF7A9194455D5E /* Pods_Wiredcraft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E6F6E084BCF463806C00CF /* Pods_Wiredcraft.framework */; };
 		921C9B9D6CFC632F6D280820 /* Pods_WiredcraftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE68A84C30359F9FEEAA901 /* Pods_WiredcraftTests.framework */; };
 		971418CF2490F8A300488E00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418CE2490F8A300488E00 /* AppDelegate.swift */; };
-		971418D12490F8A300488E00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418D02490F8A300488E00 /* SceneDelegate.swift */; };
-		971418D32490F8A300488E00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418D22490F8A300488E00 /* ViewController.swift */; };
-		971418D62490F8A300488E00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 971418D42490F8A300488E00 /* Main.storyboard */; };
 		971418D82490F8A500488E00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 971418D72490F8A500488E00 /* Assets.xcassets */; };
 		971418DB2490F8A500488E00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 971418D92490F8A500488E00 /* LaunchScreen.storyboard */; };
 		971418E62490F8A500488E00 /* WiredcraftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418E52490F8A500488E00 /* WiredcraftTests.swift */; };
 		971418F12490F8A500488E00 /* WiredcraftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971418F02490F8A500488E00 /* WiredcraftUITests.swift */; };
+		9714190E2491082500488E00 /* WCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714190D2491082500488E00 /* WCBaseViewController.swift */; };
+		971419102491084000488E00 /* WCBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714190F2491084000488E00 /* WCBaseModel.swift */; };
+		971419122491084E00488E00 /* WCBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971419112491084E00488E00 /* WCBaseViewModel.swift */; };
+		971419142491087200488E00 /* WCHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971419132491087200488E00 /* WCHomeViewController.swift */; };
+		97141916249109B500488E00 /* WCTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97141915249109B500488E00 /* WCTabBarViewController.swift */; };
+		97141918249109CB00488E00 /* WCNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97141917249109CB00488E00 /* WCNavigationController.swift */; };
+		9714191B24910AD400488E00 /* WCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714191A24910AD400488E00 /* WCConstants.swift */; };
+		9714191D2491C21000488E00 /* WCHomeUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714191C2491C21000488E00 /* WCHomeUserCell.swift */; };
+		9714192424922DCF00488E00 /* WCAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714192324922DCF00488E00 /* WCAPI.swift */; };
+		97141926249235D100488E00 /* WCNetworkLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97141925249235D100488E00 /* WCNetworkLog.swift */; };
+		97141928249237E500488E00 /* WCHomeNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97141927249237E500488E00 /* WCHomeNetworkProvider.swift */; };
+		9714192A2492380000488E00 /* WCHomeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971419292492380000488E00 /* WCHomeNetworkService.swift */; };
+		9714192C24924D6B00488E00 /* WCUserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9714192B24924D6B00488E00 /* WCUserListModel.swift */; };
+		97BC182324926E9B0011A74E /* WCHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BC182224926E9B0011A74E /* WCHomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +58,6 @@
 		6CE68A84C30359F9FEEAA901 /* Pods_WiredcraftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WiredcraftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		971418CB2490F8A300488E00 /* Wiredcraft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wiredcraft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		971418CE2490F8A300488E00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		971418D02490F8A300488E00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		971418D22490F8A300488E00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		971418D52490F8A300488E00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		971418D72490F8A500488E00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		971418DA2490F8A500488E00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		971418DC2490F8A500488E00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +67,20 @@
 		971418EC2490F8A500488E00 /* WiredcraftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WiredcraftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		971418F02490F8A500488E00 /* WiredcraftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiredcraftUITests.swift; sourceTree = "<group>"; };
 		971418F22490F8A500488E00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9714190D2491082500488E00 /* WCBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCBaseViewController.swift; sourceTree = "<group>"; };
+		9714190F2491084000488E00 /* WCBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCBaseModel.swift; sourceTree = "<group>"; };
+		971419112491084E00488E00 /* WCBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCBaseViewModel.swift; sourceTree = "<group>"; };
+		971419132491087200488E00 /* WCHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCHomeViewController.swift; sourceTree = "<group>"; };
+		97141915249109B500488E00 /* WCTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCTabBarViewController.swift; sourceTree = "<group>"; };
+		97141917249109CB00488E00 /* WCNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCNavigationController.swift; sourceTree = "<group>"; };
+		9714191A24910AD400488E00 /* WCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCConstants.swift; sourceTree = "<group>"; };
+		9714191C2491C21000488E00 /* WCHomeUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCHomeUserCell.swift; sourceTree = "<group>"; };
+		9714192324922DCF00488E00 /* WCAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCAPI.swift; sourceTree = "<group>"; };
+		97141925249235D100488E00 /* WCNetworkLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCNetworkLog.swift; sourceTree = "<group>"; };
+		97141927249237E500488E00 /* WCHomeNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCHomeNetworkProvider.swift; sourceTree = "<group>"; };
+		971419292492380000488E00 /* WCHomeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCHomeNetworkService.swift; sourceTree = "<group>"; };
+		9714192B24924D6B00488E00 /* WCUserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCUserListModel.swift; sourceTree = "<group>"; };
+		97BC182224926E9B0011A74E /* WCHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCHomeViewModel.swift; sourceTree = "<group>"; };
 		C1E6F6E084BCF463806C00CF /* Pods_Wiredcraft.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiredcraft.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCDAEEE3A5FEA3F3FEB4F8C8 /* Pods-Wiredcraft.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiredcraft.debug.xcconfig"; path = "Target Support Files/Pods-Wiredcraft/Pods-Wiredcraft.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,10 +148,10 @@
 		971418CD2490F8A300488E00 /* Wiredcraft */ = {
 			isa = PBXGroup;
 			children = (
+				9714192124922DA500488E00 /* Network */,
+				9714191924910AB900488E00 /* Macros */,
+				971418FE2491077F00488E00 /* Section */,
 				971418CE2490F8A300488E00 /* AppDelegate.swift */,
-				971418D02490F8A300488E00 /* SceneDelegate.swift */,
-				971418D22490F8A300488E00 /* ViewController.swift */,
-				971418D42490F8A300488E00 /* Main.storyboard */,
 				971418D72490F8A500488E00 /* Assets.xcassets */,
 				971418D92490F8A500488E00 /* LaunchScreen.storyboard */,
 				971418DC2490F8A500488E00 /* Info.plist */,
@@ -153,6 +175,161 @@
 				971418F22490F8A500488E00 /* Info.plist */,
 			);
 			path = WiredcraftUITests;
+			sourceTree = "<group>";
+		};
+		971418FE2491077F00488E00 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				971419042491080600488E00 /* Common */,
+				971419082491080600488E00 /* Detail */,
+				971418FF2491080600488E00 /* Home */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		971418FF2491080600488E00 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				971419002491080600488E00 /* ViewModel */,
+				971419012491080600488E00 /* Controller */,
+				971419022491080600488E00 /* Model */,
+				971419032491080600488E00 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		971419002491080600488E00 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				97BC182224926E9B0011A74E /* WCHomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		971419012491080600488E00 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				971419132491087200488E00 /* WCHomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		971419022491080600488E00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9714192B24924D6B00488E00 /* WCUserListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		971419032491080600488E00 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9714191C2491C21000488E00 /* WCHomeUserCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		971419042491080600488E00 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				971419052491080600488E00 /* ViewModel */,
+				971419062491080600488E00 /* Controller */,
+				971419072491080600488E00 /* Model */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		971419052491080600488E00 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				971419112491084E00488E00 /* WCBaseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		971419062491080600488E00 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9714190D2491082500488E00 /* WCBaseViewController.swift */,
+				97141915249109B500488E00 /* WCTabBarViewController.swift */,
+				97141917249109CB00488E00 /* WCNavigationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		971419072491080600488E00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9714190F2491084000488E00 /* WCBaseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		971419082491080600488E00 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				971419092491080600488E00 /* ViewModel */,
+				9714190A2491080600488E00 /* Controller */,
+				9714190B2491080600488E00 /* Model */,
+				9714190C2491080600488E00 /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		971419092491080600488E00 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9714190A2491080600488E00 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9714190B2491080600488E00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9714190C2491080600488E00 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9714191924910AB900488E00 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				9714191A24910AD400488E00 /* WCConstants.swift */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		9714192124922DA500488E00 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9714192224922DB800488E00 /* Home */,
+				9714192324922DCF00488E00 /* WCAPI.swift */,
+				97141925249235D100488E00 /* WCNetworkLog.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9714192224922DB800488E00 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				97141927249237E500488E00 /* WCHomeNetworkProvider.swift */,
+				971419292492380000488E00 /* WCHomeNetworkService.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		D8C65BDD20E8A0DB9850100A /* Pods */ = {
@@ -279,7 +456,6 @@
 			files = (
 				971418DB2490F8A500488E00 /* LaunchScreen.storyboard in Resources */,
 				971418D82490F8A500488E00 /* Assets.xcassets in Resources */,
-				971418D62490F8A300488E00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,9 +583,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				971418D32490F8A300488E00 /* ViewController.swift in Sources */,
+				97141916249109B500488E00 /* WCTabBarViewController.swift in Sources */,
+				97141918249109CB00488E00 /* WCNavigationController.swift in Sources */,
+				9714192424922DCF00488E00 /* WCAPI.swift in Sources */,
+				971419142491087200488E00 /* WCHomeViewController.swift in Sources */,
+				9714192C24924D6B00488E00 /* WCUserListModel.swift in Sources */,
+				97141926249235D100488E00 /* WCNetworkLog.swift in Sources */,
+				9714191B24910AD400488E00 /* WCConstants.swift in Sources */,
+				97141928249237E500488E00 /* WCHomeNetworkProvider.swift in Sources */,
+				9714192A2492380000488E00 /* WCHomeNetworkService.swift in Sources */,
+				9714190E2491082500488E00 /* WCBaseViewController.swift in Sources */,
 				971418CF2490F8A300488E00 /* AppDelegate.swift in Sources */,
-				971418D12490F8A300488E00 /* SceneDelegate.swift in Sources */,
+				971419122491084E00488E00 /* WCBaseViewModel.swift in Sources */,
+				9714191D2491C21000488E00 /* WCHomeUserCell.swift in Sources */,
+				971419102491084000488E00 /* WCBaseModel.swift in Sources */,
+				97BC182324926E9B0011A74E /* WCHomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,14 +633,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		971418D42490F8A300488E00 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				971418D52490F8A300488E00 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		971418D92490F8A500488E00 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
