@@ -107,7 +107,7 @@ class WCHomeViewModel: WCBaseViewModel {
                 self.users.accept(self.users.value + users)
             }
             // judge have more data
-            if self.users.value.count > self.totalCount {
+            if self.users.value.count >= self.totalCount {
                 self.refreshAction.setNoMoreDataStstus()
             }
             
@@ -136,6 +136,10 @@ class WCHomeViewModel: WCBaseViewModel {
         }
         if let _ = response!.errors {
             /// error happens
+            self.searchFail.onNext(response!.message ?? "")
+        }
+        if response!.items == nil, let _ = response!.message {
+            /// error happens because the api have different error struct so add the condition
             self.searchFail.onNext(response!.message ?? "")
         }
     }
