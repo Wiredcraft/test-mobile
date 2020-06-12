@@ -23,6 +23,8 @@ class WCHomeViewController: WCBaseViewController {
         let searchBar = UISearchBar()
         searchBar.text = "swift"
         searchBar.placeholder = "please input here to search"
+        /// for UI Test
+        searchBar.accessibilityIdentifier = "com.wiredcraft.element.home.searchBar"
         return searchBar
     }()
     
@@ -33,6 +35,8 @@ class WCHomeViewController: WCBaseViewController {
         tableView.tableFooterView = UIView()
         tableView.keyboardDismissMode = .onDrag
         tableView.rowHeight = 78.0
+        /// for UI Test
+        tableView.accessibilityIdentifier = "com.wiredcraft.element.home.tableView"
         
         /// route to the Detail
         tableView.rx.modelSelected(WCUserModel.self).subscribe(onNext: { (user) in

@@ -100,6 +100,7 @@ class WCHomeUserCell: UITableViewCell {
     //MARK: - Load_UI
     private func loadUI() {
         /// close the select effect
+        self.accessibilityIdentifier = "com.wiredcraft.element.user.cell"
         self.selectionStyle = .none
         self.contentView.addSubview(self.avatarImageView)
         self.contentView.addSubview(self.nicknameLab)
