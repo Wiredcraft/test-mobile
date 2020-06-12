@@ -35,6 +35,7 @@ struct WCUserListModel: Mappable, WCRefreshResponse {
         self.total_count <- map["total_count"]
         self.items <- map["items"]
         self.message <- map["message"]
+        self.errors <- map["errors"]
     }
     
 }
@@ -74,7 +75,7 @@ struct WCUserModel: Mappable {
 */
 struct WCUserErrorModel: Mappable {
     var field: String?
-    var resource: Int?
+    var resource: String?
     var code: String?
     
     init?(map: Map) {

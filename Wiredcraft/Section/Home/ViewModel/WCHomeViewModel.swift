@@ -13,7 +13,7 @@ import RxCocoa
 class WCHomeViewModel: WCBaseViewModel {
 
     /// the query input action Observable
-    var querySearchAction: Observable<String>? {
+    public var querySearchAction: Observable<String>? {
         didSet {
             guard let querySearchAction = self.querySearchAction else {
                 return
@@ -33,17 +33,13 @@ class WCHomeViewModel: WCBaseViewModel {
     }
     
     /// the query result
-    fileprivate var searchResult: Observable<WCUserListModel>? {
+    public var searchResult: Observable<WCUserListModel>? {
         didSet {
             guard let searchResult = self.searchResult else {
                 return
             }
             let _ = searchResult.map({ (response) in
-                if let _ = response.errors {
-                    /// error happens
-                    self.searchFail.onNext(response.message ?? "")
-                    return
-                }
+                self.handleResponseError(response: response)
                 guard let userModels = response.items else {
                     return
                 }
@@ -51,25 +47,23 @@ class WCHomeViewModel: WCBaseViewModel {
                 self.users.accept(userModels)
                 
             }).subscribe(onNext: { _ in
-                
             }).disposed(by: self.disposeBag)
         }
     }
     
     /// network fail Observable
     public var searchFail = PublishSubject<String>()
-    
     /// displayed users's data
     public let users = BehaviorRelay<[WCUserModel]>(value: [])
     
     /// the refresh action
-    fileprivate lazy var refreshAction = WCRxRefresh()
+    public lazy var refreshAction = WCRxRefresh()
     
     /// page number
     fileprivate lazy var page: Int = 1
     
     /// the keyword to query
-    fileprivate lazy var query: String = ""
+    public lazy var query: String = ""
     
     /// total count of all data, if have loaded data's count >= totalCount, the scrollView will show 'no more data'
     fileprivate lazy var totalCount: Int = 0
@@ -90,13 +84,16 @@ class WCHomeViewModel: WCBaseViewModel {
             guard let `self` = self else { return }
             self.page += 1
             self.refreshAction.set(observable: self.usersListRequest())
-            self.refreshAction.more.onNext(false)
+            self.refreshAction.more.onNext(())
         }
 
         /// merge the refresh data to viewModel's user
         let _ = self.refreshAction.data.subscribe(onNext: { [weak self] (response) in
             
             guard let `self` = self else { return }
+            /// handle error
+            self.handleResponseError(response: response as? WCUserListModel)
+            
             /// set totalCount
             self.totalCount = (response as? WCUserListModel)?.total_count ?? 0
             let users = (response as? WCUserListModel)?.items ?? [WCUserModel]()
@@ -128,6 +125,19 @@ class WCHomeViewModel: WCBaseViewModel {
                 self.searchFail.onNext(error.localizedDescription)
                 return Observable<WCUserListModel>.empty()
             })
+    }
+    
+    /// handle the error of query network
+    /// - Parameter response: the network response
+    private func handleResponseError(response: WCUserListModel?) {
+        if response == nil {
+            self.searchFail.onNext("empty data")
+            return
+        }
+        if let _ = response!.errors {
+            /// error happens
+            self.searchFail.onNext(response!.message ?? "")
+        }
     }
 }
 

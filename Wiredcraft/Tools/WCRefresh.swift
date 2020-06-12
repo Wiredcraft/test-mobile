@@ -100,7 +100,7 @@ public class WCRxRefresh: WCRefreshable {
     public var reload = PublishSubject<Void>()
     
     /// drag up load more
-    public var more = PublishSubject<Bool>()
+    public var more = PublishSubject<Void>()
     
     /// dispose
     let disposeBag = DisposeBag()
@@ -126,7 +126,7 @@ public class WCRxRefresh: WCRefreshable {
         }
     
         self.reload = PublishSubject<Void>()
-        self.more = PublishSubject<Bool>()
+        self.more = PublishSubject<Void>()
         
         //pull down regresh
         self.reload.subscribe(onNext: { [weak self] (isReload) in
