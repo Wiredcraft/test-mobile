@@ -13,7 +13,14 @@
 		DD45ECF424C82966009C6ECF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD45ECF324C82966009C6ECF /* Assets.xcassets */; };
 		DD45ECF724C82966009C6ECF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD45ECF524C82966009C6ECF /* LaunchScreen.storyboard */; };
 		DD45ED0224C82966009C6ECF /* GitUserAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD45ED0124C82966009C6ECF /* GitUserAppTests.swift */; };
-		DD45ED0D24C82A26009C6ECF /* YBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD45ED0C24C82A26009C6ECF /* YBViewController.swift */; };
+		DD96113824C8355F00DA8327 /* YBHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113724C8355F00DA8327 /* YBHomeTableViewCell.swift */; };
+		DD96113A24C835E000DA8327 /* YBHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113924C835E000DA8327 /* YBHomeViewController.swift */; };
+		DD96113C24C8365300DA8327 /* YBGitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113B24C8365300DA8327 /* YBGitHubUser.swift */; };
+		DD96113E24C836B700DA8327 /* YBHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113D24C836B700DA8327 /* YBHomeViewModel.swift */; };
+		DD96114024C8377F00DA8327 /* YBNetWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113F24C8377F00DA8327 /* YBNetWorking.swift */; };
+		DD96114224C837A900DA8327 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114124C837A900DA8327 /* API.swift */; };
+		DD96114424C8384200DA8327 /* MJRefresh+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114324C8384200DA8327 /* MJRefresh+Rx.swift */; };
+		DD96114924C83D2500DA8327 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114824C83D2500DA8327 /* Configs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +48,15 @@
 		DD45ECFD24C82966009C6ECF /* GitUserAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitUserAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD45ED0124C82966009C6ECF /* GitUserAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUserAppTests.swift; sourceTree = "<group>"; };
 		DD45ED0324C82966009C6ECF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD45ED0C24C82A26009C6ECF /* YBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBViewController.swift; sourceTree = "<group>"; };
 		DD45ED0E24C82CB9009C6ECF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DD96113724C8355F00DA8327 /* YBHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBHomeTableViewCell.swift; sourceTree = "<group>"; };
+		DD96113924C835E000DA8327 /* YBHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBHomeViewController.swift; sourceTree = "<group>"; };
+		DD96113B24C8365300DA8327 /* YBGitHubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBGitHubUser.swift; sourceTree = "<group>"; };
+		DD96113D24C836B700DA8327 /* YBHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBHomeViewModel.swift; sourceTree = "<group>"; };
+		DD96113F24C8377F00DA8327 /* YBNetWorking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBNetWorking.swift; sourceTree = "<group>"; };
+		DD96114124C837A900DA8327 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		DD96114324C8384200DA8327 /* MJRefresh+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MJRefresh+Rx.swift"; sourceTree = "<group>"; };
+		DD96114824C83D2500DA8327 /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +123,14 @@
 		DD45ECE924C82962009C6ECF /* GitUserApp */ = {
 			isa = PBXGroup;
 			children = (
+				DD96114A24C83D2B00DA8327 /* Configs */,
+				DD96114624C83C9000DA8327 /* Extensions */,
+				DD96114524C83C5800DA8327 /* Networking */,
+				DD45ED1224C83085009C6ECF /* ViewController */,
+				DD45ED1124C8307D009C6ECF /* Model */,
+				DD45ED1024C83073009C6ECF /* View */,
+				DD45ED0F24C83064009C6ECF /* ViewModel */,
 				DD45ECEA24C82962009C6ECF /* AppDelegate.swift */,
-				DD45ED0C24C82A26009C6ECF /* YBViewController.swift */,
 				DD45ECF324C82966009C6ECF /* Assets.xcassets */,
 				DD45ECF524C82966009C6ECF /* LaunchScreen.storyboard */,
 				DD45ECF824C82966009C6ECF /* Info.plist */,
@@ -127,6 +147,71 @@
 			path = GitUserAppTests;
 			sourceTree = "<group>";
 		};
+		DD45ED0F24C83064009C6ECF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD96113D24C836B700DA8327 /* YBHomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DD45ED1024C83073009C6ECF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD96113724C8355F00DA8327 /* YBHomeTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DD45ED1124C8307D009C6ECF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD96113B24C8365300DA8327 /* YBGitHubUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD45ED1224C83085009C6ECF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD96113924C835E000DA8327 /* YBHomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DD96114524C83C5800DA8327 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DD96113F24C8377F00DA8327 /* YBNetWorking.swift */,
+				DD96114124C837A900DA8327 /* API.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		DD96114624C83C9000DA8327 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DD96114724C83C9800DA8327 /* RxSwift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DD96114724C83C9800DA8327 /* RxSwift */ = {
+			isa = PBXGroup;
+			children = (
+				DD96114324C8384200DA8327 /* MJRefresh+Rx.swift */,
+			);
+			path = RxSwift;
+			sourceTree = "<group>";
+		};
+		DD96114A24C83D2B00DA8327 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				DD96114824C83D2500DA8327 /* Configs.swift */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +223,7 @@
 				DD45ECE324C82962009C6ECF /* Sources */,
 				DD45ECE424C82962009C6ECF /* Frameworks */,
 				DD45ECE524C82962009C6ECF /* Resources */,
+				D23EC03D88CF33D11A47060B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,7 +242,6 @@
 				DD45ECF924C82966009C6ECF /* Sources */,
 				DD45ECFA24C82966009C6ECF /* Frameworks */,
 				DD45ECFB24C82966009C6ECF /* Resources */,
-				67F3668B21CD9FF91B230CFD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -249,23 +334,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		67F3668B21CD9FF91B230CFD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GitUserAppTests/Pods-GitUserAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GitUserAppTests/Pods-GitUserAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GitUserAppTests/Pods-GitUserAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8E6B795C4237A5FB0A9BDD71 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,6 +356,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D23EC03D88CF33D11A47060B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GitUserApp/Pods-GitUserApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GitUserApp/Pods-GitUserApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GitUserApp/Pods-GitUserApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -295,8 +380,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD96114424C8384200DA8327 /* MJRefresh+Rx.swift in Sources */,
+				DD96113C24C8365300DA8327 /* YBGitHubUser.swift in Sources */,
+				DD96113A24C835E000DA8327 /* YBHomeViewController.swift in Sources */,
+				DD96114024C8377F00DA8327 /* YBNetWorking.swift in Sources */,
+				DD96113824C8355F00DA8327 /* YBHomeTableViewCell.swift in Sources */,
 				DD45ECEB24C82962009C6ECF /* AppDelegate.swift in Sources */,
-				DD45ED0D24C82A26009C6ECF /* YBViewController.swift in Sources */,
+				DD96113E24C836B700DA8327 /* YBHomeViewModel.swift in Sources */,
+				DD96114224C837A900DA8327 /* API.swift in Sources */,
+				DD96114924C83D2500DA8327 /* Configs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -434,7 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
