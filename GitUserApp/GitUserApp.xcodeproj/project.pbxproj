@@ -21,6 +21,8 @@
 		DD96114224C837A900DA8327 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114124C837A900DA8327 /* API.swift */; };
 		DD96114424C8384200DA8327 /* MJRefresh+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114324C8384200DA8327 /* MJRefresh+Rx.swift */; };
 		DD96114924C83D2500DA8327 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114824C83D2500DA8327 /* Configs.swift */; };
+		DD96114F24C8451400DA8327 /* YBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114E24C8451400DA8327 /* YBProgressHUD.swift */; };
+		DD96115324C8567900DA8327 /* YBWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96115224C8567900DA8327 /* YBWebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		DD96114124C837A900DA8327 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		DD96114324C8384200DA8327 /* MJRefresh+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MJRefresh+Rx.swift"; sourceTree = "<group>"; };
 		DD96114824C83D2500DA8327 /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
+		DD96114E24C8451400DA8327 /* YBProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBProgressHUD.swift; sourceTree = "<group>"; };
+		DD96115224C8567900DA8327 /* YBWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBWebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,17 +127,13 @@
 		DD45ECE924C82962009C6ECF /* GitUserApp */ = {
 			isa = PBXGroup;
 			children = (
+				DD96115124C8566000DA8327 /* Common */,
+				DD96114B24C8424400DA8327 /* Application */,
 				DD96114A24C83D2B00DA8327 /* Configs */,
 				DD96114624C83C9000DA8327 /* Extensions */,
 				DD96114524C83C5800DA8327 /* Networking */,
-				DD45ED1224C83085009C6ECF /* ViewController */,
-				DD45ED1124C8307D009C6ECF /* Model */,
-				DD45ED1024C83073009C6ECF /* View */,
-				DD45ED0F24C83064009C6ECF /* ViewModel */,
-				DD45ECEA24C82962009C6ECF /* AppDelegate.swift */,
-				DD45ECF324C82966009C6ECF /* Assets.xcassets */,
-				DD45ECF524C82966009C6ECF /* LaunchScreen.storyboard */,
-				DD45ECF824C82966009C6ECF /* Info.plist */,
+				DD96115024C8473C00DA8327 /* HomePage */,
+				DD96114C24C8428700DA8327 /* Resource */,
 			);
 			path = GitUserApp;
 			sourceTree = "<group>";
@@ -191,6 +191,7 @@
 		DD96114624C83C9000DA8327 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DD96114D24C844FB00DA8327 /* ProgressHUD */,
 				DD96114724C83C9800DA8327 /* RxSwift */,
 			);
 			path = Extensions;
@@ -210,6 +211,51 @@
 				DD96114824C83D2500DA8327 /* Configs.swift */,
 			);
 			path = Configs;
+			sourceTree = "<group>";
+		};
+		DD96114B24C8424400DA8327 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DD45ECEA24C82962009C6ECF /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DD96114C24C8428700DA8327 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				DD45ECF524C82966009C6ECF /* LaunchScreen.storyboard */,
+				DD45ECF324C82966009C6ECF /* Assets.xcassets */,
+				DD45ECF824C82966009C6ECF /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		DD96114D24C844FB00DA8327 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				DD96114E24C8451400DA8327 /* YBProgressHUD.swift */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		DD96115024C8473C00DA8327 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				DD45ED1224C83085009C6ECF /* ViewController */,
+				DD45ED1124C8307D009C6ECF /* Model */,
+				DD45ED1024C83073009C6ECF /* View */,
+				DD45ED0F24C83064009C6ECF /* ViewModel */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		DD96115124C8566000DA8327 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DD96115224C8567900DA8327 /* YBWebViewController.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,8 +427,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD96114424C8384200DA8327 /* MJRefresh+Rx.swift in Sources */,
+				DD96115324C8567900DA8327 /* YBWebViewController.swift in Sources */,
 				DD96113C24C8365300DA8327 /* YBGitHubUser.swift in Sources */,
 				DD96113A24C835E000DA8327 /* YBHomeViewController.swift in Sources */,
+				DD96114F24C8451400DA8327 /* YBProgressHUD.swift in Sources */,
 				DD96114024C8377F00DA8327 /* YBNetWorking.swift in Sources */,
 				DD96113824C8355F00DA8327 /* YBHomeTableViewCell.swift in Sources */,
 				DD45ECEB24C82962009C6ECF /* AppDelegate.swift in Sources */,
@@ -543,7 +591,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X699ANN3W3;
-				INFOPLIST_FILE = GitUserApp/Info.plist;
+				INFOPLIST_FILE = GitUserApp/Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,7 +611,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X699ANN3W3;
-				INFOPLIST_FILE = GitUserApp/Info.plist;
+				INFOPLIST_FILE = GitUserApp/Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

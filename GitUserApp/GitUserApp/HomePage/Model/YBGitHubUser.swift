@@ -9,7 +9,8 @@
 import Foundation
 import ObjectMapper
 
-// 所有用户
+
+/// 所有用户
 struct GitHubUsers: Mappable {
     var totalCount: Int!
     var incompleteResults: Bool!
@@ -30,7 +31,8 @@ struct GitHubUsers: Mappable {
         items             <- map["items"]
     }
 }
-// 用户模型
+
+/// 用户模型
 struct GitHubUser: Mappable {
 
     var avatarUrl: String!

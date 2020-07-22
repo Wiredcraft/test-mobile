@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootNav
         window?.makeKeyAndVisible()
         
+        YBProgressHUD.initYBProgressHUD()
+        
         return true
     }
 

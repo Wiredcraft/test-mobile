@@ -18,6 +18,7 @@ target 'GitUserApp' do
   pod 'Moya-ObjectMapper/RxSwift'
   pod 'Result'
   pod 'MJRefresh'
+  pod 'SVProgressHUD'
 
   target 'GitUserAppTests' do
     inherit! :search_paths

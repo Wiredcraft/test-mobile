@@ -62,12 +62,12 @@ class YBHomeViewModel {
            self.tableData.accept(items.items)
        }).disposed(by: self.disposeBag)
         
-       //下拉刷新时，直接将查询到的结果替换原数据
+       //下拉刷新替换原数据
        headerRefreshData.drive(onNext: { items in
            self.tableData.accept(items.items)
        }).disposed(by: self.disposeBag)
         
-       //上拉加载时，将查询到的结果拼接到原数据底部
+       //上拉加载 合并之前的数据
        footerRefreshData.drive(onNext: { items in
            self.tableData.accept(self.tableData.value + items.items )
        }).disposed(by: self.disposeBag)
