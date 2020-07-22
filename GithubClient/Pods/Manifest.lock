@@ -1,0 +1,76 @@
+PODS:
+  - Alamofire (5.2.1)
+  - Differentiator (4.0.1)
+  - IQKeyboardManager (6.5.5)
+  - Kingfisher (5.14.0):
+    - Kingfisher/Core (= 5.14.0)
+  - Kingfisher/Core (5.14.0)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - Nimble (8.1.1)
+  - PullToRefreshKit (0.8.8)
+  - Quick (3.0.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - IQKeyboardManager (~> 6.5.5)
+  - Kingfisher (~> 5.14.0)
+  - Moya (~> 14.0.0)
+  - Moya/RxSwift
+  - Nimble (~> 8.0)
+  - PullToRefreshKit (~> 0.8.8)
+  - Quick (~> 3.0)
+  - RxCocoa (~> 5.1.1)
+  - RxDataSources
+  - RxSwift (~> 5.1.1)
+  - SnapKit (~> 5.0.1)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Differentiator
+    - IQKeyboardManager
+    - Kingfisher
+    - Moya
+    - Nimble
+    - PullToRefreshKit
+    - Quick
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
+  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Nimble: 5f8a2fb6fa343a7242dfdd9d42f7267419d464b2
+  PullToRefreshKit: 7cc53e720e69f135cffa1a57784dfb534f0222ab
+  Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: 4d58f524531c2ed4385533ee1b8bbdf5bdcc2bb5
+
+COCOAPODS: 1.9.1

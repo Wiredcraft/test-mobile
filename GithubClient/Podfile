@@ -1,0 +1,25 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'GithubClient' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for GithubClient
+  pod 'Moya', '~> 14.0.0'
+  pod 'SnapKit', '~> 5.0.1'
+  pod 'IQKeyboardManager', '~> 6.5.5'
+  pod 'RxSwift', '~> 5.1.1'
+  pod 'Moya/RxSwift' 
+  pod 'Kingfisher', '~> 5.14.0'
+  pod 'RxCocoa', '~> 5.1.1'
+  pod 'RxDataSources'
+  pod 'PullToRefreshKit', '~> 0.8.8'
+  target 'GithubClientTests' do
+    inherit! :search_paths
+    pod 'Quick', '~> 3.0'
+    pod 'Nimble', '~> 8.0'
+    # Pods for testing
+  end
+
+end
