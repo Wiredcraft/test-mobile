@@ -12,6 +12,9 @@ struct Configs {
     struct Network {
         static let kBaseUrl = "https://api.github.com"
     }
+    struct UI {
+        static let kViewMargin: CGFloat = 15
+    }
 
 }
 
@@ -24,7 +27,7 @@ struct Tool {
                 }
                 
                 if unwrapedWindow.safeAreaInsets.left > 0 || unwrapedWindow.safeAreaInsets.bottom > 0 {
-                    print(unwrapedWindow.safeAreaInsets)
+                   
                     return true
                 }
           }

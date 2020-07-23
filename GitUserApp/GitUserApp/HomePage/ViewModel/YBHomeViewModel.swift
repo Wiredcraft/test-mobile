@@ -10,68 +10,86 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class YBHomeViewModel {
-     
+class YBHomeViewModel : NSObject{
+    // request data page
     var page = 1
-    //表格数据序列
+    // tableData for tableView
     let tableData = BehaviorRelay<[GitHubUser]>(value: [])
-
+    // net request Tool
     let network : YBNetWorking
+    //  memory collection
     let disposeBag : DisposeBag
-    // 设置一个初始化默认值 如果不设置默认值进入页面是空白状态
+    // search content. default value is Swift
     let keyword = BehaviorRelay(value: "Swift")
      
-    //ViewModel初始化（根据输入实现对应的输出）
-    init(disposeBag:DisposeBag,
-         networkService: YBNetWorking ) {
-            self.disposeBag = disposeBag
-            self.network = networkService
-
+    init (disposeBag:DisposeBag,
+          networkService: YBNetWorking ) {
+        self.disposeBag = disposeBag
+        self.network = networkService
     }
     
+    /// transform singnal
+    /// - Parameter input: (searchAction, heaserRefresh, footerRefresh)
     func transform(input:(searchAction: Driver<String>,
-        headerRefresh: Driver<Void>,
-        footerRefresh: Driver<Void> )) -> (Driver<Bool>, Driver<Bool>){
+           headerRefresh: Driver<Void>,
+           footerRefresh: Driver<Void> ))
+        -> (headerRefresh: Driver<Bool>, footerRefresh: Driver<Bool>){
 
-        //搜索
-       let searchData = input.searchAction.filter { !$0.isEmpty }.skip(1)
-           .flatMapLatest({ s -> SharedSequence<DriverSharingStrategy, GitHubUsers> in
-              self.page = 1
-              return self.network.searchGitHubUsers(login: s, page: self.page)
+        // search result sequence
+       let searchData = input.searchAction
+           .filter { !$0.isEmpty }
+           .flatMapLatest({ [weak self] keyword -> Driver<GitHubUsers> in
+                guard let self = self else { return Driver.empty() }
+                self.page = 1
+                return self.network.searchGitHubUsers(login: keyword, page: self.page)
            })
+            
+        // bind search content to keyword
+        input.searchAction
+            .filter { !$0.isEmpty }
+            .distinctUntilChanged()
+            .asObservable()
+            .bind(to: keyword).disposed(by: disposeBag)
         
-        input.searchAction.filter { !$0.isEmpty }.skip(1).debounce(DispatchTimeInterval.milliseconds(500)).distinctUntilChanged().asObservable()
-        .bind(to: keyword).disposed(by: disposeBag)
-        
-       //下拉结果序列
+       // headerRefresh result sequence
        let headerRefreshData = input.headerRefresh
-           .startWith(()) //启动时候加载一次数据
-           .flatMapLatest({ s -> SharedSequence<DriverSharingStrategy, GitHubUsers> in
-              self.page = 1
-            return self.network.searchGitHubUsers(login: self.keyword.value, page: self.page)
-           })
+           .startWith(()) 
+           .flatMapLatest({ [weak self] _ -> Driver<GitHubUsers> in
+                guard let self = self else { return Driver.empty() }
+                self.page = 1
+                return self.network.searchGitHubUsers(login: self.keyword.value, page: self.page)
+        }).asDriver { (error) -> Driver<GitHubUsers> in
+                YBProgressHUD.showError(error.localizedDescription)
+                return Driver.empty()
+           }
         
-       //上拉结果序列
+       // footerRefresh result sequence
        let footerRefreshData = input.footerRefresh
-           .flatMapLatest({ s -> SharedSequence<DriverSharingStrategy, GitHubUsers> in
-              self.page += 1
-              return self.network.searchGitHubUsers(login: self.keyword.value, page: self.page)
+           .flatMapLatest({ [weak self] _ -> Driver<GitHubUsers> in
+                guard let self = self else { return Driver.empty() }
+                self.page += 1
+                return self.network.searchGitHubUsers(login: self.keyword.value, page: self.page)
            })
        
-       searchData.drive(onNext: { items in
-           self.tableData.accept(items.items)
-       }).disposed(by: self.disposeBag)
+        // searchData replace tableData
+        searchData.drive(onNext: { [weak self] items in
+            guard let self = self else { return }
+            self.tableData.accept(items.items)
+        }).disposed(by: self.disposeBag)
         
-       //下拉刷新替换原数据
-       headerRefreshData.drive(onNext: { items in
-           self.tableData.accept(items.items)
-       }).disposed(by: self.disposeBag)
-        
-       //上拉加载 合并之前的数据
-       footerRefreshData.drive(onNext: { items in
-           self.tableData.accept(self.tableData.value + items.items )
-       }).disposed(by: self.disposeBag)
+        // headerRefreshData replace tableData
+        headerRefreshData.drive(onNext: { [weak self] items in
+            guard let self = self else { return }
+            self.tableData.accept(items.items)
+        }).disposed(by: self.disposeBag)
+
+        // footerRefreshData merge tableData
+        footerRefreshData.drive(onNext: { [weak self] items in
+            guard let self = self else { return }
+            self.tableData.accept(self.tableData.value + items.items )
+        }).disposed(by: self.disposeBag)
         
         return (headerRefreshData.map{ _ in true }, footerRefreshData.map{ _ in true })
     }
+    
 }

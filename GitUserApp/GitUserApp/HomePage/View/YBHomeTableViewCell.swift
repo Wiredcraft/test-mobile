@@ -12,7 +12,7 @@ import SnapKit
 
 class YBHomeTableViewCell: UITableViewCell {
 
-    let kViewMargin = 15
+    // MARK: - Properties
 
     lazy var avatarImageView: UIImageView = {
         
@@ -47,6 +47,8 @@ class YBHomeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - layout UI
+    
     func setupUI() {
         selectionStyle = .none
         contentView.addSubview(avatarImageView)
@@ -55,33 +57,33 @@ class YBHomeTableViewCell: UITableViewCell {
         contentView.addSubview(urlLabel)
       
         avatarImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView).offset(kViewMargin)
-            make.left.equalTo(contentView).offset(kViewMargin)
-            make.bottom.equalTo(contentView).offset(-kViewMargin)
+            make.top.equalTo(contentView).offset(Configs.UI.kViewMargin)
+            make.left.equalTo(contentView).offset(Configs.UI.kViewMargin)
+            make.bottom.equalTo(contentView).offset(-Configs.UI.kViewMargin)
             make.width.equalTo(50)
             make.height.equalTo(50).priority(.high)
             
         }
       
         scoreLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView).offset(kViewMargin)
-            make.right.equalTo(contentView).offset(-kViewMargin)
+            make.top.equalTo(contentView).offset(Configs.UI.kViewMargin)
+            make.right.equalTo(contentView).offset(-Configs.UI.kViewMargin)
         }
       
         loginLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView).offset(kViewMargin)
-            make.right.equalTo(scoreLabel.snp_leftMargin).offset(-kViewMargin)
+            make.top.equalTo(contentView).offset(Configs.UI.kViewMargin)
+            make.right.equalTo(scoreLabel.snp_leftMargin).offset(-Configs.UI.kViewMargin)
             make.left
               .equalTo(avatarImageView.snp_rightMargin)
-              .offset(kViewMargin)
+              .offset(Configs.UI.kViewMargin)
         }
       
         urlLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(avatarImageView.snp_bottomMargin)
             make.left
             .equalTo(avatarImageView.snp_rightMargin)
-            .offset(kViewMargin)
-            make.right.equalToSuperview().offset(-kViewMargin)
+            .offset(Configs.UI.kViewMargin)
+            make.right.equalToSuperview().offset(-Configs.UI.kViewMargin)
             
         }
     }

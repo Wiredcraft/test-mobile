@@ -127,8 +127,8 @@
 		DD45ECE924C82962009C6ECF /* GitUserApp */ = {
 			isa = PBXGroup;
 			children = (
-				DD96115124C8566000DA8327 /* Common */,
 				DD96114B24C8424400DA8327 /* Application */,
+				DD96115124C8566000DA8327 /* Common */,
 				DD96114A24C83D2B00DA8327 /* Configs */,
 				DD96114624C83C9000DA8327 /* Extensions */,
 				DD96114524C83C5800DA8327 /* Networking */,

@@ -13,8 +13,12 @@ import Moya_ObjectMapper
 
 class YBNetWorking {
     
+    /// Search Github Users
+    /// - Parameters:
+    ///   - login: Users Name
+    ///   - page: Page of Result
     func searchGitHubUsers(login: String, page: Int) -> Driver<GitHubUsers> {
-        return GitHubProvider.rx.request(.gitHubUsers(login: login, page: page))
+        return gitHubProvider.rx.request(.gitHubUsers(login: login, page: page))
             .filterSuccessfulStatusCodes()
             .mapObject(GitHubUsers.self)
             .asDriver(onErrorDriveWith: Driver.empty())

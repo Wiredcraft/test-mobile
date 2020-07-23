@@ -6,17 +6,13 @@ target 'GitUserApp' do
   use_frameworks!
   inhibit_all_warnings!
   # Pods for GitUserApp
-  pod 'Alamofire'
   pod 'Kingfisher'
   pod 'SnapKit'
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'Moya'
   pod 'Moya/RxSwift'
   pod 'ObjectMapper'
-  pod 'Moya-ObjectMapper'
   pod 'Moya-ObjectMapper/RxSwift'
-  pod 'Result'
   pod 'MJRefresh'
   pod 'SVProgressHUD'
 

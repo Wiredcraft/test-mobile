@@ -13,7 +13,7 @@ import MJRefresh
 
 extension Reactive where Base: MJRefreshComponent {
      
-    //正在刷新事件
+    // begin refreshing event
     var refreshing: ControlEvent<Void> {
         let source: Observable<Void> = Observable.create {
             [weak control = self.base] observer  in
@@ -26,8 +26,8 @@ extension Reactive where Base: MJRefreshComponent {
         }
         return ControlEvent(events: source)
     }
-     
-    //停止刷新
+    
+    // end refresh event
     var endRefreshing: Binder<Bool> {
         return Binder(base) { refresh, isEnd in
             if isEnd {

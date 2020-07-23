@@ -11,23 +11,23 @@ import WebKit
 import RxCocoa
 
 class YBWebViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    
     lazy var webView: WKWebView = {
         let view = WKWebView()
         return view
     }()
-    
     lazy var progressView: UIProgressView = {
         let progressView = UIProgressView()
         return progressView
     }()
-    
     var observation: NSKeyValueObservation?
     
+    // MARK: - Life cycle
     override func viewDidLoad() {
         
         setupUI()
-        
         observation = webView.observe(\.estimatedProgress, options: .new) { [weak self] (_, changed) in
             if let new = changed.newValue {
                 self?.changeProgress(Float(new))
@@ -36,11 +36,7 @@ class YBWebViewController: UIViewController {
 
     }
     
-    func changeProgress(_ progress: Float) {
-        progressView.isHidden = progress == 1
-        progressView.setProgress(progress, animated: true)
-    }
-
+    // MARK: - layout UI
     func setupUI() {
         
         view.addSubview(webView)
@@ -56,10 +52,21 @@ class YBWebViewController: UIViewController {
         }
     }
     
+    // MARK: - Action
+    
+    /// load URL
+    /// - Parameter url: url
     func load(url: URL?) {
         if let url = url {
             webView.load(URLRequest(url: url))
         }
+    }
+    
+    /// setup webView load progress
+    /// - Parameter progress: progress
+    private func changeProgress(_ progress: Float) {
+        progressView.isHidden = progress == 1
+        progressView.setProgress(progress, animated: true)
     }
     
 }

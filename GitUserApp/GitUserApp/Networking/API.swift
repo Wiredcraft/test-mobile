@@ -11,13 +11,14 @@ import Moya
 
 /// API
 public enum GitHubAPI {
-    
-    case gitHubUsers(login: String, page: Int)  //查询用户
+    case gitHubUsers(login: String, page: Int)
 }
 
-let GitHubProvider = MoyaProvider<GitHubAPI>()
 
-// 配置接口
+/// Moya Provider
+let gitHubProvider = MoyaProvider<GitHubAPI>()
+
+/// configure API
 extension GitHubAPI: TargetType {
 
     public var baseURL: URL {
@@ -25,30 +26,39 @@ extension GitHubAPI: TargetType {
     }
      
     public var path: String {
+        
         switch self {
+            
+        /// api : search users
         case .gitHubUsers(_, _):
             return "/search/users"
         }
     }
 
     public var method: Moya.Method {
-        return .get
+        
+        switch self {
+        case .gitHubUsers(_, _):
+            return .get
+        }
     }
 
-    
     public var task: Task {
         
         switch self {
+            
+            /// task : search users
         case .gitHubUsers(let login, let page):
             var params: [String: Any] = [:]
             params["q"] = login
             params["page"] = String(page)
             return .requestParameters(parameters: params,
                                       encoding: URLEncoding.default)
-       
+
         }
     }
 
+    /// Alamofire validate
     public var validate: Bool {
         return false
     }

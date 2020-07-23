@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 
-/// 所有用户
+/// GitHubUser List Model
 struct GitHubUsers: Mappable {
     var totalCount: Int!
     var incompleteResults: Bool!
@@ -24,7 +24,7 @@ struct GitHubUsers: Mappable {
      
     init?(map: Map) { }
      
-    // Mappable
+    // Mappable Protocol
     mutating func mapping(map: Map) {
         totalCount        <- map["total_count"]
         incompleteResults <- map["incomplete_results"]
@@ -32,7 +32,7 @@ struct GitHubUsers: Mappable {
     }
 }
 
-/// 用户模型
+/// GitHubUser Model
 struct GitHubUser: Mappable {
 
     var avatarUrl: String!
@@ -43,7 +43,6 @@ struct GitHubUser: Mappable {
     init?(map: Map) { }
      
     mutating func mapping(map: Map) {
-        
         avatarUrl <- map["avatar_url"]
         login     <- map["login"]
         score     <- map["score"]

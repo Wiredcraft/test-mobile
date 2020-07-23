@@ -13,6 +13,8 @@ import RxCocoa
 import MJRefresh
 
 class YBHomeViewController: UIViewController {
+    
+    // MARK: - Properties
 
     lazy var tableView: UITableView = {
       let tableView = UITableView()
@@ -21,15 +23,15 @@ class YBHomeViewController: UIViewController {
       tableView.rowHeight = UITableView.automaticDimension
       return tableView
     }()
-
     lazy var searchBar: UISearchBar = {
       let searchBar = UISearchBar()
       return searchBar
     }()
-
     let kYBHomeTableViewCellID = "YBHomeTableViewCell"
-    
     let disposeBag = DisposeBag()
+    var viewModel: YBHomeViewModel?
+    
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
       super.viewDidLoad()
@@ -37,27 +39,30 @@ class YBHomeViewController: UIViewController {
       setupUI()
       bindViewModel()
     }
-
-    /// bind viewModel
+    
+    // MARK: - bind viewModel
+    
     func bindViewModel() {
-        //搜索序列
+        // search sequence
         let searchAction = searchBar.rx.text.orEmpty.asDriver()
-             .throttle(DispatchTimeInterval.seconds(2))
+             .throttle(DispatchTimeInterval.seconds(1)) 
              .distinctUntilChanged()
 
-        let viewModel = YBHomeViewModel(disposeBag: self.disposeBag,networkService: YBNetWorking())
+        viewModel = YBHomeViewModel(disposeBag: self.disposeBag,networkService: YBNetWorking())
 
-        let outPut = viewModel.transform(input: (searchAction: searchAction,
-        headerRefresh: self.tableView.mj_header!.rx.refreshing.asDriver(),
-        footerRefresh: self.tableView.mj_footer!.rx.refreshing.asDriver()))
+        // output sequence
+        let outPut = viewModel?.transform(input: (searchAction: searchAction,
+                                                headerRefresh: self.tableView.mj_header!.rx.refreshing.asDriver(),
+                                                footerRefresh: self.tableView.mj_footer!.rx.refreshing.asDriver()))
 
-        outPut.0.drive(self.tableView.mj_header!.rx.endRefreshing)
+        // bind output to tableview.mj_header and mj_footer
+        outPut?.headerRefresh.drive(self.tableView.mj_header!.rx.endRefreshing)
              .disposed(by: disposeBag)
-        outPut.1.drive(self.tableView.mj_footer!.rx.endRefreshing)
+        outPut?.footerRefresh.drive(self.tableView.mj_footer!.rx.endRefreshing)
          .disposed(by: disposeBag)
 
-        //单元格数据的绑定
-        viewModel.tableData.asDriver()
+        // bind tableData to tableView
+        viewModel?.tableData.asDriver()
          .drive(tableView.rx.items) { [weak self] (tableView, row, element) in
 
             let cell = tableView.dequeueReusableCell(withIdentifier: self!.kYBHomeTableViewCellID) as! YBHomeTableViewCell
@@ -70,6 +75,7 @@ class YBHomeViewController: UIViewController {
          }
          .disposed(by: disposeBag)
         
+        // bind tableView select event
         tableView.rx
         .modelSelected(GitHubUser.self)
         .subscribe(onNext:  { [weak self] value in
@@ -80,7 +86,8 @@ class YBHomeViewController: UIViewController {
         .disposed(by: disposeBag)
     }
       
-    /// UI Layout
+    // MARK: - layout UI
+    
     func setupUI() {
         self.title = "GitUserApp"
         view.addSubview(searchBar)
@@ -106,6 +113,5 @@ class YBHomeViewController: UIViewController {
         //设置尾部刷新控件
         self.tableView.mj_footer = MJRefreshBackNormalFooter()
     }
-
 
 }
