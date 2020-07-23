@@ -1,48 +1,53 @@
 //
-//  YBHomeViewModel.swift
+//  ViewModel.swift
 //  GitUserApp
 //
-//  Created by Rock on 7/22/20.
+//  Created by Rock on 7/23/20.
 //  Copyright © 2020 Rock. All rights reserved.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
+import Moya_ObjectMapper
 
 class YBHomeViewModel : NSObject{
     // request data page
     var page = 1
     // tableData for tableView
     let tableData = BehaviorRelay<[GitHubUser]>(value: [])
-    // net request Tool
-    let network : YBNetWorking
     //  memory collection
     let disposeBag : DisposeBag
     // search content. default value is Swift
     let keyword = BehaviorRelay(value: "Swift")
+    
+    let headerLoading = ActivityIndicator()
+    let footerLoading = ActivityIndicator()
      
-    init (disposeBag:DisposeBag,
-          networkService: YBNetWorking ) {
+    init (disposeBag:DisposeBag) {
         self.disposeBag = disposeBag
-        self.network = networkService
     }
     
     /// transform singnal
     /// - Parameter input: (searchAction, heaserRefresh, footerRefresh)
-    func transform(input:(searchAction: Driver<String>,
-           headerRefresh: Driver<Void>,
-           footerRefresh: Driver<Void> ))
-        -> (headerRefresh: Driver<Bool>, footerRefresh: Driver<Bool>){
+    func bindAction(input:(searchAction: Observable<String>,
+                          headerRefresh: Observable<Void>,
+                          footerRefresh: Observable<Void> )){
 
         // search result sequence
-       let searchData = input.searchAction
+        input.searchAction
            .filter { !$0.isEmpty }
-           .flatMapLatest({ [weak self] keyword -> Driver<GitHubUsers> in
-                guard let self = self else { return Driver.empty() }
+           .flatMapLatest({ [weak self] keyword -> Observable<GitHubUsers> in
+                guard let self = self else { return Observable.empty() }
                 self.page = 1
-                return self.network.searchGitHubUsers(login: keyword, page: self.page)
-           })
+                return self.request(login: keyword, page: self.page)
+           }).subscribe(onNext: { [weak self] (gitHubUsers) in
+                guard let self = self else { return }
+                self.tableData.accept(gitHubUsers.items)
+           }, onError: { (error) in
+                YBProgressHUD.showError(error.localizedDescription)
+            
+        }).disposed(by: disposeBag)
             
         // bind search content to keyword
         input.searchAction
@@ -52,44 +57,44 @@ class YBHomeViewModel : NSObject{
             .bind(to: keyword).disposed(by: disposeBag)
         
        // headerRefresh result sequence
-       let headerRefreshData = input.headerRefresh
-           .startWith(()) 
-           .flatMapLatest({ [weak self] _ -> Driver<GitHubUsers> in
-                guard let self = self else { return Driver.empty() }
+       input.headerRefresh
+        .startWith(()) // when app launched start once
+           .flatMapLatest({ [weak self] _ -> Observable<GitHubUsers> in
+                guard let self = self else { return Observable.empty() }
                 self.page = 1
-                return self.network.searchGitHubUsers(login: self.keyword.value, page: self.page)
-        }).asDriver { (error) -> Driver<GitHubUsers> in
+                return self.request(login: self.keyword.value, page: self.page).trackActivity(self.headerLoading)
+            
+        }).subscribe(onNext: { [weak self] (gitHubUsers) in
+                guard let self = self else { return }
+                self.tableData.accept(gitHubUsers.items)
+           }, onError: { (error) in
+                
                 YBProgressHUD.showError(error.localizedDescription)
-                return Driver.empty()
-           }
+            
+        }).disposed(by: disposeBag)
         
        // footerRefresh result sequence
-       let footerRefreshData = input.footerRefresh
-           .flatMapLatest({ [weak self] _ -> Driver<GitHubUsers> in
-                guard let self = self else { return Driver.empty() }
+       input.footerRefresh
+           .flatMapLatest({ [weak self] _ -> Observable<GitHubUsers> in
+                guard let self = self else { return Observable.empty() }
                 self.page += 1
-                return self.network.searchGitHubUsers(login: self.keyword.value, page: self.page)
-           })
-       
-        // searchData replace tableData
-        searchData.drive(onNext: { [weak self] items in
-            guard let self = self else { return }
-            self.tableData.accept(items.items)
-        }).disposed(by: self.disposeBag)
-        
-        // headerRefreshData replace tableData
-        headerRefreshData.drive(onNext: { [weak self] items in
-            guard let self = self else { return }
-            self.tableData.accept(items.items)
-        }).disposed(by: self.disposeBag)
+            return self.request(login: self.keyword.value, page: self.page).trackActivity(self.footerLoading)
+           }).subscribe(onNext: { [weak self] (gitHubUsers) in
+                   guard let self = self else { return }
+                   self.tableData.accept(self.tableData.value + gitHubUsers.items )
+              }, onError: { (error) in
+                   YBProgressHUD.showError(error.localizedDescription)
+               
+           }).disposed(by: disposeBag)
 
-        // footerRefreshData merge tableData
-        footerRefreshData.drive(onNext: { [weak self] items in
-            guard let self = self else { return }
-            self.tableData.accept(self.tableData.value + items.items )
-        }).disposed(by: self.disposeBag)
-        
-        return (headerRefreshData.map{ _ in true }, footerRefreshData.map{ _ in true })
+    }
+    
+    func request(login: String, page: Int) -> Observable<GitHubUsers> {
+        return gitHubProvider.rx.request(.gitHubUsers(login: login, page: page))
+            .filterSuccessfulStatusCodes()
+            .mapObject(GitHubUsers.self)
+            .asObservable()
+
     }
     
 }

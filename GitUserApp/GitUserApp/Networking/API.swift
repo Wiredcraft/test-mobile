@@ -47,7 +47,7 @@ extension GitHubAPI: TargetType {
         
         switch self {
             
-            /// task : search users
+        /// task : search users
         case .gitHubUsers(let login, let page):
             var params: [String: Any] = [:]
             params["q"] = login

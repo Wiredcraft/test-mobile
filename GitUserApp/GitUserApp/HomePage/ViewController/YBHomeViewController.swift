@@ -30,6 +30,8 @@ class YBHomeViewController: UIViewController {
     let kYBHomeTableViewCellID = "YBHomeTableViewCell"
     let disposeBag = DisposeBag()
     var viewModel: YBHomeViewModel?
+    let isHeaderLoading = BehaviorRelay(value: false)
+    let isFooterLoading = BehaviorRelay(value: false)
     
     // MARK: - Life cycle
 
@@ -38,28 +40,27 @@ class YBHomeViewController: UIViewController {
        
       setupUI()
       bindViewModel()
+
     }
     
     // MARK: - bind viewModel
     
     func bindViewModel() {
         // search sequence
-        let searchAction = searchBar.rx.text.orEmpty.asDriver()
-             .throttle(DispatchTimeInterval.seconds(1)) 
-             .distinctUntilChanged()
+        let searchAction = searchBar.rx.text.orEmpty.asObservable()
+ 
+        isHeaderLoading.bind(to: tableView.mj_header!.rx.loding).disposed(by: disposeBag)
 
-        viewModel = YBHomeViewModel(disposeBag: self.disposeBag,networkService: YBNetWorking())
-
-        // output sequence
-        let outPut = viewModel?.transform(input: (searchAction: searchAction,
-                                                headerRefresh: self.tableView.mj_header!.rx.refreshing.asDriver(),
-                                                footerRefresh: self.tableView.mj_footer!.rx.refreshing.asDriver()))
-
+        isFooterLoading.bind(to: tableView.mj_footer!.rx.loding).disposed(by: disposeBag)
+        
+        viewModel = YBHomeViewModel(disposeBag: self.disposeBag)
+        
+        viewModel?.bindAction(input: (searchAction: searchAction,
+                                                        headerRefresh: self.tableView.mj_header!.rx.refreshing.asObservable(),
+                                                        footerRefresh: self.tableView.mj_footer!.rx.refreshing.asObservable()))
         // bind output to tableview.mj_header and mj_footer
-        outPut?.headerRefresh.drive(self.tableView.mj_header!.rx.endRefreshing)
-             .disposed(by: disposeBag)
-        outPut?.footerRefresh.drive(self.tableView.mj_footer!.rx.endRefreshing)
-         .disposed(by: disposeBag)
+        viewModel?.headerLoading.asObservable().bind(to: isHeaderLoading).disposed(by: disposeBag)
+        viewModel?.footerLoading.asObservable().bind(to: isFooterLoading).disposed(by: disposeBag)
 
         // bind tableData to tableView
         viewModel?.tableData.asDriver()
@@ -106,12 +107,18 @@ class YBHomeViewController: UIViewController {
         }
 
         //创建一个重用的单元格
-        self.tableView.register(YBHomeTableViewCell.self,
+        tableView.register(YBHomeTableViewCell.self,
                                forCellReuseIdentifier: kYBHomeTableViewCellID)
         //设置头部刷新控件
-        self.tableView.mj_header = MJRefreshNormalHeader()
+        tableView.mj_header = MJRefreshNormalHeader()
         //设置尾部刷新控件
-        self.tableView.mj_footer = MJRefreshBackNormalFooter()
+        tableView.mj_footer = MJRefreshBackNormalFooter()
+        
+        tableView.rx.willBeginDragging.subscribe { [weak self] _ in
+            guard let self = self else { return }
+            self.searchBar.resignFirstResponder()
+        }.disposed(by: disposeBag)
+        
     }
 
 }

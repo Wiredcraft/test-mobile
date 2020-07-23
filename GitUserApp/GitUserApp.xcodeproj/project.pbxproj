@@ -16,13 +16,13 @@
 		DD96113824C8355F00DA8327 /* YBHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113724C8355F00DA8327 /* YBHomeTableViewCell.swift */; };
 		DD96113A24C835E000DA8327 /* YBHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113924C835E000DA8327 /* YBHomeViewController.swift */; };
 		DD96113C24C8365300DA8327 /* YBGitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113B24C8365300DA8327 /* YBGitHubUser.swift */; };
-		DD96113E24C836B700DA8327 /* YBHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113D24C836B700DA8327 /* YBHomeViewModel.swift */; };
-		DD96114024C8377F00DA8327 /* YBNetWorking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96113F24C8377F00DA8327 /* YBNetWorking.swift */; };
 		DD96114224C837A900DA8327 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114124C837A900DA8327 /* API.swift */; };
 		DD96114424C8384200DA8327 /* MJRefresh+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114324C8384200DA8327 /* MJRefresh+Rx.swift */; };
 		DD96114924C83D2500DA8327 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114824C83D2500DA8327 /* Configs.swift */; };
 		DD96114F24C8451400DA8327 /* YBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96114E24C8451400DA8327 /* YBProgressHUD.swift */; };
 		DD96115324C8567900DA8327 /* YBWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96115224C8567900DA8327 /* YBWebViewController.swift */; };
+		DD96115924C9189400DA8327 /* YBHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96115824C9189400DA8327 /* YBHomeViewModel.swift */; };
+		DD96115D24C9335600DA8327 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD96115C24C9335600DA8327 /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,13 +54,13 @@
 		DD96113724C8355F00DA8327 /* YBHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBHomeTableViewCell.swift; sourceTree = "<group>"; };
 		DD96113924C835E000DA8327 /* YBHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBHomeViewController.swift; sourceTree = "<group>"; };
 		DD96113B24C8365300DA8327 /* YBGitHubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBGitHubUser.swift; sourceTree = "<group>"; };
-		DD96113D24C836B700DA8327 /* YBHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBHomeViewModel.swift; sourceTree = "<group>"; };
-		DD96113F24C8377F00DA8327 /* YBNetWorking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBNetWorking.swift; sourceTree = "<group>"; };
 		DD96114124C837A900DA8327 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		DD96114324C8384200DA8327 /* MJRefresh+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MJRefresh+Rx.swift"; sourceTree = "<group>"; };
 		DD96114824C83D2500DA8327 /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		DD96114E24C8451400DA8327 /* YBProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBProgressHUD.swift; sourceTree = "<group>"; };
 		DD96115224C8567900DA8327 /* YBWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBWebViewController.swift; sourceTree = "<group>"; };
+		DD96115824C9189400DA8327 /* YBHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBHomeViewModel.swift; sourceTree = "<group>"; };
+		DD96115C24C9335600DA8327 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +127,7 @@
 		DD45ECE924C82962009C6ECF /* GitUserApp */ = {
 			isa = PBXGroup;
 			children = (
+				DD96115A24C932EA00DA8327 /* ThirdParty */,
 				DD96114B24C8424400DA8327 /* Application */,
 				DD96115124C8566000DA8327 /* Common */,
 				DD96114A24C83D2B00DA8327 /* Configs */,
@@ -150,7 +151,7 @@
 		DD45ED0F24C83064009C6ECF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				DD96113D24C836B700DA8327 /* YBHomeViewModel.swift */,
+				DD96115824C9189400DA8327 /* YBHomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -182,7 +183,6 @@
 		DD96114524C83C5800DA8327 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				DD96113F24C8377F00DA8327 /* YBNetWorking.swift */,
 				DD96114124C837A900DA8327 /* API.swift */,
 			);
 			path = Networking;
@@ -256,6 +256,22 @@
 				DD96115224C8567900DA8327 /* YBWebViewController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DD96115A24C932EA00DA8327 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				DD96115B24C9335600DA8327 /* RxActivityIndicator */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		DD96115B24C9335600DA8327 /* RxActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				DD96115C24C9335600DA8327 /* ActivityIndicator.swift */,
+			);
+			path = RxActivityIndicator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,12 +446,12 @@
 				DD96115324C8567900DA8327 /* YBWebViewController.swift in Sources */,
 				DD96113C24C8365300DA8327 /* YBGitHubUser.swift in Sources */,
 				DD96113A24C835E000DA8327 /* YBHomeViewController.swift in Sources */,
+				DD96115D24C9335600DA8327 /* ActivityIndicator.swift in Sources */,
 				DD96114F24C8451400DA8327 /* YBProgressHUD.swift in Sources */,
-				DD96114024C8377F00DA8327 /* YBNetWorking.swift in Sources */,
 				DD96113824C8355F00DA8327 /* YBHomeTableViewCell.swift in Sources */,
 				DD45ECEB24C82962009C6ECF /* AppDelegate.swift in Sources */,
-				DD96113E24C836B700DA8327 /* YBHomeViewModel.swift in Sources */,
 				DD96114224C837A900DA8327 /* API.swift in Sources */,
+				DD96115924C9189400DA8327 /* YBHomeViewModel.swift in Sources */,
 				DD96114924C83D2500DA8327 /* Configs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

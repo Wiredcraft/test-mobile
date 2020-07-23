@@ -26,11 +26,11 @@ extension Reactive where Base: MJRefreshComponent {
         }
         return ControlEvent(events: source)
     }
-    
+
     // end refresh event
-    var endRefreshing: Binder<Bool> {
+    var loding: Binder<Bool> {
         return Binder(base) { refresh, isEnd in
-            if isEnd {
+            if !isEnd {
                 refresh.endRefreshing()
             }
         }
