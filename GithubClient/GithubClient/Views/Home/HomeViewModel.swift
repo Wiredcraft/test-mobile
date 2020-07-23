@@ -11,19 +11,23 @@ import RxCocoa
 import RxSwift
 import Moya
 
-class HomeViewModel:NSObject {
+class HomeViewModel {
     
     private let disposeBag = DisposeBag()
     private var userPage = 1
     private let keyword = BehaviorRelay(value: "Swift")
     private let userSearchItems = BehaviorRelay(value: GithubSearchResult())
-    private let provider = MoyaProvider<GitHub>()
+    private let provider: MoyaProvider<GitHub>
     
     let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         return decoder
     }()
+    
+    init(_ provider: MoyaProvider<GitHub> = MoyaProvider<GitHub>()) {
+        self.provider = provider
+    }
 }
 
 extension HomeViewModel: ViewModelType {
@@ -141,17 +145,14 @@ extension HomeViewModel {
     
     func loadHomeData() {
         self.userPage = 1
-        self.searchUser(self.userPage, self.keyword.value).subscribe { [weak self] (event) in
-            
+        self.searchUser(self.userPage, self.keyword.value).subscribe(onNext: { [weak self] (event) in
             switch event {
             case .next(let result):
                 self?.userSearchItems.accept(result)
             default:
                 print(event)
             }
-        } onError: { _ in } onCompleted: { } onDisposed: { }.disposed(by: self.disposeBag)
-
-
+        }).disposed(by: self.disposeBag)
     }
 }
 

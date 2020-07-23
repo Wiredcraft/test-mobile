@@ -8,9 +8,12 @@
 
 import Foundation
 
+/**
+ This protocol define standard the input stream and output stream of ViewModel
+ */
 protocol ViewModelType {
     associatedtype Input
     associatedtype Output
-    
+    /// With the input,  generate the output properly
     func transform(_ input: Input) -> Output
 }

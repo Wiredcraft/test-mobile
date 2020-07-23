@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
     }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: self.view.bounds, style: .plain)
         tableView.rowHeight = 60
         tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.reuseID)
         tableView.sectionHeaderHeight = 0.1
@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
     lazy var freshControl: UIRefreshControl = UIRefreshControl()
     
     var footerRefreshTrigger = PublishSubject<Void>()
-    
+    var signal = PublishSubject<String>()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -83,6 +83,7 @@ class HomeViewController: UIViewController {
                                         footerRefresh: self.footerRefreshTrigger,
                                         userSelection: self.tableView.rx.modelSelected(UserSectionItem.self).asDriver())
         let output = viewModel.transform(input)
+        //tableViewCell configure
         let dataSource = RxTableViewSectionedReloadDataSource<UserSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch item {
             case .user(cellViewModel: let cellViewModel):
@@ -99,7 +100,7 @@ class HomeViewController: UIViewController {
                 self?.tableView.switchRefreshFooter(to: .removed)
             }
         }).disposed(by: self.disposeBag)
-        
+        //bind data to datasource
         output.items.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: self.disposeBag)
         
@@ -111,6 +112,7 @@ class HomeViewController: UIViewController {
             }
         }).disposed(by: self.disposeBag)
         
+        //show user detail
         output.userDisplay.drive(onNext: { [weak self](viewModel) in
             let userDetailVC = UserDetailViewController(viewModel)
             self?.navigationController?.pushViewController(userDetailVC, animated: true)
@@ -132,9 +134,5 @@ extension HomeViewController: UISearchBarDelegate {
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         return true
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
     }
 }
