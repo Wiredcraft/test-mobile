@@ -1,0 +1,17 @@
+# Podfile
+use_frameworks!
+
+target 'WiredcraftTest' do
+    pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0'
+    pod 'RxAlamofire'
+    pod 'Kingfisher', '~> 5.14.1'
+    pod 'MJRefresh'
+    pod 'ObjectMapper'
+end
+
+# RxTests 和 RxBlocking 将在单元/集成测试中起到重要作用
+#target 'WiredcraftTest' do
+#    pod 'RxBlocking', '~> 4.0'
+#    pod 'RxTest',     '~> 4.0'
+#end

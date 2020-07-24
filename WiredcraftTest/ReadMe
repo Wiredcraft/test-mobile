@@ -1,0 +1,13 @@
+In this project, i'm trying to use RxSwift with MVVM to implement this feature.
+
+I separated this project in 3 parts: Models, ViewModels, Views & ViewControllers.
+
+In Models part, I declared a Class (WCTUserModel) to store user information.
+And a Struct (FetchUserResponseData) to store ApiResponse. Because ApiResponse should be a simple value.
+
+In ViewModels Part, I declared a network service class to connect to Api Server. A tableViewCellModel to configure tableViewCell.
+And a HomeViewModel to handle all the event in homeViewController.
+In HomeViewModel, I use "searchBarText" to reflect the text change of searchbar, use "cellModels" to store cellModels,
+use "endHeaderRefresh" and "endFooterLoad" to control pull down refresh and pull up load more.
+
+In view and viewControllers, I configure UI and combine HomeViewModel with HomeViewController.
