@@ -8,7 +8,7 @@
 
 import Foundation
 
-//search Users
-struct SearchUsersResponse: Codable{
+// search Users
+struct SearchUsersResponse: Codable {
     let items: [GithubUser]
 }
