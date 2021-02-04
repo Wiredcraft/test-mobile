@@ -6,7 +6,6 @@
 //  Copyright © 2021 none. All rights reserved.
 //
 
-import SafariServices
 import UIKit
 
 class MainViewController: UIViewController {
@@ -32,28 +31,15 @@ class MainViewController: UIViewController {
         searchBar.sizeToFit()
         return searchBar
     }()
-    private var dataArr: [GithubUser] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    private var query: String = "" {
-        didSet {
-            requestUsers()
-        }
-    }
-    private var pageIndex: Int = 1 {
-        didSet {
-            requestUsers()
-        }
-    }
-    private var requestIsRunning: Bool = false
+
+    var viewModel: UserViewModel = UserViewModel()
+
     // MARK: - LiftCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
         setupConstrains()
-        query = "React"
+        setupViewModelBinding()
     }
 
     // MARK: - UI
@@ -78,54 +64,29 @@ class MainViewController: UIViewController {
     // MARK: - Net
     @objc
     private func requestNew() {
-        pageIndex = 1
-        requestUsers()
+        viewModel.refreshData()
     }
 
     @objc
     private func requestMore() {
-        pageIndex += 1
-        requestUsers()
-    }
-
-    private func requestUsers() {
-        guard !query.isEmpty else {
-            return
-        }
-        requestIsRunning = true
-        // FakeAPIClient to test the
-        APIClient.shared.getUsers(query: query, page: pageIndex) { result in
-            self.requestIsRunning = false
-            self.refreshControl.endRefreshing()
-            switch result {
-            case let .success(response):
-                guard let users = response.result?.items, !users.isEmpty else {
-                    return
-                }
-                if self.pageIndex == 1 {
-                    self.dataArr.removeAll()
-                }
-                self.dataArr += users
-            case let .error(err):
-                self.showToast(message: err.description)
-            }
-        }
+        viewModel.loadMoreData()
     }
 
     // MARK: - Event
-    private func showDetail(_ url: String) {
-        guard let URL = URL(string: url) else {
-            return
+    private func setupViewModelBinding() {
+        viewModel.requestDidFail = { [weak self] err in
+//            self?.showToast(message: err.description)
+            self?.title = err
         }
-        let safarivc: SFSafariViewController
-        if #available(iOS 11.0, *) {
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = true
-            safarivc = SFSafariViewController(url: URL, configuration: config)
-        } else {
-            safarivc = SFSafariViewController(url: URL, entersReaderIfAvailable: true)
+        viewModel.requestDidSuccess = { [weak self] in
+            self?.title = ""
         }
-        present(safarivc, animated: true)
+        viewModel.requestDidStart = { [weak self] in
+            self?.title = "loading"
+        }
+        viewModel.usersDataDidChange = { [weak self] _ in
+            self?.tableView.reloadData()
+        }
     }
 }
 
@@ -136,34 +97,32 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArr.count
+        return viewModel.dataArr.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard indexPath.row < dataArr.count else {
+        guard indexPath.row < viewModel.dataArr.count else {
             return UserViewCell()
         }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserViewCell", for: indexPath) as? UserViewCell else {
             return UserViewCell()
         }
-        let user = dataArr[indexPath.row]
+        let user = viewModel.dataArr[indexPath.row]
         cell.user = user
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.row < dataArr.count else {
+        guard indexPath.row < viewModel.dataArr.count else {
             return
         }
-        let user = dataArr[indexPath.row]
-        showDetail(user.htmlURL)
+        let user = viewModel.dataArr[indexPath.row]
+        viewModel.showUserDetailMainPage(user)
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == dataArr.count - 1 {
-            if !requestIsRunning {
-                pageIndex += 1
-            }
+        if indexPath.row == viewModel.dataArr.count - 1 {
+            viewModel.loadMoreData()
         }
     }
 
@@ -194,15 +153,6 @@ extension MainViewController: UISearchBarDelegate {
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
-        guard !searchText.isEmpty else {
-            return
-        }
-        self.query = ""
-        self.pageIndex = 1
-        NSObject.cancelPreviousPerformRequests(withTarget: requestUsers())
-        DispatchQueue.mainAfter(time: 0.2) {
-            self.query = searchText
-        }
+        viewModel.searchTextDidChange(searchText)
     }
 }

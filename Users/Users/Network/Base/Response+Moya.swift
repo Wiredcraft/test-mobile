@@ -24,15 +24,15 @@ struct GHResponse<ResultType: Codable>: Decodable {
 enum NetworkError: CustomStringConvertible {
     case failNetwork
     case unauthorized
-    case dataFormat(msg: String)
+    case noData
     case otherError(msg: String)
 
     var description: String {
         switch self {
         case .failNetwork:
             return "network fail"
-        case let .dataFormat(msg):
-            return "\(msg)"
+        case let .noData:
+            return "no Data"
         case .unauthorized:
             return "you are unauthorized"
         case let .otherError(msg):

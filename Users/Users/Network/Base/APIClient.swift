@@ -28,7 +28,7 @@ class APIClient: Networkable {
                 let usersResult: GHResponse<SearchUsersResponse> = try GHResponse.from(data: response.data)
                 completion(.success(usersResult))
             } catch let err {
-                completion(.error(.dataFormat(msg: err.localizedDescription)))
+                completion(.error(.noData))
             }
             case let .failure(err):
                 print("getUsers " + err.localizedDescription)
