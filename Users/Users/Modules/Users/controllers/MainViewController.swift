@@ -93,6 +93,7 @@ class MainViewController: UIViewController {
             return
         }
         requestIsRunning = true
+        // FakeAPIClient to test the
         APIClient.shared.getUsers(query: query, page: pageIndex) { result in
             self.requestIsRunning = false
             self.refreshControl.endRefreshing()

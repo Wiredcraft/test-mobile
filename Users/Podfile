@@ -16,9 +16,11 @@ target 'Users' do
   pod 'SDWebImage'
   pod 'Toast-Swift'
 
-  target 'UsersTests' do
-    inherit! :search_paths
-  end
+end
+
+target 'UsersTests' do
+  inherit! :search_paths
+  pod 'Moya'
 end
 
 post_install do |installer|

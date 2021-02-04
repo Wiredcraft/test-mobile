@@ -19,6 +19,8 @@
 		2C7AF92B25C6DE7A00D64673 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7AF92A25C6DE7A00D64673 /* UserProtocol.swift */; };
 		2C7AF92F25C6DFA800D64673 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7AF92E25C6DFA800D64673 /* GithubUser.swift */; };
 		2C7AF94E25C6F5B800D64673 /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7AF94D25C6F5B800D64673 /* Networkable.swift */; };
+		2C7AF99025CB003500D64673 /* FakeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7AF98D25CAFF9500D64673 /* FakeAPIClient.swift */; };
+		2C7AF99125CB003600D64673 /* FakeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7AF98D25CAFF9500D64673 /* FakeAPIClient.swift */; };
 		48D612BBDA0C0B72D5C285E2 /* Pods_UsersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93FCE5F2DDB377B645BCE493 /* Pods_UsersTests.framework */; };
 		553FC23C214047CB001D9362 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553FC23B214047CB001D9362 /* R.generated.swift */; };
 		7047291FD30E3BF1EBDB62C8 /* Pods_Users.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0304149DD4368FE334FB4FD /* Pods_Users.framework */; };
@@ -27,6 +29,16 @@
 		C600488025C7930E00E2AD10 /* MoyaBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600487D25C7930E00E2AD10 /* MoyaBase.swift */; };
 		C600488625C79E0800E2AD10 /* UserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600488525C79E0800E2AD10 /* UserViewCell.swift */; };
 		C61BE13E25C8F9EA00F09413 /* APIClient+Bussiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61BE13D25C8F9EA00F09413 /* APIClient+Bussiness.swift */; };
+		C65527E125CAB52D0019A9CC /* UserUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65527E025CAB52D0019A9CC /* UserUnitTest.swift */; };
+		C655283B25CABA670019A9CC /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600487C25C7930E00E2AD10 /* APIClient.swift */; };
+		C655283E25CABA710019A9CC /* Response+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600487B25C7930E00E2AD10 /* Response+Moya.swift */; };
+		C655283F25CABA730019A9CC /* MoyaBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C600487D25C7930E00E2AD10 /* MoyaBase.swift */; };
+		C655284025CABA770019A9CC /* APIClient+Bussiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61BE13D25C8F9EA00F09413 /* APIClient+Bussiness.swift */; };
+		C655284325CABCF40019A9CC /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7AF94D25C6F5B800D64673 /* Networkable.swift */; };
+		C655284625CABD120019A9CC /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7AF92E25C6DFA800D64673 /* GithubUser.swift */; };
+		C655284925CABD210019A9CC /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7AF92A25C6DE7A00D64673 /* UserProtocol.swift */; };
+		C655284C25CABD300019A9CC /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9222811F38797600A648E6 /* ConfigurationManager.swift */; };
+		C655284F25CABD750019A9CC /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2ABEE6D31F38828A00531205 /* Configuration.plist */; };
 		C6FF362A25C8DEB9002268FC /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FF362925C8DEB9002268FC /* UIViewController+extension.swift */; };
 		C6FF362E25C8DEEF002268FC /* DispatchQueue+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FF362D25C8DEEF002268FC /* DispatchQueue+extension.swift */; };
 		C90395241FC622D2006F1DC0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90395231FC622D2006F1DC0 /* main.swift */; };
@@ -64,6 +76,7 @@
 		2C7AF92A25C6DE7A00D64673 /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
 		2C7AF92E25C6DFA800D64673 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
 		2C7AF94D25C6F5B800D64673 /* Networkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
+		2C7AF98D25CAFF9500D64673 /* FakeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAPIClient.swift; sourceTree = "<group>"; };
 		37F3017DDF1CBD8BF8939ED7 /* Pods-Users.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Users.staging.xcconfig"; path = "Target Support Files/Pods-Users/Pods-Users.staging.xcconfig"; sourceTree = "<group>"; };
 		553FC23B214047CB001D9362 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		55F50BE321404BDD00FAC039 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
@@ -74,6 +87,7 @@
 		C600487D25C7930E00E2AD10 /* MoyaBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaBase.swift; sourceTree = "<group>"; };
 		C600488525C79E0800E2AD10 /* UserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewCell.swift; sourceTree = "<group>"; };
 		C61BE13D25C8F9EA00F09413 /* APIClient+Bussiness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Bussiness.swift"; sourceTree = "<group>"; };
+		C65527E025CAB52D0019A9CC /* UserUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUnitTest.swift; sourceTree = "<group>"; };
 		C6FF362925C8DEB9002268FC /* UIViewController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
 		C6FF362D25C8DEEF002268FC /* DispatchQueue+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+extension.swift"; sourceTree = "<group>"; };
 		C90395231FC622D2006F1DC0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -152,7 +166,9 @@
 		2A1E774A1F384BFD006C84D4 /* UsersTests */ = {
 			isa = PBXGroup;
 			children = (
+				2C7AF98D25CAFF9500D64673 /* FakeAPIClient.swift */,
 				2A9222841F387B1D00A648E6 /* UsersTests-Bridging-Header.h */,
+				C65527E025CAB52D0019A9CC /* UserUnitTest.swift */,
 				2A1E774D1F384BFD006C84D4 /* Info.plist */,
 				C90395251FC62399006F1DC0 /* TestsAppDelegate.swift */,
 			);
@@ -364,6 +380,7 @@
 				2A1E77431F384BFD006C84D4 /* Sources */,
 				2A1E77441F384BFD006C84D4 /* Frameworks */,
 				2A1E77451F384BFD006C84D4 /* Resources */,
+				AE4971EB4D537E4B32BBAF0E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -430,6 +447,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C655284F25CABD750019A9CC /* Configuration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +520,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AE4971EB4D537E4B32BBAF0E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UsersTests/Pods-UsersTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UsersTests/Pods-UsersTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FB82E3D328F51C9D9664A679 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -555,6 +593,7 @@
 				2C7AF8FC25C6DC0500D64673 /* MainViewController.swift in Sources */,
 				C600488625C79E0800E2AD10 /* UserViewCell.swift in Sources */,
 				C90395271FC62425006F1DC0 /* TestsAppDelegate.swift in Sources */,
+				2C7AF99125CB003600D64673 /* FakeAPIClient.swift in Sources */,
 				2A1DD4E11F389E2100712195 /* NotificationsHandler.swift in Sources */,
 				C600488025C7930E00E2AD10 /* MoyaBase.swift in Sources */,
 				C6FF362E25C8DEEF002268FC /* DispatchQueue+extension.swift in Sources */,
@@ -571,7 +610,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C655284C25CABD300019A9CC /* ConfigurationManager.swift in Sources */,
+				C65527E125CAB52D0019A9CC /* UserUnitTest.swift in Sources */,
 				C90395261FC62399006F1DC0 /* TestsAppDelegate.swift in Sources */,
+				C655283E25CABA710019A9CC /* Response+Moya.swift in Sources */,
+				C655284325CABCF40019A9CC /* Networkable.swift in Sources */,
+				C655283B25CABA670019A9CC /* APIClient.swift in Sources */,
+				C655284625CABD120019A9CC /* GithubUser.swift in Sources */,
+				C655283F25CABA730019A9CC /* MoyaBase.swift in Sources */,
+				C655284025CABA770019A9CC /* APIClient+Bussiness.swift in Sources */,
+				C655284925CABD210019A9CC /* UserProtocol.swift in Sources */,
+				2C7AF99025CB003500D64673 /* FakeAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
