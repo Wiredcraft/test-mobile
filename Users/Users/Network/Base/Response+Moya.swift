@@ -31,7 +31,7 @@ enum NetworkError: CustomStringConvertible {
         switch self {
         case .failNetwork:
             return "network fail"
-        case let .noData:
+        case .noData:
             return "no Data"
         case .unauthorized:
             return "you are unauthorized"

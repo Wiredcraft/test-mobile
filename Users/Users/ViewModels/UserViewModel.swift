@@ -11,7 +11,11 @@ import SafariServices
 
 class UserViewModel: NSObject {
 
-    private var requestIsExcuting = false
+    // the request is excuting
+    private(set) var requestIsExcuting = false
+    // the request fail messgae, not nil just when fail
+    private(set) var errMsg: String?
+    // the request data result
     private(set) var dataArr: [GithubUser] = [] {
         didSet {
             self.usersDataDidChange?(self.dataArr)
@@ -20,35 +24,42 @@ class UserViewModel: NSObject {
     private var query = ""
     private var pageIndex = 1
 
+    var netAavilable: Bool {
+        return APIClient.shared.netAavilable
+    }
+
     var usersDataDidChange: (([GithubUser]) -> Void)?
     var requestDidStart: (() -> Void)?
     var requestDidSuccess: (() -> Void)?
     var requestDidFail: ((String) -> Void)?
 
-    func searchTextDidChange(_ searchText: String) {
+    ///  search users
+    /// - Parameters:
+    ///   - searchText: keyword
+    ///   - pageIndex:  page index
+    func searchTextDidChange(_ searchText: String, pageIndex: Int = 1) {
         guard !searchText.isEmpty else {
             dataArr.removeAll()
             return
         }
-        
-        pageIndex = 1
+
+        self.pageIndex = pageIndex
+        query = searchText
         NSObject.cancelPreviousPerformRequests(withTarget: requestData())
-        DispatchQueue.mainAfter(time: 0.5) {
-            self.query = searchText
-            self.requestData()
-        }
+        perform(#selector(requestData), with: nil, afterDelay: 0.3)
     }
 
+    @objc
     func requestData() {
         if requestIsExcuting {
             return
         }
         requestIsExcuting = true
+        requestDidStart?()
         APIClient.shared.getUsers(query: query, page: pageIndex) { result in
             self.requestIsExcuting = false
             switch result {
             case let .success(response):
-                self.requestDidSuccess?()
                 guard let users = response.result?.items else {
                     return
                 }
@@ -56,10 +67,10 @@ class UserViewModel: NSObject {
                     self.dataArr.removeAll()
                 }
                 self.dataArr += users
-                if self.dataArr.isEmpty {
-                    self.requestDidFail?(NetworkError.noData.description)
-                }
+                self.errMsg = nil
+                self.requestDidSuccess?()
             case let .error(err):
+                self.errMsg = err.description
                 self.dataArr.removeAll()
                 self.requestDidFail?(err.description)
             }

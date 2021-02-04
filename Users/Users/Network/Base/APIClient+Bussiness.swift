@@ -10,5 +10,6 @@ import Foundation
 
 // search Users
 struct SearchUsersResponse: Codable {
+    let messgae: String? // not nil when error happen
     let items: [GithubUser]
 }

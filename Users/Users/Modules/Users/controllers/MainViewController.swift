@@ -40,6 +40,7 @@ class MainViewController: UIViewController {
         setupSubviews()
         setupConstrains()
         setupViewModelBinding()
+        setupNetworkCheck()
     }
 
     // MARK: - UI
@@ -61,6 +62,15 @@ class MainViewController: UIViewController {
         }
     }
 
+    private func setupNetworkCheck() {
+        if !viewModel.netAavilable {
+            self.title = "network fail"
+        } else {
+            searchBar.text = "swift"
+            viewModel.searchTextDidChange("swift")
+        }
+    }
+
     // MARK: - Net
     @objc
     private func requestNew() {
@@ -74,11 +84,13 @@ class MainViewController: UIViewController {
 
     // MARK: - Event
     private func setupViewModelBinding() {
+
         viewModel.requestDidFail = { [weak self] err in
-//            self?.showToast(message: err.description)
+            self?.refreshControl.endRefreshing()
             self?.title = err
         }
         viewModel.requestDidSuccess = { [weak self] in
+            self?.refreshControl.endRefreshing()
             self?.title = ""
         }
         viewModel.requestDidStart = { [weak self] in

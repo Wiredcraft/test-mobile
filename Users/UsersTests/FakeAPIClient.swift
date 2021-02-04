@@ -25,7 +25,7 @@ class FakeAPIClient: NSObject {
                                 login: "nacoq1u0q 4921bcqwer9q2934512kczskjvbqr12`nm.aksdmgv;asmdfadfa1231tnkejwnvjka",
                                 score: 2,
                                 scoreStr: "2")]
-        let usersResult: GHResponse<SearchUsersResponse> = GHResponse(code: nil, result: SearchUsersResponse(items: users))
+        let usersResult: GHResponse<SearchUsersResponse> = GHResponse(code: nil, result: SearchUsersResponse(messgae: nil, items: users))
         completion(.success(usersResult))
     }
 }

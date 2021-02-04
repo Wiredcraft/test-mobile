@@ -21,6 +21,7 @@ end
 target 'UsersTests' do
   inherit! :search_paths
   pod 'Moya'
+  pod 'Toast-Swift'
 end
 
 post_install do |installer|

@@ -55,6 +55,41 @@ class UserUnitTest: XCTestCase {
         XCTAssertEqual(result!.login, "swift124123412341nmbvx,bvnwektrb2kq3rbwtwert-203i50234j523452345")
     }
 
+    func testSearchNormal() throws {
+        let viewmodel = UserViewModel()
+        viewmodel.searchTextDidChange("swift")
+        viewmodel.requestDidSuccess = {
+            XCTAssertFalse(viewmodel.requestIsExcuting)
+        }
+        viewmodel.usersDataDidChange = { _ in
+            XCTAssertTrue(viewmodel.dataArr.count > 10)
+        }
+    }
+
+    func testSearchEmpty() throws {
+        let viewmodel = UserViewModel()
+        viewmodel.searchTextDidChange("swiftvavsa")
+        viewmodel.requestDidSuccess = {
+            XCTAssertFalse(viewmodel.requestIsExcuting)
+        }
+        viewmodel.usersDataDidChange = { _ in
+            XCTAssertTrue(viewmodel.dataArr.isEmpty)
+            XCTAssertNil(viewmodel.errMsg)
+        }
+    }
+
+    func testSearchFail() throws {
+        let viewmodel = UserViewModel()
+        viewmodel.searchTextDidChange("swift", pageIndex: 100)
+        viewmodel.requestDidSuccess = {
+            XCTAssertFalse(viewmodel.requestIsExcuting)
+        }
+        viewmodel.usersDataDidChange = { _ in
+            XCTAssertTrue(viewmodel.dataArr.isEmpty)
+            XCTAssertNotNil(viewmodel.errMsg)
+        }
+    }
+
     func testApi() throws {
 
         let query = "swift"
@@ -66,7 +101,7 @@ class UserUnitTest: XCTestCase {
                 let users = response.result?.items
                 XCTAssertNotNil(users)
                 XCTAssertTrue(users!.count > 10)
-            case .error(_):
+            case .error:
                 break
              }
         }

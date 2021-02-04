@@ -6,14 +6,21 @@
 //  Copyright © 2021 none. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 import Moya
 
 class APIClient: Networkable {
     // MARK: Shared instance
     static let shared = APIClient()
-
+    let reachabilityManager = Alamofire.NetworkReachabilityManager(host: "www.github.com")
     var provider = MoyaProvider<GithubApi>(plugins: [NetworkLoggerPlugin()])
+    var netAavilable: Bool {
+        guard let reachabilityManager = reachabilityManager else {
+            return false
+        }
+        return reachabilityManager.isReachable
+    }
 
     /// request the users list due to the query keyword
     /// - Parameters:
@@ -26,9 +33,16 @@ class APIClient: Networkable {
             case let .success(response):
             do {
                 let usersResult: GHResponse<SearchUsersResponse> = try GHResponse.from(data: response.data)
-                completion(.success(usersResult))
+                if let err = usersResult.result?.messgae {
+                    completion(.error(.otherError(msg: err)))
+                } else if let items = usersResult.result?.items, items.isEmpty {
+                    completion(.error(.noData))
+                } else {
+                    completion(.success(usersResult))
+                }
             } catch let err {
-                completion(.error(.noData))
+                print("err.localizedDescription = \(err.localizedDescription)")
+                completion(.error(.otherError(msg: err.localizedDescription)))
             }
             case let .failure(err):
                 print("getUsers " + err.localizedDescription)
