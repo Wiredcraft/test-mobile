@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.4.1)
+  - MJRefresh (3.5.0)
+  - RxSwift (6.1.0)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - MJRefresh
+  - RxSwift
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - MJRefresh
+    - RxSwift
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
+  RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: aaf62be9a375b135de2c877134befc9c95b9412f
+
+COCOAPODS: 1.10.0
