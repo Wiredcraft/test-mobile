@@ -1,28 +1,34 @@
 PODS:
   - Alamofire (5.4.1)
   - MJRefresh (3.5.0)
-  - RxSwift (6.1.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - RxSwift (5.1.2)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
-  - Alamofire
   - MJRefresh
-  - RxSwift
+  - Moya/RxSwift
   - SnapKit
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - MJRefresh
+    - Moya
     - RxSwift
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
-  RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: aaf62be9a375b135de2c877134befc9c95b9412f
+PODFILE CHECKSUM: c40f6289a4ed9f17c5de11446163ca9b081d5988
 
 COCOAPODS: 1.10.0

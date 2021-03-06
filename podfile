@@ -5,7 +5,8 @@ inhibit_all_warnings!
 
 target 'GithubUsersList' do
 pod 'SnapKit'
-pod 'Alamofire'
-pod 'RxSwift'
+#pod 'Alamofire'
+pod 'Moya/RxSwift'
+#pod 'RxSwift'
 pod 'MJRefresh'
 end

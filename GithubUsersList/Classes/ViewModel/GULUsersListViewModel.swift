@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import Moya
+import RxSwift
+
+struct GULUsersListViewModel {
+    let provider = MoyaProvider<GULService>()
+}

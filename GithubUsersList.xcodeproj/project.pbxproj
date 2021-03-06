@@ -20,6 +20,8 @@
 		BBD0D87F25F35EED00B1CE68 /* GULUsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D87925F35EED00B1CE68 /* GULUsersListViewController.swift */; };
 		BBD0D88025F35EED00B1CE68 /* GULUsersListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D87B25F35EED00B1CE68 /* GULUsersListModel.swift */; };
 		BBD0D88125F35EED00B1CE68 /* GULUsersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D87D25F35EED00B1CE68 /* GULUsersListCell.swift */; };
+		BBD0D88725F3627400B1CE68 /* GULService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D88625F3627400B1CE68 /* GULService.swift */; };
+		BBD0D90125F37D3100B1CE68 /* GULUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D90025F37D3000B1CE68 /* GULUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		BBD0D87925F35EED00B1CE68 /* GULUsersListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GULUsersListViewController.swift; sourceTree = "<group>"; };
 		BBD0D87B25F35EED00B1CE68 /* GULUsersListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GULUsersListModel.swift; sourceTree = "<group>"; };
 		BBD0D87D25F35EED00B1CE68 /* GULUsersListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GULUsersListCell.swift; sourceTree = "<group>"; };
+		BBD0D88625F3627400B1CE68 /* GULService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULService.swift; sourceTree = "<group>"; };
+		BBD0D90025F37D3000B1CE68 /* GULUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULUtility.swift; sourceTree = "<group>"; };
 		EC3597A10CECE8B8C37EBFCC /* Pods_GithubUsersList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubUsersList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,6 +135,8 @@
 		BBD0D81D25F3572100B1CE68 /* GithubUsersList */ = {
 			isa = PBXGroup;
 			children = (
+				BBD0D8FF25F37CF100B1CE68 /* Uility */,
+				BBD0D88525F3626700B1CE68 /* Network */,
 				BBD0D87525F35EED00B1CE68 /* Classes */,
 				BBD0D81E25F3572100B1CE68 /* AppDelegate.swift */,
 				BBD0D82025F3572100B1CE68 /* SceneDelegate.swift */,
@@ -202,6 +208,22 @@
 				BBD0D87D25F35EED00B1CE68 /* GULUsersListCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		BBD0D88525F3626700B1CE68 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BBD0D88625F3627400B1CE68 /* GULService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BBD0D8FF25F37CF100B1CE68 /* Uility */ = {
+			isa = PBXGroup;
+			children = (
+				BBD0D90025F37D3000B1CE68 /* GULUtility.swift */,
+			);
+			path = Uility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,8 +405,10 @@
 				BBD0D81F25F3572100B1CE68 /* AppDelegate.swift in Sources */,
 				BBD0D87F25F35EED00B1CE68 /* GULUsersListViewController.swift in Sources */,
 				BBD0D82125F3572100B1CE68 /* SceneDelegate.swift in Sources */,
+				BBD0D88725F3627400B1CE68 /* GULService.swift in Sources */,
 				BBD0D88025F35EED00B1CE68 /* GULUsersListModel.swift in Sources */,
 				BBD0D88125F35EED00B1CE68 /* GULUsersListCell.swift in Sources */,
+				BBD0D90125F37D3100B1CE68 /* GULUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
