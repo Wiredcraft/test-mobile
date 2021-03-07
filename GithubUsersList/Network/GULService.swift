@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum GULService {
-    case usersList(Int)
+    case usersList(query: String, page: Int)
 }
 
 
@@ -20,29 +20,29 @@ extension GULService: TargetType {
     
     var path: String {
         switch self {
-        case .usersList(_):
+        case .usersList(_, _):
             return "/search/users"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .usersList(_):
+        case .usersList(_, _):
             return .get
         }
     }
     
     var sampleData: Data {
         switch self {
-        case .usersList(_):
+        case .usersList(_, _):
             return Data()
         }
     }
     
     var task: Task {
         switch self {
-        case .usersList(let page):
-            return .requestParameters(parameters: ["q":"swift","page":page], encoding: URLEncoding.default)
+        case .usersList(let query, let page):
+            return .requestParameters(parameters: ["q":query,"page":page], encoding: URLEncoding.default)
         }
     }
     
