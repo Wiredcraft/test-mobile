@@ -39,7 +39,7 @@ class GULUsersListViewModel: GULViewModelProtocol {
     
     private let disposeBag = DisposeBag()
     
-    var searchText: String = "swift"
+    var searchText: String = ""
     var currentPage: Int = 0
     var usersList = BehaviorRelay(value: GULUsersListModel())
     
@@ -53,6 +53,7 @@ class GULUsersListViewModel: GULViewModelProtocol {
         let usersItems: BehaviorRelay<[GULUserItemViewModel]>
         let network: PublishSubject<Bool>
         let refreshState: BehaviorRelay<GULRefreshState>
+        let search: BehaviorRelay<String>
     }
     
     /*
@@ -72,7 +73,7 @@ class GULUsersListViewModel: GULViewModelProtocol {
                 return
             }
             let page = isReload ? 1 : tempPage+1
-            self?.provider.rx.request(.usersList(query: self?.searchText ?? "", page: page))
+            self?.provider.rx.request(.usersList(query: self?.searchText.isEmpty == false ? self!.searchText : "swift", page: page))
                 .asObservable()
                 .map(GULUsersListModel.self)
                 .subscribe({ (event) in
@@ -95,9 +96,16 @@ class GULUsersListViewModel: GULViewModelProtocol {
                 })
         }).disposed(by: disposeBag)
         
+        let search = BehaviorRelay<String>(value: "")
+        search.subscribe(onNext: { [weak self] (searchStr) in
+            self?.searchText = searchStr
+            network.onNext(true)
+        }).disposed(by: disposeBag)
+        
         let op = GULUsersListOutput(usersItems: elements,
                                     network: network,
-                                    refreshState: refreshState)
+                                    refreshState: refreshState,
+                                    search: search)
         output = op
         return op
     }

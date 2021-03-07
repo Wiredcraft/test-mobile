@@ -79,8 +79,9 @@ class GULUsersListViewController: UIViewController {
     private func bindUI() {
         searchBar.rx.text.orEmpty
             .changed
-            .subscribe(onNext: { (inputStr) in
-                print(inputStr)
+            .throttle(1.0, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (inputStr) in
+                self?.viewModel.output?.search.accept(inputStr)
             }).disposed(by: disposeBag)
         
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
