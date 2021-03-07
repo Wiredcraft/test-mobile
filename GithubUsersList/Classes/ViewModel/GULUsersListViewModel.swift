@@ -43,14 +43,14 @@ class GULUsersListViewModel: GULViewModelProtocol {
     var currentPage: Int = 0
     var usersList = BehaviorRelay(value: GULUsersListModel())
     
-    
+    var output: Output?
     
     struct GULUsersListInput {
         
     }
     
     struct GULUsersListOutput {
-        let usersItems: BehaviorRelay<[GULUsersListItemModel]>
+        let usersItems: BehaviorRelay<[GULUserItemViewModel]>
         let network: PublishSubject<Bool>
         let refreshState: BehaviorRelay<GULRefreshState>
     }
@@ -62,8 +62,9 @@ class GULUsersListViewModel: GULViewModelProtocol {
      4.keyboard action
      */
     
+    @discardableResult
     func transform(input: Input) -> Output {
-        let elements = BehaviorRelay<[GULUsersListItemModel]>(value: [])
+        let elements = BehaviorRelay<[GULUserItemViewModel]>(value: [])
         let network = PublishSubject<Bool>()
         let refreshState = BehaviorRelay<GULRefreshState>(value: .none)
         network.subscribe(onNext: { [weak self] (isReload) in
@@ -80,7 +81,10 @@ class GULUsersListViewModel: GULViewModelProtocol {
                         guard let list = model.items else {
                             return
                         }
-                        let tempList = isReload ? list : elements.value+list
+                        var tempList = list.compactMap({ GULUserItemViewModel(item: $0) })
+                        if !isReload {
+                            tempList = elements.value+tempList
+                        }
                         elements.accept(tempList)
                     case let .error(error):
                         break
@@ -91,10 +95,10 @@ class GULUsersListViewModel: GULViewModelProtocol {
                 })
         }).disposed(by: disposeBag)
         
-        
-        
-        return GULUsersListOutput(usersItems: elements,
-                                  network: network,
-                                  refreshState: refreshState)
+        let op = GULUsersListOutput(usersItems: elements,
+                                    network: network,
+                                    refreshState: refreshState)
+        output = op
+        return op
     }
 }

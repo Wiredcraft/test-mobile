@@ -24,6 +24,7 @@
 		BBD0D90125F37D3100B1CE68 /* GULUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D90025F37D3000B1CE68 /* GULUtility.swift */; };
 		BBD0D92425F3B3AF00B1CE68 /* UITableViewCell+GUL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D92325F3B3AF00B1CE68 /* UITableViewCell+GUL.swift */; };
 		BBD0D93825F3C66D00B1CE68 /* GULUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D93725F3C66D00B1CE68 /* GULUserDetailViewController.swift */; };
+		BBD0D96125F4F8B000B1CE68 /* GULUserItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D96025F4F8B000B1CE68 /* GULUserItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		BBD0D90025F37D3000B1CE68 /* GULUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULUtility.swift; sourceTree = "<group>"; };
 		BBD0D92325F3B3AF00B1CE68 /* UITableViewCell+GUL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+GUL.swift"; sourceTree = "<group>"; };
 		BBD0D93725F3C66D00B1CE68 /* GULUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULUserDetailViewController.swift; sourceTree = "<group>"; };
+		BBD0D96025F4F8B000B1CE68 /* GULUserItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULUserItemViewModel.swift; sourceTree = "<group>"; };
 		EC3597A10CECE8B8C37EBFCC /* Pods_GithubUsersList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubUsersList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				BBD0D87725F35EED00B1CE68 /* GULUsersListViewModel.swift */,
+				BBD0D96025F4F8B000B1CE68 /* GULUserItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				BBD0D88025F35EED00B1CE68 /* GULUsersListModel.swift in Sources */,
 				BBD0D88125F35EED00B1CE68 /* GULUsersListCell.swift in Sources */,
 				BBD0D90125F37D3100B1CE68 /* GULUtility.swift in Sources */,
+				BBD0D96125F4F8B000B1CE68 /* GULUserItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

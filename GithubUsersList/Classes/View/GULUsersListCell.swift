@@ -7,28 +7,11 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class GULUsersListCell: UITableViewCell {
-    
-    var model : GULUsersListItemModel? {
-        didSet {
-            guard let tempModel = model else {
-                return
-            }
-            if let name = tempModel.login {
-                nameLabel.text = "\(name)"
-            }
-            if let iconUrl = tempModel.avatar_url {
-                icon.kf.setImage(with: URL(string: iconUrl))
-            }
-            if let score = tempModel.score {
-                scoreLabel.text = "\(score)"
-            }
-            if let htmlUrl = tempModel.html_url {
-                htmlUrlLabel.text = htmlUrl
-            }
-        }
-    }
+    private let disposeBag = DisposeBag()
     
     private lazy var icon : UIImageView = {
         let iv = UIImageView()
@@ -92,6 +75,19 @@ class GULUsersListCell: UITableViewCell {
             make.right.equalTo(scoreLabel)
             make.top.equalTo(scoreLabel.snp.bottom).offset(10.0)
         }
+    }
+    
+    func bind(viewModel: GULUserItemViewModel) {
+        viewModel.name.asDriver().drive(nameLabel.rx.text).disposed(by: disposeBag)
+        viewModel.score.asDriver().map({ "\($0 ?? 0)" }).drive(scoreLabel.rx.text).disposed(by: disposeBag)
+        viewModel.score.asDriver().map({ $0 == nil }).drive(scoreLabel.rx.isHidden).disposed(by: disposeBag)
+        viewModel.htmlUrl.asDriver().drive(htmlUrlLabel.rx.text).disposed(by: disposeBag)
+        viewModel.icon.asDriver().drive(onNext: { [weak self] (iconUrl) in
+            guard let tempUrl = iconUrl else {
+                return
+            }
+            self?.icon.kf.setImage(with: URL(string: tempUrl))
+        }).disposed(by: disposeBag)
     }
 
     override func awakeFromNib() {

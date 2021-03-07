@@ -26,8 +26,6 @@ class GULUsersListViewController: UIViewController {
         return sb
     }()
     
-    private var vmOutput : GULUsersListViewModel.GULUsersListOutput?
-    
     private lazy var viewModel : GULUsersListViewModel = {
         return GULUsersListViewModel()
     }()
@@ -37,7 +35,7 @@ class GULUsersListViewController: UIViewController {
         setup()
         bindUI()
         bindViewModel()
-        vmOutput?.network.onNext(true)
+        viewModel.output?.network.onNext(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,11 +68,11 @@ class GULUsersListViewController: UIViewController {
         }
         
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
-            self?.vmOutput?.network.onNext(true)
+            self?.viewModel.output?.network.onNext(true)
         })
         
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: { [weak self] in
-            self?.vmOutput?.network.onNext(false)
+            self?.viewModel.output?.network.onNext(false)
         })
     }
     
@@ -86,8 +84,8 @@ class GULUsersListViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
-        tableView.rx.modelSelected(GULUsersListItemModel.self).asDriver().drive { [weak self] (itemModel) in
-            guard let url = itemModel.html_url else {
+        tableView.rx.modelSelected(GULUserItemViewModel.self).asDriver().drive { [weak self] (cellViewModel) in
+            guard let url = cellViewModel.htmlUrl.value else {
                 return
             }
             let detailVC = GULUserDetailViewController(url: url)
@@ -97,13 +95,13 @@ class GULUsersListViewController: UIViewController {
     
     private func bindViewModel() {
         let input = GULUsersListViewModel.GULUsersListInput()
-        let output = viewModel.transform(input: input)
+        viewModel.transform(input: input)
         
-        output.usersItems.bind(to: tableView.rx.items(cellIdentifier: GULUsersListCell.reuseIdentifier(), cellType: GULUsersListCell.self)){row, post, cell in
-            cell.model = post
+        viewModel.output?.usersItems.bind(to: tableView.rx.items(cellIdentifier: GULUsersListCell.reuseIdentifier(), cellType: GULUsersListCell.self)){row, post, cell in
+            cell.bind(viewModel: post)
         }.disposed(by: disposeBag)
         
-        output.refreshState.subscribe(onNext: { [weak self] (state) in
+        viewModel.output?.refreshState.subscribe(onNext: { [weak self] (state) in
             switch state {
             case .endFooterRefresh:
                 self?.tableView.mj_footer?.endRefreshing()
@@ -113,7 +111,6 @@ class GULUsersListViewController: UIViewController {
                 break
             }
         }).disposed(by: disposeBag)
-        vmOutput = output
     }
     
 }
