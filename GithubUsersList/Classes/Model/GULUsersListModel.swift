@@ -33,5 +33,5 @@ struct GULUsersListItemModel: Codable {
     var received_events_url: String?
     var type: String?
     var site_admin: Bool?
-    var score: Int?
+    var score: Double?
 }

@@ -22,6 +22,8 @@
 		BBD0D88125F35EED00B1CE68 /* GULUsersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D87D25F35EED00B1CE68 /* GULUsersListCell.swift */; };
 		BBD0D88725F3627400B1CE68 /* GULService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D88625F3627400B1CE68 /* GULService.swift */; };
 		BBD0D90125F37D3100B1CE68 /* GULUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D90025F37D3000B1CE68 /* GULUtility.swift */; };
+		BBD0D92425F3B3AF00B1CE68 /* UITableViewCell+GUL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D92325F3B3AF00B1CE68 /* UITableViewCell+GUL.swift */; };
+		BBD0D93825F3C66D00B1CE68 /* GULUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D93725F3C66D00B1CE68 /* GULUserDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		BBD0D87D25F35EED00B1CE68 /* GULUsersListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GULUsersListCell.swift; sourceTree = "<group>"; };
 		BBD0D88625F3627400B1CE68 /* GULService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULService.swift; sourceTree = "<group>"; };
 		BBD0D90025F37D3000B1CE68 /* GULUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULUtility.swift; sourceTree = "<group>"; };
+		BBD0D92325F3B3AF00B1CE68 /* UITableViewCell+GUL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+GUL.swift"; sourceTree = "<group>"; };
+		BBD0D93725F3C66D00B1CE68 /* GULUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULUserDetailViewController.swift; sourceTree = "<group>"; };
 		EC3597A10CECE8B8C37EBFCC /* Pods_GithubUsersList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubUsersList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -135,6 +139,7 @@
 		BBD0D81D25F3572100B1CE68 /* GithubUsersList */ = {
 			isa = PBXGroup;
 			children = (
+				BBD0D92225F3B39B00B1CE68 /* Esxtension */,
 				BBD0D8FF25F37CF100B1CE68 /* Uility */,
 				BBD0D88525F3626700B1CE68 /* Network */,
 				BBD0D87525F35EED00B1CE68 /* Classes */,
@@ -190,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				BBD0D87925F35EED00B1CE68 /* GULUsersListViewController.swift */,
+				BBD0D93725F3C66D00B1CE68 /* GULUserDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,6 +230,14 @@
 				BBD0D90025F37D3000B1CE68 /* GULUtility.swift */,
 			);
 			path = Uility;
+			sourceTree = "<group>";
+		};
+		BBD0D92225F3B39B00B1CE68 /* Esxtension */ = {
+			isa = PBXGroup;
+			children = (
+				BBD0D92325F3B3AF00B1CE68 /* UITableViewCell+GUL.swift */,
+			);
+			path = Esxtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,10 +416,12 @@
 			files = (
 				BBD0D87E25F35EED00B1CE68 /* GULUsersListViewModel.swift in Sources */,
 				BBD0D82325F3572100B1CE68 /* ViewController.swift in Sources */,
+				BBD0D93825F3C66D00B1CE68 /* GULUserDetailViewController.swift in Sources */,
 				BBD0D81F25F3572100B1CE68 /* AppDelegate.swift in Sources */,
 				BBD0D87F25F35EED00B1CE68 /* GULUsersListViewController.swift in Sources */,
 				BBD0D82125F3572100B1CE68 /* SceneDelegate.swift in Sources */,
 				BBD0D88725F3627400B1CE68 /* GULService.swift in Sources */,
+				BBD0D92425F3B3AF00B1CE68 /* UITableViewCell+GUL.swift in Sources */,
 				BBD0D88025F35EED00B1CE68 /* GULUsersListModel.swift in Sources */,
 				BBD0D88125F35EED00B1CE68 /* GULUsersListCell.swift in Sources */,
 				BBD0D90125F37D3100B1CE68 /* GULUtility.swift in Sources */,
