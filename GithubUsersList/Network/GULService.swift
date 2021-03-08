@@ -8,10 +8,10 @@
 import Foundation
 import Moya
 
+
 enum GULService {
     case usersList(query: String, page: Int)
 }
-
 
 extension GULService: TargetType {
     var baseURL: URL {
