@@ -14,9 +14,6 @@ protocol GULViewModelProtocol {
     associatedtype Input
     associatedtype Output
     
-//    var input: Input { get }
-//    var output: Output { get }
-    
     func transform(input: Input) -> Output
 }
 
@@ -35,78 +32,76 @@ class GULUsersListViewModel: GULViewModelProtocol {
     
     typealias Output = GULUsersListViewModel.GULUsersListOutput
     
-    let provider = MoyaProvider<GULService>()
+    private lazy var provider = GULNetwork()
     
-    private let disposeBag = DisposeBag()
+    private lazy var disposeBag : DisposeBag = DisposeBag()
     
-    var searchText: String = ""
     var currentPage: Int = 0
     var usersList = BehaviorRelay(value: GULUsersListModel())
     
-    var output: Output?
-    
     struct GULUsersListInput {
-        
+        let search: BehaviorRelay<String>
+        let headerRefresh: PublishRelay<Void>
+        let footerRefresh: PublishRelay<Void>
     }
     
     struct GULUsersListOutput {
         let usersItems: BehaviorRelay<[GULUserItemViewModel]>
-        let network: PublishSubject<Bool>
         let refreshState: BehaviorRelay<GULRefreshState>
-        let search: BehaviorRelay<String>
     }
-    
-    /*
-     1.fetch users list
-     2.refresh action
-     3.search action
-     4.keyboard action
-     */
     
     @discardableResult
     func transform(input: Input) -> Output {
         let elements = BehaviorRelay<[GULUserItemViewModel]>(value: [])
-        let network = PublishSubject<Bool>()
         let refreshState = BehaviorRelay<GULRefreshState>(value: .none)
-        network.subscribe(onNext: { [weak self] (isReload) in
-            guard let tempPage = self?.currentPage else {
-                return
+        
+        input.headerRefresh.flatMapLatest { [weak self] (Void) -> Observable<GULUsersListModel> in
+            guard let self = self else {
+                return Observable.just(GULUsersListModel())
             }
-            let page = isReload ? 1 : tempPage+1
-            self?.provider.rx.request(.usersList(query: self?.searchText.isEmpty == false ? self!.searchText : "swift", page: page))
-                .asObservable()
-                .map(GULUsersListModel.self)
-                .subscribe({ (event) in
-                    switch event {
-                    case let .next(model):
-                        guard let list = model.items else {
-                            return
-                        }
-                        var tempList = list.compactMap({ GULUserItemViewModel(item: $0) })
-                        if !isReload {
-                            tempList = elements.value+tempList
-                        }
-                        elements.accept(tempList)
-                    case let .error(error):
-                        break
-                    case .completed:
-                        refreshState.accept(isReload ? .endHeaderRefresh : .endFooterRefresh)
-                        self?.currentPage = page
-                    }
-                })
+            self.currentPage = 1
+            return self.provider.usersList(query: input.search.value, page: self.currentPage)
+                    .asObservable()
+        }.subscribe { (event) in
+            switch event {
+            case let .next(model):
+                guard let list = model.items else {
+                    return
+                }
+                let newList = list.compactMap({ GULUserItemViewModel(item: $0) })
+                elements.accept(newList)
+                refreshState.accept(.endHeaderRefresh)
+            default:
+                refreshState.accept(.endHeaderRefresh)
+            }
+        }.disposed(by: disposeBag)
+        
+        input.footerRefresh.flatMapLatest { [weak self] (Void) -> Observable<GULUsersListModel> in
+            guard let self = self else {
+                return Observable.just(GULUsersListModel())
+            }
+            self.currentPage += 1
+            return self.provider.usersList(query: input.search.value, page: self.currentPage)
+                    .asObservable()
+        }.subscribe { (event) in
+            switch event {
+            case let .next(model):
+                guard let list = model.items else {
+                    return
+                }
+                let newList = elements.value + list.compactMap({ GULUserItemViewModel(item: $0) })
+                elements.accept(newList)
+                refreshState.accept(.endFooterRefresh)
+            default:
+                refreshState.accept(.endFooterRefresh)
+            }
+        }.disposed(by: disposeBag)
+        
+        input.search.subscribe(onNext: { (searchStr) in
+            input.headerRefresh.accept(())
         }).disposed(by: disposeBag)
         
-        let search = BehaviorRelay<String>(value: "")
-        search.subscribe(onNext: { [weak self] (searchStr) in
-            self?.searchText = searchStr
-            network.onNext(true)
-        }).disposed(by: disposeBag)
-        
-        let op = GULUsersListOutput(usersItems: elements,
-                                    network: network,
-                                    refreshState: refreshState,
-                                    search: search)
-        output = op
-        return op
+        return GULUsersListOutput(usersItems: elements,
+                                    refreshState: refreshState)
     }
 }

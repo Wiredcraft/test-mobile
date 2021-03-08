@@ -13,29 +13,33 @@ import MJRefresh
 
 class GULUsersListViewController: UIViewController {
     
-    private let disposeBag = DisposeBag()
+    private lazy var disposeBag: DisposeBag = DisposeBag()
     
-    private lazy var tableView : UITableView = {
+    private lazy var tableView: UITableView = {
         let tv = UITableView(frame: CGRect.zero, style: .plain)
         tv.register(GULUsersListCell.self, forCellReuseIdentifier: GULUsersListCell.reuseIdentifier())
         return tv
     }()
     
-    private lazy var searchBar : UISearchBar = {
+    private lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
         return sb
     }()
     
-    private lazy var viewModel : GULUsersListViewModel = {
+    private lazy var viewModel: GULUsersListViewModel = {
         return GULUsersListViewModel()
     }()
+    
+    private lazy var searchBehavior: BehaviorRelay<String> = BehaviorRelay<String>(value: "swift")
+    private lazy var headerTrigger: PublishRelay<Void> = PublishRelay<Void>()
+    private lazy var footerTrigger: PublishRelay<Void> = PublishRelay<Void>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         bindUI()
         bindViewModel()
-        viewModel.output?.network.onNext(true)
+        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,53 +71,65 @@ class GULUsersListViewController: UIViewController {
             }
         }
         
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
-            self?.viewModel.output?.network.onNext(true)
-        })
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: loadData)
         
-        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: { [weak self] in
-            self?.viewModel.output?.network.onNext(false)
-        })
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: loadMoreData)
     }
     
     private func bindUI() {
         searchBar.rx.text.orEmpty
             .changed
             .throttle(1.0, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] (inputStr) in
-                self?.viewModel.output?.search.accept(inputStr)
-            }).disposed(by: disposeBag)
+            .subscribe(onNext: searchBehavior.accept)
+            .disposed(by: disposeBag)
         
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
-        tableView.rx.modelSelected(GULUserItemViewModel.self).asDriver().drive { [weak self] (cellViewModel) in
-            guard let url = cellViewModel.htmlUrl.value else {
-                return
-            }
-            let detailVC = GULUserDetailViewController(url: url)
-            self?.present(detailVC, animated: true, completion: nil)
-        }.disposed(by: disposeBag)
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(GULUserItemViewModel.self)
+            .asDriver()
+            .drive { [weak self] (cellViewModel) in
+                guard let url = cellViewModel.htmlUrl.value else {
+                    return
+                }
+                let detailVC = GULUserDetailViewController(url: url)
+                self?.present(detailVC, animated: true, completion: nil)
+            }.disposed(by: disposeBag)
     }
     
     private func bindViewModel() {
-        let input = GULUsersListViewModel.GULUsersListInput()
-        viewModel.transform(input: input)
+        let input = GULUsersListViewModel.GULUsersListInput(search: searchBehavior,
+                                                            headerRefresh: headerTrigger,
+                                                            footerRefresh: footerTrigger)
+        let output = viewModel.transform(input: input)
         
-        viewModel.output?.usersItems.bind(to: tableView.rx.items(cellIdentifier: GULUsersListCell.reuseIdentifier(), cellType: GULUsersListCell.self)){row, post, cell in
-            cell.bind(viewModel: post)
-        }.disposed(by: disposeBag)
+        output.usersItems
+            .bind(to: tableView.rx.items(cellIdentifier: GULUsersListCell.reuseIdentifier(), cellType: GULUsersListCell.self)){row, post, cell in
+                cell.bind(viewModel: post)
+            }.disposed(by: disposeBag)
         
-        viewModel.output?.refreshState.subscribe(onNext: { [weak self] (state) in
-            switch state {
-            case .endFooterRefresh:
-                self?.tableView.mj_footer?.endRefreshing()
-            case .endHeaderRefresh:
-                self?.tableView.mj_header?.endRefreshing()
-            default:
-                break
-            }
-        }).disposed(by: disposeBag)
+        output.refreshState
+            .subscribe(onNext: { [weak self] (state) in
+                switch state {
+                case .endFooterRefresh:
+                    self?.tableView.mj_footer?.endRefreshing()
+                case .endHeaderRefresh:
+                    self?.tableView.mj_header?.endRefreshing()
+                default:
+                    break
+                }
+            }).disposed(by: disposeBag)
+    }
+}
+
+extension GULUsersListViewController {
+    private func loadData() {
+        headerTrigger.accept(())
     }
     
+    private func loadMoreData() {
+        footerTrigger.accept(())
+    }
 }
 
 extension GULUsersListViewController: UITableViewDelegate {
@@ -121,3 +137,4 @@ extension GULUsersListViewController: UITableViewDelegate {
         return 80.0
     }
 }
+

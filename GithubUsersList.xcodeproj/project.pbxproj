@@ -25,6 +25,7 @@
 		BBD0D92425F3B3AF00B1CE68 /* UITableViewCell+GUL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D92325F3B3AF00B1CE68 /* UITableViewCell+GUL.swift */; };
 		BBD0D93825F3C66D00B1CE68 /* GULUserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D93725F3C66D00B1CE68 /* GULUserDetailViewController.swift */; };
 		BBD0D96125F4F8B000B1CE68 /* GULUserItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D96025F4F8B000B1CE68 /* GULUserItemViewModel.swift */; };
+		BBD0D96D25F6886000B1CE68 /* GULApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D96C25F6886000B1CE68 /* GULApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		BBD0D92325F3B3AF00B1CE68 /* UITableViewCell+GUL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+GUL.swift"; sourceTree = "<group>"; };
 		BBD0D93725F3C66D00B1CE68 /* GULUserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULUserDetailViewController.swift; sourceTree = "<group>"; };
 		BBD0D96025F4F8B000B1CE68 /* GULUserItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULUserItemViewModel.swift; sourceTree = "<group>"; };
+		BBD0D96C25F6886000B1CE68 /* GULApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GULApi.swift; sourceTree = "<group>"; };
 		EC3597A10CECE8B8C37EBFCC /* Pods_GithubUsersList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubUsersList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -222,6 +224,7 @@
 		BBD0D88525F3626700B1CE68 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				BBD0D96C25F6886000B1CE68 /* GULApi.swift */,
 				BBD0D88625F3627400B1CE68 /* GULService.swift */,
 			);
 			path = Network;
@@ -422,6 +425,7 @@
 				BBD0D93825F3C66D00B1CE68 /* GULUserDetailViewController.swift in Sources */,
 				BBD0D81F25F3572100B1CE68 /* AppDelegate.swift in Sources */,
 				BBD0D87F25F35EED00B1CE68 /* GULUsersListViewController.swift in Sources */,
+				BBD0D96D25F6886000B1CE68 /* GULApi.swift in Sources */,
 				BBD0D82125F3572100B1CE68 /* SceneDelegate.swift in Sources */,
 				BBD0D88725F3627400B1CE68 /* GULService.swift in Sources */,
 				BBD0D92425F3B3AF00B1CE68 /* UITableViewCell+GUL.swift in Sources */,

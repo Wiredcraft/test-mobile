@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 class GULUsersListCell: UITableViewCell {
-    private let disposeBag = DisposeBag()
+    private lazy var disposeBag = DisposeBag()
     
     private lazy var icon : UIImageView = {
         let iv = UIImageView()
