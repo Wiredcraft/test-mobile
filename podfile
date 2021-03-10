@@ -9,4 +9,9 @@ pod 'Moya/RxSwift'
 pod 'MJRefresh'
 pod 'RxCocoa'
 pod 'Kingfisher'
+
+    target 'GithubUsersListTests' do
+        inherit! :search_paths
+        pod 'RxBlocking'
+    end
 end
