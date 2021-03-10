@@ -10,10 +10,13 @@ import Moya
 import RxSwift
 import RxRelay
 
+
+// define viewmodel interface
 protocol GULViewModelProtocol {
-    associatedtype Input
-    associatedtype Output
+    associatedtype Input // inpout object type
+    associatedtype Output // output object type
     
+    // input transform to output
     func transform(input: Input) -> Output
 }
 
@@ -46,8 +49,8 @@ class GULUsersListViewModel: GULViewModelProtocol {
     }
     
     struct GULUsersListOutput {
-        let usersItems: BehaviorRelay<[GULUserItemViewModel]>
-        let refreshState: BehaviorRelay<GULRefreshState>
+        let usersItems: BehaviorRelay<[GULUserItemViewModel]> // cell viewmdoel
+        let refreshState: BehaviorRelay<GULRefreshState> // control of header refresh and footer refresh
     }
     
     @discardableResult
@@ -55,6 +58,8 @@ class GULUsersListViewModel: GULViewModelProtocol {
         let elements = BehaviorRelay<[GULUserItemViewModel]>(value: [])
         let refreshState = BehaviorRelay<GULRefreshState>(value: .none)
         
+        // pull down
+        // tansform headerRefresh to usersItems
         input.headerRefresh.flatMapLatest { [weak self] (Void) -> Observable<GULUsersListModel> in
             guard let self = self else {
                 return Observable.just(GULUsersListModel())
@@ -76,6 +81,8 @@ class GULUsersListViewModel: GULViewModelProtocol {
             }
         }.disposed(by: disposeBag)
         
+        // pull up
+        // tansform footerRefresh to usersItems
         input.footerRefresh.flatMapLatest { [weak self] (Void) -> Observable<GULUsersListModel> in
             guard let self = self else {
                 return Observable.just(GULUsersListModel())
@@ -97,6 +104,7 @@ class GULUsersListViewModel: GULViewModelProtocol {
             }
         }.disposed(by: disposeBag)
         
+        // transfor search to usersItems by headerRefresh
         input.search.subscribe(onNext: { (searchStr) in
             input.headerRefresh.accept(())
         }).disposed(by: disposeBag)

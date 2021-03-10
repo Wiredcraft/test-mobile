@@ -12,7 +12,7 @@ import RxSwift
 import MJRefresh
 
 class GULUsersListViewController: UIViewController {
-    
+    //MARK: - property
     private lazy var disposeBag: DisposeBag = DisposeBag()
     
     private lazy var tableView: UITableView = {
@@ -34,6 +34,7 @@ class GULUsersListViewController: UIViewController {
     private lazy var headerTrigger: PublishRelay<Void> = PublishRelay<Void>()
     private lazy var footerTrigger: PublishRelay<Void> = PublishRelay<Void>()
 
+    //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -50,6 +51,7 @@ class GULUsersListViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
+    //MARK: - UI
     private func setup() {
         navigationController?.navigationBar.addSubview(searchBar)
         searchBar.snp.makeConstraints { (make) in
@@ -76,6 +78,7 @@ class GULUsersListViewController: UIViewController {
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: loadMoreData)
     }
     
+    //MARK: - bind
     private func bindUI() {
         searchBar.rx.text.orEmpty
             .changed
@@ -103,11 +106,13 @@ class GULUsersListViewController: UIViewController {
                                                             footerRefresh: footerTrigger)
         let output = viewModel.transform(input: input)
         
+        // usersItems bind to tableview for cell rendering
         output.usersItems
             .bind(to: tableView.rx.items(cellIdentifier: GULUsersListCell.reuseIdentifier(), cellType: GULUsersListCell.self)){row, post, cell in
                 cell.bind(viewModel: post)
             }.disposed(by: disposeBag)
         
+        // observe the refreshState for change header or footer state
         output.refreshState
             .subscribe(onNext: { [weak self] (state) in
                 switch state {
@@ -122,6 +127,8 @@ class GULUsersListViewController: UIViewController {
     }
 }
 
+
+//MAKR: - load data
 extension GULUsersListViewController {
     private func loadData() {
         headerTrigger.accept(())
@@ -132,12 +139,14 @@ extension GULUsersListViewController {
     }
 }
 
+//MARK: - UITableViewDelegate
 extension GULUsersListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // hide the keyboard when begin scroll
         searchBar.endEditing(true)
     }
 
