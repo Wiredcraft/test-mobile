@@ -2,4 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fly.core">
 
+    <application>
+        <activity android:name=".webview.WebActivity"/>
+    </application>
 </manifest>

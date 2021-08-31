@@ -14,11 +14,46 @@
         <com.fly.core.widget.StatusBarView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <TextView
-            android:text="hello word"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/shape_f8f8f8_r18"
+            android:layout_width="match_parent"
+            android:layout_height="36dp">
+            <ImageView
+                android:src="@drawable/ic_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <EditText
+                android:id="@+id/et_word"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入感兴趣的内容"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:imeOptions="actionSearch"
+                android:background="@color/transparent"
+                android:textCursorDrawable="@drawable/cursor_edit"
+                android:layout_marginStart="10dp"
+                android:textColor="#1D1F29"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_refresh"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:recyclerview_layoutManager="@{owner.layoutManager}"
+                android:recyclerview_adapter="@{owner.adapter}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
     </LinearLayout>
 </layout>
