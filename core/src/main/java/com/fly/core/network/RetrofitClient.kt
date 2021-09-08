@@ -14,21 +14,26 @@ import java.util.concurrent.TimeUnit
  */
 
 object RetrofitClient {
-    val instance: Retrofit
-        @Synchronized get() {
-            return Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
-                .client(
-                    OkHttpClient.Builder()
-                        .connectTimeout(15, TimeUnit.SECONDS)
-                        .readTimeout(20, TimeUnit.SECONDS)
-                        .writeTimeout(20, TimeUnit.SECONDS)
-                        .retryOnConnectionFailure(true)
-                        .addInterceptor(LogInterceptor())
-                        .build()
-                )
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(Gson()))
-                .build()
-        }
+    private val retrofit: Retrofit
+
+    init {
+        val okHttpClient = OkHttpClient.Builder()
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(20, TimeUnit.SECONDS)
+            .writeTimeout(20, TimeUnit.SECONDS)
+            .retryOnConnectionFailure(true)
+            .addInterceptor(LogInterceptor())
+            .build()
+
+        retrofit = Retrofit.Builder()
+            .baseUrl("https://api.github.com/")
+            .client(okHttpClient)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(Gson()))
+            .build()
+    }
+
+    fun <T> create(service: Class<T>): T {
+        return retrofit.create(service)
+    }
 }
