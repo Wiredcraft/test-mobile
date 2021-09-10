@@ -1,12 +1,10 @@
-package com.andzhv.githubusers
+package com.andzhv.githubusers.ui
 
 import android.os.Bundle
-import androidx.annotation.LayoutRes
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewbinding.ViewBinding
-import com.adgvcxz.AFViewModel
-import com.adgvcxz.IModel
-import io.reactivex.rxjava3.disposables.CompositeDisposable
+import com.andzhv.githubusers.R
+import io.reactivex.rxjava3.core.Observable
 
 /**
  * Created by zhaowei on 2021/9/10.
@@ -14,9 +12,12 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Observable.empty<Int>().toList().subscribe { t1, t2 ->
+            Log.e("zhaow", "t1  $t1")
+            Log.e("zhaow", "t2  $t2")
+        }
     }
 }
