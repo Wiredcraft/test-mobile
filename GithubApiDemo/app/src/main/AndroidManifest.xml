@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubApiDemo">
         <activity
+            android:name=".UserDetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".UserListActivity"
             android:exported="true">
             <intent-filter>

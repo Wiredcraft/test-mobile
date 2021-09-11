@@ -16,9 +16,11 @@ data class UserWrapper(
 @Keep
 data class User(
     @SerializedName("avatar_url")
-    val userUrl: String? = "",
+    val avatarUrl: String? = "",
     @SerializedName("login")
     val userName: String? = "",
     @SerializedName("score")
-    val userScore: String? = ""
+    val userScore: String? = "",
+    @SerializedName("html_url")
+    val mainPage: String?
 )
