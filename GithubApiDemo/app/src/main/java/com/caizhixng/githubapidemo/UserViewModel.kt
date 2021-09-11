@@ -12,6 +12,8 @@ import kotlinx.coroutines.launch
  */
 class UserViewModel : ViewModel() {
 
+    val page = Page(keyWord = SharedPreferencesManager.keyWord, page = 1, perPage = 30)
+
     private val _userListResponse = MutableStateFlow(Resource.success(emptyList<User>()))
     val userListResponse: StateFlow<Resource<List<User>>> = _userListResponse
 
@@ -20,12 +22,15 @@ class UserViewModel : ViewModel() {
             _userListResponse.value = Resource.loading(emptyList())
             try {
                 val res =
-                    Net.getService().searchUsers(perPage = 30, page = 1, keyWord = "caizhixing")
-                if (res.totalCount > 0) {
-                    _userListResponse.value = Resource.success(res.userList)
-                } else {
-                    _userListResponse.value = Resource.error("query is Empty", res.userList)
-                }
+                    Net.getService().searchUsers(
+                        perPage = page.perPage,
+                        page = page.page,
+                        keyWord = page.keyWord
+                    )
+                // update keyWord for next enter the app show search
+                // maybe can save net data to local database
+                SharedPreferencesManager.keyWord = page.keyWord
+                _userListResponse.value = Resource.success(res.userList)
             } catch (e: Exception) {
                 _userListResponse.value =
                     Resource.error("error ${e.printStackTrace()}", emptyList())

@@ -34,7 +34,9 @@ class UserListActivity : BaseActivity() {
             userViewModel.searchUsers()
         }
         viewBinding.searchEt.doAfterTextChanged {
-
+            val keyWord = it.toString()
+            userViewModel.page.keyWord = keyWord
+            userViewModel.searchUsers()
         }
     }
 
