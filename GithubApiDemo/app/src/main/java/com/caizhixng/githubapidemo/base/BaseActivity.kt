@@ -1,4 +1,4 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -1,8 +1,12 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.function
 
 import androidx.core.widget.doAfterTextChanged
-import com.caizhixng.githubapidemo.ToastUtils.toast
+import com.caizhixng.githubapidemo.base.BaseActivity
+import com.caizhixng.githubapidemo.utils.ToastUtils.toast
 import com.caizhixng.githubapidemo.databinding.ActivityUserListBinding
+import com.caizhixng.githubapidemo.net.User
+import com.caizhixng.githubapidemo.utils.Status
+import com.caizhixng.githubapidemo.utils.launchAndCollectIn
 
 /**
  * czx 2021/9/11

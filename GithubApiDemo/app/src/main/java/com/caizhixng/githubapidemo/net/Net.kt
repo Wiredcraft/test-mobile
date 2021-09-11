@@ -1,5 +1,6 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.net
 
+import com.caizhixng.githubapidemo.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

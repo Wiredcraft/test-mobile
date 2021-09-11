@@ -1,4 +1,4 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.utils
 
 import android.content.Context
 import android.util.Log

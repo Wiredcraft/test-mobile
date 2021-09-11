@@ -1,7 +1,9 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.function
 
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.caizhixng.githubapidemo.R
+import com.caizhixng.githubapidemo.net.User
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder

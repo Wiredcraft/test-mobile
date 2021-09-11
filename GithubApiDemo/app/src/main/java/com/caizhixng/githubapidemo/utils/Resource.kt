@@ -1,4 +1,4 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.utils
 
 /**
  * Created by caizhixing on 2020/11/30

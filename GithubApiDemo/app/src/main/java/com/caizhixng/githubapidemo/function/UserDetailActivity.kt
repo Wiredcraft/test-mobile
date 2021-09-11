@@ -1,10 +1,11 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.function
 
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.caizhixng.githubapidemo.base.BaseActivity
 import com.caizhixng.githubapidemo.databinding.ActivityUserDetailBinding
 
 class UserDetailActivity : BaseActivity() {

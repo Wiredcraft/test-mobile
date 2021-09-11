@@ -1,4 +1,4 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.net
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName

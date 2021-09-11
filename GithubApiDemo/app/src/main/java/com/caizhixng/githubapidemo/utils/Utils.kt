@@ -1,4 +1,4 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.utils
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner

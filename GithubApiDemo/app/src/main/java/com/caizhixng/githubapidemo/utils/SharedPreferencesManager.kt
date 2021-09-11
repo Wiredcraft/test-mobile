@@ -1,6 +1,7 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.utils
 
 import android.content.Context
+import com.caizhixng.githubapidemo.base.App
 
 /**
  * Created by caizhixing on 2020/4/7

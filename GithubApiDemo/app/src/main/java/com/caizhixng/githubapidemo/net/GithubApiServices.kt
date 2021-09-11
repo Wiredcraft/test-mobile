@@ -1,4 +1,4 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.net
 
 import retrofit2.http.GET
 import retrofit2.http.Query

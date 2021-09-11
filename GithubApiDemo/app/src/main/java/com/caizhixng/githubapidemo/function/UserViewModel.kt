@@ -1,7 +1,12 @@
-package com.caizhixng.githubapidemo
+package com.caizhixng.githubapidemo.function
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.caizhixng.githubapidemo.utils.Resource
+import com.caizhixng.githubapidemo.net.User
+import com.caizhixng.githubapidemo.net.Net
+import com.caizhixng.githubapidemo.net.Page
+import com.caizhixng.githubapidemo.utils.SharedPreferencesManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
