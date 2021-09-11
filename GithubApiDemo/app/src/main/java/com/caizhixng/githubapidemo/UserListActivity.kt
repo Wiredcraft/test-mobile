@@ -18,6 +18,7 @@ class UserListActivity : BaseActivity() {
     }
     private val userViewModel: UserViewModel by lazy {
         UserViewModel().apply {
+            // 初始化调用
             searchUsers()
         }
     }
@@ -36,7 +37,6 @@ class UserListActivity : BaseActivity() {
         viewBinding.swipe.setOnRefreshListener {
             userViewModel.searchUsers()
         }
-        if(adapter::ini)
     }
 
     override fun registerObserver() {
