@@ -45,7 +45,6 @@ class UserListActivity : BaseActivity() {
             userViewModel.searchUsers()
         }
         adapter.loadMoreModule.setOnLoadMoreListener {
-            userViewModel.page.addPage()
             userViewModel.searchUsers()
         }
         adapter.setOnItemClickListener { adapter, _, position ->
