@@ -17,7 +17,9 @@ class UserListActivity : BaseActivity() {
         ActivityUserListBinding.inflate(layoutInflater)
     }
     private val userViewModel: UserViewModel by lazy {
-        UserViewModel()
+        UserViewModel().apply {
+            searchUsers()
+        }
     }
     private val adapter: UserAdapter by lazy {
         UserAdapter()
@@ -34,6 +36,7 @@ class UserListActivity : BaseActivity() {
         viewBinding.swipe.setOnRefreshListener {
             userViewModel.searchUsers()
         }
+        if(adapter::ini)
     }
 
     override fun registerObserver() {
