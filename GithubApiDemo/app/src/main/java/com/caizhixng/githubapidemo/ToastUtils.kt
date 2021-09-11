@@ -20,7 +20,7 @@ object ToastUtils {
         withContext(Dispatchers.Main) {
             toast?.cancel()
             toast = Toast.makeText(this@toastOnMainThread, message, Toast.LENGTH_SHORT)
-            toast!!.setGravity(Gravity.CENTER,0,0)
+            toast!!.setGravity(Gravity.CENTER, 0, 0)
             toast!!.show()
         }
     }
@@ -32,7 +32,7 @@ object ToastUtils {
         }
         try {
             toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
-            toast!!.setGravity(Gravity.CENTER,0,0)
+            toast!!.setGravity(Gravity.CENTER, 0, 0)
             toast!!.show()
         } catch (e: Exception) {
             Log.e("toast", Log.getStackTraceString(e))

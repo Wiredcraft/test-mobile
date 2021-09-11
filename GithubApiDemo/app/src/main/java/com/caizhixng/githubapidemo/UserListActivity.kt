@@ -46,9 +46,9 @@ class UserListActivity : BaseActivity() {
         }
         adapter.setOnItemClickListener { adapter, _, position ->
             val user = adapter.data[position] as User
-            if(!user.mainPage.isNullOrBlank()){
+            if (!user.mainPage.isNullOrBlank()) {
                 UserDetailActivity.start(this, user.mainPage)
-            }else{
+            } else {
                 toast("The user does not have a main page")
             }
         }

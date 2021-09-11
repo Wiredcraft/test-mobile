@@ -37,10 +37,10 @@ class UserViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 // retrofit2.HttpException: HTTP 403
-                if(e.toString().contains("403")){
+                if (e.toString().contains("403")) {
                     _userListResponse.value =
                         Resource.error("API rate limit exceeded try later", emptyList())
-                }else{
+                } else {
                     _userListResponse.value =
                         Resource.error("error ${e.printStackTrace()}", emptyList())
                 }
