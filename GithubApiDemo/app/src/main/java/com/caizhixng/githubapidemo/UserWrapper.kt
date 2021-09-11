@@ -6,17 +6,19 @@ import com.google.gson.annotations.SerializedName
 @Keep
 data class UserWrapper(
     @SerializedName("items")
-    val userList: List<User>,
+    val userList: List<User>?,
     @SerializedName("total_count")
-    val totalCount: Int
+    val totalCount: Int? = 0,
+    @SerializedName("message")
+    val message: String? = "",
 )
 
 @Keep
 data class User(
     @SerializedName("avatar_url")
-    val userUrl: String,
+    val userUrl: String? = "",
     @SerializedName("login")
-    val userName: String,
+    val userName: String? = "",
     @SerializedName("score")
-    val userScore: String
+    val userScore: String? = ""
 )

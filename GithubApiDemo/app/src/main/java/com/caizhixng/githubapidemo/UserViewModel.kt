@@ -27,13 +27,23 @@ class UserViewModel : ViewModel() {
                         page = page.page,
                         keyWord = page.keyWord
                     )
-                // update keyWord for next enter the app show search
-                // maybe can save net data to local database
-                SharedPreferencesManager.keyWord = page.keyWord
-                _userListResponse.value = Resource.success(res.userList)
+                if (!res.message.isNullOrBlank()) {
+                    _userListResponse.value = Resource.error(res.message, emptyList())
+                } else {
+                    // update keyWord for next enter the app show search
+                    // maybe can save net data to local database
+                    SharedPreferencesManager.keyWord = page.keyWord
+                    _userListResponse.value = Resource.success(res.userList)
+                }
             } catch (e: Exception) {
-                _userListResponse.value =
-                    Resource.error("error ${e.printStackTrace()}", emptyList())
+                // retrofit2.HttpException: HTTP 403
+                if(e.toString().contains("403")){
+                    _userListResponse.value =
+                        Resource.error("API rate limit exceeded try later", emptyList())
+                }else{
+                    _userListResponse.value =
+                        Resource.error("error ${e.printStackTrace()}", emptyList())
+                }
             }
         }
     }

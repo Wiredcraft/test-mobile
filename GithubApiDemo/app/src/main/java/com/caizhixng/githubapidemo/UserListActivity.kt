@@ -31,11 +31,17 @@ class UserListActivity : BaseActivity() {
     override fun registerListener() {
         super.registerListener()
         viewBinding.swipe.setOnRefreshListener {
+            // reset page and load form the first page with keyword
+            userViewModel.page.restPage()
             userViewModel.searchUsers()
         }
         viewBinding.searchEt.doAfterTextChanged {
             val keyWord = it.toString()
             userViewModel.page.keyWord = keyWord
+            userViewModel.searchUsers()
+        }
+        adapter.loadMoreModule.setOnLoadMoreListener {
+            userViewModel.page.addPage()
             userViewModel.searchUsers()
         }
     }
@@ -49,11 +55,25 @@ class UserListActivity : BaseActivity() {
                 }
                 Status.SUCCESS -> {
                     viewBinding.swipe.isRefreshing = false
-                    adapter.setList(it.data)
+                    if (userViewModel.page.isFirstPage()) {
+                        adapter.setList(it.data)
+                    } else {
+                        adapter.addData(it.data ?: emptyList())
+                    }
+                    if (it.data?.size ?: 0 < userViewModel.page.perPage) {
+                        adapter.loadMoreModule.loadMoreEnd()
+                    } else {
+                        adapter.loadMoreModule.loadMoreComplete()
+                    }
+                    userViewModel.page.addPage()
                 }
                 Status.ERROR -> {
+                    userViewModel.page.restPage()
+                    adapter.loadMoreModule.loadMoreComplete()
                     viewBinding.swipe.isRefreshing = false
-                    toast(it.message ?: "")
+                    it.message?.let { message ->
+                        toast(message)
+                    }
                 }
             }
         }
