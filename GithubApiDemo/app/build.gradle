@@ -57,5 +57,7 @@ dependencies {
     def lifecycleVersion = "2.4.0-alpha03"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
-//    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+    def glideVersion = "4.12.0"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
 }

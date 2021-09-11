@@ -9,6 +9,9 @@
         android:id="@+id/user_avatar"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:src="@drawable/ic_baseline_account_circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,34 +22,39 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="1"
+        android:textSize="14dp"
         app:layout_constraintEnd_toStartOf="@+id/user_score"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/user_avatar"
-        app:layout_constraintTop_toTopOf="@+id/user_avatar"
-        tools:text="this is large texablabla" />
+        app:layout_constraintTop_toTopOf="@+id/user_score"
+        tools:text="this is large texablablablablablablablablablablablablablablablablablablablablablabla" />
 
     <TextView
         android:id="@+id/user_score"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:maxLines="1"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/user_name"
-        app:layout_constraintTop_toTopOf="@+id/user_name"
-        tools:text="123123.43123123.43123123.43123123.43" />
+        app:layout_constraintTop_toTopOf="@+id/user_avatar"
+        tools:text="123123.4312312.343123123.343123123" />
 
     <TextView
         android:id="@+id/user_url"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="#0000ff"
+        android:textSize="14dp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/user_avatar"
+        app:layout_constraintEnd_toEndOf="@+id/user_score"
         app:layout_constraintStart_toEndOf="@+id/user_avatar"
-        tools:text="www.baidu.com" />
+        tools:text="www.baidu.comwww.baidu.comwww.baidu.comwww.baidu.comwww.baidu.comwww.baidu.com" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
