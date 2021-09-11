@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.caizhixng.githubapidemo.net.Net
 import com.caizhixng.githubapidemo.net.Page
 import com.caizhixng.githubapidemo.net.User
+import com.caizhixng.githubapidemo.utils.ConsumableValue
 import com.caizhixng.githubapidemo.utils.Resource
 import com.caizhixng.githubapidemo.utils.SharedPreferencesManager
 import kotlinx.coroutines.Dispatchers
@@ -19,12 +20,12 @@ class UserViewModel : ViewModel() {
 
     val page = Page(keyWord = SharedPreferencesManager.keyWord, page = 1, perPage = 30)
 
-    private val _userListResponse = MutableStateFlow(Resource.success(emptyList<User>()))
-    val userListResponse: StateFlow<Resource<List<User>>> = _userListResponse
+    private val _userListResponse = MutableStateFlow(ConsumableValue(Resource.success(emptyList<User>())))
+    val userListResponse: StateFlow<ConsumableValue<Resource<List<User>>>> = _userListResponse
 
     fun searchUsers() {
         viewModelScope.launch(Dispatchers.IO) {
-            _userListResponse.value = Resource.loading(emptyList())
+            _userListResponse.value = ConsumableValue(Resource.loading(emptyList()))
             try {
                 val res =
                     Net.getService().searchUsers(
@@ -33,23 +34,23 @@ class UserViewModel : ViewModel() {
                         keyWord = page.keyWord
                     )
                 if (!res.message.isNullOrBlank()) {
-                    _userListResponse.value = Resource.error(res.message, emptyList())
+                    _userListResponse.value = ConsumableValue(Resource.error(res.message, emptyList()))
                 } else {
                     // update keyWord for next enter the app show search
                     // maybe can save net data to local database
                     if (res.totalCount ?: 0 != 0) {
                         SharedPreferencesManager.keyWord = page.keyWord
                     }
-                    _userListResponse.value = Resource.success(res.userList)
+                    _userListResponse.value = ConsumableValue(Resource.success(res.userList))
                 }
             } catch (e: Exception) {
                 // retrofit2.HttpException: HTTP 403
                 if (e.toString().contains("403")) {
                     _userListResponse.value =
-                        Resource.error("API rate limit exceeded try later", emptyList())
+                        ConsumableValue(Resource.error("API rate limit exceeded try later", emptyList()))
                 } else {
                     _userListResponse.value =
-                        Resource.error("error ${e.printStackTrace()}", emptyList())
+                        ConsumableValue(Resource.error("error ${e.printStackTrace()}", emptyList()))
                 }
             }
         }

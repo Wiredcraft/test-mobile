@@ -2,10 +2,10 @@ package com.caizhixng.githubapidemo.function
 
 import androidx.core.widget.doAfterTextChanged
 import com.caizhixng.githubapidemo.base.BaseActivity
-import com.caizhixng.githubapidemo.utils.ToastUtils.toast
 import com.caizhixng.githubapidemo.databinding.ActivityUserListBinding
 import com.caizhixng.githubapidemo.net.User
 import com.caizhixng.githubapidemo.utils.Status
+import com.caizhixng.githubapidemo.utils.ToastUtils.toast
 import com.caizhixng.githubapidemo.utils.launchAndCollectIn
 
 /**
@@ -61,30 +61,32 @@ class UserListActivity : BaseActivity() {
     override fun registerObserver() {
         super.registerObserver()
         userViewModel.userListResponse.launchAndCollectIn(this) {
-            when (it.status) {
-                Status.LOADING -> {
-                    viewBinding.swipe.isRefreshing = true
-                }
-                Status.SUCCESS -> {
-                    viewBinding.swipe.isRefreshing = false
-                    if (userViewModel.page.isFirstPage()) {
-                        adapter.setList(it.data)
-                    } else {
-                        adapter.addData(it.data ?: emptyList())
+            it.consume { res ->
+                when (res.status) {
+                    Status.LOADING -> {
+                        viewBinding.swipe.isRefreshing = true
                     }
-                    if (it.data?.size ?: 0 < userViewModel.page.perPage) {
-                        adapter.loadMoreModule.loadMoreEnd()
-                    } else {
+                    Status.SUCCESS -> {
+                        viewBinding.swipe.isRefreshing = false
+                        if (userViewModel.page.isFirstPage()) {
+                            adapter.setList(res.data)
+                        } else {
+                            adapter.addData(res.data ?: emptyList())
+                        }
+                        if (res.data?.size ?: 0 < userViewModel.page.perPage) {
+                            adapter.loadMoreModule.loadMoreEnd()
+                        } else {
+                            adapter.loadMoreModule.loadMoreComplete()
+                        }
+                        userViewModel.page.addPage()
+                    }
+                    Status.ERROR -> {
+                        viewBinding.swipe.isRefreshing = false
+                        userViewModel.page.restPage()
                         adapter.loadMoreModule.loadMoreComplete()
-                    }
-                    userViewModel.page.addPage()
-                }
-                Status.ERROR -> {
-                    userViewModel.page.restPage()
-                    adapter.loadMoreModule.loadMoreComplete()
-                    viewBinding.swipe.isRefreshing = false
-                    it.message?.let { message ->
-                        toast(message)
+                        res.message?.let { message ->
+                            toast(message)
+                        }
                     }
                 }
             }
