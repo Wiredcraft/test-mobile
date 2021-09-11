@@ -2,10 +2,10 @@ package com.caizhixng.githubapidemo.function
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.caizhixng.githubapidemo.utils.Resource
-import com.caizhixng.githubapidemo.net.User
 import com.caizhixng.githubapidemo.net.Net
 import com.caizhixng.githubapidemo.net.Page
+import com.caizhixng.githubapidemo.net.User
+import com.caizhixng.githubapidemo.utils.Resource
 import com.caizhixng.githubapidemo.utils.SharedPreferencesManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,7 +37,9 @@ class UserViewModel : ViewModel() {
                 } else {
                     // update keyWord for next enter the app show search
                     // maybe can save net data to local database
-                    SharedPreferencesManager.keyWord = page.keyWord
+                    if (res.totalCount ?: 0 != 0) {
+                        SharedPreferencesManager.keyWord = page.keyWord
+                    }
                     _userListResponse.value = Resource.success(res.userList)
                 }
             } catch (e: Exception) {
