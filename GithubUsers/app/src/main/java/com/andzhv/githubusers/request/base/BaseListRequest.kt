@@ -1,21 +1,20 @@
 package com.andzhv.githubusers.request.base
 
-import android.widget.Toast
 import com.andzhv.githubusers.Config
-import com.andzhv.githubusers.GithubApplication
 import com.andzhv.githubusers.request.cache.Cache
-import com.andzhv.githubusers.utils.httpScheduler
+import com.andzhv.githubusers.utils.ex.httpScheduler
+import com.andzhv.githubusers.utils.ex.showFailedToast
 import io.reactivex.rxjava3.core.Observable
 
 /**
  * Created by zhaowei on 2021/9/11.
  */
-abstract class BaseListRequest<T : Any, M> : Request<List<T>> {
+abstract class BaseListRequest<T : Any> : Request<List<T>> {
 
     /**
      * Paging request ID
      */
-    protected var pageFlag: M? = null
+    protected var pageFlag: Any? = null
 
     /**
      * How to deal with errors
@@ -23,7 +22,7 @@ abstract class BaseListRequest<T : Any, M> : Request<List<T>> {
      * Not Catch: Receiver processing error
      * Catch Toast: An error occurred, Show hint, return Observable.empty()
      */
-    open var error: CatchErrorType = CatchErrorType.CATCH
+    var error: CatchErrorType = CatchErrorType.CATCH
 
     /**
      * List cache
@@ -45,17 +44,18 @@ abstract class BaseListRequest<T : Any, M> : Request<List<T>> {
     override fun request(): Observable<List<T>> {
         return actionAndWriteCache().httpScheduler().compose {
             when (error) {
-                CatchErrorType.CATCH -> it.onErrorResumeNext { Observable.empty() }
+                CatchErrorType.CATCH -> it.onErrorResumeWith(Observable.empty())
                 CatchErrorType.CATCH_TOAST -> {
                     it.doOnError { error ->
-                        Toast.makeText(
-                            GithubApplication.context,
-                            error.localizedMessage,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        showFailedToast(error.message ?: error.localizedMessage ?: "Network error")
+                    }.onErrorResumeWith(Observable.empty())
+                }
+                CatchErrorType.NOT_CATCH_SHOW -> {
+                    it.doOnError { error ->
+                        showFailedToast(error.message ?: error.localizedMessage ?: "Network error")
                     }
                 }
-                else -> it
+                CatchErrorType.NOT_CATCH -> it
             }
         }
     }
@@ -69,7 +69,7 @@ abstract class BaseListRequest<T : Any, M> : Request<List<T>> {
         }
     }
 
-    abstract fun getPageFlag(list: List<T>): M?
+    abstract fun getPageFlag(list: List<T>): Any?
 
     open fun writeCache(list: List<T>) {
         cache?.write(list)

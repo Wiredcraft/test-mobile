@@ -4,7 +4,8 @@ import com.adgvcxz.IModel
 import com.adgvcxz.IMutation
 import com.adgvcxz.recyclerviewmodel.*
 import com.andzhv.githubusers.Config
-import com.andzhv.githubusers.utils.just
+import com.andzhv.githubusers.utils.ex.just
+import io.reactivex.rxjava3.annotations.NonNull
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 
@@ -21,7 +22,37 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
         return emptyList()
     }
 
+    open fun requestCache(refresh: Boolean): Observable<IMutation> {
+        return if (refresh && items.isEmpty()) {
+            var position = 0
+            val headerSingle = if (refresh) {
+                header(false).doOnNext { position += 1 }.toList()
+            } else {
+                Single.just(emptyList())
+            }
+            val cacheSingle = Observable.fromIterable(getCache()).flatMap { item ->
+                transform(position, item).doOnNext { position += 1 }
+            }.toList()
+            return headerSingle.flatMapObservable { headerList ->
+                cacheSingle.flatMapObservable { (headerList + it).just() }
+            }.filter { it.isNotEmpty() }.map(::SetData).flatMap {
+                Observable.just(SetRefresh(true), it, RemoveLoadingItem)
+            }.onErrorResumeWith(Observable.empty())
+        } else {
+            Observable.empty()
+        }
+    }
+
     override fun request(refresh: Boolean): Observable<IMutation> {
+        return if (refresh && items.isEmpty()) {
+            //For the first request, first display the initialized data, then request the data
+            Observable.concat(requestCache(refresh), requestList(refresh))
+        } else {
+            requestList(refresh)
+        }
+    }
+
+    private fun requestList(refresh: Boolean): @NonNull Observable<IMutation> {
         var position = if (refresh) 0 else items.filterNot { it is LoadingItemViewModel }.count()
 
         //Header List

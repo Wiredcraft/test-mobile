@@ -14,7 +14,7 @@ interface SearchApiService {
     @GET("users")
     fun getSimpleUserList(
         @Query("page") page: Int,
-        @Query("q") keywords: String?,
+        @Query("q") keywords: String,
         @Query("per_page") size: Int = Config.LIST_LIMIT
-    ): Observable<BaseSearchResponse<List<SimpleUserBean>>>
+    ): Observable<BaseSearchResponse<SimpleUserBean>>
 }

@@ -1,4 +1,4 @@
-package com.andzhv.githubusers.utils
+package com.andzhv.githubusers.utils.ex
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable

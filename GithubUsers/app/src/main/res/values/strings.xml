@@ -1,3 +1,5 @@
 <resources>
 	<string name="app_name">GithubUsers</string>
+    <string name="search_in_user">Search in user</string>
+    <string name="load_failed_try_again">Load failed, try again!</string>
 </resources>

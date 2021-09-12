@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ProgressBar
+        android:id="@+id/itemLoadMoreProgress"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:indeterminateTint="#75B8D4" />
+
+    <TextView
+        android:id="@+id/itemLoadMoreRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/load_failed_try_again" />
+</LinearLayout>

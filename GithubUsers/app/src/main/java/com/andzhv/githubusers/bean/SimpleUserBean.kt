@@ -9,7 +9,7 @@ data class SimpleUserBean(
     @SerializedName("id") val id: Long,
     @SerializedName("login") val login: String,
     @SerializedName("avatar_url") val avatarUrl: String,
-    @SerializedName("score") val score: String,
+    @SerializedName("score") val score: Float,
     @SerializedName("html_url") val htmlUrl: String,
     @SerializedName("url") val url: String
 )

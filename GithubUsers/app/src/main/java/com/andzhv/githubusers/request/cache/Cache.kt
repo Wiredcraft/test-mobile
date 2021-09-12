@@ -18,12 +18,12 @@ open class Cache<M : Any>(
     }
 
     fun write(list: List<M>) {
-        CacheManager.writeToCache(key, unique, clazz)
+        CacheManager.writeToCache(key, unique, list)
     }
 }
 
 sealed class SimpleUserCache(unique: String) :
     Cache<SimpleUserBean>("SimpleUserBean", unique, SimpleUserBean::class.java) {
-    class List : SimpleUserCache("List")
+    class DefaultList : SimpleUserCache("List")
 }
 
