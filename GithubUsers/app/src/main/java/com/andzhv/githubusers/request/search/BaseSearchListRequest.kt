@@ -1,5 +1,7 @@
 package com.andzhv.githubusers.request.search
 
+import com.andzhv.githubusers.GithubApplication.Companion.context
+import com.andzhv.githubusers.R
 import com.andzhv.githubusers.bean.BaseSearchResponse
 import com.andzhv.githubusers.request.base.BaseListRequest
 import com.andzhv.githubusers.request.base.CatchErrorType
@@ -27,7 +29,6 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
     abstract fun searchRequest(page: Int, perPage: Int): Observable<BaseSearchResponse<T>>
 
     override fun action(): Observable<List<T>> {
-        //todo If the data is incomplete
         return searchRequest((pageFlag as? Int) ?: 1, perPage).flatMap {
             if (it.incompleteResults) {
                 //If the data is incomplete, try to request once again
@@ -41,7 +42,7 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
         }.flatMap { response ->
             if (incompleteResults && response.incompleteResults) {
                 // If there are continuous incomplete, return an error
-                Observable.error(Throwable("Network error"))
+                Observable.error(Throwable(context.getString(R.string.network_error)))
             } else {
                 incompleteResults = response.incompleteResults
                 //Remove duplicates bean
@@ -51,19 +52,22 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
                     response.items.just()
                 }
             }
-        }.doOnNext {
-            if (incompleteResults) {
-                incompleteResultList = it
-                currentResultSize = it.size
-            } else {
-                incompleteResultList = emptyList()
-                currentResultSize = perPage
-            }
+        }
+    }
+
+    override fun actionAndWriteCache(): Observable<List<T>> {
+        return super.actionAndWriteCache().doOnNext {
+            incompleteResultList = if (incompleteResults) it else emptyList()
+            currentResultSize = it.size
         }
     }
 
     override fun refresh() {
         pageFlag = 1
+    }
+
+    override fun isWriteCache(): Boolean {
+        return pageFlag == 1
     }
 
     override fun getPageFlag(list: List<T>): Any? {

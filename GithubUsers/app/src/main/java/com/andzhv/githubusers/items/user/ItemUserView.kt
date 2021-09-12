@@ -10,6 +10,7 @@ import com.andzhv.githubusers.bean.SimpleUserBean
 import com.andzhv.githubusers.databinding.ItemSimpleUserBinding
 import com.andzhv.githubusers.items.base.ItemBindingView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 /**
@@ -25,7 +26,7 @@ data class ItemUserModel(
 
 class ItemUserViewModel(bean: SimpleUserBean) : RecyclerItemViewModel<ItemUserModel>() {
     override val initModel: ItemUserModel = bean.run {
-        ItemUserModel(avatarUrl, login, score, url)
+        ItemUserModel(avatarUrl, login, score, htmlUrl)
     }
 }
 
@@ -46,9 +47,14 @@ class ItemUserView : ItemBindingView<ItemSimpleUserBinding, ItemUserViewModel> {
         viewModel.toBind(disposable) {
             add(
                 { avatar },
-                { Glide.with(binding.avatar).load(this).fitCenter().into(binding.avatar) }
+                {
+                    Glide.with(binding.avatar).load(this).transform(CircleCrop())
+                        .into(binding.avatar)
+                }
             )
+            add({ score }, { binding.score.text = "$this" })
             add({ username }, { binding.username.text = this })
+            add({ url }, { binding.url.text = this })
         }
     }
 

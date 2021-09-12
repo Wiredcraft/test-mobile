@@ -1,6 +1,8 @@
 package com.andzhv.githubusers.request.base
 
 import com.andzhv.githubusers.Config
+import com.andzhv.githubusers.GithubApplication
+import com.andzhv.githubusers.R
 import com.andzhv.githubusers.request.cache.Cache
 import com.andzhv.githubusers.utils.ex.httpScheduler
 import com.andzhv.githubusers.utils.ex.showFailedToast
@@ -47,12 +49,18 @@ abstract class BaseListRequest<T : Any> : Request<List<T>> {
                 CatchErrorType.CATCH -> it.onErrorResumeWith(Observable.empty())
                 CatchErrorType.CATCH_TOAST -> {
                     it.doOnError { error ->
-                        showFailedToast(error.message ?: error.localizedMessage ?: "Network error")
+                        showFailedToast(
+                            error.message ?: error.localizedMessage
+                            ?: GithubApplication.context.getString(R.string.network_error)
+                        )
                     }.onErrorResumeWith(Observable.empty())
                 }
                 CatchErrorType.NOT_CATCH_SHOW -> {
                     it.doOnError { error ->
-                        showFailedToast(error.message ?: error.localizedMessage ?: "Network error")
+                        showFailedToast(
+                            error.message ?: error.localizedMessage
+                            ?: GithubApplication.context.getString(R.string.network_error)
+                        )
                     }
                 }
                 CatchErrorType.NOT_CATCH -> it
@@ -62,12 +70,14 @@ abstract class BaseListRequest<T : Any> : Request<List<T>> {
 
     open fun actionAndWriteCache(): Observable<List<T>> {
         return action().doOnNext {
-            if (pageFlag == null) {
+            if (isWriteCache()) {
                 writeCache(it)
             }
             getPageFlag(it)?.run { pageFlag = this }
         }
     }
+
+    open fun isWriteCache() = pageFlag == null
 
     abstract fun getPageFlag(list: List<T>): Any?
 

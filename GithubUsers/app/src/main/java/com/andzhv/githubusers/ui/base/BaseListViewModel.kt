@@ -78,12 +78,16 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
                     UpdateData(headerList + list).just()
                 }
             }
-        }.onErrorResumeNext {
-            //When an error occurs
-            if (refresh) Observable.empty() else LoadFailure.just()
-        }
+        }.onErrorResumeWith(if (refresh) Observable.empty() else LoadFailure.just())
     }
 
+    /**
+     * Convert or delete events
+     * Event(LoadMore) don't need to be embittered, the item has been processed
+     */
+    override fun transformMutation(mutation: Observable<IMutation>): Observable<IMutation> {
+        return super.transformMutation(mutation).filter { it !is LoadFailure }
+    }
 
     /**
      * Send a request for List

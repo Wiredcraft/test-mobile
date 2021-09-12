@@ -1,8 +1,6 @@
 package com.andzhv.githubusers.ui
 
-import android.content.Context
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +20,7 @@ import com.andzhv.githubusers.utils.SetKeyboardShow
 import com.andzhv.githubusers.utils.SetKeywords
 import com.andzhv.githubusers.utils.ex.just
 import com.andzhv.githubusers.utils.ex.observeKeyboardChange
+import com.jakewharton.rxbinding4.recyclerview.scrollStateChanges
 import com.jakewharton.rxbinding4.view.clicks
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.core.Observable
@@ -33,16 +32,12 @@ import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseRequestListActivity<SimpleUserBean>() {
 
-    companion object {
-        const val KEYWORDS = "Android"
-    }
-
     override val recyclerView: RecyclerView by lazy { binding.recyclerView }
     private val binding: ActivityMainBinding by generateViewBinding { ActivityMainBinding.bind(it) }
 
     private val mainViewModel: MainViewModel = MainViewModel()
     override val layoutId: Int = R.layout.activity_main
-    private var request = SearchUserListRequest(KEYWORDS)
+    private var request = SearchUserListRequest("")
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
@@ -54,7 +49,7 @@ class MainActivity : BaseRequestListActivity<SimpleUserBean>() {
         mainViewModel.toBind(disposables) {
             add({ keyboardShowing }, { if (!this) binding.searchEditText.clearFocus() })
             add({ keywords }, {
-                request.keywoard = if (this.isEmpty()) KEYWORDS else this
+                request.keywoard = this
                 //Cancel the api request being processed and send a new request
                 viewModel.action.onNext(ForceRefresh)
             })
@@ -78,6 +73,11 @@ class MainActivity : BaseRequestListActivity<SimpleUserBean>() {
                 { SetKeywords(this) }
             )
             addAction({ clicks() }, binding.close, { binding.searchEditText.setText("") })
+            addAction(
+                { scrollStateChanges().filter { mainViewModel.currentModel().keyboardShowing && it == RecyclerView.SCROLL_STATE_DRAGGING } },
+                recyclerView,
+                { hideKeyboard() }
+            )
         }
     }
 
@@ -97,12 +97,9 @@ class MainActivity : BaseRequestListActivity<SimpleUserBean>() {
     }
 
 
-    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        if (ev?.action == MotionEvent.ACTION_DOWN && mainViewModel.currentModel().keyboardShowing) {
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
-        }
-        return super.dispatchTouchEvent(ev)
+    private fun hideKeyboard() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
     }
 
 }

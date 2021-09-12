@@ -1,4 +1,5 @@
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -9,6 +10,7 @@ import com.adgvcxz.recyclerviewmodel.*
 import com.andzhv.githubusers.items.base.ItemLoadingView
 import com.andzhv.githubusers.ui.base.BaseActivity
 import com.jakewharton.rxbinding4.swiperefreshlayout.refreshes
+import com.andzhv.githubusers.R
 
 /**
  * Created by zhaowei on 2021/9/10.
@@ -30,9 +32,11 @@ abstract class BaseListActivity<T : RecyclerViewModel> : BaseActivity<T, Recycle
         super.initBinding()
         setAdapter()
         refreshLayout?.run {
+            setColorSchemeResources(R.color.textPrimary)
+            setProgressBackgroundColorSchemeResource(R.color.refreshBackgroundColor)
             viewModel.model.map { it.isRefresh }
                 .filter { it != isRefreshing }
-                .subscribe { isRefreshing = it }
+                .subscribe { post { isRefreshing = it } }
                 .addTo(disposables)
 
             refreshes().map { Refresh }
@@ -43,10 +47,15 @@ abstract class BaseListActivity<T : RecyclerViewModel> : BaseActivity<T, Recycle
     }
 
     open fun setAdapter() {
-        val adapter = RecyclerAdapter(viewModel) {
+        val adapter = object : RecyclerAdapter(viewModel, {
             when (it) {
                 is LoadingItemViewModel -> ItemLoadingView()
                 else -> generateItemView(it)
+            }
+        }) {
+
+            override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+                super.onBindViewHolder(holder, position)
             }
         }
         recyclerView.adapter = adapter

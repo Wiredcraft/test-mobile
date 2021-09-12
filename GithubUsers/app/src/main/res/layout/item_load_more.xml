@@ -6,15 +6,16 @@
     android:orientation="horizontal">
 
     <ProgressBar
-        android:id="@+id/itemLoadMoreProgress"
+        android:id="@+id/progress"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:indeterminateTint="#75B8D4" />
+        android:indeterminateTint="?android:textColorPrimary" />
 
     <TextView
-        android:id="@+id/itemLoadMoreRetry"
+        android:id="@+id/retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="@string/load_failed_try_again" />
+        android:text="@string/load_failed_try_again"
+        android:textSize="@dimen/regular" />
 </LinearLayout>
