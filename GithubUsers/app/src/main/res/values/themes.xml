@@ -13,7 +13,6 @@
 		<!-- Status bar color. -->
 		<item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 		<!-- Customize your theme here. -->
-		<item name="android:background">@color/backgroundColor</item>
 		<item name="android:textColorPrimary">@color/textPrimary</item>
 		<item name="android:textColor">@color/textPrimary</item>
 		<item name="android:textColorHint">@color/textSecondary</item>

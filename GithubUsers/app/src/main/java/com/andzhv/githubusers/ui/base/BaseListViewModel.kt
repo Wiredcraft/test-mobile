@@ -1,5 +1,6 @@
 package com.andzhv.githubusers.ui.base
 
+import android.util.Log
 import com.adgvcxz.IModel
 import com.adgvcxz.IMutation
 import com.adgvcxz.recyclerviewmodel.*
@@ -18,12 +19,17 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
 
     val items: List<RecyclerItemViewModel<out IModel>> get() = currentModel().items
 
+    var showCacheOnlyFirstRequest = true
+
+    private var cacheShowed = false
+
     open fun getCache(): List<M> {
         return emptyList()
     }
 
     open fun requestCache(refresh: Boolean): Observable<IMutation> {
         return if (refresh && items.isEmpty()) {
+            cacheShowed = true
             var position = 0
             val headerSingle = if (refresh) {
                 header(false).doOnNext { position += 1 }.toList()
@@ -44,7 +50,7 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
     }
 
     override fun request(refresh: Boolean): Observable<IMutation> {
-        return if (refresh && items.isEmpty()) {
+        return if (!(showCacheOnlyFirstRequest && cacheShowed) && refresh && items.isEmpty()) {
             //For the first request, first display the initialized data, then request the data
             Observable.concat(requestCache(refresh), requestList(refresh))
         } else {

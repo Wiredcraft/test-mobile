@@ -35,7 +35,7 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
                 searchRequest((pageFlag as? Int) ?: 1, perPage).map { second ->
                     //Emitter the best result
                     if (!second.incompleteResults || second.items.size > it.items.size) second else it
-                }
+                }.onErrorResumeWith(it.just())
             } else {
                 it.just()
             }
@@ -71,6 +71,7 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
     }
 
     override fun getPageFlag(list: List<T>): Any? {
+        // if the result is incomplete, pageFlag don't change
         if (incompleteResults) {
             return pageFlag
         }

@@ -7,6 +7,6 @@ import com.google.gson.annotations.SerializedName
  */
 data class BaseSearchResponse<M>(
     @SerializedName("total_count") val totalCount: Int,
-    @SerializedName("incomplete_results") val incompleteResults: Boolean,
-    @SerializedName("items") val items: List<M>,
+    @SerializedName("incomplete_results") var incompleteResults: Boolean,
+    @SerializedName("items") var items: List<M>,
 )
