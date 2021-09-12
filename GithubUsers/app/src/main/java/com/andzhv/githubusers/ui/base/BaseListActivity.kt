@@ -1,5 +1,4 @@
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -7,10 +6,10 @@ import com.adgvcxz.IModel
 import com.adgvcxz.addTo
 import com.adgvcxz.bindTo
 import com.adgvcxz.recyclerviewmodel.*
+import com.andzhv.githubusers.R
 import com.andzhv.githubusers.items.base.ItemLoadingView
 import com.andzhv.githubusers.ui.base.BaseActivity
 import com.jakewharton.rxbinding4.swiperefreshlayout.refreshes
-import com.andzhv.githubusers.R
 
 /**
  * Created by zhaowei on 2021/9/10.
@@ -47,15 +46,10 @@ abstract class BaseListActivity<T : RecyclerViewModel> : BaseActivity<T, Recycle
     }
 
     open fun setAdapter() {
-        val adapter = object : RecyclerAdapter(viewModel, {
+        val adapter = RecyclerAdapter(viewModel) {
             when (it) {
                 is LoadingItemViewModel -> ItemLoadingView()
                 else -> generateItemView(it)
-            }
-        }) {
-
-            override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-                super.onBindViewHolder(holder, position)
             }
         }
         recyclerView.adapter = adapter

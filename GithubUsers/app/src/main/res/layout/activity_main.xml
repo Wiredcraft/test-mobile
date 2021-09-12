@@ -24,22 +24,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/search_bar_top_margin"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/search_bar_top_margin"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/search_bar_height"
             android:background="@color/searchBackgroundColor"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/searchImage"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/search_bar_height"
+                android:layout_height="@dimen/search_bar_height"
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
                 android:src="@mipmap/round_search_black_24"
@@ -57,8 +57,8 @@
 
             <ImageView
                 android:id="@+id/close"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/search_bar_height"
+                android:layout_height="@dimen/search_bar_height"
                 android:scaleType="centerInside"
                 android:src="@mipmap/round_close_black_24"
                 android:background="@android:color/transparent"

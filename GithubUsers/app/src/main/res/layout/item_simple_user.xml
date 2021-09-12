@@ -25,12 +25,12 @@
         android:fontFamily="sans-serif-medium"
         android:maxLines="1"
         android:textSize="@dimen/large"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toStartOf="@id/score"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/avatar"
-        app:layout_constraintTop_toTopOf="@id/avatar"
-        app:layout_constraintWidth="true" />
+        app:layout_constraintTop_toTopOf="@id/avatar" />
 
     <TextView
         android:id="@+id/score"

@@ -5,12 +5,11 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.adgvcxz.*
-import com.adgvcxz.recyclerviewmodel.ForceRefresh
-import com.adgvcxz.recyclerviewmodel.IView
-import com.adgvcxz.recyclerviewmodel.RecyclerItemViewModel
+import com.adgvcxz.recyclerviewmodel.*
 import com.andzhv.githubusers.R
 import com.andzhv.githubusers.bean.SimpleUserBean
 import com.andzhv.githubusers.databinding.ActivityMainBinding
+import com.andzhv.githubusers.items.user.ItemUserModel
 import com.andzhv.githubusers.items.user.ItemUserView
 import com.andzhv.githubusers.items.user.ItemUserViewModel
 import com.andzhv.githubusers.request.base.BaseListRequest
@@ -61,12 +60,12 @@ class MainActivity : BaseRequestListActivity<SimpleUserBean>() {
 
         mainViewModel.toEventBind(disposables) {
             add(
-                { textChanges().filter { it.toString().isEmpty() } },
+                { textChanges().filter { it.toString().trim().isEmpty() } },
                 binding.searchEditText,
                 { SetKeywords("") })
             add(
                 {
-                    textChanges().map { it.toString() }.debounce(300, TimeUnit.MILLISECONDS)
+                    textChanges().map { it.toString().trim() }.debounce(300, TimeUnit.MILLISECONDS)
                         .filter { it.isNotEmpty() }
                 },
                 binding.searchEditText,
@@ -79,6 +78,14 @@ class MainActivity : BaseRequestListActivity<SimpleUserBean>() {
                 { hideKeyboard() }
             )
         }
+    }
+
+    override fun initBinding(adapter: RecyclerAdapter) {
+        super.initBinding(adapter)
+        adapter.itemClicks().map { items[it].currentModel() }
+            .ofType(ItemUserModel::class.java)
+            .subscribe { WebActivity.start(this, it.url) }
+            .addTo(disposables)
     }
 
     override fun generateItemView(viewModel: RecyclerItemViewModel<out IModel>): IView<*, *> {

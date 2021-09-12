@@ -1,6 +1,9 @@
 package com.andzhv.githubusers.utils.ex
 
 import android.app.Activity
+import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.graphics.Rect
 import android.view.ViewTreeObserver
 import io.reactivex.rxjava3.core.Observable
@@ -33,3 +36,6 @@ fun Activity.observeKeyboardChange(): Observable<Boolean> {
         emitter.setCancellable { rootView.viewTreeObserver.removeOnGlobalLayoutListener(listener) }
     }
 }
+
+val Context.isDarkMode: Boolean
+    get() = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES

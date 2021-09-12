@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
+import androidx.annotation.DimenRes
 import androidx.core.view.NestedScrollingParent3
 import androidx.core.view.NestedScrollingParentHelper
 import androidx.core.view.ViewCompat
@@ -25,10 +26,19 @@ class SearchFrameLayout : FrameLayout, NestedScrollingParent3 {
     private lateinit var refreshLayout: SwipeRefreshLayout
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: View
-    private var searchBarHeight = 0
     private val parentHelper: NestedScrollingParentHelper = NestedScrollingParentHelper(this)
     private var isFling = false
     private var scrollAnimator: ValueAnimator? = null
+    private var searchBarHeight = 0
+        set(value) {
+            if (field != value) {
+                field = value
+                for (i in 0 until recyclerView.itemDecorationCount) {
+                    recyclerView.removeItemDecorationAt(0)
+                }
+                recyclerView.addItemDecoration(TopItemDecoration())
+            }
+        }
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
@@ -43,6 +53,9 @@ class SearchFrameLayout : FrameLayout, NestedScrollingParent3 {
         refreshLayout = findViewById(R.id.refreshLayout)
         recyclerView = findViewById(R.id.recyclerView)
         searchView = findViewById(R.id.searchView)
+        searchBarHeight =
+            getDimensionPx(R.dimen.search_bar_height) + getDimensionPx(R.dimen.search_bar_top_margin) * 2
+        recyclerView.overScrollMode = OVER_SCROLL_NEVER
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -60,11 +73,6 @@ class SearchFrameLayout : FrameLayout, NestedScrollingParent3 {
                 (searchView.layoutParams as LayoutParams).topMargin,
                 searchBarHeight + refreshLayout.progressCircleDiameter / 2
             )
-            for (i in 0 until recyclerView.itemDecorationCount) {
-                recyclerView.removeItemDecorationAt(0)
-            }
-            recyclerView.addItemDecoration(TopItemDecoration())
-            recyclerView.overScrollMode = OVER_SCROLL_NEVER
         }
     }
 
@@ -121,6 +129,8 @@ class SearchFrameLayout : FrameLayout, NestedScrollingParent3 {
         }
     }
 
+    private fun getDimensionPx(@DimenRes id: Int) = context.resources.getDimensionPixelSize(id)
+
     private fun startAnimation(isShow: Boolean) {
         if (scrollAnimator == null) {
             scrollAnimator = ValueAnimator().apply {
@@ -152,6 +162,5 @@ class SearchFrameLayout : FrameLayout, NestedScrollingParent3 {
             }
         }
     }
-
 
 }

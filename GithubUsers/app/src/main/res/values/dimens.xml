@@ -4,4 +4,6 @@
     <dimen name="regular">15sp</dimen>
     <dimen name="second">12sp</dimen>
     <dimen name="small">9sp</dimen>
+    <dimen name="search_bar_height">48dp</dimen>
+    <dimen name="search_bar_top_margin">8dp</dimen>
 </resources>
