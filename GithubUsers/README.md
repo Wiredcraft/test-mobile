@@ -29,3 +29,5 @@ Open User's homepage with a WebView
 - Clone this project and open it
 - Run `app` 
 
+## Unit Test
+I haven't used unit test before, so I don't know if it's correct.

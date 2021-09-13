@@ -1,6 +1,5 @@
 package com.andzhv.githubusers.ui.base
 
-import android.util.Log
 import com.adgvcxz.IModel
 import com.adgvcxz.IMutation
 import com.adgvcxz.recyclerviewmodel.*
@@ -19,9 +18,20 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
 
     val items: List<RecyclerItemViewModel<out IModel>> get() = currentModel().items
 
+    /**
+     * Show cache only the first time
+     */
     var showCacheOnlyFirstRequest = true
 
     private var cacheShowed = false
+
+    /**
+     * Detect duplicate data
+     */
+    var detectDuplicateData = false
+
+    private val duplicateSet = hashSetOf<M>()
+
 
     open fun getCache(): List<M> {
         return emptyList()
@@ -29,6 +39,7 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
 
     open fun requestCache(refresh: Boolean): Observable<IMutation> {
         return if (refresh && items.isEmpty()) {
+            if (refresh) duplicateSet.clear()
             cacheShowed = true
             var position = 0
             val headerSingle = if (refresh) {
@@ -36,9 +47,9 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
             } else {
                 Single.just(emptyList())
             }
-            val cacheSingle = Observable.fromIterable(getCache()).flatMap { item ->
-                transform(position, item).doOnNext { position += 1 }
-            }.toList()
+            val cacheSingle = Observable.fromIterable(checkDuplicateData(getCache()))
+                .flatMap { item -> transform(position, item).doOnNext { position += 1 } }
+                .toList()
             return headerSingle.flatMapObservable { headerList ->
                 cacheSingle.flatMapObservable { (headerList + it).just() }
             }.filter { it.isNotEmpty() }.map(::SetData).flatMap {
@@ -59,6 +70,7 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
     }
 
     private fun requestList(refresh: Boolean): @NonNull Observable<IMutation> {
+        if (refresh) duplicateSet.clear()
         var position = if (refresh) 0 else items.filterNot { it is LoadingItemViewModel }.count()
 
         //Header List
@@ -69,17 +81,22 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
         }
 
         //Requested list
+        var listSize = 0
         val listSingle = getList(refresh).concatMap {
-            Observable.fromIterable(it).flatMap { item ->
+            listSize = it.size
+            Observable.fromIterable(checkDuplicateData(it)).flatMap { item ->
                 transform(position, item).doOnNext { position += 1 }
             }
         }.toList()
 
         return headerSingle.flatMapObservable { headerList ->
             listSingle.flatMapObservable { list ->
-                if (list.size < listLimit()) {
+                if (listSize < listLimit()) {
                     //If the length of the List is less than limit, delete the last LoadingItem
-                    Observable.just(UpdateData(headerList + list), RemoveLoadingItem)
+                    Observable.just(
+                        UpdateData(headerList + list),
+                        RemoveLoadingItem
+                    )
                 } else {
                     UpdateData(headerList + list).just()
                 }
@@ -122,5 +139,12 @@ abstract class BaseListViewModel<M>(hasLoadMore: Boolean) : RecyclerViewModel() 
      */
     open fun listLimit(): Int {
         return Config.LIST_LIMIT
+    }
+
+    open fun checkDuplicateData(list: List<M>): List<M> {
+        if (detectDuplicateData) {
+            return list.filter { duplicateSet.add(it) }
+        }
+        return list
     }
 }

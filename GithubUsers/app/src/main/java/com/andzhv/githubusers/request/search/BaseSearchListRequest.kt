@@ -20,7 +20,7 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
      */
     private var incompleteResults: Boolean = false
     private var incompleteResultList = emptyList<T>()
-    private var currentResultSize = perPage
+    private var currentListLimit = perPage
 
     init {
         error = CatchErrorType.CATCH_TOAST
@@ -30,7 +30,14 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
 
     override fun action(): Observable<List<T>> {
         return searchRequest((pageFlag as? Int) ?: 1, perPage).flatMap {
-            if (it.incompleteResults) {
+            // If there are continuous incomplete, return an error
+            if (incompleteResults && it.incompleteResults) {
+                Observable.error(Throwable(context.getString(R.string.network_error)))
+            } else {
+                it.just()
+            }
+        }.flatMap {
+            if (it.incompleteResults && it.items.size < perPage) {
                 //If the data is incomplete, try to request once again
                 searchRequest((pageFlag as? Int) ?: 1, perPage).map { second ->
                     //Emitter the best result
@@ -40,17 +47,12 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
                 it.just()
             }
         }.flatMap { response ->
-            if (incompleteResults && response.incompleteResults) {
-                // If there are continuous incomplete, return an error
-                Observable.error(Throwable(context.getString(R.string.network_error)))
+            incompleteResults = response.incompleteResults && response.items.size < perPage
+            //Remove duplicates bean
+            if (incompleteResultList.isNotEmpty()) {
+                response.items.filterNot { incompleteResultList.contains(it) }.just()
             } else {
-                incompleteResults = response.incompleteResults
-                //Remove duplicates bean
-                if (incompleteResultList.isNotEmpty()) {
-                    response.items.filterNot { incompleteResultList.contains(it) }.just()
-                } else {
-                    response.items.just()
-                }
+                response.items.just()
             }
         }
     }
@@ -58,7 +60,7 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
     override fun actionAndWriteCache(): Observable<List<T>> {
         return super.actionAndWriteCache().doOnNext {
             incompleteResultList = if (incompleteResults) it else emptyList()
-            currentResultSize = it.size
+            currentListLimit = if (incompleteResults) it.size else perPage
         }
     }
 
@@ -83,7 +85,7 @@ abstract class BaseSearchListRequest<T : Any> : BaseListRequest<T>() {
     }
 
     override fun listLimit(): Int {
-        return currentResultSize
+        return currentListLimit
     }
 
 }

@@ -2,9 +2,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.adgvcxz.IModel
-import com.adgvcxz.addTo
-import com.adgvcxz.bindTo
+import com.adgvcxz.*
 import com.adgvcxz.recyclerviewmodel.*
 import com.andzhv.githubusers.R
 import com.andzhv.githubusers.items.base.ItemLoadingView
@@ -33,16 +31,22 @@ abstract class BaseListActivity<T : RecyclerViewModel> : BaseActivity<T, Recycle
         refreshLayout?.run {
             setColorSchemeResources(R.color.textPrimary)
             setProgressBackgroundColorSchemeResource(R.color.refreshBackgroundColor)
-            viewModel.model.map { it.isRefresh }
-                .filter { it != isRefreshing }
-                .subscribe { post { isRefreshing = it } }
-                .addTo(disposables)
-
-            refreshes().map { Refresh }
-                .bindTo(viewModel.action)
-                .addTo(disposables)
+            viewModel.toBind(disposables) {
+                add(
+                    { isRefresh },
+                    { post { isRefreshing = this } }) {
+                    filter { it != isRefreshing }
+                }
+            }
+            viewModel.toEventBind(disposables) {
+                add({ refreshes() }, this@run, { Refresh })
+            }
         }
-        viewModel.action.onNext(Refresh)
+        initRefresh()
+    }
+
+    open fun initRefresh() {
+        refreshLayout?.post { viewModel.action.onNext(Refresh) } ?: viewModel.action.onNext(Refresh)
     }
 
     open fun setAdapter() {

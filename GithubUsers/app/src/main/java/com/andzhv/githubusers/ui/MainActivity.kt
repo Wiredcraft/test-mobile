@@ -48,7 +48,7 @@ class MainActivity : BaseRequestListActivity<SimpleUserBean>() {
         mainViewModel.toBind(disposables) {
             add({ keyboardShowing }, { if (!this) binding.searchEditText.clearFocus() })
             add({ keywords }, {
-                request.keywoard = this
+                request.keyword = this
                 //Cancel the api request being processed and send a new request
                 viewModel.action.onNext(ForceRefresh)
             })
@@ -65,7 +65,7 @@ class MainActivity : BaseRequestListActivity<SimpleUserBean>() {
                 { SetKeywords("") })
             add(
                 {
-                    textChanges().map { it.toString().trim() }.debounce(300, TimeUnit.MILLISECONDS)
+                    textChanges().map { it.toString().trim() }.debounce(500, TimeUnit.MILLISECONDS)
                         .filter { it.isNotEmpty() }
                 },
                 binding.searchEditText,

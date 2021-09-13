@@ -19,6 +19,7 @@ abstract class BaseRequestListViewModel<M : Any>(
         } else if (request.error == CatchErrorType.CATCH_TOAST) {
             request.error = CatchErrorType.NOT_CATCH_SHOW
         }
+        detectDuplicateData = true
     }
 
     override fun getCache(): List<M> {

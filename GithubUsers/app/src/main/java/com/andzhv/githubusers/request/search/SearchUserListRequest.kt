@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.core.Observable
 /**
  * Created by zhaowei on 2021/9/11.
  */
-class SearchUserListRequest(var keywoard: String) : BaseSearchListRequest<SimpleUserBean>() {
+class SearchUserListRequest(var keyword: String) : BaseSearchListRequest<SimpleUserBean>() {
 
     companion object {
         const val KEYWORD = "Android"
@@ -18,39 +18,18 @@ class SearchUserListRequest(var keywoard: String) : BaseSearchListRequest<Simple
 
     override var cache: Cache<SimpleUserBean>? = SimpleUserCache.DefaultList()
 
-    private val userIdSet = mutableSetOf<Long>()
-
     override fun searchRequest(
         page: Int,
         perPage: Int
     ): Observable<BaseSearchResponse<SimpleUserBean>> {
         return searchApiService.getSimpleUserList(
             page,
-            if (keywoard.isEmpty()) KEYWORD else keywoard,
+            if (keyword.isEmpty()) KEYWORD else keyword,
             perPage
         )
     }
 
-    /**
-     * When the list is refreshing
-     */
-    override fun refresh() {
-        super.refresh()
-        userIdSet.clear()
-    }
-
-    override fun action(): Observable<List<SimpleUserBean>> {
-        return super.action().map { list ->
-            //The data returned by the server may be duplicated
-            list.filter {
-                val result = userIdSet.contains(it.id)
-                if (!result) userIdSet.add(it.id)
-                !result
-            }
-        }
-    }
-
     override fun isWriteCache(): Boolean {
-        return super.isWriteCache() && keywoard.isEmpty()
+        return super.isWriteCache() && keyword.isEmpty()
     }
 }
