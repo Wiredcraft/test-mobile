@@ -4,17 +4,39 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testmobile.databinding.ItemGithubUserBinding
 import com.example.testmobile.model.GithubUser
 
 class GithubUserAdapter(
-    private val homeViewModel: HomeViewModel,
     private val lifecycleOwner: LifecycleOwner,
     private val onClickCallback: (user: GithubUser?) -> Unit
 ) :
-    ListAdapter<GithubUser, GithubUserAdapter.UserItemViewHolder>(TaskDiffCallback()) {
+    RecyclerView.Adapter<GithubUserAdapter.UserItemViewHolder>() {
+
+    private val mData = mutableListOf<GithubUser>()
+
+    fun refreshData(data: List<GithubUser>?) {
+        val oldSize = mData.size
+        mData.clear()
+        notifyItemRangeRemoved(0, oldSize)
+        data?.let {
+            mData.addAll(data)
+        }
+        notifyItemRangeInserted(0, mData.size)
+    }
+
+    fun appendData(data: List<GithubUser>?) {
+        val positionStart = mData.size
+        data?.let {
+            mData.addAll(data)
+        }
+        notifyItemRangeInserted(positionStart, data?.size ?: 0)
+    }
+
+    override fun getItemCount(): Int {
+        return mData.size
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserItemViewHolder {
         return UserItemViewHolder(
@@ -27,7 +49,7 @@ class GithubUserAdapter(
     }
 
     override fun onBindViewHolder(holder: UserItemViewHolder, position: Int) {
-        holder.bind(homeViewModel, getItem(position))
+        holder.bind(mData[position])
     }
 
     inner class UserItemViewHolder(
@@ -35,7 +57,7 @@ class GithubUserAdapter(
         private val lifecycleOwner: LifecycleOwner
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(viewModel: HomeViewModel, item: GithubUser?) {
+        fun bind(item: GithubUser?) {
             binding.lifecycleOwner = lifecycleOwner
             binding.user = item
             binding.root.setOnClickListener {
