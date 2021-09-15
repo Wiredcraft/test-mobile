@@ -55,11 +55,4 @@ docs/_build/
 
 # PyBuilder
 target/
-GithubApiDemo/.idea/compiler.xml
-GithubApiDemo/.idea/gradle.xml
-GithubApiDemo/.idea/misc.xml
-GithubApiDemo/.idea/vcs.xml
-GithubApiDemo/gradle/wrapper/gradle-wrapper.jar
-GithubApiDemo/gradle/wrapper/gradle-wrapper.properties
-GithubApiDemo/gradlew
-GithubApiDemo/gradlew.bat
+.idea/vcs.xml
