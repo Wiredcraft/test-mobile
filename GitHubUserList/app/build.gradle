@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+apply from:'../public_config.gradle'
+
+
+android {
+    defaultConfig {
+        applicationId "com.yxf.githubuserlist"
+        multiDexEnabled true
+    }
+}
+
+
+dependencies {
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+
+    implementation 'com.github.JessYanCoding:AndroidAutoSize:v1.2.1'
+    implementation "io.coil-kt:coil:1.2.1"
+    implementation 'com.yxf:clippathlayout:1.0.+'
+
+
+    implementation project(path: ':refresh-layout')
+
+    implementation project(path: ':mvvmcommon')
+
+
+}
