@@ -2,6 +2,7 @@ package com.yxf.githubuserlist.koin
 
 import com.yxf.githubuserlist.api.GitHubService
 import com.yxf.githubuserlist.config.Constant
+import com.yxf.githubuserlist.module.userlist.UserDetailFragment
 import com.yxf.githubuserlist.module.userlist.UserListFragment
 import com.yxf.githubuserlist.module.userlist.UserListViewModel
 import com.yxf.githubuserlist.repo.UserRepo
@@ -52,4 +53,6 @@ val userListModule = module {
     viewModel { UserListViewModel(get()) }
 
     fragment { UserListFragment() }
+
+    fragment { UserDetailFragment() }
 }

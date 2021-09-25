@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yxf.githubuserlist.R
 import com.yxf.githubuserlist.databinding.FragmentUserListBinding
-import com.yxf.githubuserlist.ktx.requireValue
 import com.yxf.githubuserlist.model.UserInfo
 import com.yxf.githubuserlist.model.bean.PageDetail
 import com.yxf.mvvmcommon.mvvm.BaseVMFragment
@@ -78,6 +77,11 @@ class UserListFragment : BaseVMFragment<UserListViewModel, FragmentUserListBindi
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             adapter = UserListAdapter(vm.userListData.value!!, this@UserListFragment).also {
+                it.onItemClickListener = object : OnItemClickListener {
+                    override fun onItemClick(itemView: View, info: UserInfo, position: Int) {
+                        vm.selectedUserDetailData.value = vm.getUserDetail(info)
+                    }
+                }
                 rvAdapter = it
             }
         }
@@ -121,6 +125,7 @@ class UserListFragment : BaseVMFragment<UserListViewModel, FragmentUserListBindi
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
+        vm.onSearchContentChanged(newText)
         return true
     }
 

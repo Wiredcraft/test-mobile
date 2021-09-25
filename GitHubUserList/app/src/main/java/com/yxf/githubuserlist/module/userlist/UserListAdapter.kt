@@ -1,6 +1,7 @@
 package com.yxf.githubuserlist.module.userlist
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -15,9 +16,25 @@ import java.lang.ref.WeakReference
 class UserListAdapter(
     private var userInfoList: List<UserInfo>,
     private val pageLoader: PageLoader
-) :
-    RecyclerView.Adapter<UserItemHolder>() {
+) : RecyclerView.Adapter<UserItemHolder>() {
 
+
+    var onItemClickListener: OnItemClickListener? = null
+
+    private var recyclerView: RecyclerView? = null
+
+    private val onClickListener = View.OnClickListener {
+        if (recyclerView == null) return@OnClickListener
+        val position = recyclerView!!.getChildAdapterPosition(it)
+        val info = userInfoList[position]
+        onItemClickListener?.onItemClick(it, info, position)
+    }
+
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        this.recyclerView = recyclerView
+    }
 
     fun updateList(infoList: List<UserInfo>) {
         userInfoList = infoList
@@ -31,6 +48,7 @@ class UserListAdapter(
                 PathInfo.Builder(CirclePathGenerator(), avatar)
                     .create()
                     .apply()
+                root.setOnClickListener(onClickListener)
                 UserItemHolder(this)
             }
     }
@@ -50,7 +68,7 @@ class UserListAdapter(
             }
         }
         holder.vb.run {
-            avatar.load(detail.avatarUrl) { placeholder(R.mipmap.ic_github) }
+            avatar.load(detail.avatarUrl) { placeholder(R.drawable.ic_loading) }
             name.text = detail.login
             score.text = detail.score.toString()
             url.text = detail.htmlUrl
@@ -73,4 +91,8 @@ interface PageLoader {
 
     fun getPage(page: Int): PageDetail?
 
+}
+
+interface OnItemClickListener {
+    fun onItemClick(itemView: View, info: UserInfo, position: Int)
 }

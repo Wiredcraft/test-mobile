@@ -18,12 +18,6 @@ data class PageDetail(
 )
 
 @JsonClass(generateAdapter = true)
-data class PageDetail2(
-    @Json(name = "total_count")
-    val totalCount: Int
-)
-
-@JsonClass(generateAdapter = true)
 data class UserDetail(
     val login: String,
     val id: Long,

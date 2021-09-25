@@ -9,12 +9,12 @@ import com.yxf.githubuserlist.ktx.getLastPage
 import com.yxf.githubuserlist.ktx.requireValue
 import com.yxf.githubuserlist.model.UserInfo
 import com.yxf.githubuserlist.model.bean.PageDetail
+import com.yxf.githubuserlist.model.bean.UserDetail
 import com.yxf.githubuserlist.repo.UserRepo
+import com.yxf.mvvmcommon.ktx.collectOnCoroutine
 import com.yxf.mvvmcommon.mvvm.BaseViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import com.yxf.mvvmcommon.utils.ToastUtils
+import kotlinx.coroutines.flow.*
 import org.koin.core.component.KoinComponent
 import java.lang.ref.WeakReference
 import java.util.*
@@ -26,7 +26,8 @@ class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinC
     private val TAG = UserListViewModel::class.qualifiedName
 
 
-    val pageCache = LruCache<Int, PageDetail>(5)
+    var pageCache = LruCache<Int, PageDetail>(5)
+    var lastPageCache: LruCache<Int, PageDetail>? = null
 
     //value can not be null
     val userListData = MutableLiveData<MutableList<UserInfo>>().apply { value = ArrayList() }
@@ -34,34 +35,47 @@ class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinC
     val loadMoreData = MutableLiveData<Boolean>()
     val loadRefreshData = MutableLiveData<Boolean>()
 
+    val selectedUserDetailData = MutableLiveData<UserDetail>()
+
     private val loadingPageSet = Collections.synchronizedSet(HashSet<Int>())
+
+
+    private var currentSearchContent: String? = null
+    private val searchStateFlow by lazy {
+        MutableStateFlow("").also { flow ->
+            flow.debounce(300)
+                .mapLatest { return@mapLatest it }
+                .collectOnCoroutine(viewModelScope) {
+                    loadRefresh(it)
+                }
+        }
+    }
 
     private var loadMorePage = -1
 
 
-    fun loadPage(index: Int) {
-        val pageDetail = pageCache[index]
+    fun loadPage(page: Int, searchContent: String = getSearchContent()) {
+        val pageDetail = pageCache[page]
         if (pageDetail != null) {
-            onPageLoadSuccessfully(index)
+            onPageLoadSuccessfully(page)
             return
         }
-        if (loadingPageSet.contains(index)) {
-            Log.d(TAG, "page: $index is in loading")
+        if (loadingPageSet.contains(page)) {
+            Log.d(TAG, "page: $page is in loading")
             return
         }
-        loadingPageSet.add(index)
-        viewModelScope.launch(Dispatchers.Main) {
-            toFlow { return@toFlow userRepo.getUserList(index) }
-                .catch {
-                    Log.e(TAG, "load page($index) failed", it)
-                    loadingPageSet.remove(index)
-                    onPageLoadFailed(index)
-                }.collect {
-                    pageCache.put(index, it)
-                    onPageLoadSuccessfully(index)
-                    loadingPageSet.remove(index)
-                }
-        }
+        loadingPageSet.add(page)
+        toFlow { userRepo.getUserList(page, searchContent) }
+            .filter { searchContent == getSearchContent() }
+            .catch {
+                Log.e(TAG, "load page($page) failed", it)
+                loadingPageSet.remove(page)
+                onPageLoadFailed(page)
+            }.collectOnCoroutine(viewModelScope) {
+                pageCache.put(page, it)
+                onPageLoadSuccessfully(page)
+                loadingPageSet.remove(page)
+            }
     }
 
     private fun onPageLoadSuccessfully(page: Int) {
@@ -92,24 +106,54 @@ class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinC
         userListData.value = userList
     }
 
-    //----------------------load refresh-----------------
 
-    fun loadRefresh() {
-        loadRefreshData.value = false
-        pageCache.evictAll()
-        loadRefreshUserList()
+    fun getUserDetail(info: UserInfo): UserDetail? {
+        return info.detailReference?.get() ?: pageCache[info.page]?.userDetailList?.get(info.index)
     }
 
-    private fun loadRefreshUserList() {
-        loadPage(0)
+
+    //----------------------search----------------------
+
+    fun onSearchContentChanged(content: String?) {
+        searchStateFlow.value = content ?: ""
+    }
+
+    private fun getSearchContent(): String {
+        return if (currentSearchContent.isNullOrEmpty()) "Android" else currentSearchContent!!
+    }
+
+
+    //----------------------load refresh-----------------
+
+    fun loadRefresh(content: String? = null) {
+        if (content != null && content != currentSearchContent) {
+            clearPreviousContext()
+            currentSearchContent = content
+        }
+        loadRefreshData.value = false
+        lastPageCache = pageCache
+        pageCache = LruCache<Int, PageDetail>(5)
+        loadPage(0, getSearchContent())
+    }
+
+    private fun clearPreviousContext() {
+        loadingPageSet.iterator().run {
+            while (hasNext()) {
+                onPageLoadFailed(next())
+                remove()
+            }
+        }
     }
 
     private fun notifyLoadRefreshFinished(page: Int, successfully: Boolean = true) {
         if (page == 0 && loadRefreshData.value == false) {
-            if (successfully) {
-                userListData.value = ArrayList()
-            }
+            userListData.value = ArrayList()
+            //clear unnecessary cache
+            lastPageCache = null
             loadRefreshData.value = true
+            if (!successfully) {
+                ToastUtils.shortToast("update user list failed")
+            }
         }
     }
 
@@ -125,10 +169,13 @@ class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinC
         loadPage(loadMorePage)
     }
 
-    private fun notifyLoadMoreFinished(page: Int) {
+    private fun notifyLoadMoreFinished(page: Int, successfully: Boolean = true) {
         if (page == loadMorePage) {
             loadMoreData.value = true
             resetLoadMorePage()
+            if (!successfully) {
+                ToastUtils.shortToast("load more user information failed")
+            }
         }
     }
 
