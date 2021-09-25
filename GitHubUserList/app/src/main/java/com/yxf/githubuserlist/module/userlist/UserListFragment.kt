@@ -2,6 +2,7 @@ package com.yxf.githubuserlist.module.userlist
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,10 +16,12 @@ import com.yxf.githubuserlist.databinding.FragmentUserListBinding
 import com.yxf.githubuserlist.model.UserInfo
 import com.yxf.githubuserlist.model.bean.PageDetail
 import com.yxf.mvvmcommon.mvvm.BaseVMFragment
+import com.yxf.mvvmcommon.utils.ToastUtils
 
 class UserListFragment : BaseVMFragment<UserListViewModel, FragmentUserListBinding>(),
     SearchView.OnQueryTextListener, PageLoader {
 
+    private val TAG = UserListFragment::class.qualifiedName
 
     private var rvAdapter: UserListAdapter? = null
 
@@ -33,7 +36,7 @@ class UserListFragment : BaseVMFragment<UserListViewModel, FragmentUserListBindi
         initActionBar()
         initRecyclerView()
         initSmartRefreshLayout()
-        loadPage(0)
+        vm.loadRefresh()
     }
 
     private fun initObserver() {
@@ -49,6 +52,13 @@ class UserListFragment : BaseVMFragment<UserListViewModel, FragmentUserListBindi
                     finishRefresh()
                     resetNoMoreData()
                 }
+            }
+        })
+        vm.missingPageLoadedData.observe(viewLifecycleOwner, {
+            if (it) {
+                rvAdapter?.notifyDataSetChanged()
+            } else {
+                Log.w(TAG, "load missing page failed")
             }
         })
     }
@@ -129,8 +139,8 @@ class UserListFragment : BaseVMFragment<UserListViewModel, FragmentUserListBindi
         return true
     }
 
-    override fun loadPage(page: Int) {
-        vm.loadPage(page)
+    override fun loadMissingPage(page: Int) {
+        vm.loadMissingPage(page)
     }
 
     override fun getPage(page: Int): PageDetail? {

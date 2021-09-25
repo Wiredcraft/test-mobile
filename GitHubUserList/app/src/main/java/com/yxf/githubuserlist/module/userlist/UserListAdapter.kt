@@ -59,7 +59,7 @@ class UserListAdapter(
         if (detail == null) {
             val pageDetail = pageLoader.getPage(info.page)
             if (pageDetail == null) {
-                pageLoader.loadPage(info.page)
+                pageLoader.loadMissingPage(info.page)
                 //TODO : show empty view
                 return
             } else {
@@ -87,7 +87,7 @@ class UserItemHolder(val vb: ItemUserBinding) : RecyclerView.ViewHolder(vb.root)
 
 interface PageLoader {
 
-    fun loadPage(page: Int)
+    fun loadMissingPage(page: Int)
 
     fun getPage(page: Int): PageDetail?
 

@@ -11,6 +11,7 @@ import com.yxf.githubuserlist.model.UserInfo
 import com.yxf.githubuserlist.model.bean.PageDetail
 import com.yxf.githubuserlist.model.bean.UserDetail
 import com.yxf.githubuserlist.repo.UserRepo
+import com.yxf.mvvmcommon.ktx.catchOnCoroutine
 import com.yxf.mvvmcommon.ktx.collectOnCoroutine
 import com.yxf.mvvmcommon.mvvm.BaseViewModel
 import com.yxf.mvvmcommon.utils.ToastUtils
@@ -19,6 +20,7 @@ import org.koin.core.component.KoinComponent
 import java.lang.ref.WeakReference
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashSet
 
 
 class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinComponent {
@@ -35,9 +37,13 @@ class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinC
     val loadMoreData = MutableLiveData<Boolean>()
     val loadRefreshData = MutableLiveData<Boolean>()
 
+    val missingPageLoadedData = MutableLiveData<Boolean>()
+
     val selectedUserDetailData = MutableLiveData<UserDetail>()
 
-    private val loadingPageSet = Collections.synchronizedSet(HashSet<Int>())
+    private val loadingPageSet = HashSet<Int>()
+
+    private val missingPageSet = HashSet<Int>()
 
 
     private var currentSearchContent: String? = null
@@ -67,7 +73,7 @@ class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinC
         loadingPageSet.add(page)
         toFlow { userRepo.getUserList(page, searchContent) }
             .filter { searchContent == getSearchContent() }
-            .catch {
+            .catchOnCoroutine(viewModelScope) {
                 Log.e(TAG, "load page($page) failed", it)
                 loadingPageSet.remove(page)
                 onPageLoadFailed(page)
@@ -81,12 +87,14 @@ class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinC
     private fun onPageLoadSuccessfully(page: Int) {
         notifyLoadMoreFinished(page)
         notifyLoadRefreshFinished(page)
+        notifyLoadMissingPageFinished(page)
         updateUserList(page)
     }
 
     private fun onPageLoadFailed(page: Int) {
-        notifyLoadMoreFinished(page)
+        notifyLoadMoreFinished(page, false)
         notifyLoadRefreshFinished(page, false)
+        notifyLoadMissingPageFinished(page, false)
     }
 
 
@@ -143,17 +151,31 @@ class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinC
                 remove()
             }
         }
+        missingPageSet.clear()
     }
 
-    private fun notifyLoadRefreshFinished(page: Int, successfully: Boolean = true) {
+    private fun notifyLoadRefreshFinished(page: Int, result: Boolean = true) {
         if (page == 0 && loadRefreshData.value == false) {
             userListData.value = ArrayList()
             //clear unnecessary cache
             lastPageCache = null
             loadRefreshData.value = true
-            if (!successfully) {
+            if (!result) {
                 ToastUtils.shortToast("update user list failed")
             }
+        }
+    }
+
+    //----------------------load missing------------------
+
+    public fun loadMissingPage(page: Int) {
+        missingPageSet.add(page)
+        loadPage(page)
+    }
+
+    private fun notifyLoadMissingPageFinished(page: Int, result: Boolean = true) {
+        if (missingPageSet.contains(page)) {
+            missingPageLoadedData.value = result
         }
     }
 
@@ -169,11 +191,11 @@ class UserListViewModel(private var userRepo: UserRepo) : BaseViewModel(), KoinC
         loadPage(loadMorePage)
     }
 
-    private fun notifyLoadMoreFinished(page: Int, successfully: Boolean = true) {
+    private fun notifyLoadMoreFinished(page: Int, result: Boolean = true) {
         if (page == loadMorePage) {
             loadMoreData.value = true
             resetLoadMorePage()
-            if (!successfully) {
+            if (!result) {
                 ToastUtils.shortToast("load more user information failed")
             }
         }
