@@ -87,7 +87,7 @@ class UsersApiTest {
         // when
         val url = user.url
         //then
-        Assert.assertEquals(false, URLUtil.isValidUrl(user.url))
+        Assert.assertEquals(false, URLUtil.isValidUrl(url))
 
     }
 }
