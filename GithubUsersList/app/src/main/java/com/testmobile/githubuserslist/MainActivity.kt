@@ -50,8 +50,14 @@ class MainActivity : AppCompatActivity() {
         adapter.stateRestorationPolicy =
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
+        binding.apply {
+            swipeRefreshLayout.setOnRefreshListener {
+                swipeRefreshLayout.isRefreshing = false;
+                adapter.refresh()
+            }
+        }
 
-       // observer the data returned by the viewmodel
+        // observer the data returned by the viewmodel
         viewModel.users.observe(this) {
             adapter.submitData(this.lifecycle, it)
         }
