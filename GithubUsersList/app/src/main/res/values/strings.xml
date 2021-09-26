@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Test Mobile</string>
     <string name="user_avatar_image">user avatar image</string>
+
+    <!--user load state adapter xml-->
+    <string name="user_load_state_text_error">Error occurred while connecting to the internet</string>
+    <string name="user_load_state_btn_retry">Retry</string>
+
 </resources>
