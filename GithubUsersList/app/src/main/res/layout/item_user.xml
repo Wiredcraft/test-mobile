@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/item_user_frame_layout_margin_start"
+    android:layout_marginEnd="@dimen/item_user_frame_layout_margin_end"
+    android:layout_marginBottom="@dimen/item_user_frame_layout_margin_bottom"
+    android:background="?attr/selectableItemBackground"
+    android:minHeight="?attr/listPreferredItemHeight"
+    >
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/item_user_linear_layout_padding_bottom"
+        android:paddingTop="@dimen/item_user_linear_layout_padding_top">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar.image.view"
+            android:layout_width="@dimen/item_user_avatar_image_view_width"
+            android:layout_height="@dimen/item_user_avatar_image_view_height"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/item_user_avatar_image_view_margin_end"
+            android:gravity="center"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearlayout.details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview.name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textAppearance="?android:textAppearanceListItem"
+                    tools:text="userNameusernameusernames" />
+
+                <TextView
+                    android:id="@+id/textview.score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    tools:text="1"
+                    android:layout_marginStart="@dimen/item_user_text_view_score_margin_start"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:id="@+id/textview.url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/item_user_text_view_url_margin_top"
+                android:textAppearance="?android:textAppearanceSmall"
+                tools:text="testing url" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_user_view_height"
+        android:layout_marginStart="@dimen/item_user_view_marginStart"
+        android:background="@color/item_user_view_bg"
+        android:layout_gravity="bottom"/>
+
+</FrameLayout>

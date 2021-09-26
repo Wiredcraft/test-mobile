@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Test Mobile</string>
+    <string name="user_avatar_image">user avatar image</string>
 </resources>

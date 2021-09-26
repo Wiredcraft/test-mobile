@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Application demensions for views and styling-->
+
+    <!--item user layout dimensions-->
+    <dimen name="item_user_frame_layout_margin_start">10dp</dimen>
+    <dimen name="item_user_frame_layout_margin_end">10dp</dimen>
+    <dimen name="item_user_frame_layout_margin_bottom">5dp</dimen>
+    <dimen name="item_user_linear_layout_padding_bottom">6dp</dimen>
+    <dimen name="item_user_linear_layout_padding_top">6dp</dimen>
+    <dimen name="item_user_avatar_image_view_width">60dp</dimen>
+    <dimen name="item_user_avatar_image_view_height">60dp</dimen>
+    <dimen name="item_user_avatar_image_view_margin_end">16dp</dimen>
+    <dimen name="item_user_text_view_url_margin_top">2dp</dimen>
+    <dimen name="item_user_view_height">1dp</dimen>
+    <dimen name="item_user_view_marginStart">78dp</dimen>
+    <dimen name="item_user_text_view_score_margin_start">2dp</dimen>
+
+
+</resources>
