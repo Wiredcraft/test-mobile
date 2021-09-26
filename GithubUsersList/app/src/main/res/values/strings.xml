@@ -6,4 +6,11 @@
     <string name="user_load_state_text_error">Error occurred while connecting to the internet</string>
     <string name="user_load_state_btn_retry">Retry</string>
 
+
+    <!-- activity main layout-->
+    <string name="results_could_not_be_loaded">Results could not be loaded</string>
+    <string name="no_results_found_for_this_query">No results found for this query</string>
+    <string name="retry">Retry</string>
+
+
 </resources>

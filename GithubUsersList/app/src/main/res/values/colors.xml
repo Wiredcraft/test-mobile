@@ -10,4 +10,7 @@
 
     <!--item user layout colors-->
     <color name="item_user_view_bg">#1E000000</color>
+
+    <!--activity main layout-->
+    <color name="activity_main_bg">#efefef</color>
 </resources>
