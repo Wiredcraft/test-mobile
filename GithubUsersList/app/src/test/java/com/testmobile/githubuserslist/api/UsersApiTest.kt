@@ -4,7 +4,6 @@ import android.webkit.URLUtil
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.testmobile.githubuserslist.model.User
 import io.reactivex.Scheduler
-import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.Disposable
 import io.reactivex.internal.schedulers.ExecutorScheduler
