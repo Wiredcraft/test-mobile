@@ -2,6 +2,8 @@ package com.testmobile.githubuserslist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
@@ -80,6 +82,36 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     activityMainTextViewEmpty.isVisible = false
                 }
+            }
+        }
+
+        binding.etSearch.setOnEditorActionListener { _, id, _ ->
+            if (id == EditorInfo.IME_ACTION_GO) {
+                binding.etSearch.text?.trim().toString().let {
+                    setUpSearch()
+                }
+                true
+            } else {
+                false
+            }
+        }
+
+        binding.etSearch.setOnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                setUpSearch()
+                true
+            } else {
+                false
+            }
+        }
+
+    }
+
+    private fun setUpSearch(){
+        binding.etSearch.text?.trim().toString().let {
+            if (it.isNotEmpty()){
+                binding.recyclerView.scrollToPosition(0)
+                viewModel.searchUsers(it)
             }
         }
     }

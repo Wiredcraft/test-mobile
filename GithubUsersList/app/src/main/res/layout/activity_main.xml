@@ -6,11 +6,27 @@
     android:layout_height="match_parent"
     android:background="@color/activity_main_bg"
     >
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input.layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        >
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et.search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="textNoSuggestions"
+           />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe.refresh.layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/input.layout">
 
         <FrameLayout
             android:layout_width="match_parent"
