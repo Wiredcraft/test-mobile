@@ -1,4 +1,4 @@
-package com.testmobile.githubuserslist
+package com.testmobile.githubuserslist.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

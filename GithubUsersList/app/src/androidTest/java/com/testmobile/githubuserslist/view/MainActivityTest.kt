@@ -1,32 +1,31 @@
 package com.testmobile.githubuserslist.view
 
-import android.util.Log
-import androidx.lifecycle.SavedStateHandle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import com.testmobile.githubuserslist.MainActivity
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.testmobile.githubuserslist.R
 import com.testmobile.githubuserslist.adapter.UsersAdapter
 import com.testmobile.githubuserslist.api.FakeUsersTestApi
-import com.testmobile.githubuserslist.api.UserRepository
 import com.testmobile.githubuserslist.api.UserResponse
 import com.testmobile.githubuserslist.model.User
-import com.testmobile.githubuserslist.viewmodel.UserViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
 import javax.inject.Inject
 
 /**
  * Sanity class to test the [MainActivity] views
  * */
 @ExperimentalCoroutinesApi
+@RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 
     @Inject
@@ -52,7 +51,8 @@ class MainActivityTest {
     /**/
     @Test
     fun testRecyclerViewAdapterItemCount() = runBlockingTest{
-        usersAdapter = UsersAdapter()
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        usersAdapter = UsersAdapter(appContext)
         onView(withId(R.id.recycler_view)).check { view, noViewFoundException ->
             if (noViewFoundException != null) {
                 throw noViewFoundException

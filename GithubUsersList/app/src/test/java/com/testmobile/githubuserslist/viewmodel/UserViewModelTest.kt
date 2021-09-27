@@ -45,7 +45,7 @@ class UserViewModelTest {
         fakeUsersApiUnitTest = FakeUsersApi()
         userRepository = UserRepository(fakeUsersApiUnitTest)
         userViewModel = UserViewModel(repository = userRepository, state = savedStateHandle)
-        usersAdapter = UsersAdapter()
+        usersAdapter = UsersAdapter(null)
         userViewModel.searchUsers("react")
     }
 
