@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // instance of user adapter class
-        val adapter = UsersAdapter()
+        val adapter = UsersAdapter(this)
         //bind the views
         binding.apply {
             recyclerView.setHasFixedSize(true)

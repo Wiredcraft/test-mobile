@@ -101,6 +101,9 @@ dependencies {
     // avatar image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    // web view
+    implementation 'com.thefinestartist:finestwebview:1.2.7'
+
     // for instrumented tests
     androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"

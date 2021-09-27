@@ -1,6 +1,6 @@
 package com.testmobile.githubuserslist.adapter
 
-import android.util.Log
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -8,14 +8,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.google.android.material.appbar.AppBarLayout
 import com.testmobile.githubuserslist.R
 import com.testmobile.githubuserslist.databinding.ItemUserBinding
 import com.testmobile.githubuserslist.model.User
+import com.thefinestartist.finestwebview.FinestWebView
 
-/*
-* Users list adapter to be bind to the recyclerview to display list of users
-* */
-class UsersAdapter():
+/**
+ * Users list adapter to be bind to the recyclerview to display list of users
+ * params -> context?: optional
+ * */
+class UsersAdapter(private val context: Context?):
     PagingDataAdapter<User, UsersAdapter.UserViewHolder>(USER_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -40,9 +43,18 @@ class UsersAdapter():
                     val position = bindingAdapterPosition
                     if (position != RecyclerView.NO_POSITION) {
                         val item = getItem(position)
-                        if (item != null) {
-                            Log.d(UsersAdapter::class.java.simpleName, item.id)
-                            //listener.onItemClick(item)
+                        if (item != null && context != null) {
+                            FinestWebView.Builder(context)
+                                .titleDefault("Details")
+                                .toolbarScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL)
+                                .gradientDivider(false)
+                                .dividerHeight(100)
+                                .iconPressedColorRes(R.color.black)
+                                .progressBarColorRes(R.color.green_200)
+                                .backPressToClose(false)
+                                .setCustomAnimations(R.anim.activity_open_enter, R.anim.activity_open_exit, R.anim.activity_close_enter, R.anim.activity_close_exit)
+                                .show(item.url);
+
                         }
                     }
                 }
@@ -51,6 +63,7 @@ class UsersAdapter():
         // bind the views and update the display
         fun bind(user: User) {
             binding.apply {
+                //load user image into imageview
                 Glide.with(itemView)
                     .load(user.avatarUrl)
                     .centerCrop()
