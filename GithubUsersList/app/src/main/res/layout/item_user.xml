@@ -41,9 +41,9 @@
 
                 <TextView
                     android:id="@+id/textview.name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="1.7"
                     android:ellipsize="end"
                     android:lines="1"
                     android:textAppearance="?android:textAppearanceListItem"
@@ -51,9 +51,9 @@
 
                 <TextView
                     android:id="@+id/textview.score"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.3"
                     android:lines="1"
                     android:textAppearance="?android:textAppearanceSmall"
                     tools:text="1"
