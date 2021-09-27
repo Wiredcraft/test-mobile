@@ -17,6 +17,7 @@ The UI was designed using Google Material Design.
 * [Dagger Hilt - Dependency hilt with Hilt. Hilt provides a standard way to use DI in your application by providing containers for every Android class in your project and managing their lifecycles automatically](https://developer.android.com/training/dependency-injection/hilt-android)
 * [Glide - An image loading and caching library for android](https://github.com/bumptech/glide)
 * [Avatar Image View - A fast roundable and strokeable ImageView for show avatar](https://github.com/alvince/AvatarImageView)
+* [Finest Web View - Beautiful and customizable Android Activity that shows web pages within an app](https://github.com/TheFinestArtist/FinestWebView-Android)
 
 ### Testing
 * [Expresso - The Espresso API encourages test authors to think in terms of what a user might do while interacting with the application - locating UI elements and interacting with the](https://developer.android.com/training/testing/espresso/)
