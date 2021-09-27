@@ -8,7 +8,7 @@ The UI was designed using Google Material Design.
 ### Application Dependencies
 
 * [LiveData - An observable data holder class. LiveData is lifecycle-aware, meaning it respects the lifecycle of other app components, such as activities, fragments, or services.
- This awareness ensures LiveData only updates app component observers that are in an active lifecycle state]((https://developer.android.com/topic/libraries/architecture/livedata)).
+ This awareness ensures LiveData only updates app component observers that are in an active lifecycle state](https://developer.android.com/topic/libraries/architecture/livedata).
 * [ViewModel - Allows data to survive configuration changes](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [Paging 3 - Makes it easier for you to load data gradually and gracefully within your app's RecyclerView](https://developer.android.com/topic/libraries/architecture/paging/)
 * [Android Data Binding - Using a declarative format, it allows the UI components in the layouts to be bind to the app sources](https://developer.android.com/topic/libraries/data-binding)
