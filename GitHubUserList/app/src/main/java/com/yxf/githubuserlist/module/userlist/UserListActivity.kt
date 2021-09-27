@@ -14,8 +14,6 @@ class UserListActivity : BaseVMActivity<UserListViewModel, ActivityUserListBindi
 
     override val vm: UserListViewModel by viewModel()
 
-    private var currentFragment:Fragment? = null
-
     override fun initView(savedInstanceState: Bundle?) {
         addFragment(UserListFragment::class.java)
     }
@@ -38,7 +36,6 @@ class UserListActivity : BaseVMActivity<UserListViewModel, ActivityUserListBindi
             addToBackStack(null)
             commit()
         }
-        currentFragment = supportFragmentManager.findFragmentByTag(tag)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
