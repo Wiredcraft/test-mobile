@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WildGithub</string>
+
+
+    <string name="network_error">网络错误</string>
+    <string name="unknown_error">未知错误</string>
 </resources>
