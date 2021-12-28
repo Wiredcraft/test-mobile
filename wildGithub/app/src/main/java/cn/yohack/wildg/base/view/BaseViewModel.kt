@@ -67,73 +67,19 @@ open class BaseViewModel : ViewModel() {
 
             if (result.success()) {
                 hideAction?.invoke()
-                val data = result.getResponseData()
+                val data = result.data
                 data?.let(success) ?: kotlin.run {
                     throw BizException(NET_NO_DATA, "")
                 }
             } else {
-                val code = result.getResponseCode()
-                val msg = result.getResponseMsg() ?: ""
+                val code = result.code
+                val msg = result.msg ?: ""
                 throw BizException(code, msg)
             }
         }
 
     }
 
-    protected fun <T> request(
-        query: suspend (CoroutineScope) -> BaseResponse<T>,
-        resultState: MutableLiveData<ResultState<T>>,
-        loadingMsg: String? = null,
-    ): Job {
-        return viewModelScope.launch {
-            runCatching {
-                if (loadingMsg != null) {
-                    resultState.value = ResultState.onNetLoading(loadingMsg)
-                }
-                query(this)
-            }.onSuccess {
-                resultState.parseResult(it)
-            }.onFailure {
-                resultState.parseException(it)
-            }
-        }
-    }
-
-    protected fun <T> doJob(
-        query: suspend (CoroutineScope) -> T,
-        success: (T) -> Unit,
-        error: ((BizException) -> Unit)? = {
-            // default toast msg
-            hideAction?.invoke()
-            toastMsg.postValue(it.message)
-        },
-        loadingMsg: String? = null,
-        hideAction: (() -> Unit)? = {
-            // default hide loading
-            postLoading(TAG_LOADING_HIDE, loadingMsg)
-        }
-    ): Job {
-        return viewModelScope.launch {
-            runCatching {
-                query(this)
-            }.onSuccess {
-                hideAction?.invoke()
-                success(it)
-            }.onFailure {
-                error?.invoke(handleNetException(it))
-            }
-        }
-    }
-
-    protected fun <T> doJob(
-        query: suspend (CoroutineScope) -> T,
-    ): Job {
-        return viewModelScope.launch {
-            runCatching {
-                query(this)
-            }
-        }
-    }
 
     protected fun postLoading(tag: Int, msg: String?) {
         loadingChange.postValue(Pair(tag, msg))

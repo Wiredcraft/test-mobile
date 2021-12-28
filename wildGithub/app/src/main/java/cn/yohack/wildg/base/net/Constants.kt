@@ -17,13 +17,14 @@ const val NET_SUCCESS = 200
 const val NET_NO_DATA = -99
 const val NET_ERROR_UNKNOWN = -100
 const val NET_ERROR_NETWORK = -101
-const val NET_ERROR_PARSE = -101
-const val NET_ERROR_SSL = -102
-const val NET_ERROR_TIMEOUT = -103
-const val NET_AUTH_FAILED = -403
 
 
 /**
  * list no data
  */
 const val LIST_NO_TOTAL = -1
+
+/**
+ * common page start
+ */
+const val COMMON_PAGE_START = 1

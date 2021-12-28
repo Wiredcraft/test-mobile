@@ -8,4 +8,12 @@ import cn.yohack.wildg.BuildConfig
  * @Description github retrofit api
  **/
 class GithubRetrofit : BaseRetrofit(BuildConfig.GITHUB_HOST) {
+
+    companion object {
+
+        /**
+         * instance, also can inject
+         */
+        val INSTANCE: GithubRetrofit by lazy { GithubRetrofit() }
+    }
 }

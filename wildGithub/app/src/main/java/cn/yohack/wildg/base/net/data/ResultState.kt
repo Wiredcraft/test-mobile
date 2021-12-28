@@ -39,16 +39,16 @@ sealed class ResultState<out T> {
  */
 fun <T> MutableLiveData<ResultState<T>>.parseResult(result: BaseResponse<T>) {
     value = if (result.success()) {
-        if (result.getResponseData() != null) {
-            ResultState.onNetSuccess(result.getResponseData()!!)
-        } else {
+        result.data?.let {
+            ResultState.onNetSuccess(it)
+        } ?: kotlin.run {
             ResultState.onNetFailure(BizException(NET_NO_DATA, ""))
         }
     } else {
         ResultState.onNetFailure(
             handleNetException(
                 BizException(
-                    result.getResponseCode(), result.getResponseMsg() ?: ""
+                    result.code, result.msg ?: ""
                 )
             )
         )

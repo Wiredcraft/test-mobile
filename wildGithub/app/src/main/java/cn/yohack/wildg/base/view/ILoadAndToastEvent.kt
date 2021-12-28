@@ -89,11 +89,23 @@ interface ILoadAndToastEvent {
 
     }
 
+    /**
+     * get LifecycleOwner
+     */
     fun getLOwner(): LifecycleOwner
 
+    /**
+     * show loading
+     */
     fun showLoading(msg: String?)
 
+    /**
+     * dismiss loading
+     */
     fun dismissLoading()
 
+    /**
+     * show toast
+     */
     fun showToast(msg: String?)
 }
