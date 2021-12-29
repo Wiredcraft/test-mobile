@@ -115,7 +115,7 @@ fun <T> commonFailure(
     }
     data.postValue(
         ListDataUiState(
-            beforeList, page - 1, page, more, total, beforeList.size,
+            beforeList, page, page, more, total, beforeList.size,
             handleNetException(throwable)
         )
     )
@@ -139,8 +139,16 @@ fun <T> setListObserver(
     contentView: View?,
     errorView: View?,
     finishRefresh: (() -> Unit)? = null,
-    finishLoadMore: ((success: Boolean) -> Unit)? = null,
-    hasMoreAction: ((hasMore: Boolean) -> Unit)? = null,
+    finishLoadMore: ((success: Boolean) -> Unit)? = {
+        if (it) {
+            adapter.loadMoreModule.loadMoreComplete()
+        } else {
+            adapter.loadMoreModule.loadMoreEnd()
+        }
+    },
+    hasMoreAction: ((hasMore: Boolean) -> Unit)? = {
+        adapter.loadMoreModule.isEnableLoadMore = it
+    },
     errorViewBlock: ((code: Int, msg: String) -> Unit)? = { code, msg ->
     }
 ) {

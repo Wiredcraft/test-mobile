@@ -106,6 +106,8 @@ dependencies {
 
     api rootProject.depends.chadAdapter
 
+    api rootProject.depends.refreshLayout
+
     debugApi rootProject.depends.chuckDebug
     releaseApi rootProject.depends.chuckRelease
 

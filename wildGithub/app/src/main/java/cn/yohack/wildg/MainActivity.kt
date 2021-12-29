@@ -1,11 +1,22 @@
 package cn.yohack.wildg
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.view.LayoutInflater
+import cn.yohack.wildg.base.view.BaseActivity
+import cn.yohack.wildg.base.view.BaseViewModel
+import cn.yohack.wildg.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+
+/**
+ * main activity
+ */
+class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
+
+
+
+
+    override fun getVMClazz(): Class<BaseViewModel> = BaseViewModel::class.java
+
+    override fun createBinding(layoutInflater: LayoutInflater): ActivityMainBinding =
+        ActivityMainBinding.inflate(layoutInflater)
+
 }

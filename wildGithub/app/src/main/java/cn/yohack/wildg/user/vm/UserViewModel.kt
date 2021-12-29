@@ -7,6 +7,7 @@ import cn.yohack.wildg.base.view.ListViewModel
 import cn.yohack.wildg.bean.GithubUser
 import cn.yohack.wildg.user.repo.UserRepository
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 /**
@@ -21,6 +22,9 @@ class UserViewModel : ListViewModel<GithubUser>() {
      */
     private val userRepo: UserRepository by lazy { UserRepository }
 
+    /**
+     * query
+     */
     var q = "kotlin"
 
 
@@ -36,19 +40,10 @@ class UserViewModel : ListViewModel<GithubUser>() {
             data.value?.nextPage ?: page
         }
 
-        // 当前查询值
-        val curQ = q
-
         return viewModelScope.launch {
             getList(page, pageSize, data) { p, pSize ->
-                val result = userRepo.queryUserList(curQ, p, pSize)
-
-                if (curQ == q) {
-                    result
-                } else {
-                    // temp set result
-                    result
-                }
+                val result = userRepo.queryUserList(q, p, pSize)
+                result
             }
 
             // 展示详情需要

@@ -16,6 +16,7 @@ import androidx.viewbinding.ViewBinding
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>() :
     AbsFragment() {
 
+
     /** vm **/
     protected open val vm: VM by lazy {
         ViewModelProvider(this).get(getVMClazz())
@@ -27,6 +28,11 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>() :
      * This property is only valid between onCreateView and onDestroyView.
      */
     protected val binding get() = _binding!!
+
+    /**
+     * unBind rcv lists
+     */
+    private var unbindRcvList: ArrayList<RecyclerView>? = null
 
     /**
      * 是否第一次查询过
@@ -111,6 +117,11 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>() :
     }
 
     override fun onDestroyView() {
+        unbindRcvList?.forEach {
+            it.adapter = null
+        }
+        unbindRcvList?.clear()
+
         _binding = null
         super.onDestroyView()
     }
@@ -118,7 +129,10 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>() :
     /**
      * adapter has strong reference of rcv
      */
-    protected fun releaseAdapter(vararg rcvs: RecyclerView) {
-        rcvs.forEach { it.adapter = null }
+    protected fun add2UnbindAdapter(rcv: RecyclerView) {
+        if (unbindRcvList.isNullOrEmpty()) {
+            unbindRcvList = ArrayList(4)
+        }
+        unbindRcvList?.add(rcv)
     }
 }
