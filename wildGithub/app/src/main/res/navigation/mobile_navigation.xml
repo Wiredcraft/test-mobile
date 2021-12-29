@@ -8,8 +8,18 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="cn.yohack.wildg.user.ui.UserListFragment"
-        tools:layout="@layout/fragment_user_list" />
+        tools:layout="@layout/fragment_user_list">
 
+        <action
+            android:id="@+id/nav_detail"
+            app:destination="@+id/navigation_detail" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_detail"
+        android:name="cn.yohack.wildg.user.ui.UserDetailFragment"
+        tools:layout="@layout/fragment_user_detail" />
 
 
 </navigation>

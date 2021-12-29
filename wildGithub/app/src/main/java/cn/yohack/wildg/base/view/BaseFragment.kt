@@ -62,7 +62,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>() :
         initViewModel2()
         if (!hasQuery) {
             actionOnce()
-            hasQuery = false
+            hasQuery = true
         }
     }
 

@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import cn.yohack.wildg.R
 import cn.yohack.wildg.base.net.setListObserver
 import cn.yohack.wildg.base.view.BaseFragment
 import cn.yohack.wildg.databinding.FragmentUserListBinding
@@ -45,12 +47,21 @@ class UserListFragment : BaseFragment<FragmentUserListBinding, UserViewModel>() 
             requestUserList(false)
         }
         adapter.setOnItemClickListener { _, _, position ->
-
+            toUserDetail(position)
         }
         binding.rcvContent.layoutManager = LinearLayoutManager(context)
         binding.rcvContent.adapter = adapter
     }
 
+    /**
+     * 用户详情
+     */
+    private fun toUserDetail(pos: Int) {
+        adapter.getItemOrNull(pos)?.let {
+            vm.userDetail.value = it
+            NavHostFragment.findNavController(this).navigate(R.id.nav_detail)
+        }
+    }
 
     /**
      * init search view

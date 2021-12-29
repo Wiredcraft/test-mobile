@@ -1,5 +1,7 @@
 package cn.yohack.wildg.user.vm
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import cn.yohack.wildg.base.net.COMMON_PAGE_START
 import cn.yohack.wildg.base.net.getList
@@ -27,6 +29,10 @@ class UserViewModel : ListViewModel<GithubUser>() {
      */
     var q = "kotlin"
 
+    /**
+     * 详情展示的 item
+     */
+    val userDetail = MutableLiveData<GithubUser>()
 
     /**
      * 加载 列表
