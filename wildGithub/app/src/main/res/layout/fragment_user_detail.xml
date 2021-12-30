@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <cn.yohack.wildg.view.GWebView
-        android:id="@+id/g_web_view"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlTextFailed="切换失败"
+            app:srlTextFinish="切换成功"
+            app:srlTextNothing="已到顶部了"
+            app:srlTextPulling="下拉切换"
+            app:srlTextRefreshing="正在切换..."
+            app:srlTextRelease="释放立即切换" />
+
+        <cn.yohack.wildg.view.GWebView
+            android:id="@+id/g_web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlTextFailed="切换成功"
+            app:srlTextFinish="切换完毕"
+            app:srlTextLoading="正在切换..."
+            app:srlTextNothing="已经最底部了"
+            app:srlTextPulling="上拉切换下一条"
+            app:srlTextRelease="释放立即切换" />
+
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
 
 </FrameLayout>

@@ -20,9 +20,9 @@
             android:id="@+id/search_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="400dp"
             android:layout_gravity="end|center_vertical"
             android:layout_marginHorizontal="16dp"
+            android:maxWidth="400dp"
             app:queryBackground="@drawable/rect3_white" />
 
     </com.google.android.material.appbar.MaterialToolbar>
@@ -32,10 +32,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <com.scwang.smart.refresh.header.MaterialHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_content"
@@ -43,7 +47,7 @@
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_user" />
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
         <!--     can use view stub    /-->
         <include

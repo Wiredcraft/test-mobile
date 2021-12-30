@@ -2,6 +2,7 @@ package cn.yohack.wildg.view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.webkit.WebChromeClient
 import android.webkit.WebView
@@ -29,6 +30,11 @@ class GWebView @JvmOverloads constructor(
      */
     private var hasHidden = false
 
+    /**
+     * 可超时失败等
+     */
+    var progressChange: ((Boolean) -> Unit)? = null
+
     init {
         setDefaultWebSettings(binding.webView)
         binding.webView.webChromeClient = object : WebChromeClient() {
@@ -42,6 +48,9 @@ class GWebView @JvmOverloads constructor(
         if (!hasHidden) {
             binding.webView.isVisible = flag
             binding.progress.isVisible = !flag
+        }
+        if (flag) {
+            progressChange?.invoke(true)
         }
         hasHidden = hasHidden or flag
     }

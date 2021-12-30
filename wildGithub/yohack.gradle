@@ -90,8 +90,10 @@ ext {
 //            mmkv                 : "com.tencent:mmkv-static:1.2.10",
 
 
-            refreshLayout   : "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0",
 
+            refreshCore          : "com.scwang.smart:refresh-layout-kernel:2.0.3",
+            refreshClassic       : "com.scwang.smart:refresh-header-classics:2.0.3",
+            refreshHeader        : "com.scwang.smart:refresh-header-material:2.0.3"
     ]
 
 

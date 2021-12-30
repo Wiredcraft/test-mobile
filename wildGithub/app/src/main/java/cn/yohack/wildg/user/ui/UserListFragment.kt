@@ -35,7 +35,7 @@ class UserListFragment : BaseFragment<FragmentUserListBinding, UserViewModel>() 
         binding.refreshLayout.setOnRefreshListener {
             requestUserList(true)
         }
-        binding.refreshLayout.isRefreshing = true
+        binding.refreshLayout.autoRefreshAnimationOnly()
     }
 
     /**
@@ -105,7 +105,7 @@ class UserListFragment : BaseFragment<FragmentUserListBinding, UserViewModel>() 
                 adapter,
                 binding.rcvContent,
                 binding.viewError.root,
-                { binding.refreshLayout.isRefreshing = false },
+                { binding.refreshLayout.finishRefresh() },
                 errorViewBlock = { code, msg ->
                     // 根据情况错误处理和对应的错误提示
                     binding.viewError.btnText.setOnClickListener {

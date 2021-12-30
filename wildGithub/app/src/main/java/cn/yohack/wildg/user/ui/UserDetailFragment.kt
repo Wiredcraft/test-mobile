@@ -8,7 +8,8 @@ import androidx.navigation.fragment.NavHostFragment
 import cn.yohack.wildg.base.view.BaseFragment
 import cn.yohack.wildg.databinding.FragmentUserDetailBinding
 import cn.yohack.wildg.user.vm.UserViewModel
-import cn.yohack.wildg.utils.setDefaultWebSettings
+import com.scwang.smart.refresh.layout.api.RefreshLayout
+import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
 /**
  * @Author yo_hack
@@ -22,19 +23,65 @@ class UserDetailFragment : BaseFragment<FragmentUserDetailBinding, UserViewModel
     override val vm: UserViewModel
         get() = ViewModelProvider(requireActivity()).get(getVMClazz())
 
+
+    private var tempIncrease: Int = 0
+
     override fun initView1() {
-        activity?.onBackPressedDispatcher?.addCallback {
-            if (binding.gWebView.getWebView().canGoBack()) {
-                binding.gWebView.getWebView().goBack()
+        binding.refreshLayout.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
+            override fun onRefresh(refreshLayout: RefreshLayout) {
+                changeDetail(false)
+            }
+
+            override fun onLoadMore(refreshLayout: RefreshLayout) {
+                changeDetail(true)
+            }
+
+        })
+
+        binding.gWebView.progressChange = {
+            if (tempIncrease == 1) {
+                binding.refreshLayout.finishLoadMore(0, it, false)
+            } else if (tempIncrease == -1) {
+                binding.refreshLayout.finishRefresh()
+            }
+            tempIncrease = 0
+        }
+    }
+
+    /**
+     * 更换详情
+     */
+    private fun changeDetail(increase: Boolean) {
+        val list = vm.data.value?.list
+        val pos = list?.indexOf(vm.userDetail.value) ?: -1
+
+        val failCall = {
+            if (increase) {
+                binding.refreshLayout.finishLoadMore(false)
             } else {
-                NavHostFragment.findNavController(this@UserDetailFragment).popBackStack()
+                binding.refreshLayout.finishRefresh(false)
+            }
+            Unit
+        }
+
+        if (pos < 0) {
+            failCall.invoke()
+        } else {
+            if (pos < (list?.size ?: 0 - 3)) {
+                vm.loadList(false)
+            }
+            tempIncrease = if (increase) 1 else -1
+            list?.getOrNull(pos + tempIncrease)?.let {
+                vm.userDetail.value = it
+            } ?: kotlin.run {
+                failCall.invoke()
             }
         }
     }
 
-
     override fun initViewModel2() {
         vm.userDetail.observe(viewLifecycleOwner) {
+            binding.gWebView.getWebView().stopLoading()
             binding.gWebView.getWebView().loadUrl(it.htmlUrl)
         }
     }
