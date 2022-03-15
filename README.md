@@ -19,7 +19,7 @@ https://www.figma.com/file/voov7DANpki5YtI6Jt5d6E/github_userlist_test?node-id=0
     - Then I should see a list of GitHub users.
     - Each user item on this page should display as below: 
       - avatar at left and center vertically
-      - right part has a button, when I tap it, it will switch between `FOLLOW` and `FOLLOWED`
+      - right part has a button, when I tap it, it will switch between `FOLLOW` and `FOLLOWED`, The FOLLOW state can be a local strategy
       - next to avatar has two lines of text which vertically centered with avatar
        - first line contains name and score, you can use `login` and `score`
        - score is always aligned next to name on the right with a small margin
@@ -47,20 +47,13 @@ https://www.figma.com/file/voov7DANpki5YtI6Jt5d6E/github_userlist_test?node-id=0
      - the avatar of this user which is the same as displayed in the homepage
      - the name of this user which is the same as diplayed in the hompage
      - the button has the same status as on the homepage for the same item
-     - the followers list which has the same cell style as the homepage
      - the repositories list which has the same cell style as the homepage, but different datasource
         - avatar: `owner.avatar_url`
         - name: `name`
         - score: `stargazers_count`
         - url: `html_url`
         - button is hidden in this case
-7. As a user on the user details page
-  - When I swipe left or right on the list page
-  - Then I should see the other list page and the indicator is updated accordingly
-8. As a user on the user details page
-  - When I tap on `FOLLOWERS` or `REPOSITORIES`
-  - Then I should be able to see the corresponding list
-9. As a user on the homepage or on the user details page
+7. As a user on the homepage or on the user details page
   - When I tap on the button in header view
   - And the button status is switched between `FOLLOW` and `FOLLOWED`
   - Then I back to the homepage, the row which has the same user will have the same button status as in the user details page
