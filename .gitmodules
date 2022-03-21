@@ -1,0 +1,3 @@
+[submodule "test_mobile_project"]
+	path = test_mobile_project
+	url = /Users/junma/Workspace/test-mobile/test_mobile_project/.git/
