@@ -28,6 +28,7 @@
 		B981B4B027E833A1003AD321 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4AE27E833A0003AD321 /* Collection+Extension.swift */; };
 		B981B4B227E833F3003AD321 /* NTR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B981B4B127E833F3003AD321 /* NTR-Regular.ttf */; };
 		B981B4B427E83444003AD321 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4B327E83444003AD321 /* Constant.swift */; };
+		B981B4B727E834B1003AD321 /* StyledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4B627E834B1003AD321 /* StyledNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		B981B4AE27E833A0003AD321 /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		B981B4B127E833F3003AD321 /* NTR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTR-Regular.ttf"; sourceTree = "<group>"; };
 		B981B4B327E83444003AD321 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		B981B4B627E834B1003AD321 /* StyledNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledNavigationController.swift; sourceTree = "<group>"; };
 		E0042CDBD0A2918AD5D35BB4 /* Pods-test_mobile-test_mobileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_mobile-test_mobileUITests.release.xcconfig"; path = "Target Support Files/Pods-test_mobile-test_mobileUITests/Pods-test_mobile-test_mobileUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FBB5619759053C7A288A0137 /* Pods_test_mobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_mobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 		B981B46F27E83156003AD321 /* test_mobile */ = {
 			isa = PBXGroup;
 			children = (
+				B981B4B527E8349C003AD321 /* View */,
 				B981B4A527E832DC003AD321 /* Service */,
 				B981B4A027E832BE003AD321 /* Model */,
 				B981B47027E83156003AD321 /* AppDelegate.swift */,
@@ -206,6 +209,14 @@
 				B981B4AA27E8333B003AD321 /* user_search_result.json */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		B981B4B527E8349C003AD321 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B981B4B627E834B1003AD321 /* StyledNavigationController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E9EAA18E903C5DEBF8D386A8 /* Frameworks */ = {
@@ -482,6 +493,7 @@
 				B981B4B027E833A1003AD321 /* Collection+Extension.swift in Sources */,
 				B981B4B427E83444003AD321 /* Constant.swift in Sources */,
 				B981B4AF27E833A1003AD321 /* ReactiveExtension.swift in Sources */,
+				B981B4B727E834B1003AD321 /* StyledNavigationController.swift in Sources */,
 				B981B47127E83156003AD321 /* AppDelegate.swift in Sources */,
 				B981B4A727E832F4003AD321 /* Network.swift in Sources */,
 				B981B47327E83156003AD321 /* SceneDelegate.swift in Sources */,
