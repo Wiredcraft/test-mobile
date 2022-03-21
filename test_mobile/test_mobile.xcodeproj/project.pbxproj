@@ -12,7 +12,6 @@
 		ABB4A6D6F392CF53A738E0FF /* Pods_test_mobile_test_mobileUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D34AC69AA532316E6710255 /* Pods_test_mobile_test_mobileUITests.framework */; };
 		B981B47127E83156003AD321 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B47027E83156003AD321 /* AppDelegate.swift */; };
 		B981B47327E83156003AD321 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B47227E83156003AD321 /* SceneDelegate.swift */; };
-		B981B47527E83156003AD321 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B47427E83156003AD321 /* ViewController.swift */; };
 		B981B47827E83156003AD321 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B981B47627E83156003AD321 /* Main.storyboard */; };
 		B981B47A27E83158003AD321 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B981B47927E83158003AD321 /* Assets.xcassets */; };
 		B981B47D27E83158003AD321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B981B47B27E83158003AD321 /* LaunchScreen.storyboard */; };
@@ -29,6 +28,11 @@
 		B981B4B227E833F3003AD321 /* NTR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B981B4B127E833F3003AD321 /* NTR-Regular.ttf */; };
 		B981B4B427E83444003AD321 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4B327E83444003AD321 /* Constant.swift */; };
 		B981B4B727E834B1003AD321 /* StyledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4B627E834B1003AD321 /* StyledNavigationController.swift */; };
+		B981B4BC27E8351A003AD321 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4BA27E8351A003AD321 /* HomeViewController.swift */; };
+		B981B4BD27E8351A003AD321 /* SectionOfUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4BB27E8351A003AD321 /* SectionOfUsers.swift */; };
+		B981B4BF27E8352C003AD321 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4BE27E8352C003AD321 /* UserTableViewCell.swift */; };
+		B981B4C227E83561003AD321 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4C127E83561003AD321 /* HomePageViewModel.swift */; };
+		B981B4C427E8357F003AD321 /* AppInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4C327E8357F003AD321 /* AppInjection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +63,6 @@
 		B981B46D27E83156003AD321 /* test_mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test_mobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B981B47027E83156003AD321 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B981B47227E83156003AD321 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B981B47427E83156003AD321 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B981B47727E83156003AD321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B981B47927E83158003AD321 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B981B47C27E83158003AD321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,6 +82,11 @@
 		B981B4B127E833F3003AD321 /* NTR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTR-Regular.ttf"; sourceTree = "<group>"; };
 		B981B4B327E83444003AD321 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		B981B4B627E834B1003AD321 /* StyledNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledNavigationController.swift; sourceTree = "<group>"; };
+		B981B4BA27E8351A003AD321 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B981B4BB27E8351A003AD321 /* SectionOfUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionOfUsers.swift; sourceTree = "<group>"; };
+		B981B4BE27E8352C003AD321 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		B981B4C127E83561003AD321 /* HomePageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
+		B981B4C327E8357F003AD321 /* AppInjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInjection.swift; sourceTree = "<group>"; };
 		E0042CDBD0A2918AD5D35BB4 /* Pods-test_mobile-test_mobileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_mobile-test_mobileUITests.release.xcconfig"; path = "Target Support Files/Pods-test_mobile-test_mobileUITests/Pods-test_mobile-test_mobileUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FBB5619759053C7A288A0137 /* Pods_test_mobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_mobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -149,12 +157,14 @@
 		B981B46F27E83156003AD321 /* test_mobile */ = {
 			isa = PBXGroup;
 			children = (
+				B981B4C027E8354A003AD321 /* ViewModel */,
+				B981B4B827E834FF003AD321 /* Scene */,
 				B981B4B527E8349C003AD321 /* View */,
 				B981B4A527E832DC003AD321 /* Service */,
 				B981B4A027E832BE003AD321 /* Model */,
 				B981B47027E83156003AD321 /* AppDelegate.swift */,
+				B981B4C327E8357F003AD321 /* AppInjection.swift */,
 				B981B47227E83156003AD321 /* SceneDelegate.swift */,
-				B981B47427E83156003AD321 /* ViewController.swift */,
 				B981B47627E83156003AD321 /* Main.storyboard */,
 				B981B47927E83158003AD321 /* Assets.xcassets */,
 				B981B4B127E833F3003AD321 /* NTR-Regular.ttf */,
@@ -215,8 +225,34 @@
 			isa = PBXGroup;
 			children = (
 				B981B4B627E834B1003AD321 /* StyledNavigationController.swift */,
+				B981B4BE27E8352C003AD321 /* UserTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B981B4B827E834FF003AD321 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				B981B4B927E8351A003AD321 /* Home */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		B981B4B927E8351A003AD321 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B981B4BA27E8351A003AD321 /* HomeViewController.swift */,
+				B981B4BB27E8351A003AD321 /* SectionOfUsers.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B981B4C027E8354A003AD321 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B981B4C127E83561003AD321 /* HomePageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E9EAA18E903C5DEBF8D386A8 /* Frameworks */ = {
@@ -489,13 +525,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B981B47527E83156003AD321 /* ViewController.swift in Sources */,
 				B981B4B027E833A1003AD321 /* Collection+Extension.swift in Sources */,
+				B981B4C227E83561003AD321 /* HomePageViewModel.swift in Sources */,
 				B981B4B427E83444003AD321 /* Constant.swift in Sources */,
 				B981B4AF27E833A1003AD321 /* ReactiveExtension.swift in Sources */,
+				B981B4BF27E8352C003AD321 /* UserTableViewCell.swift in Sources */,
 				B981B4B727E834B1003AD321 /* StyledNavigationController.swift in Sources */,
+				B981B4C427E8357F003AD321 /* AppInjection.swift in Sources */,
 				B981B47127E83156003AD321 /* AppDelegate.swift in Sources */,
 				B981B4A727E832F4003AD321 /* Network.swift in Sources */,
+				B981B4BD27E8351A003AD321 /* SectionOfUsers.swift in Sources */,
+				B981B4BC27E8351A003AD321 /* HomeViewController.swift in Sources */,
 				B981B47327E83156003AD321 /* SceneDelegate.swift in Sources */,
 				B981B4A427E832D8003AD321 /* User.swift in Sources */,
 				B981B4A327E832D8003AD321 /* Repository.swift in Sources */,
