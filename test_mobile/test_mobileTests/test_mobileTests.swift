@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import Moya
+import RxBlocking
 @testable import test_mobile
 
 class test_mobileTests: XCTestCase {
@@ -17,20 +19,93 @@ class test_mobileTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    /// Load data from local bundle
+    func testLocalUsers() throws {
+        let data = loadMockJsonData(for: "user_search_result")
+        let endpoint = { [unowned self] (target: Network) -> Endpoint in
+            self.mockEndpoint(for: target, response: .networkResponse(200, data))
         }
+        
+        let provider = MoyaProvider<Network>(
+            endpointClosure: endpoint,
+            stubClosure: MoyaProvider.delayedStub(1)
+        ).rx
+        
+        do {
+            let users = try provider.request(.searchUsers(keyword: "swift", page: 1))
+                .toBlocking()
+                .single()
+                .map([User].self, atKeyPath: "items")
+            XCTAssert(users.count > 0)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    /// Fetch user data over network
+    func testNetworkSearchUsers() throws {
+        let provider = MoyaProvider<Network>().rx
+        do {
+            let users = try provider.request(.searchUsers(keyword: "swift", page: 2))
+                .toBlocking()
+                .single()
+                .map([User].self, atKeyPath: "items")
+            XCTAssert(users.count > 0)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testLocalRepos() throws {
+        let data = loadMockJsonData(for: "repos")
+        let endpoint = { [unowned self] (target: Network) -> Endpoint in
+            self.mockEndpoint(for: target, response: .networkResponse(200, data))
+        }
+        
+        let provider = MoyaProvider<Network>(
+            endpointClosure: endpoint,
+            stubClosure: MoyaProvider.delayedStub(1)
+        ).rx
+        
+        do {
+            let repos = try provider.request(.repos(user: "swift"))
+                .map([Repository].self)
+                .toBlocking()
+                .single()
+            XCTAssert(repos.count > 0)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testNetworkFetchRepos() throws {
+        let provider = MoyaProvider<Network>().rx
+        do {
+            let repos = try provider.request(.repos(user: "swift"))
+                .map([Repository].self)
+                .toBlocking()
+                .single()
+            XCTAssert(repos.count > 0)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func mockEndpoint(for target: Network, response: Moya.EndpointSampleResponse) -> Endpoint {
+        Endpoint(
+            url: URL(target: target).absoluteString,
+            sampleResponseClosure: { response },
+            method: target.method,
+            task: target.task,
+            httpHeaderFields: target.headers
+        )
+    }
+    
+    func loadMockJsonData(for fileName: String) -> Data {
+        let bundle = Bundle(for: type(of: self))
+        let filepath = bundle.path(forResource: fileName, ofType: "json")!
+        return try! Data(contentsOf: URL(fileURLWithPath: filepath))
     }
 
 }

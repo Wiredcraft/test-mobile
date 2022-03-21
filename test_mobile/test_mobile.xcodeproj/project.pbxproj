@@ -19,6 +19,11 @@
 		B981B48827E83158003AD321 /* test_mobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B48727E83158003AD321 /* test_mobileTests.swift */; };
 		B981B49227E83158003AD321 /* test_mobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B49127E83158003AD321 /* test_mobileUITests.swift */; };
 		B981B49427E83158003AD321 /* test_mobileUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B49327E83158003AD321 /* test_mobileUITestsLaunchTests.swift */; };
+		B981B4A327E832D8003AD321 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4A127E832D8003AD321 /* Repository.swift */; };
+		B981B4A427E832D8003AD321 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4A227E832D8003AD321 /* User.swift */; };
+		B981B4A727E832F4003AD321 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B981B4A627E832F4003AD321 /* Network.swift */; };
+		B981B4AB27E8333B003AD321 /* repos.json in Resources */ = {isa = PBXBuildFile; fileRef = B981B4A927E8333B003AD321 /* repos.json */; };
+		B981B4AC27E8333B003AD321 /* user_search_result.json in Resources */ = {isa = PBXBuildFile; fileRef = B981B4AA27E8333B003AD321 /* user_search_result.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,11 @@
 		B981B48D27E83158003AD321 /* test_mobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = test_mobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B981B49127E83158003AD321 /* test_mobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_mobileUITests.swift; sourceTree = "<group>"; };
 		B981B49327E83158003AD321 /* test_mobileUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_mobileUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B981B4A127E832D8003AD321 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		B981B4A227E832D8003AD321 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B981B4A627E832F4003AD321 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		B981B4A927E8333B003AD321 /* repos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = repos.json; sourceTree = "<group>"; };
+		B981B4AA27E8333B003AD321 /* user_search_result.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user_search_result.json; sourceTree = "<group>"; };
 		E0042CDBD0A2918AD5D35BB4 /* Pods-test_mobile-test_mobileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test_mobile-test_mobileUITests.release.xcconfig"; path = "Target Support Files/Pods-test_mobile-test_mobileUITests/Pods-test_mobile-test_mobileUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FBB5619759053C7A288A0137 /* Pods_test_mobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test_mobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,7 +111,6 @@
 				967F814762DC22E84CC58312 /* Pods-test_mobileTests.debug.xcconfig */,
 				AB4D0137C4564C2C90B137F0 /* Pods-test_mobileTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -130,6 +139,8 @@
 		B981B46F27E83156003AD321 /* test_mobile */ = {
 			isa = PBXGroup;
 			children = (
+				B981B4A527E832DC003AD321 /* Service */,
+				B981B4A027E832BE003AD321 /* Model */,
 				B981B47027E83156003AD321 /* AppDelegate.swift */,
 				B981B47227E83156003AD321 /* SceneDelegate.swift */,
 				B981B47427E83156003AD321 /* ViewController.swift */,
@@ -144,6 +155,7 @@
 		B981B48627E83158003AD321 /* test_mobileTests */ = {
 			isa = PBXGroup;
 			children = (
+				B981B4A827E83327003AD321 /* Resource */,
 				B981B48727E83158003AD321 /* test_mobileTests.swift */,
 			);
 			path = test_mobileTests;
@@ -156,6 +168,32 @@
 				B981B49327E83158003AD321 /* test_mobileUITestsLaunchTests.swift */,
 			);
 			path = test_mobileUITests;
+			sourceTree = "<group>";
+		};
+		B981B4A027E832BE003AD321 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B981B4A127E832D8003AD321 /* Repository.swift */,
+				B981B4A227E832D8003AD321 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B981B4A527E832DC003AD321 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B981B4A627E832F4003AD321 /* Network.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		B981B4A827E83327003AD321 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B981B4A927E8333B003AD321 /* repos.json */,
+				B981B4AA27E8333B003AD321 /* user_search_result.json */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		E9EAA18E903C5DEBF8D386A8 /* Frameworks */ = {
@@ -288,6 +326,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B981B4AB27E8333B003AD321 /* repos.json in Resources */,
+				B981B4AC27E8333B003AD321 /* user_search_result.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +467,10 @@
 			files = (
 				B981B47527E83156003AD321 /* ViewController.swift in Sources */,
 				B981B47127E83156003AD321 /* AppDelegate.swift in Sources */,
+				B981B4A727E832F4003AD321 /* Network.swift in Sources */,
 				B981B47327E83156003AD321 /* SceneDelegate.swift in Sources */,
+				B981B4A427E832D8003AD321 /* User.swift in Sources */,
+				B981B4A327E832D8003AD321 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
