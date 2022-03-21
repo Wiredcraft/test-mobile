@@ -11,5 +11,6 @@ import Resolver
 extension Resolver: ResolverRegistering {
     static public func registerAllServices() {
         registerHomePageViewModel()
+        registerUserDetailViewModel()
     }
 }

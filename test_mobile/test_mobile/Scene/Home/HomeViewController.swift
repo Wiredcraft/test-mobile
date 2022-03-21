@@ -140,7 +140,8 @@ class HomeViewController: UIViewController {
         // push to user detail page
         tableView.rx.itemSelected
             .subscribe(onNext: { [unowned self] indexPath in
-
+                let detail = UserDetailViewController(index: indexPath)
+                self.navigationController?.pushViewController(detail, animated: true)
             })
             .disposed(by: rx.disposeBag)
         
