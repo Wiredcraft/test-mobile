@@ -1,0 +1,46 @@
+PODS:
+  - Alamofire (5.5.0)
+  - HandyJSON (5.0.2)
+  - Kingfisher (6.3.1)
+  - MJRefresh (3.7.5)
+  - SnapKit (5.0.1)
+  - SVProgressHUD (2.2.6):
+    - SVProgressHUD/Core (= 2.2.6)
+  - SVProgressHUD/Core (2.2.6)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.5)
+  - HandyJSON (~> 5.0.2)
+  - Kingfisher
+  - MJRefresh (~> 3.7.5)
+  - SnapKit (~> 5.0.1)
+  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - Alamofire
+    - HandyJSON
+    - Kingfisher
+    - MJRefresh
+    - SnapKit
+
+EXTERNAL SOURCES:
+  SVProgressHUD:
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
+CHECKOUT OPTIONS:
+  SVProgressHUD:
+    :commit: de1d4dba816a19454329031156b8788692bcfa2c
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SVProgressHUD: de812b4f0e1d65358f0064416473174ae619843f
+
+PODFILE CHECKSUM: 4f160a44b745bef38724d8f31d844fbfc8b490d7
+
+COCOAPODS: 1.11.3
