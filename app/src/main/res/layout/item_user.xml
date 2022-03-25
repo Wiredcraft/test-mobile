@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.wiredcraft.example.entity.User" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding_15"
+        android:paddingBottom="@dimen/padding_15">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/img_head"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:scaleType="fitCenter"
+            app:riv_corner_radius="30dp"
+            android:transitionName="head"
+            app:headerUrl="@{user.avatarUrl}"
+            android:src="@mipmap/ic_launcher" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lay_center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/img_head"
+            app:layout_constraintRight_toLeftOf="@id/btn_follow"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{user.login}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_13"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintEnd_toStartOf="@id/txt_score"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Wired" />
+
+            <TextView
+                android:id="@+id/txt_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txt_name"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{String.valueOf(user.score)}"
+                tools:text="8.912983" />
+
+            <TextView
+                android:id="@+id/txt_html"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_3"
+                android:textColor="@color/cl_6d6d6d"
+                android:text="@{user.htmlUrl}"
+                android:textSize="@dimen/font_size_11"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_name"
+                tools:text="http://" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/btn_follow"
+            android:layout_width="55dp"
+            android:layout_height="24dp"
+            android:background="@drawable/bg_corner_5_all_black_shape"
+            android:gravity="center"
+            tools:text="关注"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_11"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+</layout>

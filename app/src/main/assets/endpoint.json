@@ -1,0 +1,15 @@
+{
+    "queryUser": "https://{{env_github}}api.github.com/search/users?q=${keyword}&page=${page}",
+    "follow": "https://{{env_github}}api.github.com/users/swift/followers",
+    "getRepo": "https://{{env_github}}api.github.com/users/${keyword}/repos",
+
+    "env_pattern": {
+        "{{env_github}}": {
+            "dev": "devaws-",
+            "qa": "qaaws-",
+            "uat": "uataws-",
+            "prod": "",
+            "default": ""
+        }
+    }
+}

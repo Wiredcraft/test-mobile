@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/HorryWu/project/test-mobile/app/src/main/res/layout/activity_user_detail.xml" value="0.35052083333333334" />
+        <entry key="..\:/HorryWu/project/test-mobile/app/src/main/res/layout/item_user.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/drawable-xxhdpi/ic_launcher_background.xml" value="0.36770833333333336" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/drawable/bg_corner_20_all_ffffff_shape.xml" value="0.28703703703703703" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/drawable/bg_corner_5_all_black_shape.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/drawable/bg_corner_5_all_blue_shape.xml" value="0.3277777777777778" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/layout/activity_main.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/layout/activity_user_detail.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/layout/footer_view.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/layout/item_repo.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/layout/item_user.xml" value="0.580964153275649" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/layout/layout_search_bar.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/HorryWu/AndroidStudioProjects/Wiredcraft/app/src/main/res/layout/view_load_more.xml" value="0.26268115942028986" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

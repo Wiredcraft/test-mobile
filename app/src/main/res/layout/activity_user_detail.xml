@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="user"
+            type="com.wiredcraft.example.entity.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/cl_1a1a1a"
+        android:paddingTop="@dimen/padding_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/lay_top"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/cl_1a1a1a"
+            android:layout_height="45dp">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_marginStart="@dimen/margin_15"
+                android:layout_width="wrap_content"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingRight="@dimen/padding_10"
+                android:src="@drawable/ic_back"
+                android:layout_height="40dp"/>
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/lay_top"
+            tools:context=".ui.UserDetailActivity">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:background="@color/cl_1a1a1a"
+                    android:orientation="vertical">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/img_head"
+                        android:layout_width="64dp"
+                        app:riv_corner_radius="30dp"
+                        app:headerUrl="@{user.avatarUrl}"
+                        tools:src="@mipmap/ic_launcher"
+                        android:transitionName="head"
+                        android:layout_height="64dp"/>
+
+                    <TextView
+                        android:id="@+id/txt_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_17"
+                        android:layout_marginBottom="@dimen/margin_11"
+                        android:text="@{user.login}"
+                        tools:text="Horry"
+                        android:textSize="@dimen/font_size_16"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/btn_follow"
+                        android:layout_width="55dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/bg_corner_5_all_white_shape"
+                        android:gravity="center"
+                        tools:text="关注"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_11" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/lay_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+
+                <LinearLayout
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/padding_11"
+                    android:paddingBottom="@dimen/padding_11"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_marginStart="@dimen/margin_19"
+                        android:background="@color/black"
+                        android:layout_height="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_9"
+                        android:gravity="center"
+                        android:text="REPOSITORIES"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_18" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/repo_list"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/margin_20"
+                    android:paddingRight="@dimen/margin_20"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
