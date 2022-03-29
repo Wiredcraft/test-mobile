@@ -14,6 +14,8 @@ ext {
     constraintLayoutVersion = '2.0.4'
     pagingVersion = '3.1.0-alpha02'
     hiltVersion = '2.38.1'
+    navigationVersion = '2.4.1'
+    swipeRefreshLayoutVersion = '1.1.0'
 
     glideVersion = '4.11.0'
     gsonVerison = '2.8.6'

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="followListener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="info"
+            type="xyz.mengxy.githubuserslist.model.InfoPresenter"/>
+
+        <import type="android.view.View"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{clickListener}">
+
+        <ImageView
+            android:id="@+id/iv_info_avatar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:contentDescription="@string/image_info_avatar"
+            android:scaleType="centerCrop"
+            app:imageFromUrl="@{info.avatarUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_info_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="@{info.name}"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@id/tv_info_url"
+            app:layout_constraintEnd_toStartOf="@id/tv_info_score"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/iv_info_avatar"
+            app:layout_constraintTop_toTopOf="@id/iv_info_avatar"/>
+
+        <TextView
+            android:id="@+id/tv_info_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="20dp"
+            android:includeFontPadding="false"
+            android:text="@{info.score}"
+            android:textColor="@color/info_text_gray"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_info_name"
+            app:layout_constraintEnd_toStartOf="@id/tv_follow_button"
+            app:layout_constraintStart_toEndOf="@id/tv_info_name"
+            app:layout_constraintTop_toTopOf="@id/tv_info_name"/>
+
+        <TextView
+            android:id="@+id/tv_info_url"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="20dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="@{info.url}"
+            android:textColor="@color/info_text_gray"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_info_avatar"
+            app:layout_constraintEnd_toStartOf="@id/tv_follow_button"
+            app:layout_constraintStart_toStartOf="@id/tv_info_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_info_name"/>
+
+        <TextView
+            android:id="@+id/tv_follow_button"
+            android:layout_width="55dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="29dp"
+            android:background="@drawable/bg_follow_button_black"
+            android:gravity="center"
+            android:text="@string/text_follow"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:onClick="@{followListener}"
+            android:visibility="@{info.userInfo ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/line_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/iv_info_avatar"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

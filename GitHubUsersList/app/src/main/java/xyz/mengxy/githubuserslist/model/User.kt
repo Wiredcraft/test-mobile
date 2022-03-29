@@ -14,4 +14,24 @@ data class User(
     @SerializedName("avatar_url") val userAvatar: String,
     @SerializedName("html_url") val userUrl: String,
     @SerializedName("score") val userScore: String?
-)
+) : InfoPresenter {
+    override fun isUserInfo(): Boolean {
+        return true
+    }
+
+    override fun getAvatarUrl(): String {
+        return userAvatar
+    }
+
+    override fun getName(): String {
+        return userName
+    }
+
+    override fun getScore(): String {
+        return userScore ?: "0"
+    }
+
+    override fun getUrl(): String {
+        return userUrl
+    }
+}
