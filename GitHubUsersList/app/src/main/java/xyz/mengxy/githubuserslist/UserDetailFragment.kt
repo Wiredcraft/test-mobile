@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
@@ -37,9 +38,16 @@ class UserDetailFragment : Fragment() {
         binding.setFollowListener {
             //todo follow click
         }
+        binding.srlSwipeRefresh.setOnRefreshListener {
+            adapter.refresh()
+        }
         val userInfo = detailViewModel.userLiveData.value
         binding.user = userInfo
-        binding.rvRepoList.adapter = adapter
+        binding.rvRepoList.adapter = adapter.apply {
+            addLoadStateListener {
+                binding.srlSwipeRefresh.isRefreshing = it.refresh is LoadState.Loading
+            }
+        }
         userInfo?.userName?.let {
             getRepoList(it)
         }
