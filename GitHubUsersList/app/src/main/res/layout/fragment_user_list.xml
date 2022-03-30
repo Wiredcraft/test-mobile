@@ -6,6 +6,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:background="@color/white">
 
         <EditText
@@ -25,6 +27,7 @@
             android:paddingEnd="15dp"
             android:singleLine="true"
             android:textColorHint="@color/search_input_hint_gray"
+            android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

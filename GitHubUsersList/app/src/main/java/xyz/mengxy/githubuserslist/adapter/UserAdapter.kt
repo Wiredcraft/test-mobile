@@ -26,9 +26,8 @@ class UserAdapter(private val userDetailViewModel: UserDetailViewModel) :
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val user = getItem(position)
-        if (user != null) {
-            holder.bind(userDetailViewModel, user)
+        getItem(position)?.let {
+            holder.bind(userDetailViewModel, it)
         }
     }
 
@@ -41,7 +40,8 @@ class UserAdapter(private val userDetailViewModel: UserDetailViewModel) :
                 info = item
                 setClickListener {
                     viewModel.setUserInfo(item)
-                    it.findNavController().navigate(R.id.action_userListFragment_to_userDetailFragment)
+                    it.findNavController()
+                        .navigate(R.id.action_userListFragment_to_userDetailFragment)
                 }
                 setFollowListener {
                     //todo follow click

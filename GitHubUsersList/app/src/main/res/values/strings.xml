@@ -4,4 +4,5 @@
     <string name="text_follow">关注</string>
     <string name="text_followed">已关注</string>
     <string name="search_hint">Search</string>
+    <string name="text_repositories">REPOSITORIES</string>
 </resources>

@@ -3,7 +3,7 @@ ext {
     appVersionCode = 2022032801
     appVersionName = '1.0.0'
     buildVersion = [
-            "min_sdk"    : 21,
+            "min_sdk"    : 23,
             "target_sdk" : 31,
             "compile_sdk": 31
     ]

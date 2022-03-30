@@ -52,20 +52,21 @@ class UserListFragment : Fragment() {
             }
         }
 
-        binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
+        binding.etSearch.setOnEditorActionListener { view, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val queryStr = binding.etSearch.text.toString().trim()
                 searchUser(queryStr)
+                view.hideKeyboard()
             }
             true
         }
 
-        searchUser(DEFAULT_SEARCH)
+        searchUser()
 
         return binding.root
     }
 
-    private fun searchUser(query: String) {
+    private fun searchUser(query: String = DEFAULT_SEARCH) {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
             userViewModel.searchUsers(query).collectLatest {

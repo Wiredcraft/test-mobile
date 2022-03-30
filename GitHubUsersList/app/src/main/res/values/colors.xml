@@ -13,4 +13,5 @@
     <color name="search_input_background_gray">#F5F5F5</color>
     <color name="line_gray">#EFEFEF</color>
     <color name="follow_button_black">#1A1A1A</color>
+    <color name="user_detail_background_black">#1A1A1A</color>
 </resources>

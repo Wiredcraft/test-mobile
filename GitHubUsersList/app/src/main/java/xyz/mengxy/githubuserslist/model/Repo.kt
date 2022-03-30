@@ -14,4 +14,25 @@ data class Repo(
     @SerializedName("stargazers_count") val repoScore: String,
     @SerializedName("html_url") val repoUrl: String,
     @SerializedName("owner") val ownerInfo: User
-)
+) : InfoPresenter {
+    override fun isUserInfo(): Boolean {
+        return false
+    }
+
+    override fun getAvatarUrl(): String {
+        return ownerInfo.getAvatarUrl()
+    }
+
+    override fun getName(): String {
+        return repoName
+    }
+
+    override fun getScore(): String {
+        return repoScore
+    }
+
+    override fun getUrl(): String {
+        return repoUrl
+    }
+
+}
