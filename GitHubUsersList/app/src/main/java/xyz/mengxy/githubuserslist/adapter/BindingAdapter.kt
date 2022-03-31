@@ -10,8 +10,10 @@ import xyz.mengxy.githubuserslist.R
 
 /**
  * Created by Mengxy on 3/29/22.
+ * binding adapter
  */
 
+// load user avatar image from url
 @BindingAdapter("imageFromUrl")
 fun ImageView.bindImageFromUrl(imageUrl: String?) {
     if (imageUrl.isNullOrEmpty().not()) {

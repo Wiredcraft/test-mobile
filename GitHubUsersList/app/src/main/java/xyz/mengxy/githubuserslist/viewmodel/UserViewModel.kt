@@ -15,6 +15,7 @@ import javax.inject.Inject
 
 /**
  * Created by Mengxy on 3/29/22.
+ * store query info in `state` : [SavedStateHandle]
  */
 @HiltViewModel
 class UserViewModel @Inject constructor(
@@ -46,6 +47,7 @@ class UserViewModel @Inject constructor(
         }
     }
 
+    // search by default query key first time, when activity rotate search by current query key
     fun searchUsers() {
         currentQueryStateFlow.value = currentQueryStr
     }

@@ -8,6 +8,7 @@ import xyz.mengxy.githubuserslist.R
 
 /**
  * Created by Mengxy on 3/30/22.
+ * custom view to draw arc background
  */
 class ArcRectangleView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0

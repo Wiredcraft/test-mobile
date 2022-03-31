@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 /**
  * Created by Mengxy on 3/30/22.
+ * store user info between two fragment and deal with follow event
  */
 @HiltViewModel
 class UserDetailViewModel @Inject constructor() : ViewModel() {

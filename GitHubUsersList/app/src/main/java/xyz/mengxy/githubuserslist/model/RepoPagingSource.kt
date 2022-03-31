@@ -7,6 +7,7 @@ import xyz.mengxy.githubuserslist.util.STARTING_PAGE_INDEX
 
 /**
  * Created by Mengxy on 3/29/22.
+ * load data from api service and set to paging load result
  */
 class RepoPagingSource(
     private val service: NetworkService,

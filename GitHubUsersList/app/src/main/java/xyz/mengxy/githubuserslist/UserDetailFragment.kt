@@ -22,6 +22,7 @@ import xyz.mengxy.githubuserslist.viewmodel.UserDetailViewModel
 
 /**
  * Created by Mengxy on 3/29/22.
+ * user detail page
  */
 @AndroidEntryPoint
 class UserDetailFragment : Fragment() {
@@ -32,6 +33,7 @@ class UserDetailFragment : Fragment() {
     private var repoJob: Job? = null
     private var binding: FragmentUserDetailBinding? = null
 
+    // follow observer when click FOLLOW/UNFOLLOW button
     private val followActionObserver = Observer<User> { user ->
         binding?.apply {
             tvFollowButton.text = resources.getString(
@@ -74,7 +76,9 @@ class UserDetailFragment : Fragment() {
         return binding?.root
     }
 
+    // get repo list
     private fun getRepoList(userName: String) {
+        // cancel the previous job before creating a new one
         repoJob?.cancel()
         repoJob = lifecycleScope.launch {
             repoViewModel.getUserRepos(userName).collectLatest {

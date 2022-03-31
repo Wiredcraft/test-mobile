@@ -27,6 +27,8 @@ import xyz.mengxy.githubuserslist.viewmodel.UserViewModel
  * check is binding inflated at onCreateView() because navigation use replace() to navigate
  * fragment, so this fragment recreated when come back
  * see [FragmentNavigator] navigate() function.
+ *
+ * can use LoadStateAdapter to displaying LoadState
  */
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
@@ -37,6 +39,7 @@ class UserListFragment : Fragment() {
     private var adapter: UserAdapter? = null
     private var binding: FragmentUserListBinding? = null
 
+    // when follow changed find user item index and notify item changed with payload
     private val followActionObserver = Observer<User> { user ->
         val index = adapter?.snapshot()?.items?.indexOfLast { it.userId == user.userId } ?: -1
         if (index >= 0) {
@@ -51,6 +54,7 @@ class UserListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // trick prevent view recreate
         if (binding == null) {
             adapter = UserAdapter(detailViewModel)
             binding = FragmentUserListBinding.inflate(inflater, container, false).apply {

@@ -10,6 +10,7 @@ import xyz.mengxy.githubuserslist.model.Repo
 
 /**
  * Created by Mengxy on 3/30/22.
+ * repo paging data adapter in user detail page
  */
 class RepoAdapter : PagingDataAdapter<Repo, RepoAdapter.RepoViewHolder>(RepoDiffCallback()) {
 

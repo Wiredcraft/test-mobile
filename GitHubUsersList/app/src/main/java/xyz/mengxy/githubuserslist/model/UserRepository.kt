@@ -9,6 +9,7 @@ import javax.inject.Inject
 
 /**
  * Created by Mengxy on 3/29/22.
+ * return repo result flow by [UserPagingSource] to [UserViewModel]
  */
 class UserRepository @Inject constructor(private val service: NetworkService) {
 

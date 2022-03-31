@@ -14,6 +14,8 @@ import xyz.mengxy.githubuserslist.viewmodel.UserDetailViewModel
 
 /**
  * Created by Mengxy on 3/29/22.
+ * user paging data adapter in user list page
+ * [UserDetailViewModel] to store the user data when click item and deal with follow action
  */
 class UserAdapter(private val userDetailViewModel: UserDetailViewModel) :
     PagingDataAdapter<User, UserAdapter.UserViewHolder>(UserDiffCallback()) {
@@ -26,6 +28,7 @@ class UserAdapter(private val userDetailViewModel: UserDetailViewModel) :
         )
     }
 
+    // only update follow state TextView
     override fun onBindViewHolder(
         holder: UserViewHolder,
         position: Int,
@@ -57,6 +60,7 @@ class UserAdapter(private val userDetailViewModel: UserDetailViewModel) :
                 info = item
                 setClickListener {
                     viewModel.setUserInfo(item)
+                    // open user detail page with navigate()
                     it.findNavController()
                         .navigate(R.id.action_userListFragment_to_userDetailFragment)
                 }

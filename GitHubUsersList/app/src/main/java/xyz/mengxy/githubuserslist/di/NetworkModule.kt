@@ -9,6 +9,8 @@ import javax.inject.Singleton
 
 /**
  * Created by Mengxy on 3/29/22.
+ * network module provide the Retrofit Api Service
+ * @InstallIn can inject the dependency to [SingletonComponent]
  */
 @InstallIn(SingletonComponent::class)
 @Module
