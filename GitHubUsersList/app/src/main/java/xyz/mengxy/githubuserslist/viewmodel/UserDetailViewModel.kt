@@ -13,8 +13,15 @@ import javax.inject.Inject
 class UserDetailViewModel @Inject constructor() : ViewModel() {
 
     val userLiveData = MutableLiveData<User>()
+    val followUserLiveData = MutableLiveData<User>()
+
 
     fun setUserInfo(user: User) {
         userLiveData.value = user
+    }
+
+    fun followUser(user: User) {
+        user.isFollowed = !user.isFollowed
+        followUserLiveData.postValue(user)
     }
 }

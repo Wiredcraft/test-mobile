@@ -3,6 +3,7 @@ package xyz.mengxy.githubuserslist.model
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import xyz.mengxy.githubuserslist.api.NetworkService
+import xyz.mengxy.githubuserslist.util.STARTING_PAGE_INDEX
 
 /**
  * Created by Mengxy on 3/29/22.

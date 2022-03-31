@@ -15,6 +15,13 @@ data class User(
     @SerializedName("html_url") val userUrl: String,
     @SerializedName("score") val userScore: String?
 ) : InfoPresenter {
+
+    var isFollowed = false
+
+    override fun isUserFollowed(): Boolean {
+        return isFollowed
+    }
+
     override fun isUserInfo(): Boolean {
         return true
     }
@@ -33,5 +40,15 @@ data class User(
 
     override fun getUrl(): String {
         return userUrl
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return (other as? User)?.userId == userId
+    }
+
+    override fun hashCode(): Int {
+        var result = userId.hashCode()
+        result = 31 * result + userName.hashCode()
+        return result
     }
 }

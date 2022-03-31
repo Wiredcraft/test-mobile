@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import xyz.mengxy.githubuserslist.adapter.RepoAdapter
 import xyz.mengxy.githubuserslist.databinding.FragmentUserDetailBinding
+import xyz.mengxy.githubuserslist.model.User
 import xyz.mengxy.githubuserslist.viewmodel.RepoViewModel
 import xyz.mengxy.githubuserslist.viewmodel.UserDetailViewModel
 
@@ -28,30 +30,48 @@ class UserDetailFragment : Fragment() {
     private val detailViewModel: UserDetailViewModel by activityViewModels()
     private val adapter = RepoAdapter()
     private var repoJob: Job? = null
+    private var binding: FragmentUserDetailBinding? = null
+
+    private val followActionObserver = Observer<User> { user ->
+        binding?.apply {
+            tvFollowButton.text = resources.getString(
+                if (user.isFollowed) {
+                    R.string.text_followed
+                } else {
+                    R.string.text_follow
+                }
+            )
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val binding = FragmentUserDetailBinding.inflate(inflater, container, false)
-        binding.setFollowListener {
-            //todo follow click
-        }
-        binding.srlSwipeRefresh.setOnRefreshListener {
-            adapter.refresh()
-        }
-        val userInfo = detailViewModel.userLiveData.value
-        binding.user = userInfo
-        binding.rvRepoList.adapter = adapter.apply {
-            addLoadStateListener {
-                binding.srlSwipeRefresh.isRefreshing = it.refresh is LoadState.Loading
+    ): View? {
+        binding = FragmentUserDetailBinding.inflate(inflater, container, false)
+        binding?.apply {
+            setFollowListener {
+                detailViewModel.userLiveData.value?.let {
+                    detailViewModel.followUser(it)
+                }
+            }
+            srlSwipeRefresh.setOnRefreshListener {
+                adapter.refresh()
+            }
+            val userInfo = detailViewModel.userLiveData.value
+            user = userInfo
+            rvRepoList.adapter = adapter.apply {
+                addLoadStateListener {
+                    srlSwipeRefresh.isRefreshing = it.refresh is LoadState.Loading
+                }
+            }
+            userInfo?.userName?.let {
+                getRepoList(it)
             }
         }
-        userInfo?.userName?.let {
-            getRepoList(it)
-        }
-        return binding.root
+        detailViewModel.followUserLiveData.observe(viewLifecycleOwner, followActionObserver)
+        return binding?.root
     }
 
     private fun getRepoList(userName: String) {

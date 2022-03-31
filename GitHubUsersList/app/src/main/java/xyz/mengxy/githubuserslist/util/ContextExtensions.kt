@@ -1,4 +1,4 @@
-package xyz.mengxy.githubuserslist
+package xyz.mengxy.githubuserslist.util
 
 import android.content.Context
 import android.view.View

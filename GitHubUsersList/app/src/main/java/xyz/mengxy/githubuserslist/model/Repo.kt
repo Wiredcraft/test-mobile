@@ -19,6 +19,10 @@ data class Repo(
         return false
     }
 
+    override fun isUserFollowed(): Boolean {
+        return false
+    }
+
     override fun getAvatarUrl(): String {
         return ownerInfo.getAvatarUrl()
     }

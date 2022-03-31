@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import xyz.mengxy.githubuserslist.R
 import xyz.mengxy.githubuserslist.databinding.ViewItemInfoBinding
 import xyz.mengxy.githubuserslist.model.User
+import xyz.mengxy.githubuserslist.util.PAYLOAD_UPDATE_FOLLOW_STATE
 import xyz.mengxy.githubuserslist.viewmodel.UserDetailViewModel
 
 /**
@@ -23,6 +24,22 @@ class UserAdapter(private val userDetailViewModel: UserDetailViewModel) :
                 LayoutInflater.from(parent.context), parent, false
             )
         )
+    }
+
+    override fun onBindViewHolder(
+        holder: UserViewHolder,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        if (payloads.isEmpty()) {
+            onBindViewHolder(holder, position)
+        } else {
+            if (PAYLOAD_UPDATE_FOLLOW_STATE == (payloads[0] as? String)) {
+                getItem(position)?.let {
+                    holder.bindFollow(it)
+                }
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
@@ -44,9 +61,22 @@ class UserAdapter(private val userDetailViewModel: UserDetailViewModel) :
                         .navigate(R.id.action_userListFragment_to_userDetailFragment)
                 }
                 setFollowListener {
-                    //todo follow click
+                    viewModel.followUser(item)
                 }
                 executePendingBindings()
+            }
+        }
+
+        fun bindFollow(item: User) {
+            binding.apply {
+                tvFollowButton.text =
+                    binding.root.resources.getString(
+                        if (item.isFollowed) {
+                            R.string.text_followed
+                        } else {
+                            R.string.text_follow
+                        }
+                    )
             }
         }
 

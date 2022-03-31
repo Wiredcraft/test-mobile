@@ -75,7 +75,7 @@
                         android:background="@drawable/bg_follow_button_white"
                         android:gravity="center"
                         android:onClick="@{followListener}"
-                        android:text="@string/text_follow"
+                        android:text="@{user.userFollowed ? @string/text_followed : @string/text_follow}"
                         android:textColor="@color/follow_button_black"
                         android:textSize="11sp"
                         app:layout_constraintEnd_toEndOf="parent"

@@ -8,15 +8,16 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.Observer
 import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import xyz.mengxy.githubuserslist.adapter.UserAdapter
 import xyz.mengxy.githubuserslist.databinding.FragmentUserListBinding
+import xyz.mengxy.githubuserslist.model.User
+import xyz.mengxy.githubuserslist.util.PAYLOAD_UPDATE_FOLLOW_STATE
+import xyz.mengxy.githubuserslist.util.hideKeyboard
 import xyz.mengxy.githubuserslist.viewmodel.UserDetailViewModel
 import xyz.mengxy.githubuserslist.viewmodel.UserViewModel
 
@@ -27,17 +28,22 @@ import xyz.mengxy.githubuserslist.viewmodel.UserViewModel
  * fragment, so this fragment recreated when come back
  * see [FragmentNavigator] navigate() function.
  */
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class UserListFragment : Fragment() {
 
     private val userViewModel: UserViewModel by viewModels()
     private val detailViewModel: UserDetailViewModel by activityViewModels()
     private var adapter: UserAdapter? = null
-    private var searchJob: Job? = null
     private var binding: FragmentUserListBinding? = null
 
-    companion object {
-        const val DEFAULT_SEARCH = "kotlin"
+    private val followActionObserver = Observer<User> { user ->
+        val index = adapter?.snapshot()?.items?.indexOfLast { it.userId == user.userId } ?: -1
+        if (index >= 0) {
+            adapter?.run {
+                notifyItemChanged(index, PAYLOAD_UPDATE_FOLLOW_STATE)
+            }
+        }
     }
 
     override fun onCreateView(
@@ -55,31 +61,27 @@ class UserListFragment : Fragment() {
                     addLoadStateListener {
                         srlSwipeRefresh.isRefreshing = it.refresh is LoadState.Loading
                     }
+                    userViewModel.searchLiveData.observe(viewLifecycleOwner) {
+                        submitData(lifecycle, it)
+                    }
                 }
                 etSearch.setOnEditorActionListener { view, actionId, _ ->
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                         val queryStr = binding?.etSearch?.text.toString().trim()
                         if (queryStr.isEmpty()) {
-                            Snackbar.make(root, R.string.search_content_hint, Snackbar.LENGTH_LONG).show()
+                            Snackbar.make(root, R.string.search_content_hint, Snackbar.LENGTH_LONG)
+                                .show()
                         } else {
-                            searchUser(queryStr)
+                            userViewModel.searchUsers(queryStr)
                         }
                         view.hideKeyboard()
                     }
                     true
                 }
             }
-            searchUser()
+            userViewModel.searchUsers()
         }
+        detailViewModel.followUserLiveData.observe(viewLifecycleOwner, followActionObserver)
         return binding?.root
-    }
-
-    private fun searchUser(query: String = DEFAULT_SEARCH) {
-        searchJob?.cancel()
-        searchJob = lifecycleScope.launch {
-            userViewModel.searchUsers(query).collectLatest {
-                adapter?.submitData(it)
-            }
-        }
     }
 }

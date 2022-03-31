@@ -15,7 +15,7 @@ import xyz.mengxy.githubuserslist.model.UserSearchResponse
  */
 interface NetworkService {
 
-    // Add "per_page" parameters to get user data per page
+    // add "per_page" parameters to get user data per page
     @GET("search/users")
     suspend fun searchUsers(
         @Query("q") query: String,
@@ -23,8 +23,8 @@ interface NetworkService {
         @Query("per_page") size: Int
     ): UserSearchResponse
 
-    // Add "page" parameters to get repo data by page
-    // Add "per_page" parameters to get repo data per page
+    // add "page" parameters to get repo data by page
+    // add "per_page" parameters to get repo data per page
     @GET("users/{userName}/repos")
     suspend fun getUserRepos(
         @Path("userName") userName: String,
