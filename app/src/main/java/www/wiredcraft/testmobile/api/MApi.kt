@@ -6,7 +6,6 @@ import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.callback.CallBackProxy
 import com.zhouyou.http.callback.SimpleCallBack
 import com.zhouyou.http.exception.ApiException
-import www.wiredcraft.testmobile.api.model.UserData
 
 
 /**
@@ -61,7 +60,7 @@ class MApi {
         id :String,
         callBack: CallBackProxy<CustomApiResult<String>, String>
     ){
-        EasyHttp.get("users/$id/repos")
+        EasyHttp.get(String.format(ApiConstant.REPOS,id))
             .execute(callBack)
     }
 

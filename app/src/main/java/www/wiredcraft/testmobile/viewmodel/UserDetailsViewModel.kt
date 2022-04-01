@@ -3,15 +3,12 @@ package www.wiredcraft.testmobile.viewmodel
 import android.util.Log
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
-import com.blankj.utilcode.util.SPUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.google.gson.reflect.TypeToken
 import com.zhouyou.http.exception.ApiException
-import www.wiredcraft.testmobile.adapter.UserAdapter
 import www.wiredcraft.testmobile.api.MApi
 import www.wiredcraft.testmobile.api.model.Item
 import www.wiredcraft.testmobile.api.model.ReposData
-import www.wiredcraft.testmobile.api.model.UserData
 import www.wiredcraft.testmobile.base.BaseViewModel
 
 /**

@@ -8,6 +8,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
+import www.wiredcraft.testmobile.api.model.UserData
 import www.wiredcraft.testmobile.viewmodel.MainViewModel
 
 
@@ -20,10 +21,11 @@ import www.wiredcraft.testmobile.viewmodel.MainViewModel
 class MainViewModleUnitTest {
 
     @Mock
-    private val mockApplicationContext: Application ?=null
-    val vm = MainViewModel()
-    val name = "kingkazma"
-    val context = ApplicationProvider.getApplicationContext<Application>()
+    lateinit var mockApplicationContext: Application
+    @Mock
+    lateinit var vm : MainViewModel
+    @Mock
+    lateinit var userData: UserData
 
     @Before
     @Throws(Exception::class)
@@ -34,9 +36,14 @@ class MainViewModleUnitTest {
 
     @Test
     fun test() {
-        EasyHttp.init(context)
-        vm.id = name
-        Assert.assertEquals("kingkazma", vm.id)
-        Assert.assertEquals(name, vm.id)
+        Assert.assertNotNull(vm)
+        Assert.assertNotNull(mockApplicationContext)
+        userData.incomplete_results = false
+        Assert.assertNotEquals(userData.incomplete_results ,true)
+    }
+
+    @Test
+    fun pageTest(){
+        Assert.assertEquals(vm.page,0)
     }
 }

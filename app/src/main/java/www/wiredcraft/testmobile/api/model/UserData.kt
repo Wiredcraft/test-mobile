@@ -13,35 +13,35 @@ import www.wiredcraft.testmobile.api.MApi
  * #0000      @Author: tianxiao     2022/3/31      onCreate
  */
 data class UserData(
-    val incomplete_results: Boolean = false,
-    val items: ArrayList<Item> = arrayListOf(),
-    val total_count: Int = 0
+    var incomplete_results: Boolean ,
+    var items: ArrayList<Item> = arrayListOf(),
+    var total_count: Int = 0
 )
 
 data class Item(
-    val avatar_url: String,
-    val events_url: String,
-    val followers_url: String,
-    val following_url: String,
-    val gists_url: String,
-    val gravatar_id: String,
-    val html_url: String,
-    val id: Int,
-    val login: String,
-    val node_id: String,
-    val organizations_url: String,
-    val received_events_url: String,
-    val repos_url: String,
-    val score: Double,
-    val site_admin: Boolean,
-    val starred_url: String,
-    val subscriptions_url: String,
-    val type: String,
-    val url: String,
+    var avatar_url: String,
+    var events_url: String,
+    var followers_url: String,
+    var following_url: String,
+    var gists_url: String,
+    var gravatar_id: String,
+    var html_url: String,
+    var id: Int,
+    var login: String,
+    var node_id: String,
+    var organizations_url: String,
+    var received_events_url: String,
+    var repos_url: String,
+    var score: Double,
+    var site_admin: Boolean,
+    var starred_url: String,
+    var subscriptions_url: String,
+    var type: String,
+    var url: String,
 ) {
     companion object {
-        val followText = MApplication.INITIALIZATION.getString(R.string.follow)
-        val noFollowText = MApplication.INITIALIZATION.getString(R.string.no_follow)
+        var followText = MApplication.INITIALIZATION.getString(R.string.follow)
+        var noFollowText = MApplication.INITIALIZATION.getString(R.string.no_follow)
     }
 
     fun getFollowStats(): String {

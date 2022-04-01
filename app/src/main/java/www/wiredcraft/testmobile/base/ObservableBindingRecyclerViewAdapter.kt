@@ -11,7 +11,7 @@ import androidx.viewbinding.ViewBinding
  * #0000      @Author: tianxiao     2022/3/31      onCreate
  */
 abstract class ObservableBindingRecyclerViewAdapter<E, VB : ViewBinding>(
-    val dataList: ObservableList<E>
+    private val dataList: ObservableList<E>
 ) : BindingRecyclerViewAdapter<VB>() {
 
     private val dataListChangedCallback: DataListChangedCallback = DataListChangedCallback()

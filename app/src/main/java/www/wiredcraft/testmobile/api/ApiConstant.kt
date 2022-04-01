@@ -6,7 +6,9 @@ package www.wiredcraft.testmobile.api
  * #0000      @Author: tianxiao     2022/3/31      onCreate
  */
 class ApiConstant {
-    companion object{
+    companion object {
         const val SEARCH_USERS = "/search/users"
+        const val REPOS = "users/%s/repos"
+
     }
 }
