@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
     implementation 'com.github.DylanCaiCoding:ActivityResultLauncher:1.1.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
     implementation 'com.github.bingoogolapple:BGARefreshLayout-Android:2.0.1'

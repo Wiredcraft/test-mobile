@@ -1,6 +1,7 @@
 package www.wiredcraft.testmobile.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import www.wiredcraft.testmobile.R
@@ -21,6 +22,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainMod
 
     override fun createViewModel(): MainViewModel {
         return MainViewModel()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setStatusBarColor(R.color.white)
     }
 
     override fun layoutId(): Int {

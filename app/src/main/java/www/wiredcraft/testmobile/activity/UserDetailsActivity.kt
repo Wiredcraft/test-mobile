@@ -19,6 +19,11 @@ import www.wiredcraft.testmobile.viewmodel.UserDetailsViewModel
  */
 class UserDetailsActivity : BaseActivity<ActivityUserDetailsBinding, UserDetailsViewModel>() {
 
+    override fun onResume() {
+        super.onResume()
+        setStatusBarColor(R.color.color_1A1A1A)
+    }
+
     override fun createViewModel(): UserDetailsViewModel {
         return UserDetailsViewModel()
     }

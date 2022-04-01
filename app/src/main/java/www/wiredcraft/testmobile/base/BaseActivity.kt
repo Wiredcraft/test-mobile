@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.dylanc.activityresult.launcher.StartActivityLauncher
+import com.gyf.immersionbar.ktx.immersionBar
 
 
 /**
@@ -50,12 +51,12 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompat
     }
 
     /**
-     * 创建viewmodel
+     * 创建 viewmodel
      */
     protected abstract fun createViewModel(): VM
 
     /**
-     * 配置layout
+     * 配置 layout
      */
     protected abstract fun layoutId(): Int
 
@@ -64,4 +65,17 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompat
      *  @param savedInstanceState
      */
     protected abstract fun initialize(savedInstanceState: Bundle?)
+
+    /**
+     *  设置状态栏
+     *  @param  barColor
+     *  @param textColor
+     */
+     fun setStatusBarColor( barColor:Int){
+        immersionBar {
+            statusBarColor(barColor)
+            navigationBarColor(barColor)
+            autoStatusBarDarkModeEnable(true,0.2f)
+        }
+    }
 }
