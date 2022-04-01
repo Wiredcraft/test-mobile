@@ -1,7 +1,6 @@
 package www.wiredcraft.testmobile
 
 import android.app.Application
-import androidx.databinding.ObservableField
 import com.google.gson.Gson
 import org.junit.Assert
 import org.junit.Before
@@ -26,6 +25,8 @@ class UserDetailsViewModelUnitTest {
     @Mock
     lateinit var data :ReposData
     @Mock
+    lateinit var item :Item
+    @Mock
     lateinit var gson :Gson
 
     @Before
@@ -44,8 +45,4 @@ class UserDetailsViewModelUnitTest {
         Assert.assertNotEquals(data.archive_url,"")
     }
 
-    @Test
-    fun userDataTset(){
-        Assert.assertEquals(vm.userData,null)
-    }
 }

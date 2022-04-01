@@ -20,6 +20,9 @@
             ./viewmodel  页面模具
             ......
 
+     www.wiredcraft.testmobile
+            ./相关单元测试
+
 ### base 
 
     -为了使用 和 简化代码的封装

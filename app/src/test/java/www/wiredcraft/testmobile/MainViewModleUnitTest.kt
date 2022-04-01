@@ -1,8 +1,6 @@
 package www.wiredcraft.testmobile
 
 import android.app.Application
-import androidx.test.core.app.ApplicationProvider
-import com.zhouyou.http.EasyHttp
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -46,4 +44,10 @@ class MainViewModleUnitTest {
     fun pageTest(){
         Assert.assertEquals(vm.page,0)
     }
+
+    @Test
+    fun idTest(){
+        Assert.assertEquals(vm.id,null)
+    }
+
 }
