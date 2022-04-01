@@ -1,0 +1,9 @@
+${PODS_ROOT}/Target Support Files/Pods-GitHubUsersListApp/Pods-GitHubUsersListApp-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
+${BUILT_PRODUCTS_DIR}/Then/Then.framework
+${BUILT_PRODUCTS_DIR}/Toast/Toast.framework
