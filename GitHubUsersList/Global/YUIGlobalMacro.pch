@@ -1,0 +1,12 @@
+//
+//  YUIGlobalMacro_pch
+//  YUI_All
+//
+//  Created by chris on 15/2/12.
+//  Copyright (c) 2015年 YUI. All rights reserved.
+//
+
+#ifndef YUIGlobalMacro_pch
+#define YUIGlobalMacro_pch
+
+#endif

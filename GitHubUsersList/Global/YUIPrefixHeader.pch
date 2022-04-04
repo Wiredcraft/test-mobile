@@ -1,0 +1,20 @@
+//
+//  YUIPrefixHeader.pch
+//  YUI'sStart
+//
+//  Created by YUI on 16/1/7.
+//  Copyright © 2016年 YUI. All rights reserved.
+//
+
+#ifndef YUIPrefixHeader_pch
+#define YUIPrefixHeader_pch
+
+#import "YUIGlobalConst.pch"
+
+#import "YUIGlobalMacro.pch"
+
+#import "GlobalState.h"
+
+#import "CommonLib.h"
+
+#endif /* YUIPrefixHeader_pch */

@@ -1,0 +1,12 @@
+//
+//  YUIGlobalConst.pch
+//  YUI'sAll
+//
+//  Created by YUI on 2017/10/25.
+//  Copyright © 2017年 YUI rights reserved.
+//
+
+#ifndef YUIGlobalConst_pch
+#define YUIGlobalConst_pch
+
+#endif /* YUIGlobalConst_pch */

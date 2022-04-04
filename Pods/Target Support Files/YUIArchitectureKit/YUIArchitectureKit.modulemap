@@ -1,0 +1,6 @@
+framework module YUIArchitectureKit {
+  umbrella header "YUIArchitectureKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

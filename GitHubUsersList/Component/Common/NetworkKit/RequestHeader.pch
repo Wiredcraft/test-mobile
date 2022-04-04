@@ -1,0 +1,29 @@
+//
+//  RequestHeader.pch
+//  YUI
+//
+//  Created by YUI on 16/4/7.
+//  Copyright © 2016年 YUI. All rights reserved.
+//
+
+#ifndef RequestHeader_pch
+#define RequestHeader_pch
+
+
+#pragma Root
+
+#define ROOT_URL
+
+
+#pragma Information
+
+#define INFORMATION_LIST_CATEGORY_URL                           @"/app/cms/article/category/tree"
+
+#define INFORMATION_LIST_URL                                    @"/app/cms/article/query"
+
+#define INFORMATION_HOTSEARCH_LIST_URL                          @"/app/cms/tag/hot"
+
+#define INFORMATION_SEARCH_KEYWORD_LIST_URL                     @"/app/cms/article/search"
+
+
+#endif /* RequestHeader_pch */
