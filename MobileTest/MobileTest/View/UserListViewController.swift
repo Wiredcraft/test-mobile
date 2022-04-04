@@ -21,7 +21,7 @@ final class UserListViewController: UIViewController, Storyboardable {
     private let refreshControl: UIRefreshControl = UIRefreshControl()
     
     /// view model
-    private var viewModel: UserListViewModel!
+    private var viewModel: UserListViewModel?
     
     private static let CellId = "UserCell"
     
@@ -55,16 +55,21 @@ private extension UserListViewController {
     }
     
     func setupBindings() {
+        guard let headerDriver =  tableView.mj_header?.rx.refresh.asDriver(),
+              let footerDriver =  tableView.mj_footer?.rx.refresh.asDriver() else {
+            return
+        }
+        
         let searchAction = searchTextField.textField.rx.text.orEmpty.asDriver()
             .throttle(.milliseconds(500))
             .distinctUntilChanged()
-        
+
         viewModel = UserListViewModel(searchAction: searchAction,
-                                      headerRefresh: (tableView.mj_header?.rx.refresh.asDriver())!,
-                                      footerRefresh: (tableView.mj_footer?.rx.refresh.asDriver())!,
+                                      headerRefresh: headerDriver,
+                                      footerRefresh: footerDriver,
                                       usersService: UsersService.shared)
         
-        viewModel.searchResults.asDriver().drive(tableView.rx.items){ (tableView, row, element) in
+        viewModel?.searchResults.asDriver().drive(tableView.rx.items){ (tableView, row, element) in
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as! UserCell
             
             let url = URL(string: element.avator)
@@ -90,7 +95,7 @@ private extension UserListViewController {
         }.disposed(by: bag)
         
         /// data
-        viewModel.searchResults.asObservable().subscribe(onNext: { response in
+        viewModel?.searchResults.asObservable().subscribe(onNext: { response in
             self.searchResults = response
             self.tableView.mj_footer?.isHidden = response.isEmpty
         }).disposed(by: bag)
@@ -100,7 +105,7 @@ private extension UserListViewController {
                     No Data
                     Please input something!
                     """
-        viewModel.searchResults.asObservable().map { $0.count == 0 }.distinctUntilChanged()
+        viewModel?.searchResults.asObservable().map { $0.count == 0 }.distinctUntilChanged()
             .bind(to: tableView.rx.isEmpty(message: emptyDesc)).disposed(by: bag)
         
         /// refresh
@@ -124,22 +129,22 @@ private extension UserListViewController {
     }
     
     @objc func loadNewData(){
-        guard let text = viewModel.currentText else { return }
+        guard let text = viewModel?.currentText else { return }
         UsersService.shared.fetchUsers(q: text, page: 1).asObservable()
             .subscribe (onNext: { response in
-                self.viewModel.searchResults.accept(response)
+                self.viewModel?.searchResults.accept(response)
             }).disposed(by: bag)
         tableView.mj_header?.endRefreshing()
     }
     
     @objc func loadMoreData(){
-        guard let text = viewModel.currentText,
+        guard let text = viewModel?.currentText,
               let result = self.searchResults else { return }
         page = page + 1
         UsersService.shared.fetchUsers(q: text, page: page).asObservable()
             .subscribe (onNext: { response in
                 self.searchResults = result + response
-                self.viewModel.searchResults.accept(self.searchResults!)
+                self.viewModel?.searchResults.accept(self.searchResults!)
             }).disposed(by: bag)
         tableView.mj_footer?.endRefreshing()
     }

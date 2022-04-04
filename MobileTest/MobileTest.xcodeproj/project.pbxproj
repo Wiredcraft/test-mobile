@@ -39,8 +39,6 @@
 		15CD006D27EB36B40015C5E4 /* JSONCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD006C27EB36B40015C5E4 /* JSONCoder.swift */; };
 		15CD007027EB48600015C5E4 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CD006F27EB48600015C5E4 /* UserListViewModel.swift */; };
 		15D6EA1827F1511B00B62D3D /* UserDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D6EA1727F1511B00B62D3D /* UserDetail.storyboard */; };
-		15D6EA1A27F1961E00B62D3D /* UserDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15D6EA1927F1961E00B62D3D /* UserDetailCell.xib */; };
-		15D6EA1C27F1963800B62D3D /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6EA1B27F1963800B62D3D /* UserDetailCell.swift */; };
 		15D6EA2027F1986700B62D3D /* UserDetailListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6EA1F27F1986700B62D3D /* UserDetailListController.swift */; };
 		15D6EA2527F2ED8300B62D3D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6EA2427F2ED8300B62D3D /* HeaderView.swift */; };
 		15D6EA2727F3047700B62D3D /* MJRefresh+RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6EA2627F3047700B62D3D /* MJRefresh+RxSwift.swift */; };
@@ -102,8 +100,6 @@
 		15CDFFFC27E9B1B50015C5E4 /* MobileTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15CDFFFF27E9B1B50015C5E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D6EA1727F1511B00B62D3D /* UserDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetail.storyboard; sourceTree = "<group>"; };
-		15D6EA1927F1961E00B62D3D /* UserDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailCell.xib; sourceTree = "<group>"; };
-		15D6EA1B27F1963800B62D3D /* UserDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
 		15D6EA1F27F1986700B62D3D /* UserDetailListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailListController.swift; sourceTree = "<group>"; };
 		15D6EA2427F2ED8300B62D3D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		15D6EA2627F3047700B62D3D /* MJRefresh+RxSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MJRefresh+RxSwift.swift"; sourceTree = "<group>"; };
@@ -160,15 +156,13 @@
 			isa = PBXGroup;
 			children = (
 				15CD003327EA00770015C5E4 /* SearchTextField.swift */,
-				15CD003C27EAF5180015C5E4 /* UserList.storyboard */,
-				15CD005027EAFB1E0015C5E4 /* UserListViewController.swift */,
+				15D6EA2427F2ED8300B62D3D /* HeaderView.swift */,
 				15CD005227EB00940015C5E4 /* UserCell.swift */,
 				15CD005627EB00C20015C5E4 /* UserCell.xib */,
-				15D6EA1927F1961E00B62D3D /* UserDetailCell.xib */,
-				15D6EA1B27F1963800B62D3D /* UserDetailCell.swift */,
+				15CD003C27EAF5180015C5E4 /* UserList.storyboard */,
+				15CD005027EAFB1E0015C5E4 /* UserListViewController.swift */,
 				15D6EA1727F1511B00B62D3D /* UserDetail.storyboard */,
 				15D6EA1F27F1986700B62D3D /* UserDetailListController.swift */,
-				15D6EA2427F2ED8300B62D3D /* HeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -426,7 +420,6 @@
 				15D6EA2927F3068000B62D3D /* Design.md in Resources */,
 				15CD000C27E9B1B60015C5E4 /* LaunchScreen.storyboard in Resources */,
 				15D6EA1827F1511B00B62D3D /* UserDetail.storyboard in Resources */,
-				15D6EA1A27F1961E00B62D3D /* UserDetailCell.xib in Resources */,
 				15CD003D27EAF5180015C5E4 /* UserList.storyboard in Resources */,
 				15CD000927E9B1B60015C5E4 /* Assets.xcassets in Resources */,
 			);
@@ -499,7 +492,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				15CD006B27EB22010015C5E4 /* CustomError.swift in Sources */,
-				15D6EA1C27F1963800B62D3D /* UserDetailCell.swift in Sources */,
 				15CD006227EB169A0015C5E4 /* UserHttpService.swift in Sources */,
 				15D6EA2027F1986700B62D3D /* UserDetailListController.swift in Sources */,
 				15CD004227EAF7A50015C5E4 /* Coordinator.swift in Sources */,

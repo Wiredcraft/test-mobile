@@ -28,29 +28,32 @@ extension UsersService: UsersAPI {
             do {
                 try UsersHttpRouter.getUsersList(q: q, page: page)
                     .request(userHttpService: httpService)
-                    .responseJSON { (result) in
-                        do {
-                            let users = try UsersService.parseUsers(result: result)
-                            single(.success(users))
-                        } catch {
+                    .responseDecodable { (response: DataResponse<UserItems,AFError>)  in
+                        switch response.result {
+                        case .success(let userItems):
+                            single(.success(userItems.items))
+                        case .failure:
+                            if let code = response.response?.statusCode{
+                                let codeError = CustomError.error(message: "error code\(code)")
+                                single(.failure(codeError))
+                            }
+                            let error = CustomError.error(message: "Invalid Users JSON")
+                            debugPrint(error.localizedDescription)
                             single(.failure(error))
                         }
                     }
             } catch {
-                single(.failure(CustomError.error(message: "Users fetch failed")))
+                let failedError = CustomError.error(message: "Users fetch failed")
+                debugPrint(failedError.localizedDescription)
+                single(.failure(failedError))
             }
-            
-            
             return Disposables.create()
         }
     }
-    
-    
 }
 
 extension UsersService {
-    
-    static func parseUsers(result: AFDataResponse<Any>) throws -> UsersResponse {
+    static func parseUsers(result: DataResponse<UserItems,AFError>) throws -> UsersResponse {
         guard let data = result.data,
               let usersItems = try? JSONDecoder().decode(UserItems.self, from: data)
         else {

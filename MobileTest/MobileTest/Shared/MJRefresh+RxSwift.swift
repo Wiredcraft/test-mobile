@@ -75,7 +75,7 @@ extension Reactive where Base: MJRefreshComponent {
                 observer.onNext(state)
             }
             return target
-        }.takeUntil(deallocated)
+        }.take(until: deallocated)
         
         let bindingObserver = Binder<MJRefreshState>(self.base) { (component, state) in
             component.state = state

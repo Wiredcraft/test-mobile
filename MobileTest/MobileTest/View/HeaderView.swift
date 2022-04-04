@@ -19,7 +19,7 @@ class HeaderView: UIView {
         let color = UIColor.black
         color.set()
         let path  = UIBezierPath(arcCenter: CGPoint(x: UIScreen.main.bounds.width/2, y: -230),
-                                 radius: 460, startAngle: 0, endAngle: M_PI, clockwise: true)
+                                 radius: 460, startAngle: 0, endAngle: .pi, clockwise: true)
         path.addLine(to: CGPoint(x: UIScreen.main.bounds.width/2, y: 0))
         path.lineWidth = 1.0
         

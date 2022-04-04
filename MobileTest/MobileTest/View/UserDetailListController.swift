@@ -31,7 +31,7 @@ final class UserDetailListController: UIViewController, Storyboardable {
             
     public var changeState: ((Bool)-> ())?
     
-    private static let CellId = "UserDetailCell"
+    private static let CellId = "UserCell"
     
     
     private let bag = DisposeBag()
@@ -50,6 +50,10 @@ final class UserDetailListController: UIViewController, Storyboardable {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
 }
 
 extension UserDetailListController: UITableViewDelegate {
@@ -57,8 +61,9 @@ extension UserDetailListController: UITableViewDelegate {
     func setupUI() {
         avatorImageView.layer.cornerRadius = avatorImageView.frame.height / 2
         followButton.layer.cornerRadius = 4.0
-        tableView.register(UINib(nibName: "UserDetailCell", bundle: nil), forCellReuseIdentifier: UserDetailListController.CellId)
-        tableView.tableHeaderView = headerView
+        tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: UserDetailListController.CellId)
+        headerView.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 300)
+        tableView.tableHeaderView = headerView        
     }
     
     func setupBindings() {
@@ -92,9 +97,10 @@ extension UserDetailListController: UITableViewDelegate {
 
         let observable = Observable.just(searchResults)
         observable.asDriver(onErrorJustReturn: []).drive(tableView.rx.items){ (tableView, row, element) in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UserDetailCell") as! UserDetailCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as! UserCell
 
             let url = URL(string: element.avator)
+            cell.followButton.isHidden = true
             cell.avatorImageView.kf.setImage(with: url,
                                              placeholder: UIImage(named: "avator_male_icon"))
             cell.userNameLabel.text = element.userName
