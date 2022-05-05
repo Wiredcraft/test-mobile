@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  Github-Users-List-App
+//  GitHub-Users-List-App
 //
 //  Created by 邹奂霖 on 2022/5/5.
 //

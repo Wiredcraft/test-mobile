@@ -1,13 +1,13 @@
 //
-//  Github_Users_List_AppUITestsLaunchTests.swift
-//  Github-Users-List-AppUITests
+//  GitHub_Users_List_AppUITestsLaunchTests.swift
+//  GitHub-Users-List-AppUITests
 //
 //  Created by 邹奂霖 on 2022/5/5.
 //
 
 import XCTest
 
-class Github_Users_List_AppUITestsLaunchTests: XCTestCase {
+class GitHub_Users_List_AppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
