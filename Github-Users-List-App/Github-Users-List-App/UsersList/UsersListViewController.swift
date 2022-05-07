@@ -8,5 +8,8 @@
 
 import UIKit
 class UsersListViewController: UIViewController {
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
 }

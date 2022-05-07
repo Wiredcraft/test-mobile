@@ -32,6 +32,10 @@
 		4742E51128255CE500C85A00 /* MockDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51028255CE500C85A00 /* MockDataModel.swift */; };
 		4742E51328255DD900C85A00 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51228255DD900C85A00 /* MockNetworkService.swift */; };
 		4742E5162826600700C85A00 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5152826600700C85A00 /* AppAppearance.swift */; };
+		4742E5192826658600C85A00 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5182826658600C85A00 /* AppDIContainer.swift */; };
+		4742E51B2826699900C85A00 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51A2826699900C85A00 /* AppConfiguration.swift */; };
+		4742E51E28266A8C00C85A00 /* AppConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51D28266A8C00C85A00 /* AppConfigurationTests.swift */; };
+		4742E52028266E0F00C85A00 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51F28266E0F00C85A00 /* AppFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +85,10 @@
 		4742E51028255CE500C85A00 /* MockDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModel.swift; sourceTree = "<group>"; };
 		4742E51228255DD900C85A00 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		4742E5152826600700C85A00 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		4742E5182826658600C85A00 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		4742E51A2826699900C85A00 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		4742E51D28266A8C00C85A00 /* AppConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationTests.swift; sourceTree = "<group>"; };
+		4742E51F28266E0F00C85A00 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +154,7 @@
 		4742E4C82823C43000C85A00 /* GitHub-Users-List-AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				4742E51C28266A7900C85A00 /* Applicatoin */,
 				4742E4F22824C38300C85A00 /* Infrastructure */,
 				4742E4EA2823C60100C85A00 /* UsersList */,
 			);
@@ -272,11 +281,30 @@
 		4742E51428265FFB00C85A00 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				4742E5172826657800C85A00 /* DIContainer */,
 				4742E5152826600700C85A00 /* AppAppearance.swift */,
 				4742E4B22823C42F00C85A00 /* AppDelegate.swift */,
 				4742E4B42823C42F00C85A00 /* SceneDelegate.swift */,
+				4742E51A2826699900C85A00 /* AppConfiguration.swift */,
+				4742E51F28266E0F00C85A00 /* AppFlowCoordinator.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		4742E5172826657800C85A00 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				4742E5182826658600C85A00 /* AppDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		4742E51C28266A7900C85A00 /* Applicatoin */ = {
+			isa = PBXGroup;
+			children = (
+				4742E51D28266A8C00C85A00 /* AppConfigurationTests.swift */,
+			);
+			path = Applicatoin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,11 +437,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4742E5192826658600C85A00 /* AppDIContainer.swift in Sources */,
+				4742E52028266E0F00C85A00 /* AppFlowCoordinator.swift in Sources */,
 				4742E50B2824D35400C85A00 /* DataTransferService.swift in Sources */,
 				4742E4F82824C4B400C85A00 /* Endpoint.swift in Sources */,
 				4742E4B72823C42F00C85A00 /* ViewController.swift in Sources */,
 				4742E4E52823C51700C85A00 /* UsersListViewController.swift in Sources */,
 				4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */,
+				4742E51B2826699900C85A00 /* AppConfiguration.swift in Sources */,
 				4742E5162826600700C85A00 /* AppAppearance.swift in Sources */,
 				4742E4E72823C56E00C85A00 /* UsersListViewModel.swift in Sources */,
 				4742E4F62824C3BD00C85A00 /* NetworkService.swift in Sources */,
@@ -432,6 +463,7 @@
 				4742E51128255CE500C85A00 /* MockDataModel.swift in Sources */,
 				4742E51328255DD900C85A00 /* MockNetworkService.swift in Sources */,
 				4742E50D2825204700C85A00 /* EndpointTests.swift in Sources */,
+				4742E51E28266A8C00C85A00 /* AppConfigurationTests.swift in Sources */,
 				4742E4FE2824C9EF00C85A00 /* MockNetworkSessionManager.swift in Sources */,
 				4742E5032824CA5500C85A00 /* MockEndPoint.swift in Sources */,
 				4742E5012824CA4400C85A00 /* NetworkServiceTests.swift in Sources */,
@@ -593,6 +625,7 @@
 		4742E4DA2823C43000C85A00 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_BASE_URL = "https://api.github.com";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -620,6 +653,7 @@
 		4742E4DB2823C43000C85A00 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_BASE_URL = "https://api.github.com";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
