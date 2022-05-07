@@ -10,12 +10,28 @@
 		4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4B22823C42F00C85A00 /* AppDelegate.swift */; };
 		4742E4B52823C42F00C85A00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4B42823C42F00C85A00 /* SceneDelegate.swift */; };
 		4742E4B72823C42F00C85A00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4B62823C42F00C85A00 /* ViewController.swift */; };
-		4742E4BA2823C42F00C85A00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4742E4B82823C42F00C85A00 /* Main.storyboard */; };
 		4742E4BC2823C42F00C85A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4742E4BB2823C42F00C85A00 /* Assets.xcassets */; };
 		4742E4BF2823C42F00C85A00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4742E4BD2823C42F00C85A00 /* LaunchScreen.storyboard */; };
-		4742E4CA2823C43000C85A00 /* GitHub_Users_List_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4C92823C43000C85A00 /* GitHub_Users_List_AppTests.swift */; };
 		4742E4D42823C43000C85A00 /* GitHub_Users_List_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4D32823C43000C85A00 /* GitHub_Users_List_AppUITests.swift */; };
 		4742E4D62823C43000C85A00 /* GitHub_Users_List_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4D52823C43000C85A00 /* GitHub_Users_List_AppUITestsLaunchTests.swift */; };
+		4742E4E52823C51700C85A00 /* UsersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4E42823C51700C85A00 /* UsersListViewController.swift */; };
+		4742E4E72823C56E00C85A00 /* UsersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4E62823C56E00C85A00 /* UsersListViewModel.swift */; };
+		4742E4EC2823C61400C85A00 /* UsersListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4EB2823C61400C85A00 /* UsersListViewModelTests.swift */; };
+		4742E4F62824C3BD00C85A00 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4F52824C3BD00C85A00 /* NetworkService.swift */; };
+		4742E4F82824C4B400C85A00 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4F72824C4B400C85A00 /* Endpoint.swift */; };
+		4742E4FA2824C4ED00C85A00 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4F92824C4ED00C85A00 /* NetworkConfig.swift */; };
+		4742E4FC2824C9AC00C85A00 /* MockNetworkConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4FB2824C9AC00C85A00 /* MockNetworkConfigurable.swift */; };
+		4742E4FE2824C9EF00C85A00 /* MockNetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4FD2824C9EF00C85A00 /* MockNetworkSessionManager.swift */; };
+		4742E5012824CA4400C85A00 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5002824CA4400C85A00 /* NetworkServiceTests.swift */; };
+		4742E5032824CA5500C85A00 /* MockEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5022824CA5500C85A00 /* MockEndPoint.swift */; };
+		4742E5052824CA7C00C85A00 /* MockNetworkErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5042824CA7C00C85A00 /* MockNetworkErrorLogger.swift */; };
+		4742E5072824CA9900C85A00 /* MockNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5062824CA9900C85A00 /* MockNetworkError.swift */; };
+		4742E50B2824D35400C85A00 /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E50A2824D35400C85A00 /* DataTransferService.swift */; };
+		4742E50D2825204700C85A00 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E50C2825204700C85A00 /* EndpointTests.swift */; };
+		4742E50F28255CBF00C85A00 /* DataTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E50E28255CBF00C85A00 /* DataTransferServiceTests.swift */; };
+		4742E51128255CE500C85A00 /* MockDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51028255CE500C85A00 /* MockDataModel.swift */; };
+		4742E51328255DD900C85A00 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51228255DD900C85A00 /* MockNetworkService.swift */; };
+		4742E5162826600700C85A00 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5152826600700C85A00 /* AppAppearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,15 +56,31 @@
 		4742E4B22823C42F00C85A00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4742E4B42823C42F00C85A00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4742E4B62823C42F00C85A00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4742E4B92823C42F00C85A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4742E4BB2823C42F00C85A00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4742E4BE2823C42F00C85A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4742E4C02823C42F00C85A00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4742E4C52823C43000C85A00 /* GitHub-Users-List-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GitHub-Users-List-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4742E4C92823C43000C85A00 /* GitHub_Users_List_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub_Users_List_AppTests.swift; sourceTree = "<group>"; };
 		4742E4CF2823C43000C85A00 /* GitHub-Users-List-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GitHub-Users-List-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4742E4D32823C43000C85A00 /* GitHub_Users_List_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub_Users_List_AppUITests.swift; sourceTree = "<group>"; };
 		4742E4D52823C43000C85A00 /* GitHub_Users_List_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub_Users_List_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4742E4E42823C51700C85A00 /* UsersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewController.swift; sourceTree = "<group>"; };
+		4742E4E62823C56E00C85A00 /* UsersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModel.swift; sourceTree = "<group>"; };
+		4742E4EB2823C61400C85A00 /* UsersListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModelTests.swift; sourceTree = "<group>"; };
+		4742E4F52824C3BD00C85A00 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		4742E4F72824C4B400C85A00 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		4742E4F92824C4ED00C85A00 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		4742E4FB2824C9AC00C85A00 /* MockNetworkConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkConfigurable.swift; sourceTree = "<group>"; };
+		4742E4FD2824C9EF00C85A00 /* MockNetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkSessionManager.swift; sourceTree = "<group>"; };
+		4742E5002824CA4400C85A00 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		4742E5022824CA5500C85A00 /* MockEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndPoint.swift; sourceTree = "<group>"; };
+		4742E5042824CA7C00C85A00 /* MockNetworkErrorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkErrorLogger.swift; sourceTree = "<group>"; };
+		4742E5062824CA9900C85A00 /* MockNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkError.swift; sourceTree = "<group>"; };
+		4742E50A2824D35400C85A00 /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
+		4742E50C2825204700C85A00 /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
+		4742E50E28255CBF00C85A00 /* DataTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferServiceTests.swift; sourceTree = "<group>"; };
+		4742E51028255CE500C85A00 /* MockDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModel.swift; sourceTree = "<group>"; };
+		4742E51228255DD900C85A00 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		4742E5152826600700C85A00 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +131,11 @@
 		4742E4B12823C42F00C85A00 /* GitHub-Users-List-App */ = {
 			isa = PBXGroup;
 			children = (
-				4742E4B22823C42F00C85A00 /* AppDelegate.swift */,
-				4742E4B42823C42F00C85A00 /* SceneDelegate.swift */,
+				4742E51428265FFB00C85A00 /* Application */,
+				4742E4F02824C34F00C85A00 /* Infrastructure */,
+				4742E4E32823C50400C85A00 /* UserDetail */,
+				4742E4E22823C4FB00C85A00 /* UsersList */,
 				4742E4B62823C42F00C85A00 /* ViewController.swift */,
-				4742E4B82823C42F00C85A00 /* Main.storyboard */,
 				4742E4BB2823C42F00C85A00 /* Assets.xcassets */,
 				4742E4BD2823C42F00C85A00 /* LaunchScreen.storyboard */,
 				4742E4C02823C42F00C85A00 /* Info.plist */,
@@ -113,7 +146,8 @@
 		4742E4C82823C43000C85A00 /* GitHub-Users-List-AppTests */ = {
 			isa = PBXGroup;
 			children = (
-				4742E4C92823C43000C85A00 /* GitHub_Users_List_AppTests.swift */,
+				4742E4F22824C38300C85A00 /* Infrastructure */,
+				4742E4EA2823C60100C85A00 /* UsersList */,
 			);
 			path = "GitHub-Users-List-AppTests";
 			sourceTree = "<group>";
@@ -125,6 +159,124 @@
 				4742E4D52823C43000C85A00 /* GitHub_Users_List_AppUITestsLaunchTests.swift */,
 			);
 			path = "GitHub-Users-List-AppUITests";
+			sourceTree = "<group>";
+		};
+		4742E4E22823C4FB00C85A00 /* UsersList */ = {
+			isa = PBXGroup;
+			children = (
+				4742E4EF2823C68500C85A00 /* ViewModel */,
+				4742E4EE2823C67E00C85A00 /* ViewController */,
+				4742E4E42823C51700C85A00 /* UsersListViewController.swift */,
+				4742E4E62823C56E00C85A00 /* UsersListViewModel.swift */,
+			);
+			path = UsersList;
+			sourceTree = "<group>";
+		};
+		4742E4E32823C50400C85A00 /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		4742E4EA2823C60100C85A00 /* UsersList */ = {
+			isa = PBXGroup;
+			children = (
+				4742E4ED2823C62700C85A00 /* Mock */,
+				4742E4EB2823C61400C85A00 /* UsersListViewModelTests.swift */,
+			);
+			path = UsersList;
+			sourceTree = "<group>";
+		};
+		4742E4ED2823C62700C85A00 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		4742E4EE2823C67E00C85A00 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4742E4EF2823C68500C85A00 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4742E4F02824C34F00C85A00 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				4742E4F12824C37C00C85A00 /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		4742E4F12824C37C00C85A00 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4742E4F52824C3BD00C85A00 /* NetworkService.swift */,
+				4742E4F72824C4B400C85A00 /* Endpoint.swift */,
+				4742E4F92824C4ED00C85A00 /* NetworkConfig.swift */,
+				4742E50A2824D35400C85A00 /* DataTransferService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4742E4F22824C38300C85A00 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				4742E4F32824C38900C85A00 /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		4742E4F32824C38900C85A00 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4742E4FF2824CA3200C85A00 /* TestCases */,
+				4742E4F42824C39000C85A00 /* Mocks */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4742E4F42824C39000C85A00 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				4742E4FB2824C9AC00C85A00 /* MockNetworkConfigurable.swift */,
+				4742E4FD2824C9EF00C85A00 /* MockNetworkSessionManager.swift */,
+				4742E5022824CA5500C85A00 /* MockEndPoint.swift */,
+				4742E5042824CA7C00C85A00 /* MockNetworkErrorLogger.swift */,
+				4742E5062824CA9900C85A00 /* MockNetworkError.swift */,
+				4742E51028255CE500C85A00 /* MockDataModel.swift */,
+				4742E51228255DD900C85A00 /* MockNetworkService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		4742E4FF2824CA3200C85A00 /* TestCases */ = {
+			isa = PBXGroup;
+			children = (
+				4742E5002824CA4400C85A00 /* NetworkServiceTests.swift */,
+				4742E50C2825204700C85A00 /* EndpointTests.swift */,
+				4742E50E28255CBF00C85A00 /* DataTransferServiceTests.swift */,
+			);
+			path = TestCases;
+			sourceTree = "<group>";
+		};
+		4742E51428265FFB00C85A00 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				4742E5152826600700C85A00 /* AppAppearance.swift */,
+				4742E4B22823C42F00C85A00 /* AppDelegate.swift */,
+				4742E4B42823C42F00C85A00 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +385,6 @@
 			files = (
 				4742E4BF2823C42F00C85A00 /* LaunchScreen.storyboard in Resources */,
 				4742E4BC2823C42F00C85A00 /* Assets.xcassets in Resources */,
-				4742E4BA2823C42F00C85A00 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,8 +409,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4742E50B2824D35400C85A00 /* DataTransferService.swift in Sources */,
+				4742E4F82824C4B400C85A00 /* Endpoint.swift in Sources */,
 				4742E4B72823C42F00C85A00 /* ViewController.swift in Sources */,
+				4742E4E52823C51700C85A00 /* UsersListViewController.swift in Sources */,
 				4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */,
+				4742E5162826600700C85A00 /* AppAppearance.swift in Sources */,
+				4742E4E72823C56E00C85A00 /* UsersListViewModel.swift in Sources */,
+				4742E4F62824C3BD00C85A00 /* NetworkService.swift in Sources */,
+				4742E4FA2824C4ED00C85A00 /* NetworkConfig.swift in Sources */,
 				4742E4B52823C42F00C85A00 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +426,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4742E4CA2823C43000C85A00 /* GitHub_Users_List_AppTests.swift in Sources */,
+				4742E4EC2823C61400C85A00 /* UsersListViewModelTests.swift in Sources */,
+				4742E5072824CA9900C85A00 /* MockNetworkError.swift in Sources */,
+				4742E50F28255CBF00C85A00 /* DataTransferServiceTests.swift in Sources */,
+				4742E51128255CE500C85A00 /* MockDataModel.swift in Sources */,
+				4742E51328255DD900C85A00 /* MockNetworkService.swift in Sources */,
+				4742E50D2825204700C85A00 /* EndpointTests.swift in Sources */,
+				4742E4FE2824C9EF00C85A00 /* MockNetworkSessionManager.swift in Sources */,
+				4742E5032824CA5500C85A00 /* MockEndPoint.swift in Sources */,
+				4742E5012824CA4400C85A00 /* NetworkServiceTests.swift in Sources */,
+				4742E4FC2824C9AC00C85A00 /* MockNetworkConfigurable.swift in Sources */,
+				4742E5052824CA7C00C85A00 /* MockNetworkErrorLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +465,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4742E4B82823C42F00C85A00 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4742E4B92823C42F00C85A00 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4742E4BD2823C42F00C85A00 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,7 +602,6 @@
 				INFOPLIST_FILE = "GitHub-Users-List-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +629,6 @@
 				INFOPLIST_FILE = "GitHub-Users-List-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
