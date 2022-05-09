@@ -16,6 +16,8 @@ class AppFlowCoordinator {
     }
 
     func start() {
-
+        let usersDIContainer = appDIContainer.makeUsersDIContainer()
+        let flow = usersDIContainer.makeUsersListFlowCoordinator(navigationController: navigationController)
+        flow.start()
     }
 }

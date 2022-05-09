@@ -15,4 +15,10 @@ final class AppDIContainer {
         let apiDataNetwork = DefaultNetworkService(config: config)
         return DefaultDataTransferService(with: apiDataNetwork)
     }()
+
+    // MARK: - Scenes
+    func makeUsersDIContainer() -> UsersListDIContainer {
+        let dependencies = UsersListDIContainer.Dependencies(apiDataTransferService: apiDataTransferService)
+        return UsersListDIContainer(dependencies: dependencies)
+    }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 final class UsersListDIContainer {
     struct Dependencies {
         let apiDataTransferService: DataTransferService
@@ -24,6 +25,10 @@ final class UsersListDIContainer {
 
     func makeUsersListViewModel(with actions: UsersListViewModelActions) -> UsersListViewModelType {
         UsersListViewModel(with: actions)
+    }
+    // MARK: - Flow coordinator
+    func makeUsersListFlowCoordinator(navigationController: UINavigationController) -> UsersListFlowCoordinator {
+        return UsersListFlowCoordinator(navigationController: navigationController, dependencies: self)
     }
 }
 
