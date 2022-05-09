@@ -17,6 +17,10 @@ protocol UsersListViewModelOutputs {
     var emptySubject: AnyPublisher<Bool, Never> { get }
 }
 
+struct UsersListViewModelActions {
+    let showUserDetail: (User) -> Void
+}
+
 protocol UsersListViewModelType {
     var inputs: UsersListViewModelInputs { get }
     var outputs: UsersListViewModelOutputs { get }
@@ -25,9 +29,9 @@ protocol UsersListViewModelType {
 final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs, UsersListViewModelOutputs {
     var inputs: UsersListViewModelInputs { return self }
     var outputs: UsersListViewModelOutputs { return self }
-
-
-    init() {
+    var actions: UsersListViewModelActions
+    init(with actions: UsersListViewModelActions) {
+        self.actions = actions
         let test = usersListSubject.map { $0.isEmpty }
         emptySubject = test.eraseToAnyPublisher()
         

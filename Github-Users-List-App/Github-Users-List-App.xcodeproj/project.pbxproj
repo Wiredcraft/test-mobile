@@ -36,6 +36,12 @@
 		4742E51B2826699900C85A00 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51A2826699900C85A00 /* AppConfiguration.swift */; };
 		4742E51E28266A8C00C85A00 /* AppConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51D28266A8C00C85A00 /* AppConfigurationTests.swift */; };
 		4742E52028266E0F00C85A00 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E51F28266E0F00C85A00 /* AppFlowCoordinator.swift */; };
+		4742E5222826A64800C85A00 /* UsersListDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5212826A64800C85A00 /* UsersListDIContainer.swift */; };
+		4742E5272826A74700C85A00 /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5262826A74700C85A00 /* UsersRepository.swift */; };
+		4742E52A2828FD1000C85A00 /* UsersQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5292828FD1000C85A00 /* UsersQuery.swift */; };
+		4742E52C2828FE1300C85A00 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E52B2828FE1300C85A00 /* Users.swift */; };
+		4742E52F2828FE6600C85A00 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E52E2828FE6600C85A00 /* Cancellable.swift */; };
+		4742E532282933AE00C85A00 /* UsersListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E531282933AE00C85A00 /* UsersListFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +95,12 @@
 		4742E51A2826699900C85A00 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		4742E51D28266A8C00C85A00 /* AppConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationTests.swift; sourceTree = "<group>"; };
 		4742E51F28266E0F00C85A00 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		4742E5212826A64800C85A00 /* UsersListDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListDIContainer.swift; sourceTree = "<group>"; };
+		4742E5262826A74700C85A00 /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
+		4742E5292828FD1000C85A00 /* UsersQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersQuery.swift; sourceTree = "<group>"; };
+		4742E52B2828FE1300C85A00 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		4742E52E2828FE6600C85A00 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
+		4742E531282933AE00C85A00 /* UsersListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +151,7 @@
 		4742E4B12823C42F00C85A00 /* GitHub-Users-List-App */ = {
 			isa = PBXGroup;
 			children = (
+				4742E52D2828FE5B00C85A00 /* Common */,
 				4742E51428265FFB00C85A00 /* Application */,
 				4742E4F02824C34F00C85A00 /* Infrastructure */,
 				4742E4E32823C50400C85A00 /* UserDetail */,
@@ -173,10 +186,13 @@
 		4742E4E22823C4FB00C85A00 /* UsersList */ = {
 			isa = PBXGroup;
 			children = (
+				4742E5302829339A00C85A00 /* Flow */,
+				4742E5232826A71600C85A00 /* Domain */,
 				4742E4EF2823C68500C85A00 /* ViewModel */,
 				4742E4EE2823C67E00C85A00 /* ViewController */,
 				4742E4E42823C51700C85A00 /* UsersListViewController.swift */,
 				4742E4E62823C56E00C85A00 /* UsersListViewModel.swift */,
+				4742E5212826A64800C85A00 /* UsersListDIContainer.swift */,
 			);
 			path = UsersList;
 			sourceTree = "<group>";
@@ -305,6 +321,40 @@
 				4742E51D28266A8C00C85A00 /* AppConfigurationTests.swift */,
 			);
 			path = Applicatoin;
+			sourceTree = "<group>";
+		};
+		4742E5232826A71600C85A00 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4742E5282828FD0600C85A00 /* Entities */,
+				4742E5262826A74700C85A00 /* UsersRepository.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4742E5282828FD0600C85A00 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4742E5292828FD1000C85A00 /* UsersQuery.swift */,
+				4742E52B2828FE1300C85A00 /* Users.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4742E52D2828FE5B00C85A00 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4742E52E2828FE6600C85A00 /* Cancellable.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4742E5302829339A00C85A00 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				4742E531282933AE00C85A00 /* UsersListFlowCoordinator.swift */,
+			);
+			path = Flow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,18 +487,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4742E52F2828FE6600C85A00 /* Cancellable.swift in Sources */,
 				4742E5192826658600C85A00 /* AppDIContainer.swift in Sources */,
 				4742E52028266E0F00C85A00 /* AppFlowCoordinator.swift in Sources */,
 				4742E50B2824D35400C85A00 /* DataTransferService.swift in Sources */,
+				4742E5222826A64800C85A00 /* UsersListDIContainer.swift in Sources */,
+				4742E532282933AE00C85A00 /* UsersListFlowCoordinator.swift in Sources */,
 				4742E4F82824C4B400C85A00 /* Endpoint.swift in Sources */,
+				4742E52A2828FD1000C85A00 /* UsersQuery.swift in Sources */,
 				4742E4B72823C42F00C85A00 /* ViewController.swift in Sources */,
 				4742E4E52823C51700C85A00 /* UsersListViewController.swift in Sources */,
 				4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */,
+				4742E52C2828FE1300C85A00 /* Users.swift in Sources */,
 				4742E51B2826699900C85A00 /* AppConfiguration.swift in Sources */,
 				4742E5162826600700C85A00 /* AppAppearance.swift in Sources */,
 				4742E4E72823C56E00C85A00 /* UsersListViewModel.swift in Sources */,
 				4742E4F62824C3BD00C85A00 /* NetworkService.swift in Sources */,
 				4742E4FA2824C4ED00C85A00 /* NetworkConfig.swift in Sources */,
+				4742E5272826A74700C85A00 /* UsersRepository.swift in Sources */,
 				4742E4B52823C42F00C85A00 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
