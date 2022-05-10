@@ -14,8 +14,7 @@ protocol UsersListViewModelInputs {
 }
 
 protocol UsersListViewModelOutputs {
-    var usersListSubject: PassthroughSubject<[Int], Never> { get }
-    var emptySubject: AnyPublisher<Bool, Never> { get }
+    var usersList: Observable<[User]> { get }
 }
 
 struct UsersListViewModelActions {
@@ -35,19 +34,21 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     init(with actions: UsersListViewModelActions, usecase: UsersListUseCase) {
         self.actions = actions
         self.usecase = usecase
-        let test = usersListSubject.map { $0.isEmpty }
-        emptySubject = test.eraseToAnyPublisher()
-        
     }
 
-//    MARK: - Outputs
-    var usersListSubject = PassthroughSubject<[Int], Never>()
-    var emptySubject: AnyPublisher<Bool, Never>
-//MARK: - Inputs
+    // MARK: - Outputs
+    var usersList: Observable<[User]> = Observable([])
+    //MARK: - Inputs
     func viewDidLoad() { }
     func loadData() {
-        _ = usecase.excute(completion: { result in
-            print(result)
+        _ = usecase.excute(completion: { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+                case .success(let users):
+                    self.outputs.usersList.value.append(contentsOf: users)
+                case .failure(let error):
+                    print("error")
+            }
         })
     }
     func didSelectItem(at indexPath: IndexPath) {

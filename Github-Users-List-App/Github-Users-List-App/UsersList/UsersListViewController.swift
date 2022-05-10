@@ -20,9 +20,20 @@ class UsersListViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.red
         setupViews()
+        bindViewModel()
         viewModel.inputs.loadData()
     }
-
+    func bindViewModel() {
+        viewModel.outputs.usersList.observe(on: self) { [weak self] users in
+            self?.updateItems()
+        }
+    }
+    func updateItems() {
+        reload()
+    }
+    func reload() {
+        tableView.reloadData()
+    }
     private func setupViews() {
         tableView.estimatedRowHeight = UsersListCell.height
         tableView.rowHeight = UITableView.automaticDimension
@@ -40,6 +51,6 @@ extension UsersListViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel.outputs.usersList.value.count
     }
 }

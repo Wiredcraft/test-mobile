@@ -50,6 +50,7 @@
 		4742E545282A10AF00C85A00 /* DefaultUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E544282A10AF00C85A00 /* DefaultUsersRepository.swift */; };
 		4742E548282A115400C85A00 /* RepositoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E547282A115400C85A00 /* RepositoryTask.swift */; };
 		4742E54C282A135700C85A00 /* UsersLsitUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E54B282A135700C85A00 /* UsersLsitUseCaseTests.swift */; };
+		4742E550282A1F0500C85A00 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E54F282A1F0500C85A00 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		4742E544282A10AF00C85A00 /* DefaultUsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUsersRepository.swift; sourceTree = "<group>"; };
 		4742E547282A115400C85A00 /* RepositoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTask.swift; sourceTree = "<group>"; };
 		4742E54B282A135700C85A00 /* UsersLsitUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersLsitUseCaseTests.swift; sourceTree = "<group>"; };
+		4742E54F282A1F0500C85A00 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 		4742E4B12823C42F00C85A00 /* GitHub-Users-List-App */ = {
 			isa = PBXGroup;
 			children = (
+				4742E54E282A1EFD00C85A00 /* Util */,
 				4742E52D2828FE5B00C85A00 /* Common */,
 				4742E51428265FFB00C85A00 /* Application */,
 				4742E4F02824C34F00C85A00 /* Infrastructure */,
@@ -460,6 +463,14 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		4742E54E282A1EFD00C85A00 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4742E54F282A1F0500C85A00 /* Observable.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -596,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4742E550282A1F0500C85A00 /* Observable.swift in Sources */,
 				4742E52F2828FE6600C85A00 /* Cancellable.swift in Sources */,
 				4742E5192826658600C85A00 /* AppDIContainer.swift in Sources */,
 				4742E52028266E0F00C85A00 /* AppFlowCoordinator.swift in Sources */,
