@@ -53,6 +53,8 @@
 		4742E552282A561C00C85A00 /* UsersListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E551282A561C00C85A00 /* UsersListItemViewModel.swift */; };
 		4742E555282A5A5500C85A00 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4742E554282A5A5500C85A00 /* Kingfisher */; };
 		4742E557282A94A700C85A00 /* UsersListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E556282A94A700C85A00 /* UsersListPage.swift */; };
+		47C4A7ED282AA32A00367104 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */; };
+		47C4A7F0282ABB4E00367104 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EF282ABB4E00367104 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		4742E54F282A1F0500C85A00 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		4742E551282A561C00C85A00 /* UsersListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListItemViewModel.swift; sourceTree = "<group>"; };
 		4742E556282A94A700C85A00 /* UsersListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListPage.swift; sourceTree = "<group>"; };
+		47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		47C4A7EF282ABB4E00367104 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,7 @@
 		4742E4E22823C4FB00C85A00 /* UsersList */ = {
 			isa = PBXGroup;
 			children = (
+				47C4A7EE282ABB4700367104 /* View */,
 				4742E539282A076200C85A00 /* UseCase */,
 				4742E53328296B9F00C85A00 /* Cells */,
 				4742E5302829339A00C85A00 /* Flow */,
@@ -225,6 +230,7 @@
 		4742E4E32823C50400C85A00 /* UserDetail */ = {
 			isa = PBXGroup;
 			children = (
+				47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */,
 			);
 			path = UserDetail;
 			sourceTree = "<group>";
@@ -476,6 +482,14 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		47C4A7EE282ABB4700367104 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47C4A7EF282ABB4E00367104 /* SearchBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -628,9 +642,11 @@
 				4742E4F82824C4B400C85A00 /* Endpoint.swift in Sources */,
 				4742E52A2828FD1000C85A00 /* UsersQuery.swift in Sources */,
 				4742E4E52823C51700C85A00 /* UsersListViewController.swift in Sources */,
+				47C4A7ED282AA32A00367104 /* UserDetailViewController.swift in Sources */,
 				4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */,
 				4742E52C2828FE1300C85A00 /* UsersResponseDTO.swift in Sources */,
 				4742E51B2826699900C85A00 /* AppConfiguration.swift in Sources */,
+				47C4A7F0282ABB4E00367104 /* SearchBar.swift in Sources */,
 				4742E5162826600700C85A00 /* AppAppearance.swift in Sources */,
 				4742E4E72823C56E00C85A00 /* UsersListViewModel.swift in Sources */,
 				4742E4F62824C3BD00C85A00 /* NetworkService.swift in Sources */,
