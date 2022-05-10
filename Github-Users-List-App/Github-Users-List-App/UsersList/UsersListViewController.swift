@@ -18,7 +18,6 @@ class UsersListViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.red
         setupViews()
         bindViewModel()
         viewModel.inputs.loadData()
@@ -47,6 +46,7 @@ extension UsersListViewController {
             assertionFailure("Cannot dequeue reusable cell \(UsersListCell.self) with reuseIdentifier: \(UsersListCell.reuseIdentifier)")
             return UITableViewCell()
         }
+        cell.bindViewModel(viewModel.outputs.usersList.value[indexPath.row])
         return cell
     }
 

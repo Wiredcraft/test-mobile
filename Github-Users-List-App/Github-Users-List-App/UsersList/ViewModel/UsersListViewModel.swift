@@ -14,7 +14,7 @@ protocol UsersListViewModelInputs {
 }
 
 protocol UsersListViewModelOutputs {
-    var usersList: Observable<[User]> { get }
+    var usersList: Observable<[UsersListItemViewModel]> { get }
 }
 
 struct UsersListViewModelActions {
@@ -37,7 +37,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     }
 
     // MARK: - Outputs
-    var usersList: Observable<[User]> = Observable([])
+    var usersList: Observable<[UsersListItemViewModel]> = Observable([])
     //MARK: - Inputs
     func viewDidLoad() { }
     func loadData() {
@@ -45,7 +45,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
             guard let self = self else { return }
             switch result {
                 case .success(let users):
-                    self.outputs.usersList.value.append(contentsOf: users)
+                    self.appendUsersListPage(users)
                 case .failure(let error):
                     print("error")
             }
@@ -53,5 +53,9 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     }
     func didSelectItem(at indexPath: IndexPath) {
 
+    }
+
+    func appendUsersListPage(_ users: [User]) {
+        usersList.value.append(contentsOf: users.map{UsersListItemViewModel(user: $0)})
     }
 }
