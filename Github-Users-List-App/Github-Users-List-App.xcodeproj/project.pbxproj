@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4B22823C42F00C85A00 /* AppDelegate.swift */; };
 		4742E4B52823C42F00C85A00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4B42823C42F00C85A00 /* SceneDelegate.swift */; };
-		4742E4B72823C42F00C85A00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4B62823C42F00C85A00 /* ViewController.swift */; };
 		4742E4BC2823C42F00C85A00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4742E4BB2823C42F00C85A00 /* Assets.xcassets */; };
 		4742E4BF2823C42F00C85A00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4742E4BD2823C42F00C85A00 /* LaunchScreen.storyboard */; };
 		4742E4D42823C43000C85A00 /* GitHub_Users_List_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E4D32823C43000C85A00 /* GitHub_Users_List_AppUITests.swift */; };
@@ -77,7 +76,6 @@
 		4742E4AF2823C42F00C85A00 /* GitHub-Users-List-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub-Users-List-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4742E4B22823C42F00C85A00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4742E4B42823C42F00C85A00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4742E4B62823C42F00C85A00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4742E4BB2823C42F00C85A00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4742E4BE2823C42F00C85A00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4742E4C02823C42F00C85A00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,13 +173,14 @@
 		4742E4B12823C42F00C85A00 /* GitHub-Users-List-App */ = {
 			isa = PBXGroup;
 			children = (
+				4742E5232826A71600C85A00 /* Domain */,
+				4742E53C282A0E6400C85A00 /* Data */,
 				4742E54E282A1EFD00C85A00 /* Util */,
 				4742E52D2828FE5B00C85A00 /* Common */,
 				4742E51428265FFB00C85A00 /* Application */,
 				4742E4F02824C34F00C85A00 /* Infrastructure */,
 				4742E4E32823C50400C85A00 /* UserDetail */,
 				4742E4E22823C4FB00C85A00 /* UsersList */,
-				4742E4B62823C42F00C85A00 /* ViewController.swift */,
 				4742E4BB2823C42F00C85A00 /* Assets.xcassets */,
 				4742E4BD2823C42F00C85A00 /* LaunchScreen.storyboard */,
 				4742E4C02823C42F00C85A00 /* Info.plist */,
@@ -212,11 +211,9 @@
 		4742E4E22823C4FB00C85A00 /* UsersList */ = {
 			isa = PBXGroup;
 			children = (
-				4742E53C282A0E6400C85A00 /* Data */,
 				4742E539282A076200C85A00 /* UseCase */,
 				4742E53328296B9F00C85A00 /* Cells */,
 				4742E5302829339A00C85A00 /* Flow */,
-				4742E5232826A71600C85A00 /* Domain */,
 				4742E4EF2823C68500C85A00 /* ViewModel */,
 				4742E4EE2823C67E00C85A00 /* ViewController */,
 				4742E4E42823C51700C85A00 /* UsersListViewController.swift */,
@@ -630,7 +627,6 @@
 				4742E532282933AE00C85A00 /* UsersListFlowCoordinator.swift in Sources */,
 				4742E4F82824C4B400C85A00 /* Endpoint.swift in Sources */,
 				4742E52A2828FD1000C85A00 /* UsersQuery.swift in Sources */,
-				4742E4B72823C42F00C85A00 /* ViewController.swift in Sources */,
 				4742E4E52823C51700C85A00 /* UsersListViewController.swift in Sources */,
 				4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */,
 				4742E52C2828FE1300C85A00 /* UsersResponseDTO.swift in Sources */,
