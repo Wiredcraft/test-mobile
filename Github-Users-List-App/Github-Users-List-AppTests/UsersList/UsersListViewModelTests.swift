@@ -14,7 +14,9 @@ class UsersListViewModelTests: XCTestCase {
     // MARK: - TestCase LifeCycle
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = UsersListViewModel()
+        sut = UsersListViewModel(with: UsersListViewModelActions(showUserDetail: {_ in
+
+        }))
 
     }
 

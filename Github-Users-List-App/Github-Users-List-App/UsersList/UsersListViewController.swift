@@ -7,7 +7,7 @@
 
 
 import UIKit
-class UsersListViewController: UIViewController {
+class UsersListViewController: UITableViewController {
     var viewModel: UsersListViewModelType!
 
     // MARK: - Life Cycle
@@ -19,6 +19,26 @@ class UsersListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.red
+        setupViews()
     }
 
+    private func setupViews() {
+        tableView.estimatedRowHeight = UsersListCell.height
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(UsersListCell.self, forCellReuseIdentifier: UsersListCell.reuseIdentifier)
+    }
+}
+
+extension UsersListViewController {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UsersListCell.reuseIdentifier, for: indexPath) as? UsersListCell else {
+            assertionFailure("Cannot dequeue reusable cell \(UsersListCell.self) with reuseIdentifier: \(UsersListCell.reuseIdentifier)")
+            return UITableViewCell()
+        }
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
 }
