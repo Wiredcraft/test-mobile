@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 class UsersListCell: UITableViewCell {
     static let reuseIdentifier = String(describing: UsersListCell.self)
-    static let height: CGFloat = 130
+    static let height: CGFloat = 64
     lazy var nameLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -29,9 +29,11 @@ protocol UsersListViewModelType {
 final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs, UsersListViewModelOutputs {
     var inputs: UsersListViewModelInputs { return self }
     var outputs: UsersListViewModelOutputs { return self }
-    var actions: UsersListViewModelActions
-    init(with actions: UsersListViewModelActions) {
+    private let actions: UsersListViewModelActions
+    private let usecase: UsersListUseCase
+    init(with actions: UsersListViewModelActions, usecase: UsersListUseCase) {
         self.actions = actions
+        self.usecase = usecase
         let test = usersListSubject.map { $0.isEmpty }
         emptySubject = test.eraseToAnyPublisher()
         
