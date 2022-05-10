@@ -39,7 +39,7 @@
 		4742E5222826A64800C85A00 /* UsersListDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5212826A64800C85A00 /* UsersListDIContainer.swift */; };
 		4742E5272826A74700C85A00 /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5262826A74700C85A00 /* UsersRepository.swift */; };
 		4742E52A2828FD1000C85A00 /* UsersQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E5292828FD1000C85A00 /* UsersQuery.swift */; };
-		4742E52C2828FE1300C85A00 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E52B2828FE1300C85A00 /* Users.swift */; };
+		4742E52C2828FE1300C85A00 /* UsersResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E52B2828FE1300C85A00 /* UsersResponseDTO.swift */; };
 		4742E52F2828FE6600C85A00 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E52E2828FE6600C85A00 /* Cancellable.swift */; };
 		4742E532282933AE00C85A00 /* UsersListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E531282933AE00C85A00 /* UsersListFlowCoordinator.swift */; };
 		4742E53528296BBD00C85A00 /* UsersListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E53428296BBD00C85A00 /* UsersListCell.swift */; };
@@ -53,6 +53,7 @@
 		4742E550282A1F0500C85A00 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E54F282A1F0500C85A00 /* Observable.swift */; };
 		4742E552282A561C00C85A00 /* UsersListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E551282A561C00C85A00 /* UsersListItemViewModel.swift */; };
 		4742E555282A5A5500C85A00 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4742E554282A5A5500C85A00 /* Kingfisher */; };
+		4742E557282A94A700C85A00 /* UsersListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E556282A94A700C85A00 /* UsersListPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +110,7 @@
 		4742E5212826A64800C85A00 /* UsersListDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListDIContainer.swift; sourceTree = "<group>"; };
 		4742E5262826A74700C85A00 /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
 		4742E5292828FD1000C85A00 /* UsersQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersQuery.swift; sourceTree = "<group>"; };
-		4742E52B2828FE1300C85A00 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		4742E52B2828FE1300C85A00 /* UsersResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersResponseDTO.swift; sourceTree = "<group>"; };
 		4742E52E2828FE6600C85A00 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		4742E531282933AE00C85A00 /* UsersListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListFlowCoordinator.swift; sourceTree = "<group>"; };
 		4742E53428296BBD00C85A00 /* UsersListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListCell.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 		4742E54B282A135700C85A00 /* UsersLsitUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersLsitUseCaseTests.swift; sourceTree = "<group>"; };
 		4742E54F282A1F0500C85A00 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		4742E551282A561C00C85A00 /* UsersListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListItemViewModel.swift; sourceTree = "<group>"; };
+		4742E556282A94A700C85A00 /* UsersListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,7 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				4742E5292828FD1000C85A00 /* UsersQuery.swift */,
-				4742E52B2828FE1300C85A00 /* Users.swift */,
+				4742E556282A94A700C85A00 /* UsersListPage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -432,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				4742E542282A0E9900C85A00 /* UsersRequestDTO.swift */,
+				4742E52B2828FE1300C85A00 /* UsersResponseDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -623,13 +626,14 @@
 				4742E50B2824D35400C85A00 /* DataTransferService.swift in Sources */,
 				4742E53528296BBD00C85A00 /* UsersListCell.swift in Sources */,
 				4742E5222826A64800C85A00 /* UsersListDIContainer.swift in Sources */,
+				4742E557282A94A700C85A00 /* UsersListPage.swift in Sources */,
 				4742E532282933AE00C85A00 /* UsersListFlowCoordinator.swift in Sources */,
 				4742E4F82824C4B400C85A00 /* Endpoint.swift in Sources */,
 				4742E52A2828FD1000C85A00 /* UsersQuery.swift in Sources */,
 				4742E4B72823C42F00C85A00 /* ViewController.swift in Sources */,
 				4742E4E52823C51700C85A00 /* UsersListViewController.swift in Sources */,
 				4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */,
-				4742E52C2828FE1300C85A00 /* Users.swift in Sources */,
+				4742E52C2828FE1300C85A00 /* UsersResponseDTO.swift in Sources */,
 				4742E51B2826699900C85A00 /* AppConfiguration.swift in Sources */,
 				4742E5162826600700C85A00 /* AppAppearance.swift in Sources */,
 				4742E4E72823C56E00C85A00 /* UsersListViewModel.swift in Sources */,

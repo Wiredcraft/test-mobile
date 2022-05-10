@@ -18,7 +18,7 @@ protocol UsersListViewModelOutputs {
 }
 
 struct UsersListViewModelActions {
-    let showUserDetail: (User) -> Void
+    let showUserDetail: (UserDTO) -> Void
 }
 
 protocol UsersListViewModelType {
@@ -41,11 +41,11 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     //MARK: - Inputs
     func viewDidLoad() { }
     func loadData() {
-        _ = usecase.excute(completion: { [weak self] result in
+        _ = usecase.excute(requestValue: UsersQueryUseCaseRequestValue(q: "Swift", page: 1), completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
                 case .success(let users):
-                    self.appendUsersListPage(users)
+                    self.appendUsersListPage(users.items)
                 case .failure(let error):
                     print("error")
             }

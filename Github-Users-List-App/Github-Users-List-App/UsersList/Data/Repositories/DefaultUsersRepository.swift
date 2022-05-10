@@ -13,14 +13,14 @@ final class DefaultUsersRepository {
     }
 }
 extension DefaultUsersRepository: UsersRepository {
-    func fectchUsersList(completion: @escaping (Result<[User], Error>) -> Void) -> Cancellable {
-//        let requestDTO = UsersRequestDTO(q: query.q, page: query.page)
+    func fectchUsersList(query: UsersQuery, completion: @escaping (Result<UsersListPage, Error>) -> Void) -> Cancellable {
+        let dto = UsersRequestDTO(q: query.q, page: query.page)
         let task = RepositoryTask()
-        let endpoint = APIEndpoints.getUsers()
+        let endpoint = APIEndpoints.getUsers(with: dto)
         task.networkTask = self.dataTransferService.request(with: endpoint) { result in
             switch result {
                 case .success(let response):
-                    completion(.success(response))
+                    completion(.success(response.toDomain()))
                 case .failure(let error):
                     completion(.failure(error))
             }

@@ -85,7 +85,6 @@ class UsersListCell: UITableViewCell {
         scoreLabel.text = viewModel.score
         html_urlLabel.text = viewModel.htmlURL
         avatarImageView.kf.setImage(with: viewModel.avatarURL)
-
     }
 
     func bindStyle() {

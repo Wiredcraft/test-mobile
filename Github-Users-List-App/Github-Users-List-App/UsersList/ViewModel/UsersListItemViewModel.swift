@@ -17,7 +17,7 @@ class UsersListItemViewModel {
     let state: UserState = .follow
     init(user: User) {
         self.name = user.login
-        self.avatarURL = user.avatarUrl != nil ? URL(string: user.avatarUrl!) : nil
+        self.avatarURL = URL(string: user.avatarUrl) ??  nil
         self.score = "\(user.score)"
         self.htmlURL = user.htmlUrl
     }

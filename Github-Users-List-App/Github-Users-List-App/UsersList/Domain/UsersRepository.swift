@@ -7,5 +7,5 @@
 
 import Foundation
 protocol UsersRepository {
-    func fectchUsersList(completion: @escaping (Result<[User], Error>) -> Void) -> Cancellable
+    func fectchUsersList(query: UsersQuery, completion: @escaping (Result<UsersListPage, Error>) -> Void) -> Cancellable
 }

@@ -30,7 +30,7 @@ final class UsersListFlowCoordinator {
     }
 
     // MARK: - Actions
-    func showUserDetail(with user: User) {
+    func showUserDetail(with user: UserDTO) {
 
     }
 
