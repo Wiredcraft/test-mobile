@@ -9,6 +9,7 @@ import Foundation
 import Combine
 protocol UsersListViewModelInputs {
     func viewDidLoad()
+    func loadData()
     func didSelectItem(at indexPath: IndexPath)
 }
 
@@ -43,11 +44,12 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     var usersListSubject = PassthroughSubject<[Int], Never>()
     var emptySubject: AnyPublisher<Bool, Never>
 //MARK: - Inputs
-    fileprivate let viewDidLoadSubject = PassthroughSubject<Void, Never>()
-    func viewDidLoad() {
-
+    func viewDidLoad() { }
+    func loadData() {
+        _ = usecase.excute(completion: { result in
+            print(result)
+        })
     }
-
     func didSelectItem(at indexPath: IndexPath) {
 
     }

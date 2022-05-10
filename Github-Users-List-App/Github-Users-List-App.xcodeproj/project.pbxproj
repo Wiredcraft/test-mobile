@@ -49,6 +49,7 @@
 		4742E543282A0E9900C85A00 /* UsersRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E542282A0E9900C85A00 /* UsersRequestDTO.swift */; };
 		4742E545282A10AF00C85A00 /* DefaultUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E544282A10AF00C85A00 /* DefaultUsersRepository.swift */; };
 		4742E548282A115400C85A00 /* RepositoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E547282A115400C85A00 /* RepositoryTask.swift */; };
+		4742E54C282A135700C85A00 /* UsersLsitUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E54B282A135700C85A00 /* UsersLsitUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		4742E542282A0E9900C85A00 /* UsersRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRequestDTO.swift; sourceTree = "<group>"; };
 		4742E544282A10AF00C85A00 /* DefaultUsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUsersRepository.swift; sourceTree = "<group>"; };
 		4742E547282A115400C85A00 /* RepositoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTask.swift; sourceTree = "<group>"; };
+		4742E54B282A135700C85A00 /* UsersLsitUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersLsitUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		4742E4C82823C43000C85A00 /* GitHub-Users-List-AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				4742E549282A132C00C85A00 /* Domain */,
 				4742E51C28266A7900C85A00 /* Applicatoin */,
 				4742E4F22824C38300C85A00 /* Infrastructure */,
 				4742E4EA2823C60100C85A00 /* UsersList */,
@@ -433,6 +436,30 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		4742E549282A132C00C85A00 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4742E54A282A133300C85A00 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4742E54A282A133300C85A00 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				4742E54D282A136500C85A00 /* Mock */,
+				4742E54B282A135700C85A00 /* UsersLsitUseCaseTests.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		4742E54D282A136500C85A00 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -604,6 +631,7 @@
 				4742E4EC2823C61400C85A00 /* UsersListViewModelTests.swift in Sources */,
 				4742E5072824CA9900C85A00 /* MockNetworkError.swift in Sources */,
 				4742E50F28255CBF00C85A00 /* DataTransferServiceTests.swift in Sources */,
+				4742E54C282A135700C85A00 /* UsersLsitUseCaseTests.swift in Sources */,
 				4742E51128255CE500C85A00 /* MockDataModel.swift in Sources */,
 				4742E51328255DD900C85A00 /* MockNetworkService.swift in Sources */,
 				4742E50D2825204700C85A00 /* EndpointTests.swift in Sources */,

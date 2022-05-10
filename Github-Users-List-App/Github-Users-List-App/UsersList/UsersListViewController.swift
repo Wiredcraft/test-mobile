@@ -20,6 +20,7 @@ class UsersListViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.red
         setupViews()
+        viewModel.inputs.loadData()
     }
 
     private func setupViews() {

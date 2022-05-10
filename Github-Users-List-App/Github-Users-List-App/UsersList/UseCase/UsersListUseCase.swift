@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UsersListUseCase {
-    func excute(requestValue: UsersQueryUseCaseRequestValue, completion: @escaping (Result<UsersListResponse, Error>) -> Void) -> Cancellable?
+    func excute(completion: @escaping (Result<[User], Error>) -> Void) -> Cancellable?
 }
 
 struct UsersQueryUseCaseRequestValue {
@@ -23,8 +23,8 @@ final class DefaultUserListUseCase: UsersListUseCase {
     init(usersListRepository: UsersRepository) {
         self.usersListRepository = usersListRepository
     }
-    func excute(requestValue: UsersQueryUseCaseRequestValue, completion: @escaping (Result<UsersListResponse, Error>) -> Void) -> Cancellable? {
-        return usersListRepository.fectchUsersList(query: requestValue.query()) { result in
+    func excute(completion: @escaping (Result<[User], Error>) -> Void) -> Cancellable? {
+        return usersListRepository.fectchUsersList() { result in
             completion(result)
         }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 struct APIEndpoints {
-    static func getUsers(with usersRequestDTO: UsersRequestDTO) -> Endpoint<UsersListResponse> {
-        return Endpoint(path: "search/users", method: .get, queryParametersEncodable: usersRequestDTO)
+    static func getUsers() -> Endpoint<[User]> {
+        return Endpoint(path: "users", method: .get)
     }
 }
