@@ -60,7 +60,7 @@ class UsersListViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
-
+    // MARK: - Privates
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(searchBar)
@@ -81,7 +81,7 @@ class UsersListViewController: UIViewController {
         }
     }
 
-    func bindViewModel() {
+    private func bindViewModel() {
         viewModel.outputs.usersList.observe(on: self) { [weak self] users in
             self?.updateItems()
         }
@@ -89,22 +89,18 @@ class UsersListViewController: UIViewController {
             self?.updateLoading(loading)
         }
     }
-    func bindSearchBar() {
+    private func bindSearchBar() {
         searchBar.searchText.observe(on: self) { [weak self] text in
             print("received : \(text)")
             self?.viewModel.inputs.search(with: text == "" ? "swift" : text)
         }
     }
 
-    func updateItems() {
-        reload()
-    }
-
-    func reload() {
+    private func updateItems() {
         tableView.reloadData()
     }
 
-    func updateLoading(_ loading: UsersListViewModelLoading) {
+    private func updateLoading(_ loading: UsersListViewModelLoading) {
         switch loading {
             case .none:
                 tableView.tableFooterView = nil
@@ -117,7 +113,6 @@ class UsersListViewController: UIViewController {
                 tableView.tableFooterView = nextPageLoadingActivityIndicator
         }
     }
-
 }
 
 // MARK: - UITableView DataSource
