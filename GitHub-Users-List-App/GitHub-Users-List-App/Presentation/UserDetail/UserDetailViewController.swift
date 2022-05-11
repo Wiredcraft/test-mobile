@@ -25,12 +25,13 @@ class UserDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     }()
 
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.estimatedRowHeight = 0
         tableView.estimatedSectionFooterHeight = 0
         tableView.estimatedSectionHeaderHeight = 0
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.register(UserDetailRepoCell.self, forCellReuseIdentifier: UserDetailRepoCell.reuseIdentifier)
+        tableView.register(UserDetailSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: UserDetailSectionHeaderView.reuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -93,6 +94,22 @@ class UserDetailViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 extension UserDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard viewModel.outputs.repoViewModels.value.count != 0 else {
+            return nil
+        }
+        guard let sectionHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: UserDetailSectionHeaderView.reuseIdentifier) as? UserDetailSectionHeaderView else {
+            return nil
+        }
+        sectionHeaderView.frame = .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64)
+        sectionHeaderView.backgroundColor = .clear
+        return sectionHeaderView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 64
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserDetailRepoCell.reuseIdentifier, for: indexPath) as? UserDetailRepoCell else {
             assertionFailure("Cannot dequeue reusable cell \(UserDetailRepoCell.self) with reuseIdentifier: \(UserDetailRepoCell.reuseIdentifier)")
