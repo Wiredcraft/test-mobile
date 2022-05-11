@@ -13,7 +13,7 @@ final class DefaultUsersRepository {
     }
 }
 extension DefaultUsersRepository: UsersRepository {
-    func fectchUsersList(query: UsersQuery, completion: @escaping (Result<UsersListPage, Error>) -> Void) -> Cancellable {
+    func fectchUsersList(query: UsersQueryUseCaseRequestValue, completion: @escaping (Result<UsersListPage, Error>) -> Void) -> Cancellable {
         let dto = UsersRequestDTO(q: query.q, page: query.page)
         let task = RepositoryTask()
         if !task.isCancelled {

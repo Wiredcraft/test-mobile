@@ -6,11 +6,12 @@
 //
 
 import Foundation
-import Combine
+
 protocol UsersListViewModelInputs {
     func viewDidLoad()
     func didSelectItem(at indexPath: IndexPath)
     func loadNextPage()
+    func refreshPage()
 }
 
 protocol UsersListViewModelOutputs {
@@ -69,6 +70,10 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
         guard hasMorePage, loading.value == .none else { return }
         load(query: UsersQuery(q: "swift", page: nextPage), loading: .nextPage)
     }
+
+    func refreshPage() {
+        load(query: UsersQuery(q: "swift", page: 1), loading: .refresh)
+    }
     // MARK: - PRivate
     private func appendPage(_ page: UsersListPage) {
         totalPageCount = page.totalCount / 30
@@ -85,10 +90,13 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
 
     private func load(query: UsersQuery, loading: UsersListViewModelLoading) {
         self.loading.value = loading
-        usersLoadTask = usecase.excute(requestValue: UsersQueryUseCaseRequestValue(q: query.q, page: nextPage), completion: { [weak self] result in
+        usersLoadTask = usecase.excute(requestValue: query.toRequestValue(), completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
                 case .success(let page):
+                    if self.loading.value == .refresh {
+                        self.resetPage()
+                    }
                     self.appendPage(page)
                     self.outputs.loading.value = .none
                 case .failure(let error):

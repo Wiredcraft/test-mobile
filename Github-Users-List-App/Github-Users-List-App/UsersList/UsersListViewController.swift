@@ -145,7 +145,7 @@ extension UsersListViewController: UITableViewDelegate {
 // MARK: - Actions
 extension UsersListViewController {
     @objc func refresh() {
-
+        viewModel.inputs.refreshPage()
     }
 }
 
