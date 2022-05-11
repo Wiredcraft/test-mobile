@@ -42,7 +42,7 @@ class SearchBar: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(cancelButtonAction(_:)), for: .touchUpInside)
         button.setTitle("Cancel", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.systemGray, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 13)
         button.isHidden = true
         return button
@@ -53,7 +53,7 @@ class SearchBar: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(cleanButtonAction(_:)), for: .touchUpInside)
         button.setImage(UIImage(systemName: "xmark.circle.fill")?.withTintColor(UIColor(red: 0.749, green: 0.749, blue: 0.749, alpha: 1), renderingMode: .alwaysOriginal), for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.systemGray, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 13)
         button.isHidden = true
         return button
@@ -81,6 +81,7 @@ class SearchBar: UIView {
     }
 
     func setupViews() {
+        self.backgroundColor = .systemBackground
         addSubview(containerView)
         containerView.addSubview(textField)
         containerView.addSubview(magnifier)

@@ -61,6 +61,9 @@
 		477F0AD1282BE41800CCE363 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0AD0282BE41800CCE363 /* UserRepo.swift */; };
 		477F0AD3282BEBD100CCE363 /* UserDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0AD2282BEBD100CCE363 /* UserDetailUseCase.swift */; };
 		477F0AD5282BEDEE00CCE363 /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0AD4282BEDEE00CCE363 /* UserDetailViewModel.swift */; };
+		477F0AD7282BF7D800CCE363 /* UserDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0AD6282BF7D800CCE363 /* UserDetailHeaderView.swift */; };
+		477F0ADB282BFA0400CCE363 /* UserDetailRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0ADA282BFA0400CCE363 /* UserDetailRepoCell.swift */; };
+		477F0ADD282BFA4900CCE363 /* UserDetailRepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0ADC282BFA4900CCE363 /* UserDetailRepoViewModel.swift */; };
 		47C4A7ED282AA32A00367104 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */; };
 		47C4A7F0282ABB4E00367104 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EF282ABB4E00367104 /* SearchBar.swift */; };
 		47C4A7F6282B734000367104 /* UIViewController+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7F5282B734000367104 /* UIViewController+Bar.swift */; };
@@ -142,6 +145,9 @@
 		477F0AD0282BE41800CCE363 /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
 		477F0AD2282BEBD100CCE363 /* UserDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailUseCase.swift; sourceTree = "<group>"; };
 		477F0AD4282BEDEE00CCE363 /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		477F0AD6282BF7D800CCE363 /* UserDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailHeaderView.swift; sourceTree = "<group>"; };
+		477F0ADA282BFA0400CCE363 /* UserDetailRepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailRepoCell.swift; sourceTree = "<group>"; };
+		477F0ADC282BFA4900CCE363 /* UserDetailRepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailRepoViewModel.swift; sourceTree = "<group>"; };
 		47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		47C4A7EF282ABB4E00367104 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		47C4A7F5282B734000367104 /* UIViewController+Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Bar.swift"; sourceTree = "<group>"; };
@@ -249,7 +255,9 @@
 		4742E4E32823C50400C85A00 /* UserDetail */ = {
 			isa = PBXGroup;
 			children = (
-				477F0AC5282BC4A900CCE363 /* Flow */,
+				477F0AD9282BF9E900CCE363 /* Cells */,
+				477F0AD8282BF9DB00CCE363 /* ViewModel */,
+				477F0AC5282BC4A900CCE363 /* View */,
 				47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */,
 				477F0AD4282BEDEE00CCE363 /* UserDetailViewModel.swift */,
 			);
@@ -512,11 +520,28 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		477F0AC5282BC4A900CCE363 /* Flow */ = {
+		477F0AC5282BC4A900CCE363 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				477F0AD6282BF7D800CCE363 /* UserDetailHeaderView.swift */,
 			);
-			path = Flow;
+			path = View;
+			sourceTree = "<group>";
+		};
+		477F0AD8282BF9DB00CCE363 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				477F0ADC282BFA4900CCE363 /* UserDetailRepoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		477F0AD9282BF9E900CCE363 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				477F0ADA282BFA0400CCE363 /* UserDetailRepoCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		47C4A7EE282ABB4700367104 /* View */ = {
@@ -695,6 +720,7 @@
 			files = (
 				4742E550282A1F0500C85A00 /* Observable.swift in Sources */,
 				477F0AC9282BC75200CCE363 /* UserDetailRepository.swift in Sources */,
+				477F0AD7282BF7D800CCE363 /* UserDetailHeaderView.swift in Sources */,
 				477F0AD5282BEDEE00CCE363 /* UserDetailViewModel.swift in Sources */,
 				4742E52F2828FE6600C85A00 /* Cancellable.swift in Sources */,
 				4742E5192826658600C85A00 /* AppDIContainer.swift in Sources */,
@@ -717,8 +743,10 @@
 				4742E4E52823C51700C85A00 /* UsersListViewController.swift in Sources */,
 				47C4A7FA282B73D600367104 /* UIViewController+Refresh.swift in Sources */,
 				47C4A7ED282AA32A00367104 /* UserDetailViewController.swift in Sources */,
+				477F0ADD282BFA4900CCE363 /* UserDetailRepoViewModel.swift in Sources */,
 				4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */,
 				4742E52C2828FE1300C85A00 /* UsersResponseDTO.swift in Sources */,
+				477F0ADB282BFA0400CCE363 /* UserDetailRepoCell.swift in Sources */,
 				4742E51B2826699900C85A00 /* AppConfiguration.swift in Sources */,
 				47C4A7F0282ABB4E00367104 /* SearchBar.swift in Sources */,
 				4742E5162826600700C85A00 /* AppAppearance.swift in Sources */,

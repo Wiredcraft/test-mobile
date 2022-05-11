@@ -45,10 +45,10 @@ final class UsersListDIContainer {
 
     // MARK: - User Detail
     func makeUserDetailViewController(user: User, actions: UserDetailViewModelActions) -> UserDetailViewController {
-        return UserDetailViewController.create(with: makeUserDetailViewModel(with: actions))
+        return UserDetailViewController.create(with: makeUserDetailViewModel(with: user, actions: actions))
     }
-    func makeUserDetailViewModel(with actions: UserDetailViewModelActions) -> UserDetailViewModelType {
-        UserDetailViewModel(with: actions, usecase: makeUserDetailUseCase())
+    func makeUserDetailViewModel(with user: User, actions: UserDetailViewModelActions) -> UserDetailViewModelType {
+        UserDetailViewModel(user: user, actions: actions, usecase: makeUserDetailUseCase())
     }
     
     // MARK: - Flow coordinator

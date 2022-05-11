@@ -50,7 +50,6 @@ class UsersListViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         hideKeyboardWhenTappedAround()
-        setupStyle()
         bindSearchBar()
         bindViewModel()
         viewModel.inputs.viewDidLoad()
@@ -62,14 +61,14 @@ class UsersListViewController: UIViewController {
     }
     // MARK: - Privates
     private func setupViews() {
-        view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
+
         view.addSubview(searchBar)
         view.addSubview(tableView)
         tableView.addSubview(refreshControl)
-        hideKeyboardWhenTappedAround()
-    }
 
-    private func setupStyle() {
+        hideKeyboardWhenTappedAround()
+
         searchBar.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
             make.height.equalTo(topBarHeight)
@@ -89,6 +88,7 @@ class UsersListViewController: UIViewController {
             self?.updateLoading(loading)
         }
     }
+
     private func bindSearchBar() {
         searchBar.searchText.observe(on: self) { [weak self] text in
             print("received : \(text)")

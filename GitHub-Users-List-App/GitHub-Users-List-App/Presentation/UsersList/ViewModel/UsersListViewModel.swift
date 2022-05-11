@@ -87,7 +87,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
                     }
                     self.appendPage(page)
                     self.outputs.loading.value = .none
-                case .failure(let error):
+                case .failure(_):
                     print("error")
             }
         })
@@ -99,7 +99,6 @@ extension UsersListViewModel {
     func viewDidLoad() {
         self.outputs.loading.value = .refresh
     }
-
 
     func didSelectItem(at indexPath: IndexPath) {
         guard indexPath.row < usersList.value.count  else {

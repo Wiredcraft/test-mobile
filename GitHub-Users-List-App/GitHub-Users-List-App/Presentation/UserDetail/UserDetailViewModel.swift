@@ -22,6 +22,7 @@ struct UserDetailViewModelActions {
 protocol UserDetailViewModelType {
     var inputs: UserDetailViewModelInputs { get }
     var outputs: UserDetailViewModelOutputs { get }
+    var user: User { get }
 }
 
 final class UserDetailViewModel: UserDetailViewModelType, UserDetailViewModelInputs, UserDetailViewModelOutputs {
@@ -29,7 +30,9 @@ final class UserDetailViewModel: UserDetailViewModelType, UserDetailViewModelInp
     var outputs: UserDetailViewModelOutputs { return self }
     private let actions: UserDetailViewModelActions
     private let usecase: UserDetailUseCase
-    init(with actions: UserDetailViewModelActions, usecase: UserDetailUseCase) {
+    var user: User
+    init(user: User, actions: UserDetailViewModelActions, usecase: UserDetailUseCase) {
+        self.user = user
         self.actions = actions
         self.usecase = usecase
     }
