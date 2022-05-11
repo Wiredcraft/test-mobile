@@ -395,10 +395,9 @@
 		4742E5232826A71600C85A00 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				477F0AE5282C1C7100CCE363 /* Repository */,
 				4742E539282A076200C85A00 /* UseCase */,
 				4742E5282828FD0600C85A00 /* Entities */,
-				4742E5262826A74700C85A00 /* UsersRepository.swift */,
-				477F0AC8282BC75200CCE363 /* UserDetailRepository.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -557,6 +556,15 @@
 				47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		477F0AE5282C1C7100CCE363 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				4742E5262826A74700C85A00 /* UsersRepository.swift */,
+				477F0AC8282BC75200CCE363 /* UserDetailRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		47C4A7EE282ABB4700367104 /* View */ = {
