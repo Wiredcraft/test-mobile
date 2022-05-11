@@ -221,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				47C4A7EE282ABB4700367104 /* View */,
-				4742E539282A076200C85A00 /* UseCase */,
 				4742E53328296B9F00C85A00 /* Cells */,
 				4742E5302829339A00C85A00 /* Flow */,
 				4742E4EF2823C68500C85A00 /* ViewModel */,
@@ -364,6 +363,7 @@
 		4742E5232826A71600C85A00 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				4742E539282A076200C85A00 /* UseCase */,
 				4742E5282828FD0600C85A00 /* Entities */,
 				4742E5262826A74700C85A00 /* UsersRepository.swift */,
 			);
