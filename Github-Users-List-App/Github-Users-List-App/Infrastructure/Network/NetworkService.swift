@@ -122,6 +122,9 @@ public final class DefaultNetworkErrorLogger: NetworkErrorLogger {
 
     public func log(responseData data: Data?, response: URLResponse?) {
         guard let data = data else { return }
+        if let httpResponse = response as? HTTPURLResponse, let allHeaderFields = httpResponse.allHeaderFields as? [String: Any] {
+            printIfDebug("responseHeaders: \(String(describing: allHeaderFields))")
+        }
         if let dataDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
             printIfDebug("responseData: \(String(describing: dataDict))")
         }

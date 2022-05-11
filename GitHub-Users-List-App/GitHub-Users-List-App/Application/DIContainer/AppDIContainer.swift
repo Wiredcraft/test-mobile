@@ -10,7 +10,11 @@ final class AppDIContainer {
     lazy var configuration = AppConfiguration()
 
     lazy var apiDataTransferService: DataTransferService = {
-        let config = ApiDataNetworkConfig(baseURL: URL(string: configuration.apiBaseURL)!)
+        var headers = ["User-Agent":"GitHub-Users-List-App"]
+        if let token = configuration.accessToken {
+            headers["Authorization"] = token
+        }
+        let config = ApiDataNetworkConfig(baseURL: URL(string: configuration.apiBaseURL)!, headers: headers)
 
         let apiDataNetwork = DefaultNetworkService(config: config)
         return DefaultDataTransferService(with: apiDataNetwork)

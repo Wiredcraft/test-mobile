@@ -13,4 +13,12 @@ final class AppConfiguration {
         }
         return apiBaseURL
     }()
+
+    lazy var accessToken: String? = {
+        guard let token = Bundle.main.object(forInfoDictionaryKey: "AccessToken") as? String, let encryptToken = "token:\(token)".data(using: .utf8)?.base64EncodedString() else {
+            return nil
+        }
+        let ans = "Basic \(encryptToken)"
+        return ans
+    }()
 }
