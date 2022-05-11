@@ -19,15 +19,15 @@ struct UserRepoResponseDTO: Codable {
         case htmlUrl = "html_url"
         case id = "id"
     }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        htmlUrl = try values.decodeIfPresent(String.self, forKey: .htmlUrl) ?? ""
-        id = try values.decodeIfPresent(Int.self, forKey: .id) ?? -1
-        name = try values.decodeIfPresent(String.self, forKey: .name) ?? ""
-        owner = try RepoOwnerDTO(from: decoder)
-        stargazersCount = try values.decodeIfPresent(Int.self, forKey: .stargazersCount) ?? 0
-    }
+//
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        htmlUrl = try values.decodeIfPresent(String.self, forKey: .htmlUrl) ?? ""
+//        id = try values.decodeIfPresent(Int.self, forKey: .id) ?? -1
+//        name = try values.decodeIfPresent(String.self, forKey: .name) ?? ""
+//        owner = try RepoOwnerDTO(from: decoder)
+//        stargazersCount = try values.decodeIfPresent(Int.self, forKey: .stargazersCount) ?? 0
+//    }
 }
 
 extension UserRepoResponseDTO {
@@ -45,11 +45,11 @@ struct RepoOwnerDTO: Codable {
         case id = "id"
     }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        avatarUrl = try values.decodeIfPresent(String.self, forKey: .avatarUrl) ?? ""
-        id = try values.decodeIfPresent(Int.self, forKey: .id) ?? -1
-    }
+//    init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        avatarUrl = try values.decodeIfPresent(String.self, forKey: .avatarUrl) ?? ""
+//        id = try values.decodeIfPresent(Int.self, forKey: .id) ?? -1
+//    }
 }
 
 extension RepoOwnerDTO {

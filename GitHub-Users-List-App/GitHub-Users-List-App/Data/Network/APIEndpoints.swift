@@ -11,6 +11,6 @@ struct APIEndpoints {
         return Endpoint(path: "search/users", method: .get, queryParametersEncodable: usersListRequestDTO)
     }
     static func getUserRepos(with requestDTO: UserRepoRequestDTO) -> Endpoint<[UserRepoResponseDTO]> {
-        return Endpoint(path: "users/\(requestDTO.userName)", method: .get)
+        return Endpoint(path: "users/\(requestDTO.userName)/repos", method: .get)
     }
 }
