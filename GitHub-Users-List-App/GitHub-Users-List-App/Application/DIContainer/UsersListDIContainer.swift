@@ -5,7 +5,6 @@
 //  Created by 邹奂霖 on 2022/5/7.
 //
 
-import Foundation
 import UIKit
 final class UsersListDIContainer {
     struct Dependencies {

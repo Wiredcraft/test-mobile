@@ -53,6 +53,7 @@
 		4742E552282A561C00C85A00 /* UsersListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E551282A561C00C85A00 /* UsersListItemViewModel.swift */; };
 		4742E555282A5A5500C85A00 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4742E554282A5A5500C85A00 /* Kingfisher */; };
 		4742E557282A94A700C85A00 /* UsersListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E556282A94A700C85A00 /* UsersListPage.swift */; };
+		477F0AC7282BC51A00CCE363 /* UserDetailDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0AC6282BC51A00CCE363 /* UserDetailDIContainer.swift */; };
 		47C4A7ED282AA32A00367104 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */; };
 		47C4A7F0282ABB4E00367104 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EF282ABB4E00367104 /* SearchBar.swift */; };
 		47C4A7F6282B734000367104 /* UIViewController+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7F5282B734000367104 /* UIViewController+Bar.swift */; };
@@ -126,6 +127,7 @@
 		4742E54F282A1F0500C85A00 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		4742E551282A561C00C85A00 /* UsersListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListItemViewModel.swift; sourceTree = "<group>"; };
 		4742E556282A94A700C85A00 /* UsersListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListPage.swift; sourceTree = "<group>"; };
+		477F0AC6282BC51A00CCE363 /* UserDetailDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailDIContainer.swift; sourceTree = "<group>"; };
 		47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		47C4A7EF282ABB4E00367104 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		47C4A7F5282B734000367104 /* UIViewController+Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Bar.swift"; sourceTree = "<group>"; };
@@ -226,7 +228,6 @@
 				4742E4EF2823C68500C85A00 /* ViewModel */,
 				4742E4EE2823C67E00C85A00 /* ViewController */,
 				4742E4E42823C51700C85A00 /* UsersListViewController.swift */,
-				4742E5212826A64800C85A00 /* UsersListDIContainer.swift */,
 			);
 			path = UsersList;
 			sourceTree = "<group>";
@@ -234,6 +235,7 @@
 		4742E4E32823C50400C85A00 /* UserDetail */ = {
 			isa = PBXGroup;
 			children = (
+				477F0AC5282BC4A900CCE363 /* Flow */,
 				47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */,
 			);
 			path = UserDetail;
@@ -348,6 +350,8 @@
 			isa = PBXGroup;
 			children = (
 				4742E5182826658600C85A00 /* AppDIContainer.swift */,
+				4742E5212826A64800C85A00 /* UsersListDIContainer.swift */,
+				477F0AC6282BC51A00CCE363 /* UserDetailDIContainer.swift */,
 			);
 			path = DIContainer;
 			sourceTree = "<group>";
@@ -485,6 +489,13 @@
 				4742E54F282A1F0500C85A00 /* Observable.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		477F0AC5282BC4A900CCE363 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flow;
 			sourceTree = "<group>";
 		};
 		47C4A7EE282ABB4700367104 /* View */ = {
@@ -693,6 +704,7 @@
 				4742E5272826A74700C85A00 /* UsersRepository.swift in Sources */,
 				4742E53B282A078100C85A00 /* UsersListUseCase.swift in Sources */,
 				4742E4B52823C42F00C85A00 /* SceneDelegate.swift in Sources */,
+				477F0AC7282BC51A00CCE363 /* UserDetailDIContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

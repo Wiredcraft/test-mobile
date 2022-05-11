@@ -25,4 +25,9 @@ final class AppDIContainer {
         let dependencies = UsersListDIContainer.Dependencies(apiDataTransferService: apiDataTransferService)
         return UsersListDIContainer(dependencies: dependencies)
     }
+
+    func makeUserDetailContainer() -> UserDetailDIContainer {
+        let dependencies = UserDetailDIContainer.Dependencies(apiDataTransferService: apiDataTransferService)
+        return UserDetailDIContainer(dependencies: dependencies)
+    }
 }
