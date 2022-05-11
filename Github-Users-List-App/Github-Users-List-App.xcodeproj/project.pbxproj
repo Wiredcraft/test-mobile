@@ -190,8 +190,6 @@
 				4742E52D2828FE5B00C85A00 /* Common */,
 				4742E51428265FFB00C85A00 /* Application */,
 				4742E4F02824C34F00C85A00 /* Infrastructure */,
-				4742E4E32823C50400C85A00 /* UserDetail */,
-				4742E4E22823C4FB00C85A00 /* UsersList */,
 				4742E4BB2823C42F00C85A00 /* Assets.xcassets */,
 				4742E4BD2823C42F00C85A00 /* LaunchScreen.storyboard */,
 				4742E4C02823C42F00C85A00 /* Info.plist */,
@@ -500,6 +498,8 @@
 		47C4A7F3282B731800367104 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4742E4E32823C50400C85A00 /* UserDetail */,
+				4742E4E22823C4FB00C85A00 /* UsersList */,
 				47C4A7F4282B731F00367104 /* Util */,
 			);
 			path = Presentation;
