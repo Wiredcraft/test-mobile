@@ -21,7 +21,7 @@ protocol UsersListViewModelOutputs {
 }
 
 struct UsersListViewModelActions {
-    let showUserDetail: (UserDTO) -> Void
+    let showUserDetail: (User) -> Void
 }
 
 protocol UsersListViewModelType {
@@ -97,13 +97,15 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
 // MARK: - Inputs
 extension UsersListViewModel {
     func viewDidLoad() {
-//        load(query: UsersQuery.DefaultQuery, loading: .refresh)
         self.outputs.loading.value = .refresh
     }
 
 
     func didSelectItem(at indexPath: IndexPath) {
-
+        guard indexPath.row < usersList.value.count  else {
+            return
+        }
+        actions.showUserDetail(usersList.value[indexPath.row].user)
     }
 
     func loadNextPage() {

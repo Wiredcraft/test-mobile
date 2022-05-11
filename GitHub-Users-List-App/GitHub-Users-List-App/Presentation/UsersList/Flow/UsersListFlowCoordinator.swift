@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 protocol UsersListFlowCoordinatorDependencies {
     func makeUsersListViewController(actions: UsersListViewModelActions) -> UsersListViewController
+    func makeUserDetailViewController(user: User, actions: UserDetailViewModelActions) -> UserDetailViewController
 
 }
 
 final class UsersListFlowCoordinator {
     private weak var navigationController: UINavigationController?
     private let dependencies: UsersListFlowCoordinatorDependencies
+    private weak var usersListVC: UsersListViewController?
 
     init(navigationController: UINavigationController,
          dependencies: UsersListFlowCoordinatorDependencies) {
@@ -25,12 +27,19 @@ final class UsersListFlowCoordinator {
     func start() {
         let actions = UsersListViewModelActions(showUserDetail: showUserDetail(with:))
         let vc = dependencies.makeUsersListViewController(actions: actions)
+        usersListVC = vc
         navigationController?.pushViewController(vc, animated: true)
-
     }
 
     // MARK: - Actions
-    func showUserDetail(with user: UserDTO) {
+    func showUserDetail(with user: User) {
+        let actions = UserDetailViewModelActions(followUser: followUser(witn:))
+        let vc = dependencies.makeUserDetailViewController(user: user, actions: actions)
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func followUser(witn user: User) {
 
     }
 

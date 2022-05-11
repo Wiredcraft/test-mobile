@@ -44,6 +44,12 @@ final class UsersListDIContainer {
     }
 
     // MARK: - User Detail
+    func makeUserDetailViewController(user: User, actions: UserDetailViewModelActions) -> UserDetailViewController {
+        return UserDetailViewController.create(with: makeUserDetailViewModel(with: actions))
+    }
+    func makeUserDetailViewModel(with actions: UserDetailViewModelActions) -> UserDetailViewModelType {
+        UserDetailViewModel(with: actions, usecase: makeUserDetailUseCase())
+    }
     
     // MARK: - Flow coordinator
     func makeUsersListFlowCoordinator(navigationController: UINavigationController) -> UsersListFlowCoordinator {

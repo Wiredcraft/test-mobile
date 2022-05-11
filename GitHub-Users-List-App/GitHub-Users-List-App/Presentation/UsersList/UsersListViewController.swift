@@ -142,6 +142,10 @@ extension UsersListViewController: UITableViewDelegate {
             viewModel.inputs.loadNextPage()
         }
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.inputs.didSelectItem(at: indexPath)
+    }
 }
 
 // MARK: - Actions
