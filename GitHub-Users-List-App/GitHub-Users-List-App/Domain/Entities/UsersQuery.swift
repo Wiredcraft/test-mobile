@@ -10,3 +10,7 @@ struct UsersQuery: Equatable {
     let q: String
     let page: Int
 }
+
+extension UsersQuery {
+    static let DefaultQuery = UsersQuery(q: "swift", page: 1)
+}

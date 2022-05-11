@@ -51,7 +51,7 @@ class UsersListViewController: UIViewController {
         setupStyle()
         bindSearchBar()
         bindViewModel()
-        viewModel.inputs.loadData()
+        viewModel.inputs.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +82,9 @@ class UsersListViewController: UIViewController {
     func bindViewModel() {
         viewModel.outputs.usersList.observe(on: self) { [weak self] users in
             self?.updateItems()
+        }
+        viewModel.outputs.loading.observe(on: self) { [weak self] loading in
+            self?.updateLoading(loading)
         }
     }
     func bindSearchBar() {
@@ -122,6 +125,7 @@ extension UsersListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.bindViewModel(viewModel.outputs.usersList.value[indexPath.row])
+
         return cell
     }
 
@@ -131,7 +135,11 @@ extension UsersListViewController: UITableViewDataSource {
 }
 // MARK: - UITableView Delegate
 extension UsersListViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.outputs.usersList.value.count - 1 {
+            viewModel.inputs.loadNextPage()
+        }
+    }
 }
 
 // MARK: - Actions

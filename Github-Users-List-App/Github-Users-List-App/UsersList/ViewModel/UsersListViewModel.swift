@@ -9,8 +9,8 @@ import Foundation
 import Combine
 protocol UsersListViewModelInputs {
     func viewDidLoad()
-    func loadData()
     func didSelectItem(at indexPath: IndexPath)
+    func loadNextPage()
 }
 
 protocol UsersListViewModelOutputs {
@@ -41,7 +41,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     var pages: [UsersListPage] = []
 
     var usersLoadTask: Cancellable? { willSet { usersLoadTask?.cancel() }}
-
+    var query: Observable<String> = Observable("")
     private let actions: UsersListViewModelActions
     private let usecase: UsersListUseCase
     // MARK: - Outputs
@@ -57,22 +57,17 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     //MARK: - Inputs
 
     func viewDidLoad() {
-
+        load(query: UsersQuery.DefaultQuery, loading: .refresh)
     }
 
-    func loadData() {
-        usersLoadTask = usecase.excute(requestValue: UsersQueryUseCaseRequestValue(q: "Swift", page: 1), completion: { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-                case .success(let page):
-                    self.appendPage(page)
-                case .failure(let error):
-                    print("error")
-            }
-        })
-    }
+
     func didSelectItem(at indexPath: IndexPath) {
 
+    }
+
+    func loadNextPage() {
+        guard hasMorePage, loading.value == .none else { return }
+        load(query: UsersQuery(q: "swift", page: nextPage), loading: .nextPage)
     }
     // MARK: - PRivate
     private func appendPage(_ page: UsersListPage) {
@@ -95,6 +90,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
             switch result {
                 case .success(let page):
                     self.appendPage(page)
+                    self.outputs.loading.value = .none
                 case .failure(let error):
                     print("error")
             }
