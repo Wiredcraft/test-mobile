@@ -25,6 +25,12 @@ class UsersListViewController: UIViewController {
         tableView.dataSource = self
         return tableView
     }()
+    lazy var refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return control
+    }()
+    var nextPageLoadingActivityIndicator: UIActivityIndicatorView?
     // MARK: - Life Cycle
     static func create(with viewModel: UsersListViewModelType) -> UsersListViewController {
         let view = UsersListViewController()
@@ -51,6 +57,7 @@ class UsersListViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(searchBar)
         view.addSubview(tableView)
+        tableView.addSubview(refreshControl)
         hideKeyboardWhenTappedAround()
     }
 
@@ -76,11 +83,27 @@ class UsersListViewController: UIViewController {
             print("received : \(text)")
         }
     }
+
     func updateItems() {
         reload()
     }
+
     func reload() {
         tableView.reloadData()
+    }
+
+    func updateLoading(_ loading: UsersListViewModelLoading) {
+        switch loading {
+            case .none:
+                tableView.tableFooterView = nil
+                refreshControl.endRefreshing()
+            case .refresh:
+                refreshControl.beginRefreshing()
+            case .nextPage:
+                nextPageLoadingActivityIndicator?.removeFromSuperview()
+                nextPageLoadingActivityIndicator = makeActivityIndicator(size: .init(width: tableView.frame.width, height: 44))
+                tableView.tableFooterView = nextPageLoadingActivityIndicator
+        }
     }
 
 }
@@ -103,6 +126,13 @@ extension UsersListViewController: UITableViewDataSource {
 // MARK: - UITableView Delegate
 extension UsersListViewController: UITableViewDelegate {
 
+}
+
+// MARK: - Actions
+extension UsersListViewController {
+    @objc func refresh() {
+
+    }
 }
 
 extension UIViewController {
@@ -131,5 +161,27 @@ extension UIViewController {
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension UIViewController {
+    func makeActivityIndicator(size: CGSize) -> UIActivityIndicatorView {
+        let style: UIActivityIndicatorView.Style
+        if #available(iOS 12.0, *) {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                style = .white
+            } else {
+                style = .gray
+            }
+        } else {
+            style = .gray
+        }
+
+        let activityIndicator = UIActivityIndicatorView(style: style)
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        activityIndicator.frame = .init(origin: .zero, size: size)
+
+        return activityIndicator
     }
 }
