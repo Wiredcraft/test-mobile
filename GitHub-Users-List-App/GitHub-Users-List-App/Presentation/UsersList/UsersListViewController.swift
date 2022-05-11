@@ -128,7 +128,7 @@ extension UsersListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.bindViewModel(viewModel.outputs.usersList.value[indexPath.row])
-
+        cell.selectionStyle = .none
         return cell
     }
 
