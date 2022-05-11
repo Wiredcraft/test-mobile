@@ -253,7 +253,6 @@
 				4742E5302829339A00C85A00 /* Flow */,
 				4742E4EF2823C68500C85A00 /* ViewModel */,
 				4742E4EE2823C67E00C85A00 /* ViewController */,
-				4742E4E42823C51700C85A00 /* UsersListViewController.swift */,
 			);
 			path = UsersList;
 			sourceTree = "<group>";
@@ -261,11 +260,10 @@
 		4742E4E32823C50400C85A00 /* UserDetail */ = {
 			isa = PBXGroup;
 			children = (
+				477F0AE4282C1C4300CCE363 /* ViewController */,
 				477F0AD9282BF9E900CCE363 /* Cells */,
 				477F0AD8282BF9DB00CCE363 /* ViewModel */,
 				477F0AC5282BC4A900CCE363 /* View */,
-				47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */,
-				477F0AD4282BEDEE00CCE363 /* UserDetailViewModel.swift */,
 			);
 			path = UserDetail;
 			sourceTree = "<group>";
@@ -289,6 +287,7 @@
 		4742E4EE2823C67E00C85A00 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4742E4E42823C51700C85A00 /* UsersListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -539,6 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				477F0ADC282BFA4900CCE363 /* UserDetailRepoViewModel.swift */,
+				477F0AD4282BEDEE00CCE363 /* UserDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -549,6 +549,14 @@
 				477F0ADA282BFA0400CCE363 /* UserDetailRepoCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		477F0AE4282C1C4300CCE363 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		47C4A7EE282ABB4700367104 /* View */ = {
@@ -572,21 +580,21 @@
 		47C4A7F4282B731F00367104 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				47C4A7FB282B73DF00367104 /* UIViewController */,
-				477F0ADE282C061C00CCE363 /* UINavigationController+StatsBar.swift */,
-				477F0AE2282C0FD200CCE363 /* UIColor+CustomColor.swift */,
+				47C4A7FB282B73DF00367104 /* Extensions */,
 			);
 			path = Util;
 			sourceTree = "<group>";
 		};
-		47C4A7FB282B73DF00367104 /* UIViewController */ = {
+		47C4A7FB282B73DF00367104 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				477F0ADE282C061C00CCE363 /* UINavigationController+StatsBar.swift */,
+				477F0AE2282C0FD200CCE363 /* UIColor+CustomColor.swift */,
 				47C4A7F5282B734000367104 /* UIViewController+Bar.swift */,
 				47C4A7F7282B737000367104 /* UIViewController+Editing.swift */,
 				47C4A7F9282B73D600367104 /* UIViewController+Refresh.swift */,
 			);
-			path = UIViewController;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

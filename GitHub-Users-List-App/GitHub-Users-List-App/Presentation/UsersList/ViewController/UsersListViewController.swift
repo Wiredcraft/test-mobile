@@ -39,7 +39,6 @@ class UsersListViewController: UIViewController {
 
     var nextPageLoadingActivityIndicator: UIActivityIndicatorView?
     // MARK: - Life Cycle
-    
     static func create(with viewModel: UsersListViewModelType) -> UsersListViewController {
         let view = UsersListViewController()
         view.viewModel = viewModel
@@ -158,10 +157,3 @@ extension UsersListViewController {
         viewModel.inputs.refreshPage()
     }
 }
-
-
-
-
-
-
-

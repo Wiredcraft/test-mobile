@@ -10,6 +10,7 @@ import SnapKit
 import Kingfisher
 class UserDetailHeaderView: UIView {
     var user: User
+    var followStatus: Observable<User.FollowState>!
     lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,7 +49,8 @@ class UserDetailHeaderView: UIView {
         button.layer.masksToBounds = true
         return button
     }()
-    var followStatus: Observable<User.FollowState>!
+
+    // MARK: - Init
     public init(with user: User) {
         self.user = user
         followStatus = Observable(user.followState)
@@ -60,8 +62,8 @@ class UserDetailHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func setupViews() {
+    // MARK: - Privates
+    private func setupViews() {
         self.isUserInteractionEnabled = true
         self.backgroundImageView.isUserInteractionEnabled = true
         addSubview(backgroundImageView)
@@ -95,10 +97,12 @@ class UserDetailHeaderView: UIView {
         avatarImageView.kf.setImage(with: URL(string: user.avatarUrl))
         followButton.isSelected = user.followState == .followed
     }
+
     private func follow() {
         followButton.isSelected = true
         followStatus.value = .followed
     }
+
     private func unFollow() {
         followButton.isSelected = false
         followStatus.value = .normal
