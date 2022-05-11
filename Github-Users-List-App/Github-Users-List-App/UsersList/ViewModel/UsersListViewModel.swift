@@ -12,6 +12,7 @@ protocol UsersListViewModelInputs {
     func didSelectItem(at indexPath: IndexPath)
     func loadNextPage()
     func refreshPage()
+    func search(with query: String)
 }
 
 protocol UsersListViewModelOutputs {
@@ -55,25 +56,6 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
         self.actions = actions
         self.usecase = usecase
     }
-    //MARK: - Inputs
-
-    func viewDidLoad() {
-        load(query: UsersQuery.DefaultQuery, loading: .refresh)
-    }
-
-
-    func didSelectItem(at indexPath: IndexPath) {
-
-    }
-
-    func loadNextPage() {
-        guard hasMorePage, loading.value == .none else { return }
-        load(query: UsersQuery(q: "swift", page: nextPage), loading: .nextPage)
-    }
-
-    func refreshPage() {
-        load(query: UsersQuery(q: "swift", page: 1), loading: .refresh)
-    }
     // MARK: - PRivate
     private func appendPage(_ page: UsersListPage) {
         totalPageCount = page.totalCount / 30
@@ -105,4 +87,29 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
         })
     }
 
+}
+// MARK: - Inputs
+extension UsersListViewModel {
+    func viewDidLoad() {
+//        load(query: UsersQuery.DefaultQuery, loading: .refresh)
+        self.outputs.loading.value = .refresh
+    }
+
+
+    func didSelectItem(at indexPath: IndexPath) {
+
+    }
+
+    func loadNextPage() {
+        guard hasMorePage, loading.value == .none else { return }
+        load(query: UsersQuery(q: "swift", page: nextPage), loading: .nextPage)
+    }
+
+    func refreshPage() {
+        load(query: UsersQuery(q: "swift", page: 1), loading: .refresh)
+    }
+
+    func search(with query: String) {
+        load(query: UsersQuery(q: query, page: 1), loading: .refresh)
+    }
 }

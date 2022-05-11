@@ -20,8 +20,10 @@ class UsersListViewController: UIViewController {
 
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
-        tableView.estimatedRowHeight = UsersListCell.height
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 0
+        tableView.estimatedSectionFooterHeight = 0
+        tableView.estimatedSectionHeaderHeight = 0
+        tableView.contentInsetAdjustmentBehavior = .never
         tableView.register(UsersListCell.self, forCellReuseIdentifier: UsersListCell.reuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
@@ -88,8 +90,9 @@ class UsersListViewController: UIViewController {
         }
     }
     func bindSearchBar() {
-        searchBar.searchText.observe(on: self) { text in
+        searchBar.searchText.observe(on: self) { [weak self] text in
             print("received : \(text)")
+            self?.viewModel.inputs.search(with: text == "" ? "swift" : text)
         }
     }
 
@@ -131,6 +134,10 @@ extension UsersListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.outputs.usersList.value.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UsersListCell.height
     }
 }
 // MARK: - UITableView Delegate

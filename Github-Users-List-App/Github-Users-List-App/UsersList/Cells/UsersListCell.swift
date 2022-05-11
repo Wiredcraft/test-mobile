@@ -90,8 +90,9 @@ class UsersListCell: UITableViewCell {
     func bindStyle() {
         avatarImageView.snp.makeConstraints { make in
             make.left.equalTo(20)
-            make.centerY.equalTo(self)
             make.height.width.equalTo(32)
+            make.top.equalTo(15)
+            make.bottom.equalTo(-17)
         }
         nameLabel.snp.makeConstraints { make in
             make.left.equalTo(avatarImageView.snp.right).offset(10)
