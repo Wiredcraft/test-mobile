@@ -32,6 +32,9 @@ protocol UsersListViewModelType {
 enum UsersListViewModelLoading {
     case none, refresh, nextPage
 }
+
+let DefaultQuery = "Swift"
+
 final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs, UsersListViewModelOutputs {
     var inputs: UsersListViewModelInputs { return self }
     var outputs: UsersListViewModelOutputs { return self }
@@ -43,7 +46,10 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     var pages: [UsersListPage] = []
 
     var usersLoadTask: Cancellable? { willSet { usersLoadTask?.cancel() }}
-    var query: Observable<String> = Observable("")
+    var query: String {
+        return searchText.isEmpty ? DefaultQuery : searchText
+    }
+    var searchText: String = ""
     private let actions: UsersListViewModelActions
     private let usecase: UsersListUseCase
     // MARK: - Outputs
@@ -102,14 +108,15 @@ extension UsersListViewModel {
 
     func loadNextPage() {
         guard hasMorePage, loading.value == .none else { return }
-        load(query: UsersQuery(q: "swift", page: nextPage), loading: .nextPage)
+        load(query: UsersQuery(q: query, page: nextPage), loading: .nextPage)
     }
 
     func refreshPage() {
-        load(query: UsersQuery(q: "swift", page: 1), loading: .refresh)
+        load(query: UsersQuery(q: query, page: 1), loading: .refresh)
     }
 
     func search(with query: String) {
+        searchText = query
         load(query: UsersQuery(q: query, page: 1), loading: .refresh)
     }
 }
