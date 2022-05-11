@@ -59,6 +59,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     func viewDidLoad() {
 
     }
+
     func loadData() {
         usersLoadTask = usecase.excute(requestValue: UsersQueryUseCaseRequestValue(q: "Swift", page: 1), completion: { [weak self] result in
             guard let self = self else { return }

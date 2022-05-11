@@ -10,11 +10,14 @@ import UIKit
 import SnapKit
 class UsersListViewController: UIViewController {
     var viewModel: UsersListViewModelType!
+
     private var searchController: UISearchController = UISearchController(searchResultsController: nil)
+
     lazy var searchBar: SearchBar = {
         let searchBar = SearchBar(frame: .zero)
         return searchBar
     }()
+
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.estimatedRowHeight = UsersListCell.height
@@ -25,13 +28,16 @@ class UsersListViewController: UIViewController {
         tableView.dataSource = self
         return tableView
     }()
+
     lazy var refreshControl: UIRefreshControl = {
         let control = UIRefreshControl()
         control.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return control
     }()
+
     var nextPageLoadingActivityIndicator: UIActivityIndicatorView?
     // MARK: - Life Cycle
+    
     static func create(with viewModel: UsersListViewModelType) -> UsersListViewController {
         let view = UsersListViewController()
         view.viewModel = viewModel
@@ -135,53 +141,9 @@ extension UsersListViewController {
     }
 }
 
-extension UIViewController {
 
-    /**
-     *  Height of status bar + navigation bar (if navigation bar exist)
-     */
 
-    var topBarHeight: CGFloat {
-        var top = self.navigationController?.navigationBar.frame.height ?? 0.0
-        if #available(iOS 13.0, *) {
-            top += UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        } else {
-            top += UIApplication.shared.statusBarFrame.height
-        }
-        return top
-    }
-}
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
 
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
 
-extension UIViewController {
-    func makeActivityIndicator(size: CGSize) -> UIActivityIndicatorView {
-        let style: UIActivityIndicatorView.Style
-        if #available(iOS 12.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                style = .white
-            } else {
-                style = .gray
-            }
-        } else {
-            style = .gray
-        }
 
-        let activityIndicator = UIActivityIndicatorView(style: style)
-        activityIndicator.startAnimating()
-        activityIndicator.isHidden = false
-        activityIndicator.frame = .init(origin: .zero, size: size)
-
-        return activityIndicator
-    }
-}

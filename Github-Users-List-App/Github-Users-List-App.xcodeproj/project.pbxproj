@@ -55,6 +55,9 @@
 		4742E557282A94A700C85A00 /* UsersListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742E556282A94A700C85A00 /* UsersListPage.swift */; };
 		47C4A7ED282AA32A00367104 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */; };
 		47C4A7F0282ABB4E00367104 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EF282ABB4E00367104 /* SearchBar.swift */; };
+		47C4A7F6282B734000367104 /* UIViewController+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7F5282B734000367104 /* UIViewController+Bar.swift */; };
+		47C4A7F8282B737000367104 /* UIViewController+Editing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7F7282B737000367104 /* UIViewController+Editing.swift */; };
+		47C4A7FA282B73D600367104 /* UIViewController+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7F9282B73D600367104 /* UIViewController+Refresh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +128,9 @@
 		4742E556282A94A700C85A00 /* UsersListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListPage.swift; sourceTree = "<group>"; };
 		47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		47C4A7EF282ABB4E00367104 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		47C4A7F5282B734000367104 /* UIViewController+Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Bar.swift"; sourceTree = "<group>"; };
+		47C4A7F7282B737000367104 /* UIViewController+Editing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Editing.swift"; sourceTree = "<group>"; };
+		47C4A7F9282B73D600367104 /* UIViewController+Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Refresh.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +183,7 @@
 		4742E4B12823C42F00C85A00 /* GitHub-Users-List-App */ = {
 			isa = PBXGroup;
 			children = (
+				47C4A7F3282B731800367104 /* Presentation */,
 				4742E5232826A71600C85A00 /* Domain */,
 				4742E53C282A0E6400C85A00 /* Data */,
 				4742E54E282A1EFD00C85A00 /* Util */,
@@ -490,6 +497,32 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		47C4A7F3282B731800367104 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				47C4A7F4282B731F00367104 /* Util */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		47C4A7F4282B731F00367104 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				47C4A7FB282B73DF00367104 /* UIViewController */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		47C4A7FB282B73DF00367104 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				47C4A7F5282B734000367104 /* UIViewController+Bar.swift */,
+				47C4A7F7282B737000367104 /* UIViewController+Editing.swift */,
+				47C4A7F9282B73D600367104 /* UIViewController+Refresh.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -635,13 +668,16 @@
 				4742E540282A0E8200C85A00 /* APIEndpoints.swift in Sources */,
 				4742E543282A0E9900C85A00 /* UsersRequestDTO.swift in Sources */,
 				4742E50B2824D35400C85A00 /* DataTransferService.swift in Sources */,
+				47C4A7F8282B737000367104 /* UIViewController+Editing.swift in Sources */,
 				4742E53528296BBD00C85A00 /* UsersListCell.swift in Sources */,
 				4742E5222826A64800C85A00 /* UsersListDIContainer.swift in Sources */,
 				4742E557282A94A700C85A00 /* UsersListPage.swift in Sources */,
+				47C4A7F6282B734000367104 /* UIViewController+Bar.swift in Sources */,
 				4742E532282933AE00C85A00 /* UsersListFlowCoordinator.swift in Sources */,
 				4742E4F82824C4B400C85A00 /* Endpoint.swift in Sources */,
 				4742E52A2828FD1000C85A00 /* UsersQuery.swift in Sources */,
 				4742E4E52823C51700C85A00 /* UsersListViewController.swift in Sources */,
+				47C4A7FA282B73D600367104 /* UIViewController+Refresh.swift in Sources */,
 				47C4A7ED282AA32A00367104 /* UserDetailViewController.swift in Sources */,
 				4742E4B32823C42F00C85A00 /* AppDelegate.swift in Sources */,
 				4742E52C2828FE1300C85A00 /* UsersResponseDTO.swift in Sources */,
