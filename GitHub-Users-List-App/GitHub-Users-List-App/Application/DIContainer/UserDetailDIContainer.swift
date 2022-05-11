@@ -17,5 +17,5 @@ final class UserDetailDIContainer {
         self.dependencies = dependencies
     }
 
-    
+    // MARK: - 
 }

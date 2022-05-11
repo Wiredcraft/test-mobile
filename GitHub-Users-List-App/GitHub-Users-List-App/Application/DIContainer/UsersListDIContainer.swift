@@ -20,9 +20,18 @@ final class UsersListDIContainer {
     func makeUsersListUseCase() -> UsersListUseCase {
         return DefaultUserListUseCase(usersListRepository: makeUsersRepository())
     }
-    // MARK: - Repositoried
+
+    func makeUserDetailUseCase() -> UserDetailUseCase {
+        return DefaultUserDetailUseCase(repository: makeUserDetailRepository())
+    }
+
+    // MARK: - Repositories
     func makeUsersRepository() -> UsersRepository {
         return DefaultUsersRepository(dataTransferService: dependencies.apiDataTransferService)
+    }
+
+    func makeUserDetailRepository() -> UserDetailRepository {
+        return DefaultUserDetailRepository(dataTransferService: dependencies.apiDataTransferService)
     }
 
     // MARK: - Users List
@@ -33,6 +42,9 @@ final class UsersListDIContainer {
     func makeUsersListViewModel(with actions: UsersListViewModelActions) -> UsersListViewModelType {
         UsersListViewModel(with: actions, usecase: makeUsersListUseCase())
     }
+
+    // MARK: - User Detail
+    
     // MARK: - Flow coordinator
     func makeUsersListFlowCoordinator(navigationController: UINavigationController) -> UsersListFlowCoordinator {
         return UsersListFlowCoordinator(navigationController: navigationController, dependencies: self)

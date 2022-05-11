@@ -7,12 +7,9 @@
 
 import Foundation
 struct UsersListResponseDTO : Codable {
-
     let incompleteResults : Bool?
     let items : [UserDTO]
     let totalCount : Int
-
-
     enum CodingKeys: String, CodingKey {
         case incompleteResults = "incomplete_results"
         case items = "items"
