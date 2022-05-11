@@ -9,6 +9,7 @@ import Foundation
 
 protocol UserDetailViewModelInputs {
     func viewDidLoad()
+    func didClickFollow(with state: User.FollowState)
 }
 
 protocol UserDetailViewModelOutputs {
@@ -40,13 +41,7 @@ final class UserDetailViewModel: UserDetailViewModelType, UserDetailViewModelInp
         self.actions = actions
         self.usecase = usecase
     }
-}
-
-extension UserDetailViewModel {
-    func viewDidLoad() {
-        loadRepos()
-    }
-
+    // MARK: - Private
     func loadRepos() {
         loadRepoTask = usecase.excute(requestValue: UserRepoRequestValue(userName: user.login), completion: { [weak self] result in
             guard let self = self else { return }
@@ -57,5 +52,21 @@ extension UserDetailViewModel {
                     print("error")
             }
         })
+    }
+}
+// MARK: - Input
+extension UserDetailViewModel {
+    func viewDidLoad() {
+        loadRepos()
+    }
+
+    func didClickFollow(with state: User.FollowState) {
+        switch state {
+            case .followed:
+                user.follow()
+            case .normal:
+                user.unfollow()
+        }
+        self.actions.followUser(user)
     }
 }

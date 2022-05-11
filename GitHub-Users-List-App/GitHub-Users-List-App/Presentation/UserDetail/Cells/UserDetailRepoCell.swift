@@ -57,10 +57,10 @@ class UserDetailRepoCell: UITableViewCell {
     }
 
     func setup() {
-        addSubview(avatarImageView)
-        addSubview(nameLabel)
-        addSubview(scoreLabel)
-        addSubview(html_urlLabel)
+        contentView.addSubview(avatarImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(scoreLabel)
+        contentView.addSubview(html_urlLabel)
     }
 
     func bindViewModel(_ viewModel: UserDetailRepoViewModel) {

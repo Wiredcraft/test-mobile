@@ -43,6 +43,7 @@ class UserDetailViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         setupViews()
         bindViewModel()
+        bindHeaderView()
         viewModel.inputs.viewDidLoad()
     }
 
@@ -85,6 +86,12 @@ class UserDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     private func bindViewModel() {
         viewModel.outputs.repoViewModels.observe(on: self) { [weak self] items in
             self?.updateItems()
+        }
+    }
+
+    private func bindHeaderView() {
+        headerView.followStatus.observe(on: self) { [weak self] state in
+            self?.viewModel.inputs.didClickFollow(with: state)
         }
     }
 

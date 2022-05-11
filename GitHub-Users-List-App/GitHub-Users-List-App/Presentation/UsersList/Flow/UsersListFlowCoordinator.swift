@@ -40,7 +40,7 @@ final class UsersListFlowCoordinator {
     }
 
     func followUser(witn user: User) {
-
+        usersListVC?.updateUser(with: user)
     }
 
 }

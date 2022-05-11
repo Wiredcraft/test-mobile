@@ -13,6 +13,7 @@ protocol UsersListViewModelInputs {
     func loadNextPage()
     func refreshPage()
     func search(with query: String)
+    func updateUser(with user: User)
 }
 
 protocol UsersListViewModelOutputs {
@@ -119,5 +120,14 @@ extension UsersListViewModel {
     func search(with query: String) {
         searchText = query
         load(query: UsersQuery(q: query, page: 1), loading: .refresh)
+    }
+
+    func updateUser(with user: User) {
+        usersList.value = usersList.value.map {
+            if $0.user.id == user.id {
+                $0.user = user
+            }
+            return $0
+        }
     }
 }

@@ -59,6 +59,10 @@ class UsersListViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    // MARK: - Public
+    func updateUser(with user: User) {
+        viewModel.inputs.updateUser(with: user)
+    }
     // MARK: - Privates
     private func setupViews() {
         self.view.backgroundColor = .systemBackground

@@ -54,10 +54,12 @@ class UsersListCell: UITableViewCell {
         button.addTarget(self, action: #selector(followButtonAction(_:)), for: .touchUpInside)
         button.backgroundColor = UIColor.black
         button.setTitle("关注", for: .normal)
+        button.setTitle("已关注", for: .selected)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 11)
         button.layer.cornerRadius = 4
         button.layer.masksToBounds = true
+        button.isUserInteractionEnabled = true
         return button
     }()
 
@@ -72,11 +74,11 @@ class UsersListCell: UITableViewCell {
     }
 
     func setup() {
-        addSubview(avatarImageView)
-        addSubview(nameLabel)
-        addSubview(scoreLabel)
-        addSubview(html_urlLabel)
-        addSubview(followButton)
+        contentView.addSubview(avatarImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(scoreLabel)
+        contentView.addSubview(html_urlLabel)
+        contentView.addSubview(followButton)
     }
 
     func bindViewModel(_ viewModel: UsersListItemViewModel) {
@@ -85,6 +87,9 @@ class UsersListCell: UITableViewCell {
         scoreLabel.text = viewModel.score
         html_urlLabel.text = viewModel.htmlURL
         avatarImageView.kf.setImage(with: viewModel.avatarURL)
+        viewModel.followState.observe(on: self) { [weak self] state in
+            self?.followButton.isSelected = state == .followed
+        }
     }
 
     func bindStyle() {
@@ -115,7 +120,11 @@ class UsersListCell: UITableViewCell {
         }
     }
 
-    @objc func followButtonAction(_ sender: UIButton?) {
-
+    @objc func followButtonAction(_ sender: UIButton) {
+        if sender.isSelected {
+            viewModel.unfollow()
+        } else {
+            viewModel.follow()
+        }
     }
 }

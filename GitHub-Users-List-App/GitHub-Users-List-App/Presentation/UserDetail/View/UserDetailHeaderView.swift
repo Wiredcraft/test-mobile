@@ -41,14 +41,17 @@ class UserDetailHeaderView: UIView {
         button.addTarget(self, action: #selector(followButtonAction(_:)), for: .touchUpInside)
         button.backgroundColor = UIColor.white
         button.setTitle("关注", for: .normal)
+        button.setTitle("已关注", for: .selected)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 11)
         button.layer.cornerRadius = 4
         button.layer.masksToBounds = true
         return button
     }()
+    var followStatus: Observable<User.FollowState>!
     public init(with user: User) {
         self.user = user
+        followStatus = Observable(user.followState)
         super.init(frame: .zero)
         setupViews()
         bindData()
@@ -59,6 +62,8 @@ class UserDetailHeaderView: UIView {
     }
 
     func setupViews() {
+        self.isUserInteractionEnabled = true
+        self.backgroundImageView.isUserInteractionEnabled = true
         addSubview(backgroundImageView)
         backgroundImageView.addSubview(avatarImageView)
         backgroundImageView.addSubview(nameLabel)
@@ -88,12 +93,24 @@ class UserDetailHeaderView: UIView {
     private func bindData() {
         nameLabel.text = user.login
         avatarImageView.kf.setImage(with: URL(string: user.avatarUrl))
+        followButton.isSelected = user.followState == .followed
     }
-
+    private func follow() {
+        followButton.isSelected = true
+        followStatus.value = .followed
+    }
+    private func unFollow() {
+        followButton.isSelected = false
+        followStatus.value = .normal
+    }
 }
 // MARK: - Action
 extension UserDetailHeaderView {
-    @objc func followButtonAction(_ sender: UIButton?) {
-
+    @objc func followButtonAction(_ sender: UIButton) {
+        if sender.isSelected {
+            unFollow()
+        } else {
+            follow()
+        }
     }
 }
