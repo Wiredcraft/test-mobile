@@ -92,6 +92,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
                     self.outputs.loading.value = .none
                 case .failure(let error):
                     self.outputs.loadPageError.value = error
+                    self.outputs.loading.value = .none
             }
         })
     }

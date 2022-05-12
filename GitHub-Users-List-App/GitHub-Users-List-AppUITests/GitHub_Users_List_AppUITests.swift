@@ -21,7 +21,7 @@ class GitHub_Users_List_AppUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testOpenUserDetail() throws {
+    func testOpenUserDetail() {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.tables.element(boundBy: 0).cells.element(boundBy: 0).tap()

@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Toaster
 class UsersListViewController: UIViewController {
     var viewModel: UsersListViewModelType!
 
@@ -36,6 +37,7 @@ class UsersListViewController: UIViewController {
         control.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return control
     }()
+
 
     var nextPageLoadingActivityIndicator: UIActivityIndicatorView?
     // MARK: - Life Cycle
@@ -89,6 +91,16 @@ class UsersListViewController: UIViewController {
         }
         viewModel.outputs.loading.observe(on: self) { [weak self] loading in
             self?.updateLoading(loading)
+        }
+        viewModel.outputs.loadPageError.observe(on: self) { error in
+            guard let _ = error else {
+                return
+            }
+            if let currentToast = ToastCenter.default.currentToast, currentToast.isExecuting {
+                return
+            }
+            let toast = Toast(text: "network error, try add access token to build setting to gain more limited access")
+            toast.show()
         }
     }
 

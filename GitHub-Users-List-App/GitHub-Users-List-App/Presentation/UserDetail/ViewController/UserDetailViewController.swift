@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import Toaster
 class UserDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     var viewModel: UserDetailViewModelType!
 
@@ -37,7 +38,6 @@ class UserDetailViewController: UIViewController, UIGestureRecognizerDelegate {
         tableView.dataSource = self
         return tableView
     }()
-
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +87,16 @@ class UserDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     private func bindViewModel() {
         viewModel.outputs.repoViewModels.observe(on: self) { [weak self] items in
             self?.updateItems()
+        }
+        viewModel.outputs.loadPageError.observe(on: self) { error in
+            guard let _ = error else {
+                return
+            }
+            if let currentToast = ToastCenter.default.currentToast, currentToast.isExecuting {
+                return
+            }
+            let toast = Toast(text: "network error, try add access token to build setting to gain more limited access")
+            toast.show()
         }
     }
 

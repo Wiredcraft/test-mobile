@@ -14,6 +14,7 @@ protocol UserDetailViewModelInputs {
 
 protocol UserDetailViewModelOutputs {
     var repoViewModels: Observable<[UserDetailRepoViewModel]> { get }
+    var loadPageError: Observable<Error?> { get }
 }
 
 struct UserDetailViewModelActions {
@@ -27,14 +28,18 @@ protocol UserDetailViewModelType {
 }
 
 final class UserDetailViewModel: UserDetailViewModelType, UserDetailViewModelInputs, UserDetailViewModelOutputs {
+
     var inputs: UserDetailViewModelInputs { return self }
     var outputs: UserDetailViewModelOutputs { return self }
+
     private let actions: UserDetailViewModelActions?
     private let usecase: UserDetailUseCase
     var user: User
     private var loadRepoTask: Cancellable? { willSet { loadRepoTask?.cancel() }}
     // MARK: - Outputs
+
     var repoViewModels: Observable<[UserDetailRepoViewModel]> = Observable([])
+    var loadPageError: Observable<Error?> = Observable(nil)
     // MARK: - Init
     init(user: User, actions: UserDetailViewModelActions? = nil, usecase: UserDetailUseCase) {
         self.user = user
@@ -48,8 +53,8 @@ final class UserDetailViewModel: UserDetailViewModelType, UserDetailViewModelInp
             switch result {
                 case .success(let repos):
                     self.outputs.repoViewModels.value = repos.map { UserDetailRepoViewModel(repo: $0) }
-                case .failure(_):
-                    print("error")
+                case .failure(let error):
+                    self.outputs.loadPageError.value = error
             }
         })
     }

@@ -17,6 +17,15 @@
         "revision" : "f222cbdf325885926566172f6f5f06af95473158",
         "version" : "5.6.0"
       }
+    },
+    {
+      "identity" : "toaster",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/devxoul/Toaster.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "e291374fda2be69bed0330e4346d5fb2af08f4ba"
+      }
     }
   ],
   "version" : 2
