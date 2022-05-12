@@ -47,6 +47,7 @@ class UserDetailHeaderView: UIView {
         button.titleLabel?.font = .systemFont(ofSize: 11)
         button.layer.cornerRadius = 4
         button.layer.masksToBounds = true
+        button.accessibilityIdentifier = AccessibilityIdentifier.userDetailHeaderFollowButton
         return button
     }()
 

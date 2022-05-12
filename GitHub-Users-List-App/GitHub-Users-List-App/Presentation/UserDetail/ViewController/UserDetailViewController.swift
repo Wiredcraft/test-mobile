@@ -61,6 +61,7 @@ class UserDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     private func setupViews() {
+        view.accessibilityIdentifier = AccessibilityIdentifier.userDetailViewController
         self.view.backgroundColor = .systemBackground
 
         view.addSubview(headerView)

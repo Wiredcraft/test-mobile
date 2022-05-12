@@ -60,6 +60,7 @@ class UsersListCell: UITableViewCell {
         button.layer.cornerRadius = 4
         button.layer.masksToBounds = true
         button.isUserInteractionEnabled = true
+        button.accessibilityIdentifier = AccessibilityIdentifier.userListCellFollowButton
         return button
     }()
 

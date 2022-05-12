@@ -14,7 +14,7 @@ final class DefaultUserDetailRepository {
 }
 
 extension DefaultUserDetailRepository: UserDetailRepository {
-    func fetchUserDetailRepos(with userName: String, completion: @escaping (Result<[UserRepo], Error>) -> Void) -> Cancellable {
+    func fetchUserDetailRepos(with userName: String, completion: @escaping (Result<[UserRepo], Error>) -> Void) -> Cancellable? {
         let dto = UserRepoRequestDTO(userName: userName)
         let task = RepositoryTask()
         if !task.isCancelled {

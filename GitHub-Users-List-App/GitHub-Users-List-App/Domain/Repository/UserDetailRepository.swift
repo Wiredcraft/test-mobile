@@ -12,5 +12,5 @@ protocol UserDetailRepository {
     ///   - userName: username of user
     ///   - completion: closure for pass result
     /// - Returns: instance of Cancellable
-    func fetchUserDetailRepos(with userName: String, completion: @escaping (Result<[UserRepo], Error>) -> Void) -> Cancellable 
+    func fetchUserDetailRepos(with userName: String, completion: @escaping (Result<[UserRepo], Error>) -> Void) -> Cancellable?
 }

@@ -19,6 +19,7 @@ protocol UsersListViewModelInputs {
 protocol UsersListViewModelOutputs {
     var usersList: Observable<[UsersListItemViewModel]> { get }
     var loading: Observable<UsersListViewModelLoading> { get }
+    var loadPageError: Observable<Error?> { get }
 }
 
 struct UsersListViewModelActions {
@@ -57,6 +58,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
 
     var usersList: Observable<[UsersListItemViewModel]> = Observable([])
     var loading: Observable<UsersListViewModelLoading> = Observable(.none)
+    var loadPageError: Observable<Error?> = Observable(nil)
     // MARK: - Init
 
     init(with actions: UsersListViewModelActions? = nil, usecase: UsersListUseCase) {
@@ -88,8 +90,8 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
                     }
                     self.appendPage(page)
                     self.outputs.loading.value = .none
-                case .failure(_):
-                    print("error")
+                case .failure(let error):
+                    self.outputs.loadPageError.value = error
             }
         })
     }
@@ -102,10 +104,10 @@ extension UsersListViewModel {
     }
 
     func didSelectItem(at indexPath: IndexPath) {
-        guard indexPath.row < usersList.value.count  else {
+        guard indexPath.row < outputs.usersList.value.count  else {
             return
         }
-        self.actions?.showUserDetail(usersList.value[indexPath.row].user)
+        self.actions?.showUserDetail(outputs.usersList.value[indexPath.row].user)
     }
 
     func loadNextPage() {

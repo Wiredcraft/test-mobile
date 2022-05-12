@@ -23,6 +23,10 @@ class EndpointTests: XCTestCase {
     func givenInvalidURLEndpoint() {
         sut = MockEndpoint(path: "-;@,?:ą", method: .get)
     }
+
+    func givenValidURLEndPoint() {
+        sut = MockEndpoint(path: "hello", method: .get)
+    }
     // MARK: - Tests
     func testEndpoint_init() {
         let expectedPath = "hello"
@@ -58,5 +62,28 @@ class EndpointTests: XCTestCase {
                 return
             }
         }
+    }
+
+    func testURLRequest_PassBodyParameter_encodeToHTTPBody() throws {
+        givenValidURLEndPoint()
+        let bodyParameters = ["testkey": "testValue"]
+        sut.bodyParamaters = bodyParameters
+        let config = MockNetworkConfigurable()
+        let request = try sut.urlRequest(with: config)
+        let expected = bodyParameters.queryString.data(using: String.Encoding.ascii, allowLossyConversion: true)
+        XCTAssertTrue(request.httpBody == expected)
+    }
+
+    func testURL_passQueryParameters_transferToQueryItems() throws {
+        givenValidURLEndPoint()
+        let queryParamters = ["testkey": "testValue"]
+//        sut.queryParameters = queryParamters
+        let config = MockNetworkConfigurable()
+        config.queryParameters = queryParamters
+        let queryItems = queryParamters.map {
+            URLQueryItem(name: $0.key, value: $0.value)
+        }
+        let url = try sut.url(with: config)
+        XCTAssertTrue(URLComponents(url: url, resolvingAgainstBaseURL: true)!.queryItems!.contains(queryItems.first!))
     }
 }

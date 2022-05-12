@@ -135,7 +135,7 @@ public class Endpoint<R>: ResponseRequestable {
 }
 
 
-private extension Dictionary {
+extension Dictionary {
     var queryString: String {
         return self.map { "\($0.key)=\($0.value)" }
             .joined(separator: "&")

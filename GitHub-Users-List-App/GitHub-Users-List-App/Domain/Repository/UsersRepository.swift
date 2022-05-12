@@ -12,5 +12,5 @@ protocol UsersRepository {
     ///   - query: user list request query
     ///   - completion: closure for pass result
     /// - Returns: instance of cancellable
-    func fectchUsersList(query: UsersQueryUseCaseRequestValue, completion: @escaping (Result<UsersListPage, Error>) -> Void) -> Cancellable
+    func fectchUsersList(query: UsersQueryUseCaseRequestValue, completion: @escaping (Result<UsersListPage, Error>) -> Void) -> Cancellable?
 }

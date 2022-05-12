@@ -17,6 +17,7 @@ class SearchBar: UIView {
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         textField.delegate = self
         textField.returnKeyType = .done
+        textField.accessibilityIdentifier = AccessibilityIdentifier.userListSearchField
         return textField
     }()
 
