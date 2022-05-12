@@ -103,6 +103,7 @@ class UsersListCell: UITableViewCell {
         nameLabel.snp.makeConstraints { make in
             make.left.equalTo(avatarImageView.snp.right).offset(10)
             make.top.equalTo(avatarImageView)
+            make.height.equalTo(20)
         }
         scoreLabel.snp.makeConstraints { make in
             make.left.equalTo(nameLabel.snp.right).offset(5)
@@ -119,6 +120,8 @@ class UsersListCell: UITableViewCell {
             make.right.equalTo(-28)
             make.centerY.equalToSuperview()
         }
+        scoreLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
 
     @objc func followButtonAction(_ sender: UIButton) {
