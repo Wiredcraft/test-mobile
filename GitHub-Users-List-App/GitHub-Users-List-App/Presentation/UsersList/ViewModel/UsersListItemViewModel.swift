@@ -7,33 +7,40 @@
 
 import Foundation
 class UsersListItemViewModel {
-
-    let name: String
-    let avatarURL: URL?
-    let score: String
-    let htmlURL: String
-    var user: User {
-        didSet {
-            followState = Observable(user.followState)
-        }
-    }
-    var followState: Observable<User.FollowState>!
+    var name: String
+    var avatarURL: URL?
+    var score: Float
+    var scoreContent: String { "\(score)" }
+    var htmlURL: String
+    let id: Int
+    var followState: User.FollowState
 
     init(user: User) {
-        self.user = user
+        self.id = user.id
         self.name = user.login
         self.avatarURL = URL(string: user.avatarUrl) ?? nil
-        self.score = "\(user.score)"
+        self.score = user.score
         self.htmlURL = user.htmlUrl
-        followState = Observable(user.followState)
+        self.followState = user.followState
     }
 
     func follow() {
-        followState.value = .followed
-        user.follow()
+        followState = .followed
     }
+
     func unfollow() {
-        followState.value = .normal
-        user.unfollow()
+        followState = .normal
+    }
+
+    func user() -> User {
+        return User(avatarUrl: avatarURL?.absoluteString ?? "", htmlUrl: htmlURL, id: id, login: name, score: score, followState: followState)
+    }
+
+    func update(with user: User) {
+        self.name = user.login
+        self.avatarURL = URL(string: user.avatarUrl) ?? nil
+        self.score = user.score
+        self.htmlURL = user.htmlUrl
+        self.followState = user.followState
     }
 }

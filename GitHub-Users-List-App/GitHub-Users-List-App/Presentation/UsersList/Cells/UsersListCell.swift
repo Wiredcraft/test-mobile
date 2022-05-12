@@ -85,12 +85,10 @@ class UsersListCell: UITableViewCell {
     func bindViewModel(_ viewModel: UsersListItemViewModel) {
         self.viewModel = viewModel
         nameLabel.text = viewModel.name
-        scoreLabel.text = viewModel.score
+        scoreLabel.text = viewModel.scoreContent
         html_urlLabel.text = viewModel.htmlURL
         avatarImageView.kf.setImage(with: viewModel.avatarURL)
-        viewModel.followState.observe(on: self) { [weak self] state in
-            self?.followButton.isSelected = state == .followed
-        }
+        followButton.isSelected = viewModel.followState == .followed
     }
 
     func bindStyle() {
@@ -130,5 +128,6 @@ class UsersListCell: UITableViewCell {
         } else {
             viewModel.follow()
         }
+        sender.isSelected = !sender.isSelected
     }
 }

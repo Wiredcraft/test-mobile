@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 protocol UsersListViewModelInputs {
     func viewDidLoad()
     func didSelectItem(at indexPath: IndexPath)
@@ -69,7 +68,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     private func appendPage(_ page: UsersListPage) {
         totalPageCount = page.totalCount / 30
         pages = pages.filter { $0 != page } + [page]
-        usersList.value.append(contentsOf: page.items.map{UsersListItemViewModel(user: $0)})
+        usersList.value.append(contentsOf: page.items.map{ generateUsersListItemViewModel(with: $0) })
     }
 
     private func resetPage() {
@@ -97,6 +96,17 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
         })
     }
 
+    private func generateUsersListItemViewModel(with user: User) -> UsersListItemViewModel {
+        let itemViewModel = UsersListItemViewModel(user: user)
+//        itemViewModel.followActionBlock = { [weak self] in
+//            self?.reloadSubject.send()
+//        }
+//        itemViewModel.unFollowActionBlock = { [weak self] in
+//            self?.reloadSubject.send()
+//        }
+        return itemViewModel
+    }
+
 }
 // MARK: - Inputs
 extension UsersListViewModel {
@@ -108,7 +118,7 @@ extension UsersListViewModel {
         guard indexPath.row < outputs.usersList.value.count  else {
             return
         }
-        self.actions?.showUserDetail(outputs.usersList.value[indexPath.row].user)
+        self.actions?.showUserDetail(outputs.usersList.value[indexPath.row].user())
     }
 
     func loadNextPage() {
@@ -127,8 +137,8 @@ extension UsersListViewModel {
 
     func updateUser(with user: User) {
         usersList.value = usersList.value.map {
-            if $0.user.id == user.id {
-                $0.user = user
+            if $0.id == user.id {
+                $0.update(with: user)
             }
             return $0
         }
