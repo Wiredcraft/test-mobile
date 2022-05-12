@@ -51,7 +51,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
         return searchText.isEmpty ? DefaultQuery : searchText
     }
     var searchText: String = ""
-    private let actions: UsersListViewModelActions
+    private let actions: UsersListViewModelActions?
     private let usecase: UsersListUseCase
     // MARK: - Outputs
 
@@ -59,7 +59,7 @@ final class UsersListViewModel: UsersListViewModelType, UsersListViewModelInputs
     var loading: Observable<UsersListViewModelLoading> = Observable(.none)
     // MARK: - Init
 
-    init(with actions: UsersListViewModelActions, usecase: UsersListUseCase) {
+    init(with actions: UsersListViewModelActions? = nil, usecase: UsersListUseCase) {
         self.actions = actions
         self.usecase = usecase
     }
@@ -105,7 +105,7 @@ extension UsersListViewModel {
         guard indexPath.row < usersList.value.count  else {
             return
         }
-        actions.showUserDetail(usersList.value[indexPath.row].user)
+        self.actions?.showUserDetail(usersList.value[indexPath.row].user)
     }
 
     func loadNextPage() {

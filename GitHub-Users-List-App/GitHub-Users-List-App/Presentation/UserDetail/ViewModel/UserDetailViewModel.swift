@@ -29,14 +29,14 @@ protocol UserDetailViewModelType {
 final class UserDetailViewModel: UserDetailViewModelType, UserDetailViewModelInputs, UserDetailViewModelOutputs {
     var inputs: UserDetailViewModelInputs { return self }
     var outputs: UserDetailViewModelOutputs { return self }
-    private let actions: UserDetailViewModelActions
+    private let actions: UserDetailViewModelActions?
     private let usecase: UserDetailUseCase
     var user: User
     private var loadRepoTask: Cancellable? { willSet { loadRepoTask?.cancel() }}
     // MARK: - Outputs
     var repoViewModels: Observable<[UserDetailRepoViewModel]> = Observable([])
     // MARK: - Init
-    init(user: User, actions: UserDetailViewModelActions, usecase: UserDetailUseCase) {
+    init(user: User, actions: UserDetailViewModelActions? = nil, usecase: UserDetailUseCase) {
         self.user = user
         self.actions = actions
         self.usecase = usecase
@@ -67,6 +67,6 @@ extension UserDetailViewModel {
             case .normal:
                 user.unfollow()
         }
-        self.actions.followUser(user)
+        self.actions?.followUser(user)
     }
 }
