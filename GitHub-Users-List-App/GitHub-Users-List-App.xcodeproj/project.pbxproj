@@ -81,6 +81,8 @@
 		477F0B09282CF29A00CCE363 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0B06282CF10100CCE363 /* AccessibilityIdentifier.swift */; };
 		477F0B0A282CF29B00CCE363 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0B06282CF10100CCE363 /* AccessibilityIdentifier.swift */; };
 		477F0B0E282CFE8F00CCE363 /* Toaster in Frameworks */ = {isa = PBXBuildFile; productRef = 477F0B0D282CFE8F00CCE363 /* Toaster */; };
+		477F0B12282D12D200CCE363 /* MockUserDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0B11282D12D200CCE363 /* MockUserDetailUseCase.swift */; };
+		477F0B14282D12E100CCE363 /* UserDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F0B13282D12E100CCE363 /* UserDetailViewModelTests.swift */; };
 		47C4A7ED282AA32A00367104 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */; };
 		47C4A7F0282ABB4E00367104 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7EF282ABB4E00367104 /* SearchBar.swift */; };
 		47C4A7F6282B734000367104 /* UIViewController+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4A7F5282B734000367104 /* UIViewController+Bar.swift */; };
@@ -179,6 +181,8 @@
 		477F0B01282CD03200CCE363 /* DictionaryExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensionTests.swift; sourceTree = "<group>"; };
 		477F0B04282CE71E00CCE363 /* MockUsersListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUsersListUseCase.swift; sourceTree = "<group>"; };
 		477F0B06282CF10100CCE363 /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
+		477F0B11282D12D200CCE363 /* MockUserDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDetailUseCase.swift; sourceTree = "<group>"; };
+		477F0B13282D12E100CCE363 /* UserDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModelTests.swift; sourceTree = "<group>"; };
 		47C4A7EC282AA32A00367104 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		47C4A7EF282ABB4E00367104 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		47C4A7F5282B734000367104 /* UIViewController+Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Bar.swift"; sourceTree = "<group>"; };
@@ -630,6 +634,7 @@
 		477F0B03282CD4E300CCE363 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				477F0B0F282D12A600CCE363 /* UserDetail */,
 				4742E4EA2823C60100C85A00 /* UsersList */,
 			);
 			path = Presentation;
@@ -640,6 +645,23 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		477F0B0F282D12A600CCE363 /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+				477F0B10282D12C500CCE363 /* Mock */,
+				477F0B13282D12E100CCE363 /* UserDetailViewModelTests.swift */,
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		477F0B10282D12C500CCE363 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				477F0B11282D12D200CCE363 /* MockUserDetailUseCase.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		47C4A7EE282ABB4700367104 /* View */ = {
@@ -882,6 +904,7 @@
 				4742E4EC2823C61400C85A00 /* UsersListViewModelTests.swift in Sources */,
 				477F0B02282CD03200CCE363 /* DictionaryExtensionTests.swift in Sources */,
 				4742E5072824CA9900C85A00 /* MockNetworkError.swift in Sources */,
+				477F0B14282D12E100CCE363 /* UserDetailViewModelTests.swift in Sources */,
 				4742E50F28255CBF00C85A00 /* DataTransferServiceTests.swift in Sources */,
 				4742E51128255CE500C85A00 /* MockDataModel.swift in Sources */,
 				477F0AEA282CC61300CCE363 /* UsersListUseCaseTests.swift in Sources */,
@@ -890,6 +913,7 @@
 				477F0AEC282CC63600CCE363 /* UsersListRepositoryMock.swift in Sources */,
 				4742E50D2825204700C85A00 /* EndpointTests.swift in Sources */,
 				477F0B05282CE71E00CCE363 /* MockUsersListUseCase.swift in Sources */,
+				477F0B12282D12D200CCE363 /* MockUserDetailUseCase.swift in Sources */,
 				4742E51E28266A8C00C85A00 /* AppConfigurationTests.swift in Sources */,
 				477F0AFA282CCD5800CCE363 /* RepositoryTaskTests.swift in Sources */,
 				4742E4FE2824C9EF00C85A00 /* MockNetworkSessionManager.swift in Sources */,

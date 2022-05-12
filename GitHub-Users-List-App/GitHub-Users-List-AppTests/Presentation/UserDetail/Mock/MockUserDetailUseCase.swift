@@ -1,5 +1,5 @@
 //
-//  MockUsersListUseCase.swift
+//  MockUserDetailUseCase.swift
 //  GitHub-Users-List-AppTests
 //
 //  Created by 邹奂霖 on 2022/5/12.
@@ -7,15 +7,15 @@
 
 import XCTest
 @testable import GitHub_Users_List_App
-class MockUsersListUseCase: UsersListUseCase {
+class MockUserDetailUseCase: UserDetailUseCase {
     var expectation: XCTestExpectation?
     var error: Error?
-    var page = UsersListPage(incompleteResults: true, items: [], totalCount: 0)
-    func excute(requestValue: UsersQueryUseCaseRequestValue, completion: @escaping (Result<UsersListPage, Error>) -> Void) -> Cancellable? {
+    var repos: [UserRepo] = []
+    func excute(requestValue: UserRepoRequestValue, completion: @escaping (Result<[UserRepo], Error>) -> Void) -> Cancellable? {
         if let error = error {
             completion(.failure(error))
         } else {
-            completion(.success(page))
+            completion(.success(repos))
         }
         if let expectation = expectation {
             expectation.fulfill()
