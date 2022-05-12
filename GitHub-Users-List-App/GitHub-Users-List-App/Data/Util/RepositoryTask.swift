@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Cancellale task wrapper for network task
 class RepositoryTask: Cancellable {
     var networkTask: NetworkCancellable?
     var isCancelled: Bool = false

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+/// Abstract interface of UsersListScene dependencies
 protocol UsersListFlowCoordinatorDependencies {
     func makeUsersListViewController(actions: UsersListViewModelActions) -> UsersListViewController
     func makeUserDetailViewController(user: User, actions: UserDetailViewModelActions) -> UserDetailViewController
@@ -32,6 +33,8 @@ final class UsersListFlowCoordinator {
     }
 
     // MARK: - Actions
+    /// Presenting UserDetailViewController with user
+    /// - Parameter user: a user object
     func showUserDetail(with user: User) {
         let actions = UserDetailViewModelActions(followUser: followUser(witn:))
         let vc = dependencies.makeUserDetailViewController(user: user, actions: actions)

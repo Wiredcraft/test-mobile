@@ -6,6 +6,7 @@
 //
 
 import Foundation
+/// DataMapping object for UsersList response
 struct UsersListResponseDTO : Codable {
     let incompleteResults : Bool?
     let items : [UserDTO]
@@ -30,7 +31,7 @@ extension UsersListResponseDTO {
                                 totalCount: totalCount)
     }
 }
-
+/// DataMapping object for User Response
 struct UserDTO : Codable {
     let avatarUrl : String
     let htmlUrl : String

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+/// DataMapping object for UsersRepo request
 struct UserRepoRequestDTO: Encodable {
     let userName: String
 }

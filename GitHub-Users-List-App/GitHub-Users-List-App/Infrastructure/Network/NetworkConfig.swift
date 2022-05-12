@@ -7,9 +7,14 @@
 
 import Foundation
 
+/// Network Configurable
+/// Interface for network configs
 public protocol NetworkConfigurable {
     var baseURL: URL { get }
+
+    /// Headers for request
     var headers: [String: String] { get }
+
     var queryParameters: [String: String] { get }
 }
 

@@ -16,25 +16,49 @@ public enum NetworkError: Error {
     case URLGeneration
 }
 
+
+/// NetworkCancellable provids interface to network task to cancell the task.
 public protocol NetworkCancellable {
+    /// Cancel
+    /// Cancel the network task in the implementation
     func cancel()
 }
 
 extension URLSessionTask: NetworkCancellable { }
 
+/// NetworkService
+/// Interface for application's network module
 public protocol NetworkService {
     typealias CompletionHandler = (Result<Data?, NetworkError>) -> Void
+    /// Request with Requestable and pass response through completion
+    /// - Parameters:
+    ///   - endPoint: Requestable instance
+    ///   - completion: pass response result throught Data?, NetworkError
+    /// - Returns: Instance of NetworkCancellable
     func request(endPoint: Requestable, completion: @escaping CompletionHandler) -> NetworkCancellable?
 }
 
 public protocol NetworkSessionManager {
     typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
+    /// Do the network request and pass result through completion Handler
+    /// - Parameters:
+    ///   - request: instance of URLRequest
+    ///   - completion: pass result through completion Handler
+    /// - Returns: instance of NetworkCancellable
     func request(_ request: URLRequest, completion: @escaping CompletionHandler) -> NetworkCancellable
 }
 
 public protocol NetworkErrorLogger {
+    /// log the information of Request
+    /// - Parameter request: target request
     func log(request: URLRequest)
+    /// Log the information of response
+    /// - Parameters:
+    ///   - data: response data
+    ///   - response: instance of URLResponse
     func log(responseData data: Data?, response: URLResponse?)
+    /// Log the information of error
+    /// - Parameter error: error
     func log(error: Error)
 }
 
@@ -51,6 +75,11 @@ public final class DefaultNetworkService {
         self.logger = logger
     }
 
+    /// Do the network request through sessionManager and pass the result through completionHandler
+    /// - Parameters:
+    ///   - request: Instance of URLRequest
+    ///   - completion: Pass the result through completion handler
+    /// - Returns: instance of Network Cancellable
     private func request(request: URLRequest, completion: @escaping CompletionHandler) -> NetworkCancellable {
         let sessionDataTask = sessionManager.request(request) { [weak self] data, response, requestError in
             guard let self = self else { return }
@@ -73,6 +102,9 @@ public final class DefaultNetworkService {
         return sessionDataTask
     }
 
+    /// Resolve error to NetworkError
+    /// - Parameter error: error from network response
+    /// - Returns: resolved NetworkError
     private func resolve(error: Error) -> NetworkError {
         let code = URLError.Code(rawValue: (error as NSError).code)
         switch code {
@@ -96,6 +128,7 @@ extension DefaultNetworkService: NetworkService {
 }
 
 
+/// Default implementation for `NetworkSessionManager`
 public class DefaultNetworkSessionManager: NetworkSessionManager {
     public init() { }
     public func request(_ request: URLRequest, completion: @escaping CompletionHandler) -> NetworkCancellable {
@@ -105,6 +138,7 @@ public class DefaultNetworkSessionManager: NetworkSessionManager {
     }
 }
 
+/// Default implementation for `NetworkErrorLogger`
 public final class DefaultNetworkErrorLogger: NetworkErrorLogger {
     public init() { }
 
@@ -137,6 +171,9 @@ public final class DefaultNetworkErrorLogger: NetworkErrorLogger {
 extension NetworkError {
     public var isNotFoundError: Bool { return hasStatusCode(404) }
 
+    /// Estimate whether a `NetworkError` has specific statusCode
+    /// - Parameter codeError: specific statusCode you want esimate
+    /// - Returns: result
     public func hasStatusCode(_ codeError: Int) -> Bool {
         switch self {
         case let .error(code, _):

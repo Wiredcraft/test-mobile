@@ -7,9 +7,14 @@
 
 import Foundation
 protocol UserDetailUseCase {
+    /// Interface for request for user's repo
+    /// - Parameters:
+    ///   - requestValue: query for request
+    ///   - completion: closure for passing result
+    /// - Returns: instance of cancellable
     func excute(requestValue: UserRepoRequestValue, completion: @escaping (Result<[UserRepo], Error>) -> Void) -> Cancellable?
 }
-
+/// Default implementation of `UserDetailUseCase
 final class DefaultUserDetailUseCase: UserDetailUseCase {
     private let repository: UserDetailRepository
     init(repository: UserDetailRepository) {

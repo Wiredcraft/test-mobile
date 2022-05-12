@@ -22,6 +22,7 @@ public enum BodyEncoding {
 }
 
 
+/// A `Requstable` is abstract to manage configs and request informations of request
 public protocol Requestable {
     var path: String { get }
     var isFullPath: Bool { get }
@@ -33,9 +34,13 @@ public protocol Requestable {
     var bodyParamaters: [String: Any] { get }
     var bodyEncoding: BodyEncoding { get }
 
+    /// Generate an URLRequest with information of `Requestable` and networkConfig
+    /// - Parameter networkConfig: network Configs
+    /// - Returns: instance of `URLRequest`
     func urlRequest(with networkConfig: NetworkConfigurable) throws -> URLRequest
 }
 
+/// A `Responsable` provide ability of response decoding
 public protocol ResponseRequestable: Requestable {
     associatedtype Response
     var responseDecoder: ResponseDecoder { get }
@@ -46,6 +51,9 @@ enum RequestGenerationError: Error {
 }
 
 extension Requestable {
+    /// generate a url with information of  `Requestable` and networkConfig
+    /// - Parameter config: networkconfigurable
+    /// - Returns: result URL
     func url(with config: NetworkConfigurable) throws -> URL {
         let baseURL = config.baseURL.absoluteString.last != "/" ? config.baseURL.absoluteString + "/" : config.baseURL.absoluteString
         let endpoint = isFullPath ? path : baseURL.appending(path)
@@ -89,6 +97,7 @@ extension Requestable {
 
 }
 
+/// An `Endpoint` is a generic class for `ResponseRequestable`
 public class Endpoint<R>: ResponseRequestable {
     public typealias Response = R
     public let path: String
