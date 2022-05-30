@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/search_user_fragment">
+
+    <fragment
+        android:id="@+id/search_user_fragment"
+        android:name="com.wiredcraft.fragment.SearchUserFragment" >
+        <action
+            android:id="@+id/action_search_user_fragment_to_repos_fragment"
+            app:destination="@id/repos_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/repos_fragment"
+        android:name="com.wiredcraft.fragment.ReposFragment" />
+</navigation>
