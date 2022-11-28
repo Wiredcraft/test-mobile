@@ -61,7 +61,7 @@ https://www.figma.com/file/voov7DANpki5YtI6Jt5d6E/github_userlist_test?node-id=0
 ### Functionality
 
 - Use Swift >=4.2 for iOS.
-- Use Kotlin >=1.3 for Android.
+- Use Kotlin >=1.6 for Android.
 - Provide proper unit tests.
 - For API use this: 
   - https://api.github.com/search/users?q=swift&page=1, or similar.
@@ -73,6 +73,8 @@ https://www.figma.com/file/voov7DANpki5YtI6Jt5d6E/github_userlist_test?node-id=0
 - Write clear documentation on how it's designed and how to run the code.
 - Write good in-code comments.
 - Write good commit messages.
+- Use Jetpack Compose for Android.
+- Use SwiftUI for iOS.
 
 ### Advanced requirements
 
