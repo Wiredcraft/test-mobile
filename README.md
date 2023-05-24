@@ -60,8 +60,12 @@ https://www.figma.com/file/voov7DANpki5YtI6Jt5d6E/github_userlist_test?node-id=0
 
 ### Functionality
 
-- Use Swift >=4.2 for iOS.
-- Use Kotlin >=1.6 for Android.
+- Native:
+  - Use Swift >=4.2 for iOS.
+  - Use Kotlin >=1.6 for Android.
+- React Native:
+  - Node.js >= 12.0
+  - React Native >= 0.67.0
 - Provide proper unit tests.
 - For API use this: 
   - https://api.github.com/search/users?q=swift&page=1, or similar.
