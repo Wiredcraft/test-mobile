@@ -60,8 +60,8 @@ https://www.figma.com/file/voov7DANpki5YtI6Jt5d6E/github_userlist_test?node-id=0
 
 ### Functionality
 
-- Use Swift >=4.2 for iOS.
-- Use Kotlin >=1.6 for Android.
+- Node.js >= 12.0
+- React Native >= 0.67.0
 - Provide proper unit tests.
 - For API use this: 
   - https://api.github.com/search/users?q=swift&page=1, or similar.
@@ -73,8 +73,6 @@ https://www.figma.com/file/voov7DANpki5YtI6Jt5d6E/github_userlist_test?node-id=0
 - Write clear documentation on how it's designed and how to run the code.
 - Write good in-code comments.
 - Write good commit messages.
-- Use Jetpack Compose for Android.
-- Use SwiftUI for iOS.
 
 ### Advanced requirements
 
@@ -88,7 +86,7 @@ Feel free to use any open-source library as you see fit, but remember that we ar
 
 Here's what you should aim for:
 
-- Good use of current Android & Swift best practices.
+- Good use of current React Native best practices.
 - We are usually interested in how you use Structs, Enums, Extensions, and Protocol Oriented Programming etc.
 - Good testing approach.
 - Extensible code.
