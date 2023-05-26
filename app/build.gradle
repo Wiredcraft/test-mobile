@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.aric.finalweather'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.aric.finalweather"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'my-key-alias'
+            keyPassword '123456'
+            storeFile file('../my-release-key.keystore')
+            storePassword '123456'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+
+    debugImplementation 'com.plutolib:pluto:2.1.2'
+    releaseImplementation 'com.plutolib:pluto-no-op:2.1.2'
+
+    debugImplementation 'com.plutolib.plugins:network:2.1.2'
+    releaseImplementation 'com.plutolib.plugins:network-no-op:2.1.2'
+
+
+    implementation project(path: ':repository')
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+}
