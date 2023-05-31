@@ -1,1 +1,0 @@
-/Users/lihuiqiang/Desktop/Android/demo/MobileApp/buildSrc/build/classes/kotlin/main/Libs.class:/Users/lihuiqiang/Desktop/Android/demo/MobileApp/buildSrc/build/classes/kotlin/main/Versions.class
