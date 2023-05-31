@@ -1,0 +1,92 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs'
+}
+
+
+//These parameters can be configured using jenkins
+def VERSION_NAME = "0.0.1"
+def VERSION_CODE = 1
+def ENABLED_HTTP_LOGCAT = true
+def LOG_SWITCH = true
+
+android {
+    namespace 'com.wiredcraft.mobileapp'
+    compileSdk Versions.v_compile_sdk
+
+    defaultConfig {
+        applicationId "com.wiredcraft.mobileapp"
+        minSdk Versions.v_min_sdk
+        targetSdk Versions.v_target_sdk
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "ENABLED_HTTP_LOGCAT", '' + ENABLED_HTTP_LOGCAT + ''
+            buildConfigField "boolean", "LOG_SWITCH", '' + LOG_SWITCH + ''
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "ENABLED_HTTP_LOGCAT", '' + ENABLED_HTTP_LOGCAT + ''
+            buildConfigField "boolean", "LOG_SWITCH", '' + LOG_SWITCH + ''
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+
+    testImplementation Libs.depJunit
+    androidTestImplementation Libs.depJunitExt
+    androidTestImplementation Libs.depEesprEssoCore
+    testImplementation Libs.depKotlinCoroutinesTest
+    implementation Libs.depLifecycleRuntimeKtx
+
+    implementation Libs.depImmersionbar
+    implementation Libs.depImmersionbarKtx
+
+    implementation Libs.depRefreshKernel
+    implementation Libs.depRefreshHeaderClassics
+    implementation Libs.depRefreshFooterClassics
+
+    implementation Libs.depLifecycleViewModel
+    implementation Libs.depAndroidXCoreKtx
+    implementation Libs.depActivityKts
+    implementation Libs.depFragmentKts
+    implementation Libs.depGoogleMaterial
+    implementation Libs.depConstraintLayout
+    implementation Libs.depRecyclerView
+    implementation Libs.depAppcompat
+    implementation Libs.depKotlinCoroutinesLib
+    implementation Libs.depKotlinCoroutinesAndroidLib
+
+    implementation Libs.depRetrofit
+    implementation Libs.depGson
+    implementation Libs.depLoggingInterceptor
+    implementation Libs.depOkHttp
+    implementation Libs.depOkhttpInteration
+    implementation Libs.depGlide
+    implementation Libs.depGlideTransformations
+    implementation Libs.glideCompiler
+    implementation Libs.depConverterGson
+
+    implementation Libs.depBaseRecyclerViewAdapterHelper
+
+}

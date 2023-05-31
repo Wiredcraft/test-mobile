@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+
+    <ImageView
+        android:id="@+id/iv_user_detail_bg"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dim_dp_230"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_user_detail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_user_detail_avatar"
+        android:layout_width="@dimen/dim_dp_64"
+        android:layout_height="@dimen/dim_dp_64"
+        android:layout_marginTop="@dimen/dim_dp_55"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_user_detail_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_dp_17"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dim_sp_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_user_detail_avatar"
+        tools:text="ESTHER" />
+
+
+    <TextView
+        android:id="@+id/tv_user_detail_follow"
+        android:layout_width="@dimen/dim_dp_55"
+        android:layout_height="@dimen/dim_dp_24"
+        android:layout_marginTop="@dimen/dim_dp_11"
+        android:background="@drawable/shape_follow_bg_white"
+        android:gravity="center"
+        android:text="@string/str_follow"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_sp_11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_detail_name" />
+
+
+    <View
+        android:id="@+id/view_user_detail_line"
+        android:layout_width="@dimen/dim_dp_2"
+        android:layout_height="@dimen/dim_dp_20"
+        android:layout_marginStart="@dimen/dim_dp_19"
+        android:layout_marginTop="@dimen/dim_dp_21"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_user_detail_bg" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dim_dp_9"
+        android:text="@string/str_repository_user_detail"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_sp_16"
+        app:layout_constraintBottom_toBottomOf="@+id/view_user_detail_line"
+        app:layout_constraintStart_toEndOf="@+id/view_user_detail_line"
+        app:layout_constraintTop_toTopOf="@+id/view_user_detail_line" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_user_detail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingTop="@dimen/dim_dp_15"
+        android:paddingStart="@dimen/dim_dp_21"
+        android:paddingEnd="@dimen/dim_dp_19"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_user_detail_line" />
+</androidx.constraintlayout.widget.ConstraintLayout>

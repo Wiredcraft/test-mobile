@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_empty_container"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_empty_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_empty" />
+
+    <TextView
+        android:id="@+id/tv_empty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无数据"
+        android:textSize="@dimen/dim_sp_14"
+        android:textColor="@color/color_666666"
+        android:layout_marginTop="@dimen/dim_dp_10"
+        />
+
+    <TextView
+        android:id="@+id/tv_empty_btn"
+        style="@style/CommonButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/dim_dp_78"
+        android:layout_marginRight="@dimen/dim_dp_77"
+        android:layout_marginTop="@dimen/dim_dp_20"
+        android:visibility="gone"
+        tools:text="去聊天"
+        />
+</LinearLayout>

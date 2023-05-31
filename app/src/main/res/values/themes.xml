@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--   color for the app bar and other primary UI elements -->
+        <item name="colorPrimary">#52C0FF</item>
+
+        <!--   a darker variant of the primary color, used for
+               the status bar (on Android 5.0+) and contextual app bars -->
+        <item name="colorPrimaryDark">#FFFFFF</item>
+
+        <!--   a secondary color for controls like checkboxes and text fields -->
+        <item name="colorAccent">#52C0FF</item>
+    </style>
+
+    <style name="CommonButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dim_dp_44</item>
+        <item name="android:background">@drawable/selector_common_btn_enable</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/dim_sp_16</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>
