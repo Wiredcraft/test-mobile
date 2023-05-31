@@ -1,9 +1,9 @@
 # Mobile Test - GitHub Users List App
 
 # User 
-userName :李慧强
-phone number: 13917635614（weChat）
-email: 15116393675@163.com
+- userName :李慧强
+- phone number: 13917635614（weChat）
+- email: 15116393675@163.com
 
 # Some of my requests
 First of all, thank you for viewing this content. I wish you good luck in your work.
