@@ -41,7 +41,7 @@ import com.test.aric.presentation.search_user_list.components.SearchUserListItem
 @Composable
 fun SearchUserListScreen(
     navController: NavController,
-    viewModel: SearchUserListViewModel = hiltViewModel()
+    viewModel: SearchUserListViewModel
 ) {
     val lazyPagingItems = viewModel.pagingFlow.collectAsLazyPagingItems()
 
@@ -79,17 +79,16 @@ fun SearchUserListScreen(
 
         SwipeRefreshList(lazyPagingItems) {
             itemsIndexed(lazyPagingItems.itemSnapshotList.items) { index, user ->
-                val newUser = remember {
-                    mutableStateOf(user)
-                }
+
                 SearchUserListItem(
                     index,
-                    userInfo = newUser.value,
+                    userInfo = user,
                     onItemClick = {
-                        navController.navigate("${Screen.UserDetailScreen.route}/{${Gson().toJson(newUser.value)}}")
+                        viewModel.updateSelectedUser(user)
+                        navController.navigate(Screen.UserDetailScreen.route)
                     },
                     onFollowButtonClick = {
-                        newUser.value.follow = !newUser.value.follow
+
                     }
                 )
             }

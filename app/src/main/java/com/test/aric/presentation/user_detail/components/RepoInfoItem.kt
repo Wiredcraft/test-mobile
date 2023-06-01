@@ -1,7 +1,6 @@
-package com.test.aric.presentation.search_user_list.components
+package com.test.aric.presentation.user_detail.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,27 +26,22 @@ import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import coil.compose.AsyncImage
-import com.test.aric.data.remote.dto.UserInfo
+import com.test.aric.data.remote.dto.RepoInfo
 
 @Composable
-fun SearchUserListItem(
-    index:Int,
-    userInfo: UserInfo,
-    onItemClick: (UserInfo) -> Unit,
-    onFollowButtonClick: (UserInfo) -> Unit,
-    isShowButton:Boolean = true
+fun RepoInfoItem(
+    repoInfo: RepoInfo,
 ) {
     ConstraintLayout(modifier = Modifier
-        .clickable { onItemClick(userInfo) }
         .height(64.dp)
         .fillMaxWidth()) {
-        val (avatar, login, url, score, divider, subscribe, space) = remember {
+        val (avatar, login, url, score, divider,space) = remember {
             createRefs()
         }
-        createVerticalChain(login, url, chainStyle = ChainStyle.Packed)
+        createVerticalChain(login,url, chainStyle = ChainStyle.Packed)
 
         AsyncImage(
-            model = userInfo.avatar_url,
+            model = repoInfo.owner.avatar_url,
             contentDescription = null,
             modifier = Modifier
                 .size(32.dp)
@@ -60,7 +54,7 @@ fun SearchUserListItem(
         )
 
         Text(
-            text = userInfo.login,
+            text = "${repoInfo.owner.login}",
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
             maxLines = 1,
@@ -75,7 +69,7 @@ fun SearchUserListItem(
         )
 
         Text(
-            text = userInfo.score,
+            text = repoInfo.owner.id.toString(),
             fontSize = 10.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.constrainAs(score) {
@@ -87,23 +81,23 @@ fun SearchUserListItem(
             }
         )
 
-        Spacer(modifier = Modifier.background(Color.White).constrainAs(space) {
+        Spacer(modifier =Modifier.background(Color.White).constrainAs(space){
             width = Dimension.fillToConstraints
             top.linkTo(login.top)
             bottom.linkTo(login.bottom)
             start.linkTo(score.end, margin = 6.dp)
-            end.linkTo(subscribe.start)
-        })
+            end.linkTo(parent.end)
+        } )
 
         Text(
-            text = userInfo.html_url,
+            text = repoInfo.html_url,
             fontSize = 12.sp,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.constrainAs(url) {
                 top.linkTo(login.bottom)
                 start.linkTo(login.start)
-                end.linkTo(subscribe.start)
+                end.linkTo(parent.end)
                 width = Dimension.ratio("0")
                 bottom.linkTo(parent.bottom)
             }
@@ -118,27 +112,5 @@ fun SearchUserListItem(
                 width = Dimension.matchParent
             }
         )
-
-        if (isShowButton) {
-            Button(
-                onClick = { onFollowButtonClick(userInfo) },
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
-                modifier = Modifier.padding(0.dp).height(34.dp).width(76.dp)
-                    .constrainAs(subscribe) {
-                        top.linkTo(parent.top)
-                        end.linkTo(parent.end)
-                        bottom.linkTo(parent.bottom)
-                    }
-            ) {
-
-                Text(
-                    text = if (userInfo.follow) "关注" else "不关注",
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-            }
-        }
-
     }
 }
