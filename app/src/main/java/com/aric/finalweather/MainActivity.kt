@@ -1,27 +1,34 @@
 package com.aric.finalweather
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import com.aric.finalweather.extentions.setupNavigationController
+import com.gyf.immersionbar.ImmersionBar
+
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var viewModel: MainActivityViewModel
-    private lateinit var weatherList: RecyclerView
-    private lateinit var userListAdapter: UserListAdapter
+    private lateinit var navController: NavController
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
-        userListAdapter = UserListAdapter()
-        weatherList = findViewById<RecyclerView>(R.id.userList).apply {
-            adapter = userListAdapter
+        setContentView(R.layout.activity_container)
+        ImmersionBar.with(this)
+            .transparentStatusBar()
+            .init()
+        setupNavigationController(
+            R.id.nav_host_fragment,
+            R.navigation.nav_graph_github,
+        ) {
+            navController = it
         }
-        viewModel.searchUsersByName("swift")
-        viewModel.searchResult.observe(this) {
-            userListAdapter.submitList(it)
+    }
+
+    override fun onBackPressed() {
+        if (!navController.navigateUp()) {
+            finishAfterTransition()
         }
     }
 }

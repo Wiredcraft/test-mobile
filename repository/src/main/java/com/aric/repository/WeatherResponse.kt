@@ -120,6 +120,7 @@ data class Owner(
 
 
 data class UserInfo(
+    var follow:Boolean,
     val avatar_url: String,
     val events_url: String,
     val followers_url: String,
@@ -133,7 +134,7 @@ data class UserInfo(
     val organizations_url: String,
     val received_events_url: String,
     val repos_url: String,
-    val score: Int,
+    val score: String,
     val site_admin: Boolean,
     val starred_url: String,
     val subscriptions_url: String,

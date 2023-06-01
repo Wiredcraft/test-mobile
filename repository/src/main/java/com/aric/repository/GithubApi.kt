@@ -13,7 +13,7 @@ interface GithubApi {
     /**
      * Search github users by name
      */
-    @GET("/search/users?q=swift&page=1")
+    @GET("/search/users")
    suspend fun searchUserByName(@Query("q") q:String ="swift" ,@Query("page") page:String ="1" ): UserSearchResult
 
     /**

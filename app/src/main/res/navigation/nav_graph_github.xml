@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/main">
+
+    <fixFragment
+        android:id="@+id/main"
+        android:name="com.aric.finalweather.MainFragment"
+        android:label="mainFragment">
+        <action
+            android:id="@+id/action_main_to_profile"
+            app:destination="@id/profile" />
+    </fixFragment>
+
+    <fixFragment
+        android:id="@+id/profile"
+        android:name="com.aric.finalweather.ProfileFragment"
+        android:label="profile" />
+
+</navigation>

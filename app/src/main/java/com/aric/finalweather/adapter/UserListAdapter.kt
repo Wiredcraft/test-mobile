@@ -1,17 +1,16 @@
-package com.aric.finalweather
+package com.aric.finalweather.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.aric.finalweather.R
 import com.aric.finalweather.databinding.ItemUserinfoBinding
 import com.aric.repository.UserInfo
 
-class UserListAdapter :
+class UserListAdapter(inline val onItemClick:(user:UserInfo)->Unit,inline val onSubscribeClick:(user:UserInfo)->Unit) :
     ListAdapter<UserInfo, UserListAdapter.ViewHolder>(diffCallback) {
 
     companion object {
@@ -20,14 +19,14 @@ class UserListAdapter :
                 oldItem: UserInfo,
                 newItem: UserInfo
             ): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.login == newItem.login
             }
 
             override fun areContentsTheSame(
                 oldItem: UserInfo,
                 newItem: UserInfo
             ): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.follow == newItem.follow
             }
         }
     }
@@ -45,7 +44,13 @@ class UserListAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("aric","-----onBindViewHolder-------")
-        holder.binding.userInfo = getItem(position)
+        val item = getItem(position)
+        holder.binding.userInfo = item
+        holder.itemView.setOnClickListener{
+            onItemClick(item)
+        }
+        holder.binding.subscribe.setOnClickListener {
+            onSubscribeClick(item)
+        }
     }
 }

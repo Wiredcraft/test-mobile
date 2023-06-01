@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="userInfo"
+            type="com.aric.repository.UserInfo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/bg_header"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_profile_header"
+            tools:ignore="MissingConstraints" />
+
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="50dp"
+            app:imageUrl="@{userInfo.avatar_url}"
+            app:isCircle="@{true}"
+            app:layout_constraintBottom_toTopOf="@+id/login"
+            app:layout_constraintEnd_toEndOf="@id/bg_header"
+            app:layout_constraintStart_toStartOf="@id/bg_header"
+            app:layout_constraintTop_toTopOf="@id/bg_header"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:background="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textAllCaps="true"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/subscribe"
+            app:layout_constraintEnd_toEndOf="@id/bg_header"
+            app:layout_constraintStart_toStartOf="@id/bg_header"
+            app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+            tools:text="html_url" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subscribe"
+            style="@style/MaterialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@color/white"
+            android:singleLine="true"
+            android:text='@{userInfo.follow ? "unfollow":"follow"}'
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            app:layout_constraintBottom_toBottomOf="@id/bg_header"
+            app:layout_constraintEnd_toEndOf="@id/bg_header"
+            app:layout_constraintStart_toStartOf="@id/bg_header"
+            app:layout_constraintTop_toBottomOf="@id/login" />
+
+        <View
+            android:id="@+id/indicator"
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bg_header" />
+
+        <TextView
+            android:id="@+id/repositoryListTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="REPOSITORIES"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/indicator"
+            app:layout_constraintStart_toEndOf="@id/indicator"
+            app:layout_constraintTop_toTopOf="@id/indicator" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/repoList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/indicator"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_repo_info" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

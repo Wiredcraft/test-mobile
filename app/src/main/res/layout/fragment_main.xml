@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="android.text.TextUtils" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.aric.finalweather.GithubViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp"
+        android:layout_marginTop="30dp"
+       >
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/iv_bg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_search_background"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:afterTextChanged="@{viewModel.onChange}"
+            android:id="@+id/input"
+            android:text="@{viewModel.input}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="6dp"
+            android:background="@null"
+            android:gravity="start|center_vertical"
+            android:maxLength="127"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_bg"
+            app:layout_constraintEnd_toStartOf="@id/iv_search"
+            app:layout_constraintStart_toStartOf="@+id/iv_bg"
+            app:layout_constraintTop_toTopOf="@+id/iv_bg" />
+
+        <ImageView
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="8dp"
+            android:id="@+id/iv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_search"
+            android:onClick="@{()->viewModel.onSearch()}"
+            app:layout_constraintBottom_toBottomOf="@id/iv_bg"
+            app:layout_constraintEnd_toEndOf="@id/iv_bg"
+            app:layout_constraintTop_toTopOf="@+id/iv_bg" />
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_bg"
+            android:layout_height="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/userList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_userinfo" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
