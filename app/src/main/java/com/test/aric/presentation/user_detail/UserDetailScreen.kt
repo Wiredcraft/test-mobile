@@ -25,19 +25,19 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import coil.compose.AsyncImage
 import com.test.aric.R
-import com.test.aric.presentation.search_user_list.SearchUserListViewModel
-import com.test.aric.presentation.search_user_list.components.GithubCommonListItem
+import com.test.aric.presentation.viewmodel.GithubActivityViewModel
+import com.test.aric.presentation.components.GithubCommonListItem
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
 fun UserDetailScreen(
-    viewModel: SearchUserListViewModel
+    viewModel: GithubActivityViewModel
 ) {
     val state = viewModel.selectedUserInfo.value!!
     LaunchedEffect(Unit) {
         viewModel.getOwnerRepoList()
     }
-    ConstraintLayout(modifier = Modifier.fillMaxSize()) {
+    ConstraintLayout(modifier = Modifier.fillMaxSize().background(Color.White)) {
         val (bgHeader, ivAvatar, login, subscribe, indicator, repoListTitle, repoList) = createRefs()
         Image(
             painter = painterResource(id = R.drawable.bg_round),
@@ -81,8 +81,8 @@ fun UserDetailScreen(
             contentPadding = PaddingValues(0.dp),
             modifier = Modifier
                 .padding(0.dp)
-                .height(34.dp)
-                .width(76.dp)
+                .height(24.dp)
+                .width(55.dp)
                 .constrainAs(subscribe) {
                     top.linkTo(login.bottom)
                     start.linkTo(bgHeader.start)
@@ -131,7 +131,7 @@ fun UserDetailScreen(
                     GithubCommonListItem(
                         it.owner.avatar_url,
                         name,
-                        it.forks.toString(),
+                        stargazers_count.toString(),
                         html_url,
                         id
                     )

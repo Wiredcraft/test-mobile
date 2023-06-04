@@ -15,14 +15,15 @@ import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.test.aric.presentation.Screen
-import com.test.aric.presentation.search_user_list.components.GithubCommonListItem
+import com.test.aric.presentation.components.GithubCommonListItem
 import com.test.aric.presentation.search_user_list.components.InfiniteListHandler
-import com.test.aric.presentation.search_user_list.components.SearchBar
+import com.test.aric.presentation.components.SearchBar
+import com.test.aric.presentation.viewmodel.GithubActivityViewModel
 
 @Composable
 fun SearchUserListScreen(
     navController: NavController,
-    viewModel: SearchUserListViewModel
+    viewModel: GithubActivityViewModel
 ) {
     Column(
         modifier = Modifier

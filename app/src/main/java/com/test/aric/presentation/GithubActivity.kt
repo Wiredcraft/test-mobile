@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.test.aric.presentation.search_user_list.SearchUserListScreen
-import com.test.aric.presentation.search_user_list.SearchUserListViewModel
+import com.test.aric.presentation.viewmodel.GithubActivityViewModel
 import com.test.aric.presentation.ui.theme.GithubTheme
 import com.test.aric.presentation.user_detail.UserDetailScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class GithubActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-      val  viewModel: SearchUserListViewModel = ViewModelProvider(this)[SearchUserListViewModel::class.java]
+      val  viewModel: GithubActivityViewModel = ViewModelProvider(this)[GithubActivityViewModel::class.java]
         setContent {
             GithubTheme {
                 Surface(color = MaterialTheme.colors.background) {

@@ -1,4 +1,4 @@
-package com.test.aric.presentation.search_user_list.components
+package com.test.aric.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -68,7 +68,6 @@ fun GithubCommonListItemPreview() {
 
 @Composable
 fun ScrollableSample() {
-    // actual composable state
     var offset by remember { mutableStateOf(0f) }
     Box(
         Modifier
@@ -80,7 +79,8 @@ fun ScrollableSample() {
                     offset += delta
                     delta
                 })
-            .background(Color.LightGray), contentAlignment = Alignment.Center) {
+            .background(Color.LightGray), contentAlignment = Alignment.Center
+    ) {
         Text(offset.toString())
     }
 }
@@ -125,7 +125,8 @@ fun SearchBarPreview() {
 @Composable
 fun SearchBar(textValue: String, onClick: (String) -> Unit) {
     var text by remember { mutableStateOf(textValue) }
-    BasicTextField(value = text,
+    BasicTextField(
+        value = text,
         onValueChange = {
             text = it
         },
@@ -141,7 +142,7 @@ fun SearchBar(textValue: String, onClick: (String) -> Unit) {
                     Icon(
                         painterResource(id = R.drawable.ic_search),
                         null,
-                        modifier = Modifier.padding(5.dp)
+                        tint = Color(0xFFBFBFBF)
                     )
                 }
             }
@@ -165,19 +166,7 @@ fun ClickableSample() {
             count.value += 1
         },
     )
-
-    // .verticalScroll(rememberScrollState()) 添加滑动
-// 这个没有水波纹
-//    Modifier.pointerInput(Unit) {
-//        detectTapGestures(
-//            onPress = { /* Called when the gesture starts */ },
-//            onDoubleTap = { /* Called on Double Tap */ },
-//            onLongPress = { /* Called on Long Press */ },
-//            onTap = { /* Called on Tap */ }
-//        )
-//    }
 }
-
 
 @Composable
 fun GithubCommonListItem(
@@ -235,10 +224,12 @@ fun GithubCommonListItem(
                         top.linkTo(parent.top)
                         bottom.linkTo(parent.bottom)
                         height = Dimension.ratio("0")
-                    })
+                    }, color = Color(0xFF6D6D6D)
+                )
                 Text(maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     text = html,
+                    color = Color(0xFF6D6D6D),
                     modifier = Modifier.constrainAs(text3) {
                         start.linkTo(text1.start)
                         end.linkTo(parent.end)
@@ -252,7 +243,7 @@ fun GithubCommonListItem(
                     contentPadding = PaddingValues(0.dp),
                     onClick = {
                         onFollowButtonClick?.invoke(userId)
-                              },
+                    },
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black),
                     modifier = Modifier
                         .padding(0.dp)
@@ -273,7 +264,7 @@ fun GithubCommonListItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(1.dp)
-                .background(Color.Black)
+                .background(Color(0xFFEFEFEF))
                 .align(Alignment.BottomCenter)
         )
     }

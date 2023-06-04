@@ -1,4 +1,4 @@
-package com.test.aric.presentation.search_user_list
+package com.test.aric.presentation.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchUserListViewModel @Inject constructor(
+class GithubActivityViewModel @Inject constructor(
     private val getReposUseCase: GetReposUseCase,
     private val getUserByPageUseCase: SearchUsersUseCase,
 ) : ViewModel() {
