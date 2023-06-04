@@ -33,14 +33,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-//        useIR = true
     }
     buildFeatures {
         compose true
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-//        kotlinCompilerVersion '1.7.0'
     }
     packagingOptions {
         resources {
@@ -98,7 +96,7 @@ dependencies {
 
     implementation("io.coil-kt:coil-compose:2.0.0")
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
-//
+
     implementation ("com.google.accompanist:accompanist-swiperefresh:0.27.0")
     kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2"
 

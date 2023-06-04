@@ -23,7 +23,7 @@ class UserListDataSource(private val userName: String, private val searchUsersUs
             LoadResult.Page(
                 data = userListResponse.items,
                 prevKey = if (currentPage == 1) null else currentPage - 1,
-                nextKey = if (userListResponse.items.isEmpty()) null else currentPage + 1
+                nextKey = if (userListResponse.total_count< currentPage *params.loadSize) null else currentPage + 1
             )
         } catch (e: Exception) {
             e.printStackTrace()
