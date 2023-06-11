@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Githuber</string>
+    <string name="search_bar_hint_text">Please input the username...</string>
+
+    <string name="avatar_content_desc">avatar</string>
+    <string name="search_icon_content_desc">search</string>
+    <string name="warning_icon_content_desc">warning</string>
+</resources>
