@@ -5,5 +5,5 @@ package com.dorck.githuber.data.source.local
  * @author Dorck
  */
 interface LocalDataSource {
-    suspend fun followUser(uid: String, isToFollow: Boolean): Boolean
+    suspend fun followUser(uid: String): Boolean
 }

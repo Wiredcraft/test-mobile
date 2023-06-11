@@ -2,6 +2,7 @@
 
 package com.dorck.githuber.ui.components
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -11,8 +12,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -20,6 +21,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ChainStyle
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.dorck.githuber.R
 import com.dorck.githuber.ui.pages.home.mockUserList
@@ -30,87 +34,123 @@ val dividerColor = Color(0XFFEFEFEF)
 
 @Composable
 fun GithubUserListItem(
+    modifier: Modifier = Modifier,
     userData: UserDisplayBean,
+    text: String,
     onItemClick: (() -> Unit)? = null,
     onFollowClick: (() -> Unit)? = null,
 ) {
-    // FIXME: Too many nested layout levels, use ConstraintLayout instead.
-    Column(Modifier.background(Color.White)) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
+    ConstraintLayout(
+        modifier = modifier
+            .fillMaxWidth()
+            .animateContentSize()
+            .background(Color.White)
+            .clickable(onClick = {})
+    ) {
+        val (avatar, name, score, link, button, divider) = createRefs()
+        Image(
+            painter = painterResource(id = R.drawable.activator_dog),
             modifier = Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colors.surface)
-                .clickable(onClick = {})
-                .padding(vertical = 16.dp)
-        ) {
-            Spacer(modifier = Modifier.width(20.dp))
-            Surface(
-                modifier = Modifier.size(32.dp),
-                shape = CircleShape,
-                color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.activator_dog),
-                    modifier = Modifier.size(32.dp),
-                    contentDescription = "activator",
-                    contentScale = ContentScale.Crop
-                )
+                .size(32.dp)
+                .clip(CircleShape)
+                .constrainAs(avatar) {
+                    start.linkTo(parent.start, 20.dp)
+                    centerVerticallyTo(parent)
+                },
+            contentDescription = "avatar",
+            contentScale = ContentScale.Crop
+        )
+
 //            GlideImage(
 //                model = userData.avatar,
 //                contentDescription = stringResource(R.string.avatar_content_desc),
 //                contentScale = ContentScale.Crop
 //            )
-            }
-            Column(
-                modifier = Modifier
-                    .wrapContentWidth()
-                    .weight(1.0f)
-                    .padding(horizontal = 10.dp)
-                    .align(Alignment.CenterVertically)
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        userData.username,
-                        modifier = Modifier
-                            .padding(end = 6.dp)
-                            .weight(1.0f),
-                        color = Color.Black,
-                        fontSize = 14.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        userData.score,
-                        color = descriptionTextColor,
-                        fontSize = 12.sp,
-                    )
-                }
-                Text(
-                    userData.profileUrl,
-                    color = descriptionTextColor,
-                    fontSize = 12.sp,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+        // Create a chain between `name` and `score` text.
+        createHorizontalChain(name, score, chainStyle = ChainStyle.Packed(0f))
+        Text(
+            userData.username,
+            modifier = Modifier.constrainAs(name) {
+                linkTo(
+                    start = avatar.end,
+                    end = score.start,
+                    startMargin = 10.dp,
+                    // Keep offset at start
+                    bias = 0f
+                )
+                top.linkTo(parent.top, 16.dp)
+                width = Dimension.preferredWrapContent
+            },
+            color = Color.Black,
+            fontSize = 14.sp,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+        Text(
+            userData.score,
+            modifier = Modifier.constrainAs(score) {
+                start.linkTo(name.end, 6.dp)
+                top.linkTo(parent.top)
+                end.linkTo(button.start, 10.dp)
+                centerVerticallyTo(name)
+            },
+            color = descriptionTextColor,
+            fontSize = 12.sp,
+            maxLines = 1,
+        )
+        Text(
+            userData.profileUrl,
+            color = descriptionTextColor,
+            fontSize = 12.sp,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.constrainAs(link) {
+                linkTo(
+                    start = avatar.end,
+                    end = button.start,
+                    top = name.bottom,
+                    bottom = parent.bottom,
+                    startMargin = 10.dp,
+                    endMargin = 10.dp,
+                    bottomMargin = 16.dp,
+                    horizontalBias = 0f
                 )
             }
-            FollowButton(text = "取消关注")
-            Spacer(modifier = Modifier.width(28.dp))
-        }
-        Divider(Modifier.fillMaxWidth().padding(horizontal = 20.dp), color = dividerColor)
-    }
+        )
 
+        CommonButton(
+            text = text,
+            modifier = Modifier.constrainAs(button) {
+                top.linkTo(parent.top)
+                bottom.linkTo(parent.bottom)
+                end.linkTo(parent.end, 28.dp)
+            },
+            onClick = onFollowClick
+        )
+
+        // Place bottom divider
+        Divider(
+            Modifier
+                .constrainAs(divider) {
+                    bottom.linkTo(parent.bottom)
+                    width = Dimension.fillToConstraints
+                }
+                .padding(horizontal = 20.dp),
+            color = dividerColor
+        )
+    }
 }
 
 @Composable
-fun FollowButton(
+fun CommonButton(
     text: String,
+    modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
     bgColor: ButtonColors = ButtonDefaults.buttonColors(backgroundColor = Color(0XFF1A1A1A))
 ) {
     Button(
         colors = bgColor,
-        modifier = Modifier
+        modifier = modifier
             .width(55.dp)
             .height(24.dp),
         contentPadding = PaddingValues(0.dp),
@@ -123,15 +163,17 @@ fun FollowButton(
 @Preview
 @Composable
 fun PreviewProfileCard() {
-    GithubUserListItem(userData = defaultUserData)
+    GithubUserListItem(userData = defaultUserData, text = "Follow")
 }
 
 @Preview
 @Composable
 fun UserListContent() {
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .padding(top = 18.dp)) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 18.dp)
+    ) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
@@ -139,7 +181,7 @@ fun UserListContent() {
 //            state = userLazyListState
         ) {
             items(items = mockUserList, key = { it.id }) { user ->
-                GithubUserListItem(userData = user)
+                GithubUserListItem(userData = user, text = "关注")
             }
         }
     }

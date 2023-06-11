@@ -11,8 +11,14 @@ import javax.inject.Singleton
 class GithubLocalDataSource @Inject constructor() : LocalDataSource {
     private var followersMap = hashMapOf<String, Boolean>()
 
-    override suspend fun followUser(uid: String, isToFollow: Boolean): Boolean {
-        followersMap[uid] = isToFollow
+    override suspend fun followUser(uid: String): Boolean {
+        if (followersMap.contains(uid)) {
+            val oldStatus = followersMap[uid]!!
+            followersMap[uid] = !oldStatus
+        } else {
+            followersMap[uid] = true
+        }
+
         // Mock data, always returns true.
         return true
     }

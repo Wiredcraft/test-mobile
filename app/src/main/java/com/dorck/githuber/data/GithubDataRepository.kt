@@ -18,5 +18,5 @@ interface GithubDataRepository {
         perPage: Int
     ): Flow<Result<List<GithubRepo>>>
 
-    suspend fun follow(uid: String, isToFollow: Boolean): Flow<Boolean>
+    suspend fun follow(uid: String): Flow<Result<Boolean>>
 }

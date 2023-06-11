@@ -24,7 +24,10 @@ class DefaultGithubRepository @Inject constructor(
         perPage: Int
     ): Flow<Result<UsersSearchResult>> {
         return flow {
-            emit(remoteDataSource.searchUsers(keyword, page, perPage))
+            emit(Result.Loading())
+            remoteDataSource.searchUsers(keyword, page, perPage).run {
+                emit(this)
+            }
         }.flowOn(ioDispatcher)
     }
 
@@ -34,15 +37,21 @@ class DefaultGithubRepository @Inject constructor(
         perPage: Int
     ): Flow<Result<List<GithubRepo>>> {
         return flow {
-            emit(remoteDataSource.fetchRepos(username, page, perPage))
+            emit(Result.Loading())
+            remoteDataSource.fetchRepos(username, page, perPage).run {
+                emit(this)
+            }
         }.flowOn(ioDispatcher)
     }
 
-    override suspend fun follow(uid: String, isToFollow: Boolean): Flow<Boolean> {
+    override suspend fun follow(uid: String): Flow<Result<Boolean>> {
         return flow {
-            emit(localDataSource.followUser(uid, isToFollow))
+            emit(Result.Loading())
             // Simulate the data request process.
             kotlinx.coroutines.delay(500)
+            localDataSource.followUser(uid).run {
+                emit(Result.Success(this))
+            }
         }.flowOn(ioDispatcher)
     }
 

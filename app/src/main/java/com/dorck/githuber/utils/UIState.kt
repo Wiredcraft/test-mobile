@@ -5,6 +5,6 @@ package com.dorck.githuber.utils
  */
 sealed class UIState<out T> {
     data class Success<out T>(val data: T) : UIState<T>()
-    object Loading : UIState<Nothing>()
+    data class Loading(val firstLaunch: Boolean = false) : UIState<Nothing>()
     data class Error(val errorMessage: String) : UIState<Nothing>()
 }

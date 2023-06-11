@@ -3,12 +3,10 @@ package com.dorck.githuber.ui.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material.ButtonDefaults.IconSize
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
@@ -18,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.dorck.githuber.R
 
 val surfaceColor = Color(0XFFF5F5F5)
@@ -25,13 +24,13 @@ val unselectedIconColor = Color(0XFFBFBFBF)
 
 @Composable
 fun HomeSearchBar(
+    modifier: Modifier = Modifier,
     query: TextFieldValue = TextFieldValue(),
-    onQueryChange: (TextFieldValue) -> Unit,
     searchFocused: Boolean = false,
     onSearchFocusChange: ((Boolean) -> Unit)? = null,
     onClearQuery: (() -> Unit)? = null,
     searching: Boolean = false,
-    modifier: Modifier = Modifier
+    onQueryChange: (TextFieldValue) -> Unit,
 ) {
     Surface(
         color = surfaceColor,
@@ -54,24 +53,18 @@ fun HomeSearchBar(
             ) {
                 BasicTextField(
                     value = query,
-                    onValueChange = onQueryChange,
                     maxLines = 1,
                     modifier = Modifier
                         .weight(1f)
                         .onFocusChanged {
                             onSearchFocusChange?.invoke(it.isFocused)
+                        },
+                    onValueChange = {
+                        if (it.text.isNotBlank()) {
+                            onQueryChange(it)
                         }
+                    },
                 )
-                if (searching) {
-                    CircularProgressIndicator(
-                        color = Color.Black,
-                        modifier = Modifier
-                            .padding(horizontal = 6.dp)
-                            .size(IconSize)
-                    )
-                } else {
-                    Spacer(Modifier.width(IconSize)) // balance arrow icon
-                }
                 Icon(
                     painterResource(id = R.drawable.ic_search_outline),
                     tint = if (searchFocused) Color.Black else unselectedIconColor,
@@ -96,7 +89,8 @@ private fun SearchHint() {
         Text(
             text = stringResource(R.string.search_bar_hint_text),
             color = descriptionTextColor,
-            maxLines = 1
+            maxLines = 1,
+            fontSize = 12.sp
         )
     }
 }
@@ -104,5 +98,5 @@ private fun SearchHint() {
 @Preview
 @Composable
 fun PreviewSearchBar() {
-    HomeSearchBar(onQueryChange = {value -> })
+    HomeSearchBar(onQueryChange = { value -> })
 }
