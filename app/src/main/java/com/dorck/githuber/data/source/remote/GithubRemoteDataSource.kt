@@ -1,9 +1,11 @@
 package com.dorck.githuber.data.source.remote
 
+import android.util.Log
 import com.dorck.githuber.data.entities.GithubRepo
 import com.dorck.githuber.data.entities.UsersSearchResult
 import com.dorck.githuber.data.source.common.Result
 import com.dorck.githuber.data.source.remote.service.GithubService
+import com.dorck.githuber.ui.pages.home.TAG
 import com.dorck.githuber.utils.NETWORK_ERROR
 import retrofit2.Response
 import java.io.IOException
@@ -50,6 +52,7 @@ class GithubRemoteDataSource @Inject constructor(
             if (responseData.isSuccessful) {
                 responseData.body()
             } else {
+                Log.e(TAG, "processResponse: ${responseData.toString()}")
                 Result.Error<Any>(responseData.code(), responseData.message() ?: "")
             }
         } catch (e: IOException) {

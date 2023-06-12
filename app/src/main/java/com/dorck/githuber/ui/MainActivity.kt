@@ -8,8 +8,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
+import com.dorck.githuber.nav.GithuberNavGraph
 import com.dorck.githuber.ui.pages.home.HomeUsersViewModel
-import com.dorck.githuber.ui.pages.home.Homepage
 import com.dorck.githuber.ui.theme.GithuberTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                   Homepage(viewModel = homeViewModel)
+                   GithuberNavGraph()
                 }
             }
         }

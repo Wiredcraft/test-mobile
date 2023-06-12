@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.dorck.githuber.data.GithubDataRepository
 import com.dorck.githuber.data.entities.UsersSearchResult
 import com.dorck.githuber.data.source.common.Result
+import com.dorck.githuber.data.source.common.extractUIError
 import com.dorck.githuber.ui.wrapper.UserDisplayBean
 import com.dorck.githuber.ui.wrapper.UserDisplayUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,18 +46,18 @@ class HomeUsersViewModel @Inject constructor(private val dataRepository: GithubD
             dataRepository.searchUsers(username, pageIndex, perPage).collect { result ->
                 when (result) {
                     is Result.Success -> {
-                        Log.d(TAG, "fetchUsers: succeed >> $result")
+                        Log.d(TAG, "fetchUsers: succeed.")
                         result.data?.let {
                             pageIndex++
                             _uiState.value =
-                                UserDisplayUIState(convertAndAppendUserDisplayList(result.data))
+                                UserDisplayUIState(convertAndAppendUserDisplayList(result.data) as MutableList<UserDisplayBean>)
                         }
                     }
                     is Result.Loading -> _uiState.value =
                         UserDisplayUIState(isLoading = true, isRefreshing = isPullRefresh)
                     is Result.Error -> {
                         Log.w(TAG, "fetchUsers: failure => $result")
-                        _uiState.value = UserDisplayUIState(errorMessage = convertUIError(result))
+                        _uiState.value = UserDisplayUIState(errorMessage = result.extractUIError())
                     }
                 }
             }
@@ -79,27 +80,26 @@ class HomeUsersViewModel @Inject constructor(private val dataRepository: GithubD
         }
     }
 
-    private fun handleFollowStatus(userId: String) {
+    /**
+     * Sync follow state from details page come back.
+     */
+    fun syncUserFollowState(uid: String, following: Boolean) {
+        handleFollowStatus(uid) {
+            following
+        }
+    }
+
+    private fun handleFollowStatus(userId: String, block: (() -> Boolean)? = null) {
         val newData = mutableListOf<UserDisplayBean>()
         _userList.forEach { oldUser ->
             if (oldUser.id == userId) {
-                newData.add(oldUser.copy(following = !oldUser.following))
+                newData.add(oldUser.copy(following = if (block == null) !oldUser.following else block()))
             } else {
                 newData.add(oldUser)
             }
         }
         _userList = newData
         _uiState.value = UserDisplayUIState(userList = newData)
-    }
-
-    private fun convertUIError(errorData: Result.Error<UsersSearchResult>): String {
-        return when (errorData.errCode) {
-            400 -> "Bad Request or api version is not supported."
-            403, 404 -> "Authentication failed or resource cannot be found."
-            422 -> "Unprocessable Entity."
-            // More troubleshot reference: https://docs.github.com/en/rest/overview/troubleshooting
-            else -> errorData.msg ?: "Unknown error."
-        }
     }
 
     private fun convertAndAppendUserDisplayList(userResult: UsersSearchResult): List<UserDisplayBean> {

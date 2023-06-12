@@ -14,8 +14,8 @@ interface GithubDataRepository {
 
     suspend fun requestRepos(
         username: String,
-        page: Int,
-        perPage: Int
+        page: Int = 1,
+        perPage: Int = 30
     ): Flow<Result<List<GithubRepo>>>
 
     suspend fun follow(uid: String): Flow<Result<Boolean>>

@@ -2,14 +2,12 @@
 
 package com.dorck.githuber.ui.pages.home
 
-import android.util.Log
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.CircularProgressIndicator
@@ -27,30 +25,36 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.dorck.githuber.R
-import com.dorck.githuber.ui.components.GithubUserListItem
-import com.dorck.githuber.ui.components.HomeSearchBar
-import com.dorck.githuber.ui.components.descriptionTextColor
-import com.dorck.githuber.ui.components.unselectedIconColor
+import com.dorck.githuber.ui.components.*
 import com.dorck.githuber.ui.wrapper.UserDisplayBean
+import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 const val TAG = "Home"
 
 @Composable
-fun Homepage(viewModel: HomeUsersViewModel = viewModel()) {
+fun Homepage(
+    viewModel: HomeUsersViewModel = hiltViewModel(),
+    userId: String? = null,
+    following: Boolean = false,
+    itemClick: (UserDisplayBean) -> Unit
+) {
     val userUiState by viewModel.uiState.collectAsState()
-    val listState = rememberLazyListState()
     var contentValue by remember { mutableStateOf(TextFieldValue()) }
-    Surface(Modifier.fillMaxSize()) {
+    ProvideWindowInsets {
+        val systemUiController = rememberSystemUiController()
+        SideEffect {
+            systemUiController.setStatusBarColor(Color.Transparent, darkIcons = true)
+        }
         Column(
-            modifier = Modifier.windowInsetsPadding(
-                WindowInsets.systemBars.only(WindowInsetsSides.Horizontal)
-            )
-        ) {
+            Modifier
+                .fillMaxSize()
+                .background(Color.White)) {
             Spacer(modifier = Modifier.height(18.dp))
             HomeSearchBar(
                 query = contentValue,
@@ -77,23 +81,26 @@ fun Homepage(viewModel: HomeUsersViewModel = viewModel()) {
                     )
                 }
             } else if (snapshotList.isNotEmpty()) {
-                Log.d(TAG, "Homepage: loading >> ${snapshotList.size}")
                 val swipeRefreshState =
                     rememberSwipeRefreshState(isRefreshing = userUiState.isLoading)
                 UserListContent(
-                    userLazyListState = listState,
                     userList = snapshotList,
                     refreshState = swipeRefreshState,
                     onRefresh = {
                         viewModel.refreshUserSearching(contentValue.text, true)
                     },
                     onFollowClick = { id ->
-                        Log.d(TAG, "Homepage: follow user => $id")
                         viewModel.followUser(id)
-                    }
+                    },
+                    onLoadMore = {
+                        viewModel.fetchUsers(contentValue.text)
+                    },
+                    onItemClick = itemClick
                 )
             } else {
-                ErrorContent(message = userUiState.errorMessage ?: "No github user data was found.")
+                ErrorContent(
+                    message = userUiState.errorMessage ?: "No github user data was found."
+                )
             }
         }
     }
@@ -102,35 +109,41 @@ fun Homepage(viewModel: HomeUsersViewModel = viewModel()) {
 @Composable
 fun UserListContent(
     modifier: Modifier = Modifier,
-    userLazyListState: LazyListState? = null,
     userList: List<UserDisplayBean>,
     refreshState: SwipeRefreshState = SwipeRefreshState(false),
     onRefresh: (() -> Unit)? = null,
     onLoadMore: (() -> Unit)? = null,
-    onFollowClick: ((String) -> Unit)? = null
+    onFollowClick: ((String) -> Unit)? = null,
+    onItemClick: ((UserDisplayBean) -> Unit)? = null
 ) {
-    Box(modifier = modifier) {
-        SwipeRefresh(state = refreshState, onRefresh = { onRefresh?.invoke() }) {
-            LazyColumn(
-                modifier = modifier
-                    .fillMaxWidth(),
-//            state = userLazyListState
-            ) {
-                items(items = userList, key = { it.id }) { user ->
-                    GithubUserListItem(
-                        Modifier.animateItemPlacement(
-                            animationSpec = tween(
-                                durationMillis = 500,
-                                easing = LinearOutSlowInEasing,
-                            )
-                        ),
-                        userData = user,
-                        text = if (user.following) "取消关注" else "关注",
-                        onFollowClick = {
-                            onFollowClick?.invoke(user.id)
-                        })
-                }
+    val listState = rememberLazyListState()
+    SwipeRefresh(state = refreshState, onRefresh = { onRefresh?.invoke() }) {
+        LazyColumn(
+            modifier = modifier
+                .fillMaxWidth(),
+            state = listState
+        ) {
+            items(items = userList, key = { it.id }) { user ->
+                GithubUserListItem(
+                    Modifier.animateItemPlacement(
+                        animationSpec = tween(
+                            durationMillis = 500,
+                            easing = LinearOutSlowInEasing,
+                        )
+                    ),
+                    userData = user,
+                    text = if (user.following) "取消关注" else "关注",
+                    onFollowClick = {
+                        onFollowClick?.invoke(user.id)
+                    },
+                    onItemClick = {
+                        onItemClick?.invoke(user)
+                    }
+                )
             }
+        }
+        LoadMoreHandler(listState = listState, buffer = 3) {
+            onLoadMore?.invoke()
         }
     }
 }
@@ -206,28 +219,7 @@ private fun PreviewHomePageErrorState() {
     }
 }
 
-@Preview
-@Composable
-private fun PreviewHomepageSuccessState() {
-    Surface(Modifier.fillMaxSize()) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier.windowInsetsPadding(
-                WindowInsets.systemBars.only(
-                    WindowInsetsSides.Horizontal
-                )
-            )
-        ) {
-            Spacer(modifier = Modifier.height(18.dp))
-            HomeSearchBar() {
-
-            }
-            UserListContent(Modifier.fillMaxSize(), userList = mockUserList)
-        }
-    }
-}
-
-val mockUserList = listOf<UserDisplayBean>(
+val mockUserList = listOf(
     UserDisplayBean("1123", "moos", "", "www.weibo.com", "12.3"),
     UserDisplayBean(
         "1124",

@@ -17,3 +17,13 @@ sealed class Result<T>(val data: T? = null, val errCode: Int = 0, val msg: Strin
         }
     }
 }
+
+fun Result<*>.extractUIError(): String {
+    return when (errCode) {
+        400 -> "Bad Request or api version is not supported."
+        403, 404 -> "Authentication failed or resource cannot be found."
+        422 -> "Unprocessable Entity."
+        // More troubleshot reference: https://docs.github.com/en/rest/overview/troubleshooting
+        else -> msg ?: "Unknown error."
+    }
+}

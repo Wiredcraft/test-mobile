@@ -3,7 +3,6 @@
 package com.dorck.githuber.ui.components
 
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,6 +24,7 @@ import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.dorck.githuber.R
 import com.dorck.githuber.ui.pages.home.mockUserList
 import com.dorck.githuber.ui.wrapper.UserDisplayBean
@@ -45,27 +45,22 @@ fun GithubUserListItem(
             .fillMaxWidth()
             .animateContentSize()
             .background(Color.White)
-            .clickable(onClick = {})
+            .clickable(onClick = {
+                onItemClick?.invoke()
+            })
     ) {
         val (avatar, name, score, link, button, divider) = createRefs()
-        Image(
-            painter = painterResource(id = R.drawable.activator_dog),
-            modifier = Modifier
-                .size(32.dp)
+        GlideImage(
+            modifier = Modifier.size(32.dp)
                 .clip(CircleShape)
                 .constrainAs(avatar) {
                     start.linkTo(parent.start, 20.dp)
                     centerVerticallyTo(parent)
                 },
-            contentDescription = "avatar",
-            contentScale = ContentScale.Crop
+            model = userData.avatar,
+            contentDescription = stringResource(R.string.avatar_content_desc),
+            contentScale = ContentScale.Crop,
         )
-
-//            GlideImage(
-//                model = userData.avatar,
-//                contentDescription = stringResource(R.string.avatar_content_desc),
-//                contentScale = ContentScale.Crop
-//            )
         // Create a chain between `name` and `score` text.
         createHorizontalChain(name, score, chainStyle = ChainStyle.Packed(0f))
         Text(
@@ -115,6 +110,8 @@ fun GithubUserListItem(
                     bottomMargin = 16.dp,
                     horizontalBias = 0f
                 )
+                // Keep long text from overflowing.
+                width = Dimension.fillToConstraints
             }
         )
 
@@ -146,6 +143,7 @@ fun CommonButton(
     text: String,
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
+    textColor: Color = Color.White,
     bgColor: ButtonColors = ButtonDefaults.buttonColors(backgroundColor = Color(0XFF1A1A1A))
 ) {
     Button(
@@ -155,7 +153,7 @@ fun CommonButton(
             .height(24.dp),
         contentPadding = PaddingValues(0.dp),
         onClick = { onClick?.invoke() }) {
-        Text(text = text, fontSize = 10.sp, color = Color.White)
+        Text(text = text, fontSize = 10.sp, color = textColor)
     }
 
 }
