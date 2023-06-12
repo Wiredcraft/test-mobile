@@ -2,6 +2,7 @@
 
 package com.dorck.githuber.ui.pages.home
 
+import android.util.Log
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -21,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,7 +45,7 @@ fun Homepage(
     itemClick: (UserDisplayBean) -> Unit
 ) {
     val userUiState by viewModel.uiState.collectAsState()
-    var contentValue by remember { mutableStateOf(TextFieldValue()) }
+    var contentValue by remember { mutableStateOf("") }
     ProvideWindowInsets {
         val systemUiController = rememberSystemUiController()
         SideEffect {
@@ -60,8 +60,9 @@ fun Homepage(
                 query = contentValue,
                 searching = userUiState.isLoading,
                 onQueryChange = {
+                    Log.d(TAG, "Homepage: textChange: $it")
                     contentValue = it
-                    viewModel.refreshUserSearching(it.text)
+                    viewModel.refreshUserSearching(it)
                 }
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -87,13 +88,13 @@ fun Homepage(
                     userList = snapshotList,
                     refreshState = swipeRefreshState,
                     onRefresh = {
-                        viewModel.refreshUserSearching(contentValue.text, true)
+                        viewModel.refreshUserSearching(contentValue, true)
                     },
                     onFollowClick = { id ->
                         viewModel.followUser(id)
                     },
                     onLoadMore = {
-                        viewModel.fetchUsers(contentValue.text)
+                        viewModel.fetchUsers(contentValue)
                     },
                     onItemClick = itemClick
                 )
@@ -123,7 +124,7 @@ fun UserListContent(
                 .fillMaxWidth(),
             state = listState
         ) {
-            items(items = userList, key = { it.id }) { user ->
+            items(items = userList) { user ->
                 GithubUserListItem(
                     Modifier.animateItemPlacement(
                         animationSpec = tween(
@@ -165,37 +166,6 @@ fun ErrorContent(message: String) {
                     .padding(bottom = 12.dp)
             )
             Text(text = message, color = descriptionTextColor, fontSize = 14.sp)
-        }
-    }
-}
-
-@Preview
-@Composable
-private fun PreviewHomepageLoadingState() {
-    Surface(Modifier.fillMaxSize()) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier.windowInsetsPadding(
-                WindowInsets.systemBars.only(
-                    WindowInsetsSides.Horizontal
-                )
-            )
-        ) {
-            Spacer(modifier = Modifier.height(18.dp))
-            HomeSearchBar(onQueryChange = {})
-            Box(
-                Modifier
-                    .fillMaxSize()
-                    .background(color = Color.White)
-            ) {
-                CircularProgressIndicator(
-                    color = Color.Black,
-                    modifier = Modifier
-                        .padding(horizontal = 6.dp)
-                        .size(36.dp)
-                        .align(Alignment.Center)
-                )
-            }
         }
     }
 }

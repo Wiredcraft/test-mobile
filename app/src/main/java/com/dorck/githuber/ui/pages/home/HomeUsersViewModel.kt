@@ -1,6 +1,5 @@
 package com.dorck.githuber.ui.pages.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dorck.githuber.data.GithubDataRepository
@@ -31,7 +30,7 @@ class HomeUsersViewModel @Inject constructor(private val dataRepository: GithubD
     private var pageIndex = 1
 
     // User source data collection.
-    private var _userList = mutableListOf<UserDisplayBean>()
+//    private var _userList = mutableListOf<UserDisplayBean>()
 
     init {
         // Need to fetch default users at first launch.
@@ -44,19 +43,33 @@ class HomeUsersViewModel @Inject constructor(private val dataRepository: GithubD
     fun fetchUsers(username: String = "android", perPage: Int = 30, isPullRefresh: Boolean = false) {
         viewModelScope.launch {
             dataRepository.searchUsers(username, pageIndex, perPage).collect { result ->
+                val curList = _uiState.value.userList
                 when (result) {
                     is Result.Success -> {
-                        Log.d(TAG, "fetchUsers: succeed.")
+
                         result.data?.let {
                             pageIndex++
-                            _uiState.value =
-                                UserDisplayUIState(convertAndAppendUserDisplayList(result.data) as MutableList<UserDisplayBean>)
+                            val newList = convertUserDisplayList(result.data) as MutableList<UserDisplayBean>
+                            if (isPullRefresh) {
+                                _uiState.value = UserDisplayUIState(newList)
+                            } else {
+                                // load more or first launch
+                                curList.plusAssign(newList)
+                                _uiState.value = UserDisplayUIState(curList.toMutableList())
+                            }
                         }
                     }
-                    is Result.Loading -> _uiState.value =
-                        UserDisplayUIState(isLoading = true, isRefreshing = isPullRefresh)
+                    is Result.Loading -> {
+                        if (isPullRefresh || pageIndex == 1) {
+                            _uiState.value =
+                                UserDisplayUIState(isLoading = true, isRefreshing = isPullRefresh)
+                        } else {
+                            // If it loads more data. we need save the current data.
+                            _uiState.value =
+                                UserDisplayUIState(userList = curList, isLoading = true)
+                        }
+                    }
                     is Result.Error -> {
-                        Log.w(TAG, "fetchUsers: failure => $result")
                         _uiState.value = UserDisplayUIState(errorMessage = result.extractUIError())
                     }
                 }
@@ -66,7 +79,7 @@ class HomeUsersViewModel @Inject constructor(private val dataRepository: GithubD
 
     fun refreshUserSearching(name: String, isPullRefresh: Boolean = false) {
         pageIndex = 1
-        _userList.clear()
+//        _userList.clear()
         fetchUsers(name, isPullRefresh = isPullRefresh)
     }
 
@@ -91,22 +104,20 @@ class HomeUsersViewModel @Inject constructor(private val dataRepository: GithubD
 
     private fun handleFollowStatus(userId: String, block: (() -> Boolean)? = null) {
         val newData = mutableListOf<UserDisplayBean>()
-        _userList.forEach { oldUser ->
+        val oldData = _uiState.value.userList
+        oldData.forEach { oldUser ->
             if (oldUser.id == userId) {
                 newData.add(oldUser.copy(following = if (block == null) !oldUser.following else block()))
             } else {
                 newData.add(oldUser)
             }
         }
-        _userList = newData
-        _uiState.value = UserDisplayUIState(userList = newData)
+        _uiState.value = UserDisplayUIState(newData)
     }
 
-    private fun convertAndAppendUserDisplayList(userResult: UsersSearchResult): List<UserDisplayBean> {
-        return _userList.apply {
-            plusAssign(userResult.items.map {
+    private fun convertUserDisplayList(userResult: UsersSearchResult): List<UserDisplayBean> {
+        return userResult.items.map {
                 UserDisplayBean.from(it)
-            }.toMutableList())
-        }
+            }.toMutableList()
     }
 }

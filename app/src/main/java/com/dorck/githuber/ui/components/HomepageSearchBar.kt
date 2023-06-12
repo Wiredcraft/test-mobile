@@ -13,7 +13,6 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -25,12 +24,12 @@ val unselectedIconColor = Color(0XFFBFBFBF)
 @Composable
 fun HomeSearchBar(
     modifier: Modifier = Modifier,
-    query: TextFieldValue = TextFieldValue(),
+    query: String = "",
     searchFocused: Boolean = false,
     onSearchFocusChange: ((Boolean) -> Unit)? = null,
     onClearQuery: (() -> Unit)? = null,
     searching: Boolean = false,
-    onQueryChange: (TextFieldValue) -> Unit,
+    onQueryChange: (String) -> Unit,
 ) {
     Surface(
         color = surfaceColor,
@@ -40,8 +39,9 @@ fun HomeSearchBar(
             .height(30.dp)
             .padding(horizontal = 20.dp)
     ) {
+        var text by remember { mutableStateOf(query) }
         Box(Modifier.fillMaxSize()) {
-            if (query.text.isEmpty()) {
+            if (query.isEmpty()) {
                 SearchHint()
             }
             Row(
@@ -52,7 +52,7 @@ fun HomeSearchBar(
                     .padding(start = 16.dp, end = 20.dp)
             ) {
                 BasicTextField(
-                    value = query,
+                    value = text,
                     maxLines = 1,
                     modifier = Modifier
                         .weight(1f)
@@ -60,7 +60,8 @@ fun HomeSearchBar(
                             onSearchFocusChange?.invoke(it.isFocused)
                         },
                     onValueChange = {
-                        if (it.text.isNotBlank()) {
+                        text = it
+                        if (it.isNotBlank()) {
                             onQueryChange(it)
                         }
                     },
