@@ -67,6 +67,9 @@ https://www.figma.com/file/voov7DANpki5YtI6Jt5d6E/github_userlist_test?node-id=0
 
 ![](./art/architecture.png)
 
+### Screenshots
+<img src="./art/Screenshot_20230613_095250.png" style="zoom:15%;" /> <img src="./art/Screenshot_20230613_095332.png" style="zoom:15%;" />
+
 ### Functionality
 
 - Use Swift >=4.2 for iOS.
